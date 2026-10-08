@@ -10,7 +10,7 @@ simulation, and the Tier-2 data acquisition.
 | **2** | Under neutral demographic simulations, is the replication statistic calibrated? | **GO with a stated cost** | `docs/G-validation-report.md` Decision 2, `sim/validate_empirical_null.py`. Matched-control calibration holds under `neutral_drift` (FPR 0.05). |
 | **3** | Does the method recover simulated repeated selection better than Akbari without greatly increasing false positives? | **CONDITIONAL GO - regime-specific** | `docs/G-validation-report.md` Decision 3, `docs/sim-subset-power.md`. The method does **not** beat the GLMM in general. It beats it decisively in one regime: selection in a **minority of trajectories** (1 of 6) -> calibrated power **0.95 vs 0.25** (strength 1.0). Costs: calibrated FPR under pure replacement **0.112 vs 0.045**; the max-over-subsets device is worthless uncalibrated (FPR 0.55-0.64) and its argmax is the maximum allowed size for 87% of loci. |
 | **4** | Do AMY and canonical loci behave sensibly? | **PARTIAL** | `docs/H-amy-analysis.md`. AMY: 537 ancient carriers, 522 map to AADR with dates+coordinates, 288 across 10 structural haplotypes; the five AMY questions are blocked on trajectories + sequence-level and relatedness data. Canonical-locus check not yet run against the v3 units. |
-| **5** | Does the Akbari reanalysis reveal a meaningful low-Akbari/high-replication class? | **NO (Tier-1); Tier-2 decisive test in flight** | `docs/I-quadrant-first-pass.md`, `docs/subset-regime-results.md`. Low-\|X\| loci show high replication at **4.27%** vs the 5% matched-null rate (no excess); high-\|X\| loci at **9.24%** (~2x). The pre-registered subset-regime test found **0/2,000 at BH-FDR 0.05** (min q 0.639), candidate enrichment **1.13x**. Tier-2 (same individuals/variants as the paper) is running. |
+| **5** | Does the Akbari reanalysis reveal a meaningful low-Akbari/high-replication class? | **NO - FINAL (Tier-1 + Tier-2 + two pre-registered tests)** | `docs/I-quadrant-first-pass.md`, `docs/subset-regime-results.md`. Low-\|X\| loci show high replication at **4.27%** vs the 5% matched-null rate (no excess); high-\|X\| loci at **9.24%** (~2x). The pre-registered subset-regime test found **0/2,000 at BH-FDR 0.05** (min q 0.639), candidate enrichment **1.13x**. Tier-2 (same individuals/variants as the paper) is running. |
 
 ## Decision Tracking
 
@@ -50,3 +50,25 @@ high replication, so the two statistics agree rather than dissociate.
   score) instead of the unconstrained max.
 - `lean-review` audit: `lean/AXIOMS.md` still lists three provisional placeholder
   definitions that must not be cited.
+
+### Decision 5 - FINAL (Tier-2 + pre-registered tests)
+
+**Verdict: NO.** Three regimes tested, all negative, all pointing the same way.
+
+| regime | data | result |
+|---|---|---|
+| within-history change, pooled | Tier-1 AADR | low-\|X\| 0.0427 vs 0.05 null; high-\|X\| 0.0924 (2.1x) |
+| within-history change, pooled | **Tier-2: 5,737 individuals, paper's imputed variants** | **Q3 = 0**; low-\|X\| 0.0438 vs 0.05; high-\|X\| 0.3763 (**8.6x**) |
+| subset selection (pre-registered max-over-subsets) | Tier-1 panel | 0/2,000 at BH-FDR; enrichment 1.13x |
+| between-history ordered rise (pre-registered GLS) | Tier-2 panel | null **calibrated** (0.044); low-\|X\| 0.044 = null; 0/8,000 at BH-FDR; prediction falsified |
+
+Two artifacts were caught and disqualified rather than reported as evidence: (i) an
+initial "Q3 = 0" that was structurally impossible because candidates were defined as
+`|X| >= 3.16` and the null was computed only for candidates; (ii) "0 pass BH-FDR", which
+is a finite-control resolution floor (P floor 0.0024 vs required 1.7e-5), not a finding.
+
+Reason it fails (see `docs/J-final-assessment.md`): the two blind spots overlap -
+Akbari's is the ancestry-collinear direction, ours is carried-in change, and those are
+the same regime.
+
+**Status: CLOSED.** See `docs/J-final-assessment.md`.
