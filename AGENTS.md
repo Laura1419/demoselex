@@ -25,3 +25,16 @@ lock-step. The two files exist because Claude Code and Codex CLI look for
 different filenames, but they should never drift in content. Any divergence is
 a bug. Update both together.
 <!-- worksgood-managed-guide:v1:end -->
+## Project context: trajectory-replication research
+
+Repo root: `/home/erikg/demoselex`. Read `docs/MISSION.md` first; it is authoritative.
+
+- Living research doc sections live in `docs/` (`A-` .. `J-`). Update the section your task owns.
+- Append a short entry to `docs/JOURNAL.md` after each work session.
+- Record provenance for every run with `python3 scripts/provenance.py` (see `docs/PROVENANCE.md`).
+- Lean code in `lean/`; Python analysis in `sim/` and `analysis/`; figures in `fig/`.
+- Raw data in `data/raw/` is immutable. Never edit it. Derived data in `data/derived/`.
+- Commit your work with a conventional-commit message naming the task id, e.g.
+  `feat(traj-prototype): time-aware clustering prototype`.
+- Do not mark a task done until its `## Validation` section actually passes.
+- Honest negative results are valuable: if a hypothesis fails, say so in the doc and journal.

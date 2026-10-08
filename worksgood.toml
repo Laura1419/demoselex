@@ -1,0 +1,70 @@
+schema_version = 1
+
+[models.assigner]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.chat_compactor]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.compactor]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.coordinator_eval]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.creator]
+model = "pi:lunaroute:glm-5.3"
+reasoning = "xhigh"
+
+[models.default]
+model = "pi:lunaroute:glm-5.3"
+reasoning = "high"
+
+[models.evaluator]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.evolver]
+model = "pi:lunaroute:glm-5.3"
+reasoning = "xhigh"
+
+[models.flip_comparison]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.flip_inference]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.merger]
+model = "pi:lunaroute:glm-5.3"
+reasoning = "xhigh"
+
+[models.placer]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.reviewer]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.task_agent]
+model = "pi:lunaroute:glm-5.3"
+reasoning = "high"
+
+[models.triage]
+model = "pi:lunaroute:deepseek-4.1-flash"
+reasoning = "low"
+
+[models.verification]
+model = "pi:lunaroute:glm-5.3"
+reasoning = "xhigh"
+
+[profile_origin]
+definition_fingerprint = "b3:28d5ca5ed4699c234bf25d03c10bd981a5bf9d69a01063127f28c2310b49a2e3"
+name = "pi-lunaroute-glm53"
+projection_fingerprint = "b3:69d5e08c4f2cc0ed50f3c7d96e2c0842ab11afc6a20f8eac32bb31dae2424f4d"
