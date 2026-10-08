@@ -1,0 +1,42 @@
+{
+  "run_id": "20261008-0502-lean-setup-root-build",
+  "timestamp": "2026-10-08T05:02:13.947886",
+  "git": {
+    "commit": "4d67fa500266dd2da5a484cf118d7ccb79a0f448",
+    "branch": "main",
+    "dirty": true
+  },
+  "command": [
+    "lake",
+    "build"
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-139-generic",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "sklearn": "1.4.1.post1"
+  },
+  "inputs": {
+    "lean-toolchain": "sha256:d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.lean": "sha256:65a23e1bcd2ffaf6d33138ee6043198861422204ab10a60674e1c3589ec1ec4f",
+    "lake-manifest.json": "sha256:caf7eb5f74185ee828371f168e8264c46db1ad90d115115e08515eee4a97e92f",
+    "lean/TrajectorySelection.lean": "sha256:9e054f50ded89d5d6c9f509eaec4b791e4384ec8904ca233fe63ce50fae2ee7a",
+    "lean/TrajectorySelection/Core.lean": "sha256:7cbe429183e411ff2adc3cc6b0d92f969ac5d2b5e4a6771a2ef2e0f09dcadd60",
+    "lean/TrajectorySelection/Trajectory.lean": "sha256:a12e8b71611862cc88543197546c487c8e97f4191c684de417c916ef3cbe9fac",
+    "lean/TrajectorySelection/FrequencyPath.lean": "sha256:1990457251fa91b3bb5a44d7547b8d609a3147dd0f6bc8d272c9da99aaf3ecd1",
+    "lean/TrajectorySelection/Concordance.lean": "sha256:34decc3d187f9d883ab0d2bc9433b231d67ca762406e3e9d1aef0a5b9c88ccfc"
+  },
+  "parameters": {
+    "randomness": "none",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "lake_version": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "build_exit_code": 0
+  },
+  "outputs": {
+    ".lake/build/lib/lean/TrajectorySelection.olean": "sha256:d4496a0544df01e952a4ee1a81fc7c3df08803083c4ddeab28273de81d4cdfce"
+  },
+  "seed": 0
+}

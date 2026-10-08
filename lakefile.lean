@@ -1,19 +1,12 @@
-/-
-Lean 4 project with Mathlib for trajectory replication research
--/
-
 import Lake
 open Lake DSL
 
-package "trajectory-replication" {
-  -- add package configuration options here
-}
+-- Repository-root entry point; the canonical Lean project is in lean/.
+package trajectory_replication
 
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4" @ "master"
+  "https://github.com/leanprover-community/mathlib4" @ "v4.34.1"
 
 @[default_target]
-lean_lib "TrajectorySelection" {
-  -- Library files are in the lean/ subdirectory
+lean_lib TrajectorySelection where
   srcDir := "lean"
-}

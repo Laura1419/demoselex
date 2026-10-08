@@ -8,5 +8,3 @@ lake-packages/
 build/
 analysis/runs/
 .wg-worktrees/
-lake-manifest.json
-lean-toolchain

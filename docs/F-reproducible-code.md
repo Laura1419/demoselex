@@ -1,8 +1,16 @@
 # F. Reproducible code
 
-> Owner tasks: all. Status: TODO.
+> Owner tasks: all. Status: in progress (Lean bootstrap).
 
-Inventory of scripts, what each consumes/produces, and the exact command to run it.
+## Lean formalization (lean-setup)
+
+The canonical Lake package lives in `lean/` (`lean/lakefile.lean`, `lean/lean-toolchain`, `lean/lake-manifest.json`). A repository-root Lake entry point also builds the same `lean/TrajectorySelection.lean` and its `TrajectorySelection/{Core,Trajectory,FrequencyPath,Concordance}.lean` imports. Both entry points pin Lean 4.34.1 and Mathlib v4.34.1; the checked-in manifests lock Mathlib and transitive package revisions. Run `cd lean && lake exe cache get && lake build` or, from the repository root, `lake exe cache get && lake build`. Cache downloads are optional for correctness; building Mathlib from source uses more time and memory.
+
+`lean/AXIOMS.md` is the mandatory ledger for every project `sorry`, `axiom`, and `native_decide` and flags inherited scientific placeholders separately. A successful build validates import/elaboration only, not scientific calibration. Definitions and proof attempts are owned by downstream Lean tasks; do not interpret placeholder scores as selection evidence.
+
+The general run-manifest harness is `scripts/provenance.py` (see `docs/PROVENANCE.md`); a Lean build records seed `0` as a no-randomness convention and captures toolchain and Mathlib revision with the inputs in `analysis/runs/`.
+
+Further pipeline script inventory (downloads/QC/trajectories/loci/simulations/figures/reanalysis) is pending its owner tasks.
 
 ## Akbari-style GLMM comparator (`sim-glmm`)
 
