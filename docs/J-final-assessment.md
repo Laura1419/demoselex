@@ -268,3 +268,36 @@ is the *strength* of the supporting reasoning: C2 removes a false impossibility 
 C3 demotes one pre-registered result to exploratory, C1 explains part of the Tier-1 vs
 Tier-2 discrepancy, and C4/C5 narrow the AMY argument to its defensible core
 (independent innovations) while showing this panel cannot test it.
+
+## C7. AMY: C5 was wrong, and the error was ours
+
+C5 concluded that AMY "is not resolvable with the panel we hold". **That conclusion is
+withdrawn.** It was an artifact of analysing a summary table plus our own AADR-mapped
+subset and treating the paper's ancestry components as decoration, while the released
+analysis archive (`data/raw/amy/amylase_diversity_project-v1.1.zip`) sat unopened.
+
+The paper's own supplementary tables contain the structure-aware analysis. Joining
+`copy_number_table_for_supplement.tsv` to `ancient_metadata_for_supplement.tsv` gives, by
+ancestry component: WHG 5.75 (n=32), Early farmers 5.45 (n=22), EHG 5.39 (n=49),
+Neolithic farmers 7.15 (n=34), Steppe pastoralists 8.25 (n=16), Bronze age 6.63 (n=46),
+Iron age to early modern 7.25 (n=333) - i.e. the direction the original argument claimed,
+computable directly from the release. Global replication is present too: AMY1 is highest
+in OCE/EAS/AMR and lowest in EUR/AFR, and **PEL 9.52 / Pima 10.29** are the highest
+populations in the dataset versus Sururi 5.25.
+
+Two consequences:
+
+1. The claim in `docs/H-amy-analysis.md` that the five AMY questions were "blocked on
+   analysis/trajectory_infer.py" was a **self-inflicted** blocker: the needed structure was
+   already published, as ancestry components rather than as our clusters.
+2. The "independent innovation" half of the argument is **not** established by the
+   haplotype labels: all 10 ancient haplotype labels also occur in moderns, their
+   frequencies differ strongly between populations (H5 is ~0.47 in East Asians vs ~0.17 in
+   Europeans), and CN is strongly haplotype-dependent (H1^a 4.30 -> H9 13.95). So
+   haplotype-frequency differences are a live *carriage* explanation, and the paper's
+   "recurrent evolution" claim must rest on finer structural evidence not yet examined.
+
+**Net:** the frequency-side capstone verdict (no low-Akbari/high-replication class) is
+unaffected. But the AMY case study was mis-analysed, and the correct next step is
+donor-aware: given the ancestry components and the haplotype-specific CN table, how much
+of the later West Eurasian increase is predicted by admixture proportion alone?

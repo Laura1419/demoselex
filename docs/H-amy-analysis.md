@@ -143,3 +143,82 @@ python3 analysis/amy.py --figures    # fig/amy1_copy_number_distribution.png, fi
 [inference] The earlier zero Akbari-ENA overlap does NOT block AADR trajectory labeling; the older overlap helper also used truthiness of wrong metadata columns, which the new analysis validates against columns 10/17/18. Insufficient CN longitudinal replication, not Akbari naming, is the measured limitation now.
 
 [observation] Held-out SNP control pass fraction **13/208=6.25%** (95% interval **3.37–10.45%**) passes the preliminary process gate. **CN null remains uncalibrated**; no identifiable drift-plus-jump CN ordering probability is reported. See docs/directional-consistency-results.md for all CN node means/slopes and limitations. [inference] These data cannot prove or disprove the accepted parallel-AMY argument; SNP Ne is not a CN mutation/haplotype model.
+
+---
+
+# CORRECTED AMY ANALYSIS (appended 2026-10-08)
+
+**This supersedes the "TBD - blocked on trajectory_infer.py" conclusions above.** The
+error was ours: we analysed AMY from `copy_number_table_for_supplement.tsv` plus our own
+AADR-mapped ancient subset, and treated the paper's ancestry labels as mere annotation.
+The paper's own supplement already contains the structure-aware ancient analysis, and we
+never opened the released analysis archive (`amylase_diversity_project-v1.1.zip`) that
+was sitting in `data/raw/amy/`.
+
+## The paper's own data answers the question directly
+
+`graph_genotyping/assess_graph_genotypes/supplementary_tables/ancient_metadata_for_supplement.tsv`
+has **533 ancient individuals** with `p2` ancestry components, dates, and coordinates.
+Joining to the CN table (533/533 join):
+
+| ancestry (p2) | n | mean AMY1 | mean age (BP) |
+|---|---:|---:|---:|
+| Iron age to early modern | 333 | 7.25 | 934 |
+| Bronze age | 46 | 6.63 | 3,893 |
+| Steppe pastoralists | 16 | **8.25** | 4,068 |
+| Neolithic farmers | 34 | **7.15** | 5,121 |
+| EHG | 49 | 5.39 | 6,861 |
+| WHG | 32 | 5.75 | 7,694 |
+| Early farmers | 22 | **5.45** | 8,414 |
+| CHG | 1 | 8.00 | 9,724 |
+
+**[observation] The direction is exactly as the original argument claimed**: the older
+components (WHG 5.75, EHG 5.39, Early farmers 5.45 - all around 5.4-5.8) are lower than
+the later ones (Neolithic farmers 7.15, Steppe pastoralists 8.25, Bronze age 6.63, Iron
+age+ 7.25). This is computable straight from the released supplement.
+
+Global replication is also present in the same release
+(`hdgp_tgp_AMY_popgen/CN_metadata_filtered_withSubsistence.txt`, 3,395 individuals):
+AMY1 by genetic region is highest in **OCE 8.72, EAS 8.08, AMR 7.58** and lowest in
+**EUR 6.89, AFR 6.71**; and within the Americas, **PEL (Andean) 9.52 and Pima 10.29**
+are the highest populations in the dataset versus **Surui (Amazonian) 5.25**.
+
+## But the naive "independent innovation" claim is NOT supported by the haplotype labels
+
+`haplotype_structure_for_supplement.tsv` gives per-individual structural haplotype labels,
+and CN is strongly haplotype-dependent:
+
+| haplotype | carriers | mean AMY1 |
+|---|---:|---:|
+| H9 | 104 | 13.95 |
+| H7 | 529 | 11.16 |
+| H5 | 2,414 | 9.01 |
+| H4A2B2 | 278 | 8.27 |
+| H3^r | 4,127 | 6.49 |
+| H2A2B2 | 141 | 5.43 |
+| H1^a | 949 | 4.30 |
+
+**[observation] All 10 ancient haplotype labels also occur in moderns** (only `H3A3B3` is
+modern-only). So high copy number tracks *specific shared structural haplotypes*, and
+their frequencies differ sharply between populations - H5 is 0.44-0.50 in CHS/CHB/JPT but
+only 0.16-0.19 in TSI/IBS/YRI. Haplotype-frequency differences are therefore a plausible
+**carriage** route for the elevated Andean/East-Asian copy number, which is precisely the
+confound the Akbari-lab objection raises.
+
+Ancient composition moves in the same direction as CN: WHG is dominated by low-CN
+`H2A0`/`H1^a`, while later groups carry more `H5`/`H7`/`H4A2B2`.
+
+## Honest status
+
+- **Corrected:** "AMY is not testable" was wrong. The paper's own supplement contains the
+  structure-aware ancient analysis, it is on disk, and it shows the increase.
+- **Not resolved by labels alone:** whether the high-CN haplotypes in the Americas are
+  *independently derived* or *carried* from a shared ancestral pool. Shared labels are
+  consistent with carriage; the paper's "recurrent evolution" claim must therefore rest on
+  the finer structural/sequence-level analyses in the archive (bundle/structure trees,
+  `haplotype_all_structures*`, PGGB graphs), which we have NOT yet examined.
+- **The decisive test remains donor-aware**: given a steppe/EHG donor whose haplotype
+  composition already has higher mean CN, how much of the later West Eurasian increase is
+  predicted by admixture proportion alone versus requiring within-component change? That is
+  answerable with `p2` proportions plus the haplotype-specific CN table, and it is the test
+  the argument actually needs.
