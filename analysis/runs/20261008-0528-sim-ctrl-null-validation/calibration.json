@@ -1,0 +1,9 @@
+{
+  "seed": 251008,
+  "n_candidates": 128,
+  "controls_per_candidate": 40,
+  "mean_p": 0.4824695121951219,
+  "ks_uniform_d": 0.10270579268292682,
+  "fraction_p_le_0_05": 0.0625,
+  "fraction_p_le_0_10": 0.140625
+}

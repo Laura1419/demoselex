@@ -1,0 +1,41 @@
+{
+  "run_id": "20261008-0528-sim-ctrl-null-validation",
+  "timestamp": "2026-10-08T05:28:41.074190",
+  "git": {
+    "commit": "78b83840ca790b1e95a5d5e57abba3dcf49249dd",
+    "branch": "wg/agent-34/sim-ctrl-null",
+    "dirty": true
+  },
+  "command": [
+    "python3",
+    "-m",
+    "sim.validate_empirical_null",
+    "--seed",
+    "251008"
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-139-generic",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "sklearn": "1.4.1.post1"
+  },
+  "inputs": {
+    "sim/empirical_null.py": "sha256:0d288bd76cecabb1b28128bfe3626732b1fb4ece1605d6c2d2087b2e461e561e",
+    "sim/trajectory_stat.py": "sha256:26f284a40775ddf75cc1fe59d726f3692a294d9584fb4a8cdd72cff7e0e4dccd",
+    "sim/validate_empirical_null.py": "sha256:cc909d7bacbbf962cd306f928a8bbc072cc249bd84a492516332d2cfaafaa5c5"
+  },
+  "parameters": {
+    "design": "4 strata x (48 neutral controls + 32 neutral candidates); 3 trajectories, 4 times; independent loci, correlated neutral drift within locus",
+    "matcher": "default calipers, same chromosome and exact time support; LD exclusion 1Mb; min_controls=20, max_controls=40"
+  },
+  "outputs": {
+    "analysis/runs/20261008-0528-sim-ctrl-null-validation/counts.csv": "sha256:a9ad775c2ca48101eb4f7bdfad57fb30cc255a9961345f7ed7d95a6a50b970e9",
+    "analysis/runs/20261008-0528-sim-ctrl-null-validation/metadata.csv": "sha256:e081a2e6247331fb1797ff4f3f48cc189d1110bfc74f8ae1aa489ef55376702f",
+    "analysis/runs/20261008-0528-sim-ctrl-null-validation/ranks.csv": "sha256:db929e9be1f424d7e23e918a26154681f60f1df1ca0ff6adadb6c1fd37510afb",
+    "analysis/runs/20261008-0528-sim-ctrl-null-validation/matches.csv": "sha256:8c1bb356d9d694e15a961e2f5fbee14eaa1f60dd640f8364037695b9933e9baa",
+    "analysis/runs/20261008-0528-sim-ctrl-null-validation/calibration.json": "sha256:402ae1acf6ed8b624c7305796003cae84b215e1e522114eab316b36a2506304d"
+  },
+  "seed": 251008
+}

@@ -41,6 +41,58 @@ Assumed binomial independence and family-error correlation must be evaluated
 under the matched null in downstream simulation; diagnostic p-values are not
 yet calibrated genome-wide significance.
 
+## Matched-control empirical null (`sim-ctrl-null`)
+
+`sim/empirical_null.py` exposes `empirical_null(counts, metadata, candidates,
+*, family=None, relatedness=None, calipers=None, exclusion_bp=1_000_000,
+min_controls=20, max_controls=None)`. Counts have the same long-form schema as
+`trajectory_statistic`; metadata has one row per locus with `locus`,
+`chromosome`, integer base-pair `position`, `allele_frequency`,
+`recombination_rate` (cM/Mb), `local_ld`, `imputation_quality`, `missingness`
+and `temporal_coverage` (all but recombination and position are proportions).
+These must be QC-derived **without using the tested trajectory outcome**.
+It fits all loci with exactly the same trajectory/family/relatedness model,
+returns `.statistics` (all fitted summaries and `replication_score`), `.matches`
+(auditable control IDs, distances and scores) and `.results` (candidate score,
+control count, percentile and empirical P). Example:
+
+```python
+from sim.empirical_null import empirical_null
+null = empirical_null(counts, locus_metadata, ["candidate_id"],
+                      family=prespecified_families, relatedness=background_R,
+                      min_controls=20, max_controls=100)
+print(null.results[["locus", "n_controls", "percentile", "p_empirical"]])
+print(null.matches[["locus", "control", "distance"]])
+```
+
+Chromosome and *exact observed trajectory/time-bin support* must match;
+controls within 1 Mb are excluded by default. All six numeric features pass
+fixed absolute calipers (defaults in the module) before selecting closest
+scaled-L1 matches, with locus ID breaking distance ties. All candidates are
+held out of every control pool. Insufficient matches, fewer than two independent trajectory families,
+missing QC fields or undefined concordance fail closed. Harmonize time bins beforehand; strict
+support matching can make a sparse real dataset ineligible. Do not relax
+matching post hoc based on outcome, and exclude other biologically selected,
+linked, batch-confounded or otherwise inappropriate control loci upstream.
+`replication_score = |meta_slope/meta_se| × family_concordance` is a prespecified
+*ranking score*, not a likelihood ratio. With `m` controls, the two-sided
+concordant-change tail is `P=(1 + #{control score >= candidate score})/(m+1)`;
+ties are conservative and minimum P is `1/(m+1)`. Percentile is the candidate's
+control midrank `100 × (#{less} + 0.5 #{tied})/m`, **not** `1−P` under ties.
+The analytic `p_value` of the underlying statistic remains only a diagnostic.
+The exchangeability premise requires independence and matching of *the whole
+neutral distribution*, not merely these measured fields; small m limits tails.
+
+From the repository root run `python3 -m pytest -q sim/test_empirical_null.py
+sim/test_trajectory_stat.py` and `python3 -m sim.validate_empirical_null --seed
+251008`. The latter simulates four neutral strata with correlated within-locus
+trajectory drift, holds out 128 candidate loci and matches 40 independent
+controls each, asserts broad calibration bounds and writes count/metadata/rank/
+match tables, calibration metrics and code hashes/version/seed provenance under
+`analysis/runs/20261008-0528-sim-ctrl-null-validation/`. This is a matcher
+check under the stipulated simulator, **not** calibration in Akbari's real
+cohorts or a demographic-replacement simulation.
+
 ## Akbari-style GLMM comparator (`sim-glmm`)
 
 `sim/akbari_glmm.py` implements an independent small-sample binomial PQL/REML
