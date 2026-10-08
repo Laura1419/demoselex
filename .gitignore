@@ -1,0 +1,8 @@
+.wg/
+data/raw/
+data/derived/
+*.tmp
+__pycache__/
+.lake/
+lake-packages/
+build/
