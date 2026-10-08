@@ -48,3 +48,9 @@ Repo root: `/home/erikg/demoselex`. Read `docs/MISSION.md` first; it is authorit
   by worktrees).
 - Do not add trailing whitespace; do not add conflict markers.
 - Every commit message: `<type>(<task-id>): <summary>`.
+
+- **Never run `git merge`, `git rebase`, `git pull`, or `git stash pop` in your worktree.**
+  Your branch is landed by the coordinator. Just edit, `git add`, `git commit` on your
+  own `wg/agent-N/<task>` branch. If the branch looks behind `main`, that is expected.
+- Keep edits scoped to the files your task owns. Do not rewrite shared files that other
+  tasks own (`docs/JOURNAL.md`, `docs/PROVENANCE.md`, `docs/DECISIONS.md`): append only.

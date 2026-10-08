@@ -1,6 +1,6 @@
 # C. Akbari et al. 2026 reconstruction
 
-> Owner task: recon-akbari. Status: IN PROGRESS.
+> Owner task: recon-akbari. Status: COMPLETE.
 
 ## Paper and identifiers
 - Akbari et al. 2026, Nature 654:419-428, doi:10.1038/s41586-026-10358-1
@@ -89,13 +89,13 @@ V = τ₁K + τ₂I
 
 Where:
 - Y[i,0] = count of alternative alleles
-- Y[i,1] = count of reference alleles  
+- Y[i,1] = count of reference alleles
 - n_i = Y[i,0] + Y[i,1] = total allele count
 - p_i = allele frequency (latent)
 - X = design matrix including time vector (calendar years BP as fixed effect)
 - β = fixed effects including selection coefficient β_time
 - u = random effect vector capturing population structure
-- K = Genetic Relatedness Matrix (GRM)  
+- K = Genetic Relatedness Matrix (GRM)
 - I = identity matrix
 - τ₁, τ₂ = variance components
 
@@ -198,7 +198,7 @@ where P_K is the projection matrix onto the column space of K.
 
 **The collinearity effect**:
 1. The time signal component that aligns with population structure gets absorbed into the random effects
-2. Only the component of T orthogonal to major GRM eigenvectors contributes to β_time estimation  
+2. Only the component of T orthogonal to major GRM eigenvectors contributes to β_time estimation
 3. This reduces power to detect selection when selection happened along migration/demographic axes
 
 **Identifiability loss**: When T is fully explained by K (T ∈ col(K)), β_time becomes statistically unidentifiable - the model cannot distinguish selection from population replacement.
