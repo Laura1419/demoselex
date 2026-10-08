@@ -1,0 +1,11 @@
+{
+  "qualifying_demes": 42,
+  "people": 3713,
+  "nodes": 149,
+  "span_kyr_min": 2.151,
+  "span_kyr_max": 4.85,
+  "n_min": 35,
+  "n_max": 377,
+  "removed_embedding_controls": 2,
+  "validation": "row IDs, dates, biological uniqueness, node counts, adjacent bins and geography verified; source path rules unit-tested"
+}

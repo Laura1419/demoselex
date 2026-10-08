@@ -1,0 +1,112 @@
+[
+  {
+    "effect": 0,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 41,
+    "power": 0.041,
+    "ci_low": 0.0295801685340361,
+    "ci_high": 0.05521245931516971,
+    "pooled_rejection": 0.999
+  },
+  {
+    "effect": 0.05,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 60,
+    "power": 0.06,
+    "ci_low": 0.046095035422484346,
+    "ci_high": 0.07656049040407746,
+    "pooled_rejection": 1.0
+  },
+  {
+    "effect": 0.1,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 97,
+    "power": 0.097,
+    "ci_low": 0.07936447182962342,
+    "ci_high": 0.1170478439802872,
+    "pooled_rejection": 1.0
+  },
+  {
+    "effect": 0.2,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 250,
+    "power": 0.25,
+    "ci_low": 0.22343040626467928,
+    "ci_high": 0.2780500062237556,
+    "pooled_rejection": 1.0
+  },
+  {
+    "effect": 0.3,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 516,
+    "power": 0.516,
+    "ci_low": 0.48451778022054043,
+    "ci_high": 0.547387772145001,
+    "pooled_rejection": 1.0
+  },
+  {
+    "effect": 0.5,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 918,
+    "power": 0.918,
+    "ci_low": 0.8992371325846884,
+    "ci_high": 0.9342541397281994,
+    "pooled_rejection": 1.0
+  },
+  {
+    "effect": 0.75,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 999,
+    "power": 0.999,
+    "ci_low": 0.9944410757201502,
+    "ci_high": 0.9999746825125083,
+    "pooled_rejection": 1.0
+  },
+  {
+    "effect": 1,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 1000,
+    "power": 1.0,
+    "ci_low": 0.9963179161033608,
+    "ci_high": 1.0,
+    "pooled_rejection": 1.0
+  },
+  {
+    "effect": 1.5,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 1000,
+    "power": 1.0,
+    "ci_low": 0.9963179161033608,
+    "ci_high": 1.0,
+    "pooled_rejection": 1.0
+  },
+  {
+    "effect": 2,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 1000,
+    "power": 1.0,
+    "ci_low": 0.9963179161033608,
+    "ci_high": 1.0,
+    "pooled_rejection": 1.0
+  }
+]

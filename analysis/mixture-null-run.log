@@ -1,0 +1,46 @@
+{
+  "n_ancient": 533,
+  "regions": {
+    "NorthernEurope": 333,
+    "CentralEasternEurope": 110,
+    "WesternEurope": 47,
+    "SouthernEurope": 18,
+    "NorthAsia": 6,
+    "WesternAsia": 4,
+    "CentralAsia": 1
+  },
+  "ancient_haplotypes": [
+    "H1^a",
+    "H2A0",
+    "H2A2B2",
+    "H3A2",
+    "H3^r",
+    "H4A2",
+    "H4A2B2",
+    "H5",
+    "H7",
+    "H9"
+  ],
+  "modern_haplotypes": [
+    "H1^a",
+    "H2A0",
+    "H2A2B2",
+    "H3A2",
+    "H3A3B3",
+    "H3^r",
+    "H4A2",
+    "H4A2B2",
+    "H5",
+    "H7",
+    "H9"
+  ],
+  "ancient_only": [],
+  "full_beta": 0.15139853370041859,
+  "crossfit_baseline_beta": 0.1513985337004182,
+  "crossfit_baseline_max_slope_difference": 3.885780586188048e-16,
+  "grid_mde80": 0.5,
+  "refined_grid_mde80": 0.45,
+  "conditional_null_gate": true,
+  "seed": 20261008,
+  "replicates": 1000
+}

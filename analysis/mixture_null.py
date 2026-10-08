@@ -6,7 +6,6 @@ All effects are forward copies/kyr; no unseen donor is fitted.
 """
 from __future__ import annotations
 import argparse
-import hashlib
 import json
 from pathlib import Path
 import zipfile
@@ -148,6 +147,9 @@ def amy_analysis(ancient, cn, hap, reps=1000, seed=SEED):
     crossbeta = float(x @ (y-np.asarray(crossmeans)[g])/(x@x))
     curves = [simulation(ancient.t, ancient.p2, means, sigmas, effect,reps,seed) for effect in EFFECTS]
     pd.DataFrame(curves).to_csv(OUT/'amy_power.tsv',sep='\t',index=False)
+    refined=[simulation(ancient.t,ancient.p2,means,sigmas,effect,reps,seed) for effect in [.35,.4,.45]]
+    pd.DataFrame(refined).to_csv(OUT/'amy_power_refined.tsv',sep='\t',index=False)
+    amy_decomposition(ancient,seed)
     # Slot-weighted carrier diploid CN, explicitly not haploid copy-number means.
     merged = hap.merge(cn[['sample','AMY1']],on='sample',validate='one_to_one')
     slots = pd.concat([merged.rename(columns={col:'haplotype'}).drop(columns=[other])
@@ -164,6 +166,7 @@ def amy_analysis(ancient, cn, hap, reps=1000, seed=SEED):
                  full_beta=full['beta'],crossfit_baseline_beta=crossbeta,
                  crossfit_baseline_max_slope_difference=abs(crossbeta-full['beta']),
                  grid_mde80=next((c['effect'] for c in curves if c['power']>=.8),None),
+                 refined_grid_mde80=next((c['effect'] for c in sorted(curves+refined,key=lambda c:c['effect']) if c['power']>=.8),None),
                  conditional_null_gate=curves[0]['ci_low']<=.05<=curves[0]['ci_high'],
                  seed=seed,replicates=reps)
     (OUT/'amy_audit.json').write_text(json.dumps(audit,indent=2)+'\n')
@@ -184,6 +187,25 @@ def amy_analysis(ancient, cn, hap, reps=1000, seed=SEED):
     axes[2].legend(fontsize=8)
     fig.tight_layout(); fig.savefig(ROOT/'fig/amy_mixture_null.png',dpi=170); plt.close(fig)
     return audit
+
+
+def amy_decomposition(ancient, seed=SEED):
+    """Descriptive composition slopes; baseline holdout is not causal attribution."""
+    t=ancient.t.to_numpy(); y=ancient.AMY1.to_numpy(float)
+    g,n,x=design(t,ancient.p2); mu=np.bincount(g,weights=y)/n
+    xp=t-t.mean(); total=float(xp@y/(xp@xp)); comp=float(xp@mu[g]/(xp@xp))
+    full=fit(t,y,ancient.p2); rng=np.random.default_rng(seed)
+    cross=[]; held=[]
+    for j in range(len(n)):
+        ix=np.where(g==j)[0]; perm=rng.permutation(ix); split=max(1,len(ix)//2)
+        cross.append(float(y[perm[:split]].mean())); held.extend(perm[split:])
+    cross=np.array(cross); held=np.array(held,int)
+    result=dict(pooled_beta=total,composition_beta=comp,composition_slope_fraction=comp/total,
+                within_contribution=full['beta']*(x@x)/(xp@xp),within_time_information_fraction=(x@x)/(xp@xp),
+                crossfit_composition_beta=float(xp@cross[g]/(xp@xp)),
+                heldout_baseline_RMSE=float(np.sqrt(np.mean((y[held]-cross[g[held]])**2))),heldout_baseline_n=len(held))
+    (OUT/'amy_decomposition.json').write_text(json.dumps(result,indent=2)+'\n')
+    return result
 
 
 def dof_power(ancient, reps=1000, seed=SEED):
@@ -280,6 +302,7 @@ def main():
     ap.add_argument('--reps',type=int,default=1000)
     ap.add_argument('--seed',type=int,default=SEED)
     args=ap.parse_args()
+    OUT.mkdir(exist_ok=True)
     ancient,cn,hap=load_amy()
     if args.dof_power:
         result=dof_power(ancient,args.reps,args.seed)

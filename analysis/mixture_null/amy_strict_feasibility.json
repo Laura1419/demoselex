@@ -1,0 +1,23 @@
+{
+  "release_ancient_n": 533,
+  "linked_rebuilt_members": 424,
+  "ambiguous_tokens": 0,
+  "unmatched_or_not_retained": 109,
+  "carriers_in_qualifying_paths": 87,
+  "paths_with_carriers": 13,
+  "strict_usable_paths": 1,
+  "strict_replication_possible": false,
+  "exploratory_all_carrier_common_fit": {
+    "n": 87,
+    "k": 13,
+    "df": 73,
+    "time_information": 63.680277924476,
+    "beta": -0.0581991481794397,
+    "se": 0.35802806279122906,
+    "se_iid": 0.3630621296556123,
+    "z": -0.16255471072773534,
+    "p": 0.8713181812116549,
+    "mde80": 1.003059022930884,
+    "identified": true
+  }
+}

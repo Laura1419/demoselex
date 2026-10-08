@@ -1,0 +1,14 @@
+deme_id	n	nodes	span_kyr	supported_nodes	supported_n	supported_span_kyr	strict_usable	supported_fit_n	supported_fit_k	supported_fit_df	supported_fit_time_information	supported_fit_beta	supported_fit_se	supported_fit_se_iid	supported_fit_z	supported_fit_p	supported_fit_mde80	supported_fit_identified
+8	2	2	1.032	0	0	0.0	False
+9	1	1	0.0	0	0	0.0	False
+22	2	2	0.55	0	0	0.0	False
+26	3	1	0.124	0	0	0.0	False
+30	17	2	0.075	2	17	0.075	False
+33	15	2	0.321	1	14	0.229	False
+34	8	1	0.1	1	8	0.1	False
+35	1	1	0.0	0	0	0.0	False
+36	1	1	0.0	0	0	0.0	False
+38	2	1	0.411	0	0	0.0	False
+39	1	1	0.0	0	0	0.0	False
+40	5	1	0.589	1	5	0.589	False
+41	29	4	3.587	3	25	3.487	True	25.0	1.0	23.0	50.59343544	-0.18175164267911995	0.42419639910188045	0.3774333576683615	-0.42846106912724674	0.6723014065023685	1.1884376389289986	True

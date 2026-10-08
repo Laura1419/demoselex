@@ -1,0 +1,425 @@
+sample	AMY1	p2	archive_age	biological_id	deme_id	node_id	date_BP
+NEO220	4	Bronze age	3989.0	NEO220	41	394	3941.0
+NEO225	6	Bronze age	3750.0	NEO225	41	394	3703.0
+NEO261	6	Bronze age	3895.0	NEO261	41	394	3966.0
+NEO51	11	Bronze age	4361.0	NEO51	41	395	4364.0
+NEO563	5	Bronze age	3350.0	NEO563	41	394	3380.0
+NEO590	8	Bronze age	3290.0	NEO590	41	394	3271.0
+NEO735	6	Bronze age	3972.0	NEO735	41	394	3973.0
+NEO738	7	Bronze age	4103.0	NEO738	41	395	4201.0
+NEO861	6	Bronze age	4102.0	NEO861	41	395	4068.0
+NEO870	7	Bronze age	4240.0	NEO870	-1	-1	4210.0
+NEO878	2	Bronze age	4026.0	NEO878	41	394	3997.0
+NEO92	9	Bronze age	4188.0	NEO92	41	395	4173.0
+NEO93	7	Bronze age	3735.0	NEO93	41	394	3743.0
+NEO951	4	Bronze age	3242.0	NEO951	41	394	3271.0
+NEO806	6	Bronze age	3015.0	NEO806	-1	-1	3163.0
+NEO281	8	CHG	9724.0	NEO281	-1	-1	9677.0
+NEO160	2	EHG	5269.0	NEO160	-1	-1	5792.0
+NEO163	9	EHG	5603.0	NEO163	-1	-1	5826.0
+NEO166	2	EHG	5668.0	NEO166	-1	-1	5910.0
+NEO167	2	EHG	5657.0	NEO167	-1	-1	5835.0
+NEO170	2	EHG	5562.0	NEO170	-1	-1	5779.0
+NEO171	3	EHG	5835.0	NEO171	-1	-1	6094.0
+NEO173	11	EHG	6345.0	NEO173	-1	-1	6537.0
+NEO174	7	EHG	5306.0	NEO174	-1	-1	5526.0
+NEO178	2	EHG	5322.0	NEO178	-1	-1	5422.0
+NEO179	3	EHG	5467.0	NEO179	-1	-1	5611.0
+NEO180	7	EHG	5947.0	NEO180	-1	-1	6084.0
+NEO184	3	EHG	5458.0	NEO184	-1	-1	5928.0
+NEO185	14	EHG	7034.0	NEO185	-1	-1	7486.0
+NEO186	7	EHG	6922.0	NEO186	-1	-1	7145.0
+NEO187	6	EHG	4940.0	NEO187	-1	-1	5262.0
+NEO189	4	EHG	5648.0	NEO189	-1	-1	6137.0
+NEO192	8	EHG	6841.0	NEO192	-1	-1	7208.0
+NEO193	10	EHG	5453.0	NEO193	-1	-1	5811.0
+NEO194	7	EHG	5575.0	NEO194	-1	-1	5829.0
+NEO195	6	EHG	5749.0	NEO195	-1	-1	6150.0
+NEO197	2	EHG	5245.0	NEO197	-1	-1	5494.0
+NEO300	6	EHG	6678.0	NEO300	-1	-1	7244.0
+NEO302	6	EHG	6826.0	NEO302	-1	-1	7328.0
+NEO304	7	EHG	7011.0	NEO304	-1	-1	7450.0
+NEO498	4	EHG	7059.0	NEO498	-1	-1	7458.0
+NEO502	3	EHG	6610.0	NEO502	-1	-1	7126.0
+NEO503	10	EHG	6708.0	NEO503	-1	-1	7250.0
+NEO507	8	EHG	6885.0	NEO507	-1	-1	7371.0
+NEO509	8	EHG	4065.0	NEO509	-1	-1	4669.0
+NEO528	5	EHG	6839.0	NEO528	-1	-1	7313.0
+NEO555	4	EHG	8280.0	NEO555	-1	-1	8456.0
+NEO556	8	EHG	7036.0	NEO556	-1	-1	7458.0
+NEO560	6	EHG	7919.0	NEO560	-1	-1	8117.0
+NEO687	5	EHG	5446.0	NEO687	-1	-1	5669.0
+NEO88	5	EHG	7871.0	NEO88	-1	-1	8265.0
+NEO17	5	EHG	9146.0	NEO17	-1	-1	9384.0
+NEO27	3	EHG	9694.0	NEO27	-1	-1	9648.0
+NEO898	4	EHG	5080.0	NEO898	-1	-1	5167.0
+NEO310	5	Early farmers	7150.0	NEO310	-1	-1	6550.0
+NEO142	6	Early farmers	6641.0	NEO142	26	247	6580.0
+NEO145	9	Early farmers	6744.0	NEO145	26	247	6704.0
+NEO147	6	Early farmers	6724.0	NEO147	26	247	6679.0
+NEO641	4	Early farmers	5132.0	NEO641	-1	-1	5407.0
+NEO674	8	Early farmers	5570.0	NEO674	-1	-1	5779.0
+NEO695	4	Early farmers	7299.0	NEO695	-1	-1	7328.0
+NEO816	13	Early farmers	8700.0	NEO816	-1	-1	9250.0
+NEO23	7	Neolithic farmers	5533.0	NEO23	-1	-1	5492.0
+NEO25	8	Neolithic farmers	4956.0	NEO25	-1	-1	5085.0
+NEO28	14	Neolithic farmers	5459.0	NEO28	-1	-1	5485.0
+NEO29	8	Neolithic farmers	5489.0	NEO29	-1	-1	5521.0
+NEO595	8	Neolithic farmers	5452.0	NEO595	-1	-1	5581.0
+NEO790	6	Neolithic farmers	5663.0	NEO790	-1	-1	5693.0
+NEO891	12	Neolithic farmers	5661.0	NEO891	-1	-1	5674.0
+NEO925	6	Neolithic farmers	4947.0	NEO925	36	339	5175.0
+NEO933	6	Neolithic farmers	5337.0	NEO933	-1	-1	5402.0
+NEO943	6	Neolithic farmers	4614.0	NEO943	-1	-1	4574.0
+NEO945	2	Neolithic farmers	5445.0	NEO945	-1	-1	5399.0
+NEO631	6	Neolithic farmers	7139.0	NEO631	-1	-1	7090.0
+NEO653	5	Neolithic farmers	3423.0	NEO653	8	124	3418.0
+NEO721	9	Neolithic farmers	4170.0	NEO721	8	125	4450.0
+NEO823	7	Neolithic farmers	4665.0	NEO823	-1	-1	4675.0
+NEO121	8	Neolithic farmers	4531.0	NEO121	9	131	4482.0
+NEO624	10	Neolithic farmers	4897.0	NEO624	-1	-1	4903.0
+NEO626	5	Neolithic farmers	5082.0	NEO626	-1	-1	5204.0
+NEO627	7	Neolithic farmers	5132.0	NEO627	-1	-1	5138.0
+NEO630	4	Neolithic farmers	4898.0	NEO630	-1	-1	4901.0
+NEO717	6	Neolithic farmers	4893.0	NEO717	-1	-1	4906.0
+NEO175	5	Steppe pastoralists	4607.0	NEO175	-1	-1	4562.0
+NEO518	11	Steppe pastoralists	2156.0	NEO518	-1	-1	2372.0
+NEO658	6	WHG	8668.0	NEO658	-1	-1	7920.0
+NEO672	6	WHG	8814.0	NEO672	-1	-1	9361.0
+NEO122	4	WHG	8146.0	NEO122	-1	-1	8160.0
+NEO123	4	WHG	8182.0	NEO123	-1	-1	8249.0
+NEO19	12	WHG	8163.0	NEO19	-1	-1	8268.0
+NEO254	6	WHG	10463.0	NEO254	-1	-1	10420.0
+NEO260	6	WHG	5825.0	NEO260	-1	-1	6012.0
+NEO307	6	WHG	7495.0	NEO307	-1	-1	8104.0
+NEO568	6	WHG	6586.0	NEO568	-1	-1	6457.0
+NEO570	5	WHG	6369.0	NEO570	-1	-1	6701.0
+NEO598	4	WHG	6075.0	NEO598	-1	-1	6316.0
+NEO745	8	WHG	6790.0	NEO745	-1	-1	6983.0
+NEO759	5	WHG	9028.0	NEO759	-1	-1	9167.0
+NEO855	4	WHG	6302.0	NEO855	-1	-1	6574.0
+NEO856	8	WHG	6777.0	NEO856	-1	-1	7128.0
+NEO91	7	WHG	9122.0	NEO91	-1	-1	9112.0
+NEO646	7	WHG	8273.0	NEO646	-1	-1	8413.0
+NEO648	6	WHG	7539.0	NEO648	-1	-1	7611.0
+NEO694	5	WHG	9217.0	NEO694	-1	-1	9500.0
+NEO938	3	WHG	7878.0	NEO938	-1	-1	7972.0
+RISE373	6	Bronze age	3741.0	RISE373	-1	-1	3751.0
+RISE479	10	Bronze age	3700.0	RISE479	22	222	3700.0
+RISE577	7	Bronze age	4000.0	RISE577	35	338	4150.0
+RISE586	7	Bronze age	4000.0	RISE586	22	223	4250.0
+RISE94	5	Bronze age	4496.5	RISE94	41	395	4487.0
+RISE97	11	Bronze age	3905.0	RISE97	41	394	3895.0
+RISE569	8	Iron age to early modern	1235.0	RISE569	33	326	1229.0
+RISE240	8	Steppe pastoralists	4706.0	RISE240	-1	-1	4705.0
+RISE523	5	Steppe pastoralists	3448.0	RISE523	38	361	3411.0
+RISE525	9	Steppe pastoralists	3000.0	RISE525	38	361	3000.0
+RISE546	6	Steppe pastoralists	4850.0	RISE546	-1	-1	4700.0
+RISE547	15	Steppe pastoralists	4710.5	RISE547	-1	-1	4713.0
+RISE548	13	Steppe pastoralists	4850.0	RISE548	-1	-1	4600.0
+RISE550	9	Steppe pastoralists	4934.5	RISE550	-1	-1	4916.0
+RISE499	7	Steppe pastoralists	3100.0	RISE499	-1	-1	3100.0
+RISE500	5	Steppe pastoralists	3550.0	RISE500	-1	-1	3550.0
+RISE503	4	Steppe pastoralists	3569.0	RISE503	-1	-1	3547.0
+RISE507	5	Steppe pastoralists	5077.0	RISE507	-1	-1	5052.0
+RISE510	11	Steppe pastoralists	4609.5	RISE510	39	372	4531.0
+Asp6	6	Early farmers	9528.0	Asp6	-1	-1	7528.0
+Klein7	5	Early farmers	9000.0	Klein7	-1	-1	7075.0
+Herx	7	Early farmers	9101.5	Herx	-1	-1	7078.0
+Nea2	7	Early farmers	10121.0	Nea2	-1	-1	8103.0
+Nea3	2	Early farmers	10206.5	Nea3	-1	-1	8218.0
+STAR1	3	Early farmers	9555.5	STAR1	-1	-1	7538.0
+VC3-2	4	Early farmers	9518.5	VC3-2	-1	-1	7484.0
+VK531	5	Bronze age	4350.0	VK531	-1	-1	4347.0
+VK15	5	Iron age to early modern	800.0	VK15	-1	-1	900.0
+VK156	4	Iron age to early modern	850.0	VK156	-1	-1	950.0
+VK159	2	Iron age to early modern	850.0	VK159	-1	-1	950.0
+VK16	4	Iron age to early modern	839.0	VK16	-1	-1	900.0
+VK160	7	Iron age to early modern	750.0	VK160	-1	-1	850.0
+VK17	6	Iron age to early modern	800.0	VK17	-1	-1	900.0
+VK18	7	Iron age to early modern	800.0	VK18	-1	-1	900.0
+VK19	9	Iron age to early modern	800.0	VK19	-1	-1	900.0
+VK20	8	Iron age to early modern	888.0	VK20	-1	-1	900.0
+VK212	7	Iron age to early modern	889.0	VK212	33	325	908.0
+VK218	4	Iron age to early modern	800.0	VK218	-1	-1	900.0
+VK219	4	Iron age to early modern	958.0	VK219	-1	-1	950.0
+VK221	10	Iron age to early modern	1039.0	VK221	-1	-1	1050.0
+VK223	4	Iron age to early modern	850.0	VK223	-1	-1	950.0
+VK224	6	Iron age to early modern	850.0	VK224	-1	-1	950.0
+VK23	6	Iron age to early modern	800.0	VK23	-1	-1	900.0
+VK254	6	Iron age to early modern	850.0	VK254	-1	-1	950.0
+VK272	6	Iron age to early modern	850.0	VK272	-1	-1	950.0
+VK273	9	Iron age to early modern	850.0	VK273	-1	-1	950.0
+VK539	7	Iron age to early modern	800.0	VK539	-1	-1	900.0
+VK542	10	Iron age to early modern	800.0	VK542	-1	-1	900.0
+VK117	16	Iron age to early modern	650.0	VK117	-1	-1	750.0
+VK118	10	Iron age to early modern	650.0	VK118	-1	-1	750.0
+VK122	5	Iron age to early modern	750.0	VK122	-1	-1	850.0
+VK123	6	Iron age to early modern	750.0	VK123	-1	-1	850.0
+VK124	6	Iron age to early modern	650.0	VK124	-1	-1	750.0
+VK127	10	Iron age to early modern	900.0	VK127	-1	-1	1000.0
+VK128	8	Iron age to early modern	900.0	VK128	-1	-1	1000.0
+VK129	6	Iron age to early modern	900.0	VK129	-1	-1	1000.0
+VK134	4	Iron age to early modern	900.0	VK134	41	389	1000.0
+VK138	11	Iron age to early modern	900.0	VK138	-1	-1	1000.0
+VK139	4	Iron age to early modern	900.0	VK139	-1	-1	1000.0
+VK141	10	Iron age to early modern	900.0	VK141	-1	-1	1000.0
+VK179	10	Iron age to early modern	800.0	VK179	-1	-1	900.0
+VK183	8	Iron age to early modern	800.0	VK183	-1	-1	900.0
+VK184	6	Iron age to early modern	800.0	VK184	-1	-1	900.0
+VK186	5	Iron age to early modern	903.0	VK186	-1	-1	900.0
+VK187	4	Iron age to early modern	849.0	VK187	-1	-1	998.0
+VK225	10	Iron age to early modern	750.0	VK225	-1	-1	850.0
+VK227	5	Iron age to early modern	750.0	VK227	-1	-1	850.0
+VK230	3	Iron age to early modern	750.0	VK230	-1	-1	850.0
+VK232	7	Iron age to early modern	975.0	VK232	-1	-1	975.0
+VK237	6	Iron age to early modern	250.0	VK237	-1	-1	350.0
+VK238	4	Iron age to early modern	250.0	VK238	-1	-1	350.0
+VK241	4	Iron age to early modern	250.0	VK241	-1	-1	350.0
+VK244	12	Iron age to early modern	250.0	VK244	-1	-1	350.0
+VK265	6	Iron age to early modern	900.0	VK265	-1	-1	1000.0
+VK266	8	Iron age to early modern	900.0	VK266	-1	-1	1000.0
+VK27	8	Iron age to early modern	250.0	VK27	-1	-1	350.0
+VK274	6	Iron age to early modern	900.0	VK274	34	327	1000.0
+VK275	8	Iron age to early modern	900.0	VK275	33	326	1000.0
+VK278	6	Iron age to early modern	900.0	VK278	-1	-1	1000.0
+VK279	11	Iron age to early modern	900.0	VK279	-1	-1	1000.0
+VK280	8	Iron age to early modern	900.0	VK280	-1	-1	1000.0
+VK281	4	Iron age to early modern	900.0	VK281	-1	-1	1000.0
+VK282	6	Iron age to early modern	900.0	VK282	33	326	1000.0
+VK284	5	Iron age to early modern	900.0	VK284	41	389	1000.0
+VK285	6	Iron age to early modern	900.0	VK285	33	326	1000.0
+VK286	17	Iron age to early modern	900.0	VK286	33	326	1000.0
+VK287	4	Iron age to early modern	900.0	VK287	33	326	1000.0
+VK288	4	Iron age to early modern	900.0	VK288	33	326	1000.0
+VK289	8	Iron age to early modern	1000.0	VK289	33	326	1100.0
+VK290	6	Iron age to early modern	900.0	VK290	34	327	1000.0
+VK291	10	Iron age to early modern	1000.0	VK291	34	327	1100.0
+VK294	9	Iron age to early modern	1075.0	VK294	-1	-1	1075.0
+VK295	6	Iron age to early modern	900.0	VK295	-1	-1	1000.0
+VK296	6	Iron age to early modern	1230.0	VK296	-1	-1	1230.0
+VK297	4	Iron age to early modern	1200.0	VK297	-1	-1	1200.0
+VK298	5	Iron age to early modern	900.0	VK298	-1	-1	1050.0
+VK30	10	Iron age to early modern	800.0	VK30	-1	-1	900.0
+VK300	7	Iron age to early modern	1075.0	VK300	-1	-1	1075.0
+VK301	7	Iron age to early modern	1185.0	VK301	-1	-1	1185.0
+VK303	8	Iron age to early modern	800.0	VK303	-1	-1	900.0
+VK306	5	Iron age to early modern	800.0	VK306	-1	-1	900.0
+VK308	8	Iron age to early modern	800.0	VK308	-1	-1	900.0
+VK309	11	Iron age to early modern	800.0	VK309	-1	-1	900.0
+VK31	12	Iron age to early modern	800.0	VK31	-1	-1	900.0
+VK312	8	Iron age to early modern	1075.0	VK312	-1	-1	1075.0
+VK313	4	Iron age to early modern	1075.0	VK313	-1	-1	1075.0
+VK314	7	Iron age to early modern	1075.0	VK314	-1	-1	1075.0
+VK315	3	Iron age to early modern	1075.0	VK315	41	389	1075.0
+VK316	4	Iron age to early modern	900.0	VK316	-1	-1	1000.0
+VK317	10	Iron age to early modern	900.0	VK317	33	326	1000.0
+VK319	8	Iron age to early modern	1150.0	VK319	41	389	1150.0
+VK320	6	Iron age to early modern	900.0	VK320	34	327	1000.0
+VK322	6	Iron age to early modern	866.0	VK322	-1	-1	934.0
+VK323	11	Iron age to early modern	900.0	VK323	-1	-1	1000.0
+VK324	12	Iron age to early modern	938.0	VK324	-1	-1	935.0
+VK325	10	Iron age to early modern	1091.0	VK325	-1	-1	1145.0
+VK326	9	Iron age to early modern	958.0	VK326	-1	-1	1026.0
+VK327	6	Iron age to early modern	945.0	VK327	-1	-1	979.0
+VK328	9	Iron age to early modern	1079.0	VK328	-1	-1	1104.0
+VK330	8	Iron age to early modern	861.0	VK330	-1	-1	896.0
+VK332	10	Iron age to early modern	1092.0	VK332	-1	-1	1085.0
+VK333	7	Iron age to early modern	1065.0	VK333	-1	-1	1052.0
+VK334	13	Iron age to early modern	901.0	VK334	-1	-1	893.0
+VK335	10	Iron age to early modern	900.0	VK335	-1	-1	1000.0
+VK336	4	Iron age to early modern	1097.0	VK336	-1	-1	1091.0
+VK337	8	Iron age to early modern	1092.0	VK337	-1	-1	1069.0
+VK338	9	Iron age to early modern	900.0	VK338	33	326	1000.0
+VK34	6	Iron age to early modern	800.0	VK34	-1	-1	900.0
+VK340	4	Iron age to early modern	1075.0	VK340	-1	-1	1075.0
+VK342	8	Iron age to early modern	900.0	VK342	-1	-1	1000.0
+VK343	8	Iron age to early modern	900.0	VK343	-1	-1	1000.0
+VK344	8	Iron age to early modern	900.0	VK344	-1	-1	1000.0
+VK345	12	Iron age to early modern	900.0	VK345	-1	-1	1000.0
+VK346	4	Iron age to early modern	900.0	VK346	-1	-1	1000.0
+VK349	6	Iron age to early modern	1121.0	VK349	-1	-1	1110.0
+VK35	6	Iron age to early modern	800.0	VK35	-1	-1	900.0
+VK350	11	Iron age to early modern	1151.0	VK350	-1	-1	1134.0
+VK352	6	Iron age to early modern	900.0	VK352	-1	-1	1000.0
+VK353	5	Iron age to early modern	901.0	VK353	-1	-1	893.0
+VK354	5	Iron age to early modern	964.0	VK354	-1	-1	939.0
+VK355	8	Iron age to early modern	1102.0	VK355	-1	-1	1097.0
+VK357	7	Iron age to early modern	897.0	VK357	-1	-1	887.0
+VK358	8	Iron age to early modern	1097.0	VK358	-1	-1	1092.0
+VK361	7	Iron age to early modern	900.0	VK361	34	327	1000.0
+VK362	10	Iron age to early modern	900.0	VK362	33	326	1000.0
+VK363	11	Iron age to early modern	900.0	VK363	34	327	1000.0
+VK364	4	Iron age to early modern	900.0	VK364	34	327	1000.0
+VK365	10	Iron age to early modern	900.0	VK365	33	326	1000.0
+VK366	5	Iron age to early modern	900.0	VK366	33	326	1000.0
+VK367	7	Iron age to early modern	900.0	VK367	33	326	1000.0
+VK368	12	Iron age to early modern	900.0	VK368	34	327	1000.0
+VK369	6	Iron age to early modern	1075.0	VK369	41	389	1075.0
+VK370	4	Iron age to early modern	900.0	VK370	41	389	1000.0
+VK371	10	Iron age to early modern	1065.0	VK371	-1	-1	1075.0
+VK372	6	Iron age to early modern	900.0	VK372	-1	-1	1000.0
+VK373	13	Iron age to early modern	900.0	VK373	41	389	1000.0
+VK384	8	Iron age to early modern	1075.0	VK384	41	389	1075.0
+VK386	6	Iron age to early modern	900.0	VK386	-1	-1	1000.0
+VK387	12	Iron age to early modern	850.0	VK387	-1	-1	950.0
+VK388	10	Iron age to early modern	700.0	VK388	-1	-1	800.0
+VK389	6	Iron age to early modern	900.0	VK389	-1	-1	1000.0
+VK390	4	Iron age to early modern	1350.0	VK390	-1	-1	1450.0
+VK391	10	Iron age to early modern	1350.0	VK391	-1	-1	1450.0
+VK392	7	Iron age to early modern	1000.0	VK392	-1	-1	1100.0
+VK393	7	Iron age to early modern	900.0	VK393	-1	-1	1000.0
+VK394	4	Iron age to early modern	900.0	VK394	-1	-1	1000.0
+VK395	10	Iron age to early modern	800.0	VK395	41	386	900.0
+VK396	9	Iron age to early modern	800.0	VK396	41	386	900.0
+VK397	8	Iron age to early modern	800.0	VK397	-1	-1	900.0
+VK398	8	Iron age to early modern	800.0	VK398	-1	-1	900.0
+VK399	6	Iron age to early modern	800.0	VK399	-1	-1	900.0
+VK40	7	Iron age to early modern	800.0	VK40	-1	-1	900.0
+VK400	5	Iron age to early modern	800.0	VK400	41	386	900.0
+VK401	6	Iron age to early modern	800.0	VK401	-1	-1	900.0
+VK402	6	Iron age to early modern	800.0	VK402	41	386	900.0
+VK403	8	Iron age to early modern	800.0	VK403	-1	-1	900.0
+VK404	10	Iron age to early modern	800.0	VK404	-1	-1	900.0
+VK405	8	Iron age to early modern	800.0	VK405	-1	-1	900.0
+VK406	5	Iron age to early modern	800.0	VK406	-1	-1	900.0
+VK407	6	Iron age to early modern	800.0	VK407	-1	-1	900.0
+VK414	8	Iron age to early modern	850.0	VK414	-1	-1	950.0
+VK417	10	Iron age to early modern	1000.0	VK417	-1	-1	1100.0
+VK418	6	Iron age to early modern	1500.0	VK418	-1	-1	1600.0
+VK420	5	Iron age to early modern	950.0	VK420	-1	-1	1050.0
+VK422	6	Iron age to early modern	900.0	VK422	-1	-1	1000.0
+VK429	8	Iron age to early modern	975.0	VK429	-1	-1	975.0
+VK431	6	Iron age to early modern	975.0	VK431	-1	-1	975.0
+VK432	3	Iron age to early modern	975.0	VK432	-1	-1	975.0
+VK433	7	Iron age to early modern	975.0	VK433	-1	-1	975.0
+VK434	6	Iron age to early modern	975.0	VK434	-1	-1	975.0
+VK438	7	Iron age to early modern	975.0	VK438	-1	-1	975.0
+VK44	6	Iron age to early modern	250.0	VK44	-1	-1	350.0
+VK442	6	Iron age to early modern	1102.0	VK442	-1	-1	1097.0
+VK443	6	Iron age to early modern	900.0	VK443	-1	-1	1000.0
+VK444	4	Iron age to early modern	1102.0	VK444	-1	-1	1097.0
+VK445	12	Iron age to early modern	900.0	VK445	-1	-1	1000.0
+VK446	4	Iron age to early modern	900.0	VK446	41	389	1000.0
+VK448	10	Iron age to early modern	950.0	VK448	-1	-1	1050.0
+VK452	11	Iron age to early modern	975.0	VK452	-1	-1	975.0
+VK454	6	Iron age to early modern	975.0	VK454	-1	-1	975.0
+VK455	6	Iron age to early modern	975.0	VK455	-1	-1	975.0
+VK456	6	Iron age to early modern	975.0	VK456	-1	-1	975.0
+VK46	6	Iron age to early modern	250.0	VK46	-1	-1	350.0
+VK460	7	Iron age to early modern	975.0	VK460	-1	-1	975.0
+VK461	4	Iron age to early modern	975.0	VK461	-1	-1	975.0
+VK463	6	Iron age to early modern	975.0	VK463	-1	-1	975.0
+VK468	16	Iron age to early modern	975.0	VK468	-1	-1	975.0
+VK469	6	Iron age to early modern	975.0	VK469	-1	-1	975.0
+VK471	7	Iron age to early modern	975.0	VK471	-1	-1	975.0
+VK473	4	Iron age to early modern	975.0	VK473	-1	-1	975.0
+VK474	6	Iron age to early modern	975.0	VK474	-1	-1	975.0
+VK477	4	Iron age to early modern	975.0	VK477	-1	-1	975.0
+VK478	12	Iron age to early modern	975.0	VK478	-1	-1	975.0
+VK479	11	Iron age to early modern	975.0	VK479	-1	-1	975.0
+VK48	9	Iron age to early modern	975.0	VK48	-1	-1	975.0
+VK480	6	Iron age to early modern	1100.0	VK480	-1	-1	1200.0
+VK481	4	Iron age to early modern	1100.0	VK481	-1	-1	1200.0
+VK482	8	Iron age to early modern	1100.0	VK482	-1	-1	1200.0
+VK483	2	Iron age to early modern	1100.0	VK483	-1	-1	1191.0
+VK484	8	Iron age to early modern	1100.0	VK484	-1	-1	1200.0
+VK486	10	Iron age to early modern	1100.0	VK486	-1	-1	1200.0
+VK487	10	Iron age to early modern	1100.0	VK487	-1	-1	1200.0
+VK488	6	Iron age to early modern	1100.0	VK488	-1	-1	1200.0
+VK489	13	Iron age to early modern	1100.0	VK489	-1	-1	1200.0
+VK491	6	Iron age to early modern	1100.0	VK491	-1	-1	1200.0
+VK492	3	Iron age to early modern	1100.0	VK492	-1	-1	1200.0
+VK493	12	Iron age to early modern	1100.0	VK493	-1	-1	1200.0
+VK495	4	Iron age to early modern	1100.0	VK495	-1	-1	1200.0
+VK496	10	Iron age to early modern	1100.0	VK496	-1	-1	1200.0
+VK498	10	Iron age to early modern	1100.0	VK498	-1	-1	1200.0
+VK504	11	Iron age to early modern	1100.0	VK504	-1	-1	1200.0
+VK505	6	Iron age to early modern	1100.0	VK505	-1	-1	1200.0
+VK506	6	Iron age to early modern	1100.0	VK506	-1	-1	1237.0
+VK507	4	Iron age to early modern	1100.0	VK507	-1	-1	1121.0
+VK508	10	Iron age to early modern	1100.0	VK508	-1	-1	1200.0
+VK509	10	Iron age to early modern	1100.0	VK509	-1	-1	1200.0
+VK51	7	Iron age to early modern	975.0	VK51	-1	-1	975.0
+VK510	6	Iron age to early modern	1100.0	VK510	-1	-1	1200.0
+VK511	7	Iron age to early modern	1100.0	VK511	-1	-1	1200.0
+VK512	6	Iron age to early modern	1100.0	VK512	-1	-1	1200.0
+VK513	8	Iron age to early modern	800.0	VK513	-1	-1	900.0
+VK514	13	Iron age to early modern	1100.0	VK514	-1	-1	1200.0
+VK515	4	Iron age to early modern	900.0	VK515	-1	-1	1000.0
+VK516	8	Iron age to early modern	900.0	VK516	-1	-1	1000.0
+VK519	8	Iron age to early modern	1100.0	VK519	-1	-1	1200.0
+VK520	8	Iron age to early modern	900.0	VK520	-1	-1	1000.0
+VK521	6	Iron age to early modern	1650.0	VK521	-1	-1	1650.0
+VK523	4	Iron age to early modern	1800.0	VK523	-1	-1	1450.0
+VK524	4	Iron age to early modern	900.0	VK524	-1	-1	1000.0
+VK525	6	Iron age to early modern	1000.0	VK525	-1	-1	1100.0
+VK526	11	Iron age to early modern	1000.0	VK526	-1	-1	1100.0
+VK527	6	Iron age to early modern	800.0	VK527	-1	-1	900.0
+VK528	8	Iron age to early modern	1050.0	VK528	-1	-1	1150.0
+VK529	8	Iron age to early modern	1050.0	VK529	-1	-1	1150.0
+VK53	8	Iron age to early modern	975.0	VK53	-1	-1	975.0
+VK530	6	Iron age to early modern	900.0	VK530	-1	-1	1000.0
+VK532	6	Iron age to early modern	950.0	VK532	-1	-1	1850.0
+VK533	8	Iron age to early modern	900.0	VK533	-1	-1	1000.0
+VK548	6	Iron age to early modern	1000.0	VK548	-1	-1	1100.0
+VK549	6	Iron age to early modern	1100.0	VK549	-1	-1	1200.0
+VK550	9	Iron age to early modern	1100.0	VK550	-1	-1	1200.0
+VK551	6	Iron age to early modern	1100.0	VK551	-1	-1	1200.0
+VK552	11	Iron age to early modern	1100.0	VK552	-1	-1	1200.0
+VK553	10	Iron age to early modern	1100.0	VK553	-1	-1	1200.0
+VK554	6	Iron age to early modern	1100.0	VK554	-1	-1	1120.0
+VK555	6	Iron age to early modern	1100.0	VK555	-1	-1	1200.0
+VK56	9	Iron age to early modern	975.0	VK56	-1	-1	975.0
+VK60	4	Iron age to early modern	975.0	VK60	-1	-1	975.0
+VK64	14	Iron age to early modern	975.0	VK64	-1	-1	975.0
+VK65	6	Iron age to early modern	1200.0	VK65	-1	-1	1100.0
+VK69	6	Iron age to early modern	1200.0	VK69	41	389	1100.0
+VK75	7	Iron age to early modern	654.0	VK75	-1	-1	931.0
+VK84	3	Iron age to early modern	1075.0	VK84	-1	-1	1075.0
+VK87	4	Iron age to early modern	1075.0	VK87	-1	-1	1075.0
+VK90	7	Iron age to early modern	1075.0	VK90	-1	-1	1075.0
+VK92	7	Iron age to early modern	1075.0	VK92	-1	-1	1075.0
+VK95	4	Iron age to early modern	750.0	VK95	-1	-1	850.0
+VK98	7	Iron age to early modern	750.0	VK98	-1	-1	850.0
+VK99	5	Iron age to early modern	750.0	VK99	-1	-1	850.0
+VK534	4	Iron age to early modern	800.0	VK534	-1	-1	766.0
+VK535	10	Iron age to early modern	713.0	VK535	-1	-1	700.0
+VK536	13	Iron age to early modern	700.0	VK536	-1	-1	800.0
+VK537	5	Iron age to early modern	700.0	VK537	-1	-1	800.0
+VK538	9	Iron age to early modern	700.0	VK538	-1	-1	800.0
+VK143	6	Iron age to early modern	1010.0	VK143	-1	-1	1025.0
+VK145	8	Iron age to early modern	1010.0	VK145	-1	-1	1025.0
+VK146	4	Iron age to early modern	1010.0	VK146	-1	-1	1025.0
+VK147	8	Iron age to early modern	1010.0	VK147	30	293	1025.0
+VK150	10	Iron age to early modern	1010.0	VK150	30	293	1025.0
+VK151	2	Iron age to early modern	1010.0	VK151	-1	-1	1025.0
+VK165	4	Iron age to early modern	1010.0	VK165	30	293	1025.0
+VK166	10	Iron age to early modern	1010.0	VK166	-1	-1	1025.0
+VK168	13	Iron age to early modern	1010.0	VK168	30	293	1025.0
+VK170	10	Iron age to early modern	950.0	VK170	-1	-1	1050.0
+VK172	7	Iron age to early modern	1010.0	VK172	30	293	1025.0
+VK173	6	Iron age to early modern	1010.0	VK173	-1	-1	1025.0
+VK174	2	Iron age to early modern	1010.0	VK174	30	293	1025.0
+VK175	13	Iron age to early modern	1010.0	VK175	30	293	1025.0
+VK177	10	Iron age to early modern	1010.0	VK177	-1	-1	1025.0
+VK178	10	Iron age to early modern	1010.0	VK178	-1	-1	1025.0
+VK201	10	Iron age to early modern	900.0	VK201	40	377	1460.0
+VK202	10	Iron age to early modern	900.0	VK202	40	377	1000.0
+VK203	7	Iron age to early modern	900.0	VK203	40	377	1589.0
+VK204	5	Iron age to early modern	900.0	VK204	40	377	1000.0
+VK205	4	Iron age to early modern	900.0	VK205	40	377	1025.0
+VK207	6	Iron age to early modern	900.0	VK207	-1	-1	930.0
+VK256	11	Iron age to early modern	953.0	VK256	30	290	950.0
+VK257	6	Iron age to early modern	953.0	VK257	30	290	950.0
+VK258	6	Iron age to early modern	953.0	VK258	30	290	950.0
+VK259	4	Iron age to early modern	953.0	VK259	30	290	950.0
+VK260	6	Iron age to early modern	953.0	VK260	30	290	950.0
+VK261	10	Iron age to early modern	953.0	VK261	30	290	950.0
+VK262	6	Iron age to early modern	953.0	VK262	30	290	950.0
+VK263	10	Iron age to early modern	953.0	VK263	30	290	950.0
+VK264	10	Iron age to early modern	953.0	VK264	30	290	950.0
+VK449	10	Iron age to early modern	953.0	VK449	30	290	950.0
+VK543	7	Iron age to early modern	1000.0	VK543	-1	-1	1100.0
+VK544	14	Iron age to early modern	1000.0	VK544	-1	-1	1100.0
+VK545	8	Iron age to early modern	1185.0	VK545	-1	-1	1185.0

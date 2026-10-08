@@ -1,0 +1,13 @@
+[
+  {
+    "effect": 0.5,
+    "unit": "copies/kyr",
+    "seed": 20261008,
+    "replicates": 1000,
+    "rejects": 918,
+    "power": 0.918,
+    "ci_low": 0.8992371325846884,
+    "ci_high": 0.9342541397281994,
+    "pooled_rejection": 1.0
+  }
+]

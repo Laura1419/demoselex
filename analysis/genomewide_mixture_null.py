@@ -68,7 +68,7 @@ def score_matrix(Y,meta,sites,label):
     t=meta.t.to_numpy(); groups=meta.group.to_numpy()
     for j,row in sites.reset_index(drop=True).iterrows():
         y=np.asarray(Y[:,j],float)
-        good=np.isfinite(y)
+        good=np.isfinite(y)&(y>=0)&(y<=1)
         supported=[]
         for g in np.unique(groups[good]):
             w=good&(groups==g)

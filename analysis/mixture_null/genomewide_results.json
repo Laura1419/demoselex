@@ -1,0 +1,98 @@
+{
+  "aadr1240k_groups": 3512,
+  "aadr1240k_qualifying_groups": 17,
+  "aadr1240k_qualifying_people": 506,
+  "aadrHO_groups": 3512,
+  "aadrHO_qualifying_groups": 17,
+  "aadrHO_qualifying_people": 506,
+  "requested_controls": 1200,
+  "pgen_shared_people": 115,
+  "scans": [
+    {
+      "bundle": "aadr1240k",
+      "tested": 481,
+      "heldout_n": 241,
+      "heldout_rejects": 15,
+      "control_pass_fraction": 0.06224066390041494,
+      "ci_low": 0.035250741829715826,
+      "ci_high": 0.10057945796672457,
+      "calibration_gate": true,
+      "floor_unit": "allele-frequency/kyr",
+      "raw_mde80_quantiles": {
+        "0.1": 0.08047946280232919,
+        "0.5": 0.11341261901826057,
+        "0.9": 0.14314623800250748
+      },
+      "chromosomes": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "median_n": 168.0,
+      "median_k": 9.0
+    },
+    {
+      "bundle": "akbari_pgen",
+      "tested": 0,
+      "calibration_gate": false,
+      "reason": "insufficient controls"
+    },
+    {
+      "bundle": "aadrHO",
+      "tested": 476,
+      "heldout_n": 238,
+      "heldout_rejects": 17,
+      "control_pass_fraction": 0.07142857142857142,
+      "ci_low": 0.04215779033542574,
+      "ci_high": 0.11190233894199976,
+      "calibration_gate": true,
+      "floor_unit": "allele-frequency/kyr",
+      "raw_mde80_quantiles": {
+        "0.1": 0.08296559804773125,
+        "0.5": 0.11314890287625529,
+        "0.9": 0.14501543415402057
+      },
+      "chromosomes": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "median_n": 171.5,
+      "median_k": 9.0
+    }
+  ]
+}

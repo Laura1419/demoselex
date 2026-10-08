@@ -1,0 +1,136 @@
+[
+  {
+    "bundle": "demes_aadr1240k",
+    "shared_demographic_variance_parameters": 1,
+    "training_loci": 395,
+    "tau2": 0.00010003752289415256,
+    "tau2_bootstrap_quantiles": {
+      "0.025": 0.0,
+      "0.5": 9.6745035769319e-05,
+      "0.975": 0.00023485730317636505
+    },
+    "heldout_n": 395,
+    "heldout_rejects": 24,
+    "control_pass_fraction": 0.060759493670886074,
+    "ci_low": 0.03931402652076556,
+    "ci_high": 0.08905896078712618,
+    "calibration_gate": true,
+    "floor_unit": "allele-frequency/kyr",
+    "corrected_mde80_quantiles": {
+      "0.1": 0.02330974956880233,
+      "0.5": 0.030886985090880236,
+      "0.9": 0.04238130137217912
+    },
+    "power": [
+      {
+        "effect": 0,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.049344810126582275
+      },
+      {
+        "effect": 0.01,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.1561179746835443
+      },
+      {
+        "effect": 0.02,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.4568184810126582
+      },
+      {
+        "effect": 0.03,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.7557901265822785
+      },
+      {
+        "effect": 0.04,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.9141698734177215
+      },
+      {
+        "effect": 0.05,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.9720625316455697
+      },
+      {
+        "effect": 0.075,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.9982650632911393
+      },
+      {
+        "effect": 0.1,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.9998908860759493
+      }
+    ],
+    "seed": 20261008,
+    "score_simulation_replicates": 10000
+  },
+  {
+    "bundle": "demes_akbari_pgen",
+    "shared_demographic_variance_parameters": 1,
+    "training_loci": 389,
+    "tau2": 0.0001533793841807917,
+    "tau2_bootstrap_quantiles": {
+      "0.025": 9.288176291486902e-05,
+      "0.5": 0.00015334499174271215,
+      "0.975": 0.00022080635373753816
+    },
+    "heldout_n": 390,
+    "heldout_rejects": 15,
+    "control_pass_fraction": 0.038461538461538464,
+    "ci_low": 0.02168365014787037,
+    "ci_high": 0.06264373221965905,
+    "calibration_gate": true,
+    "floor_unit": "allele-frequency/kyr",
+    "corrected_mde80_quantiles": {
+      "0.1": 0.01970398618764672,
+      "0.5": 0.02603647931489467,
+      "0.9": 0.029052833134588462
+    },
+    "power": [
+      {
+        "effect": 0,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.0493625641025641
+      },
+      {
+        "effect": 0.01,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.21007
+      },
+      {
+        "effect": 0.02,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.6162730769230769
+      },
+      {
+        "effect": 0.03,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.9042074358974359
+      },
+      {
+        "effect": 0.04,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.9880474358974359
+      },
+      {
+        "effect": 0.05,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.9992992307692308
+      },
+      {
+        "effect": 0.075,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 0.9999997435897436
+      },
+      {
+        "effect": 0.1,
+        "unit": "allele-frequency/kyr",
+        "mean_conditional_power": 1.0
+      }
+    ],
+    "seed": 20261008,
+    "score_simulation_replicates": 10000
+  }
+]

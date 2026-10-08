@@ -1,0 +1,10 @@
+{
+  "pooled_beta": 0.21821754872503069,
+  "composition_beta": 0.20725171401631584,
+  "composition_slope_fraction": 0.9497481537448093,
+  "within_contribution": 0.010965834708715034,
+  "within_time_information_fraction": 0.07243025702226279,
+  "crossfit_composition_beta": 0.15024219191890653,
+  "heldout_baseline_RMSE": 2.7594576468531646,
+  "heldout_baseline_n": 267
+}
