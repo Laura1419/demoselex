@@ -383,8 +383,10 @@ def main(argv=None):
         finite = np.isfinite(dos)
         alt_mat = np.where(finite, np.rint(dos), 0).astype(np.int32)
         tot_mat = (2 * finite).astype(np.int32)
-        alt_sum = np.add.reduceat(alt_mat[sorter], starts, axis=0)  # (n_groups_all, chunk)
-        tot_sum = np.add.reduceat(tot_mat[sorter], starts, axis=0)
+        # read_variants returns variant-major (chunk, n_ind); the grouping sorter
+        # indexes individuals, so transpose to individual-major first.
+        alt_sum = np.add.reduceat(alt_mat.T[sorter], starts, axis=0)  # (n_groups_all, chunk)
+        tot_sum = np.add.reduceat(tot_mat.T[sorter], starts, axis=0)
         miss[start:stop] = 1.0 - tot_sum.sum(axis=0) / (2.0 * n_ind)
         tcov[start:stop] = (tot_sum > 0).sum(axis=0) / float(n_groups_all)
 
