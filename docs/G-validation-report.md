@@ -65,8 +65,71 @@ Decision 2 is **not** a blanket go for biological selection claims. The
 run's hashed inputs/outputs and package versions are in
 `analysis/runs/20261008-0528-sim-ctrl-null-validation/manifest.json`.
 
-## Decision 3 — power vs Akbari, FPR under migration*
-*Future work: Compare method performance against Akbari baseline*
+## Decision 3 — power vs Akbari, FPR under migration (PRELIMINARY, underpowered)
+
+Status: **in progress — directional only.** The run below used a deliberately fast
+configuration (`n_loci = 12`, `runs = 6`, n ~= 66 tests per cell), so every number
+carries binomial noise of roughly +/-0.05-0.08. It is a smoke-level result, not a
+calibrated claim. A higher-n run is required before Decision 3 can be closed.
+
+Method: for each scenario the FPR threshold is the 95th percentile of the score
+distribution of *neutral* loci under the `neutral_drift` baseline, i.e. matched-null
+calibration rather than an analytic Wald threshold. Three statistics are compared:
+`trajectory_naive` (sign-concordance, no relatedness input), `trajectory_related`
+(the same statistic with the relatedness matrix supplied so that the GLS
+family-discount and `n_effective` are active), and `akbari` (the reconstructed
+structure-corrected GLMM).
+
+### Calibrated FPR (neutral / replacement)
+
+| scenario | trajectory_naive | trajectory_related | akbari |
+|---|---:|---:|---:|
+| neutral_drift (baseline) | 0.061 | 0.061 | 0.083 |
+| **replacement_only (baseline)** | **0.188** | **0.188** | **0.000** |
+
+### Calibrated power (selection scenarios, baseline)
+
+| scenario | trajectory_naive | trajectory_related | akbari |
+|---|---:|---:|---:|
+| one_population_selection | 0.500 | 0.667 | 0.167 |
+| shared_selection | 1.000 | 1.000 | 1.000 |
+| opposing_selection | 0.000 | 0.000 | 0.000 |
+| selection_aligned_turnover | 1.000 | 1.000 | 1.000 |
+
+### Answer to the central question
+
+**[observation]** Under pure demographic replacement the naive replication statistic is
+anti-conservative: calibrated FPR 0.188 versus 0.061 under neutral drift, while the
+Akbari GLMM is conservative (0.000) in the same cell.
+
+**[observation]** Supplying the relatedness matrix in this configuration changed the
+replacement FPR by 0.000 (0.188 -> 0.188).
+
+**[inference]** That null repair is expected, and is informative: the simulation
+hands the statistic a *fixed* inter-trajectory relatedness of rho = 0.5, which yields
+`n_effective` ~= 1.33 and therefore still credits two partly-independent
+replications. In `replacement_only` one population literally becomes the other, so
+its true relatedness is close to 1, `n_effective` should collapse toward 1, and a
+single trajectory carries no concordance evidence. The load-bearing component of the
+method is therefore **data-estimated** trajectory relatedness, not the concordance
+count. Hand-set relatedness reproduces exactly the anti-conservative failure mode.
+
+**[observation]** Where the GLMM loses power, the trajectory statistic recovers it:
+`one_population_selection` calibrated power 0.667 (related) versus 0.167 (Akbari).
+
+**[observation]** `opposing_selection` has power 0.000 for every statistic. This is the
+expected design check: selection in opposing directions is not concordant, so a
+replication statistic should be blind to it.
+
+### Limits
+
+Single fast configuration; rho supplied by hand rather than estimated; six scenarios
+only; no linkage or LD structure among tested loci; no misspecification of the
+trajectory-inference step beyond the `inference_error` factor; the FPR calibration
+threshold is a finite-sample 95th percentile. Decision 3 is **not** closed.
+
+Artifacts: `sim/sweeps/results/fpr_power.csv`, `sim/sweeps/results/summary.json`
+(wall 62.6 s; seeds and thresholds recorded in the summary).
 
 ## Decision 4 — AMY and canonical loci*
 *Future work: Validate method on known positive control loci*
