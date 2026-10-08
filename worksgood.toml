@@ -1,7 +1,7 @@
 schema_version = 1
 
 [dispatcher]
-max_agents = 6
+max_agents = 10
 
 [dispatcher.resource_management]
 disk_hard_refuse_percent = 2.0
