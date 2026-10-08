@@ -2,6 +2,8 @@ schema_version = 1
 
 [dispatcher]
 max_agents = 10
+max_incomplete_retries = 10
+max_spawn_failures = 20
 worktree_isolation = true
 
 [dispatcher.resource_management]
