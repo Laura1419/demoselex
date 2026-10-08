@@ -1,0 +1,38 @@
+{
+  "run_id": "20261008-0540-lean-collinearity-finite-bound",
+  "timestamp": "2026-10-08T05:40:21.866570",
+  "git": {
+    "commit": "321cf08a4e5d84a175a48250ff5b56c72f98ad94",
+    "branch": "wg/agent-35/lean-collinearity",
+    "dirty": true
+  },
+  "command": [
+    "cd lean && lake build TrajectorySelection && lake env lean TestCollinearity.lean"
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-139-generic",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "sklearn": "1.4.1.post1"
+  },
+  "inputs": {
+    "lean/lean-toolchain": "sha256:d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lean/lake-manifest.json": "sha256:caf7eb5f74185ee828371f168e8264c46db1ad90d115115e08515eee4a97e92f",
+    "lean/TrajectorySelection/Collinearity.lean": "sha256:cb69436d7e2cc357f467f85ad6c39a0abf5b3cd05b0c3e9adada180470dce779",
+    "lean/TestCollinearity.lean": "sha256:453e3566885e4130c5699fd5b05663b7521fc0b0d475ef74f180d773f207d4a2"
+  },
+  "parameters": {
+    "random_draws": 0,
+    "lean": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "mathlib_git": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "outputs": {
+    "lean/TrajectorySelection/Collinearity.lean": "sha256:cb69436d7e2cc357f467f85ad6c39a0abf5b3cd05b0c3e9adada180470dce779",
+    "lean/TestCollinearity.lean": "sha256:453e3566885e4130c5699fd5b05663b7521fc0b0d475ef74f180d773f207d4a2",
+    "docs/D-method.md": "sha256:690ffe6137e647514c586de2322c854fee19caafb9dd4b6b5ec997a0af3b623c",
+    "docs/JOURNAL.md": "sha256:c47ea81679e29637290d1c5580924d46123b3de9490cfc846f893bc7b7aa19d9"
+  },
+  "seed": 0
+}

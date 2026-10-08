@@ -196,6 +196,14 @@ Relative to an isotropic-noise baseline, Lean's
 `I_time / (||t||²/σ²) = (1 − cos²θ) + cos²θ · σ²/(σ² + λ)`.
 
 The inverse of this positive fraction is the *finite* working-model VIF.
+More explicitly, if `1−cos²θ ≤ ε` and `σ²/(σ²+λ) ≤ δ`, then
+`I_time/(||t||²/σ²) ≤ ε+δ`: Lean's
+`Collinearity.near_alignment_working_bound` proves this using
+`0≤cos²θ≤1`, `σ²>0`, and `λ≥0`. For `ε+δ>0`, inversion gives a
+working VIF of at least `1/(ε+δ)` (the inversion step is stated here,
+not a separate Lean theorem). Thus both near-parallel *geometry* and a
+large *mode variance relative to noise* are needed to infer strong
+finite-model attenuation; alignment alone is insufficient.
 Even when `cos²θ = 1`, finite `λ` leaves information
 `||t||²/(σ² + λ) > 0` and a VIF of `1 + λ/σ²`; this is
 `Collinearity.perfect_alignment_working`. The formal Lean definition of
@@ -208,6 +216,8 @@ Decision 3 needs calibrated simulation and empirical contrasts.
 
 `lean/TestCollinearity.lean` checks the `(3,4)` time vector against the
 first coordinate: `cos²θ=9/25`, residual energy `16`, hard VIF `25/16`.
+A second time vector `(3,1)` with `σ²=1`, `λ=99` verifies the finite
+near-alignment bound: at most `1/10+1/100` of baseline information.
 For perfectly aligned `(3,0)`, `σ²=1`, `λ=8`, finite information is `1`,
 not zero. The file compiles without new `sorry`/axioms.
 

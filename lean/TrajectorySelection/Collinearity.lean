@@ -19,6 +19,11 @@ def dot {n : ℕ} (a b : Fin n → ℝ) : ℝ := ∑ i, a i * b i
 /-- Squared Euclidean length (the unweighted time sum of squares). -/
 def energy {n : ℕ} (a : Fin n → ℝ) : ℝ := dot a a
 
+/-- Squared length cannot be negative (also for the projected time vector). -/
+theorem energy_nonneg {n : ℕ} (t : Fin n → ℝ) : 0 ≤ energy t := by
+  unfold energy dot
+  exact Finset.sum_nonneg fun i _ => mul_self_nonneg (t i)
+
 /-- Time remaining after removing the component along a *unit* GRM eigenvector. -/
 def residual {n : ℕ} (t u : Fin n → ℝ) : Fin n → ℝ :=
   fun i => t i - dot t u * u i
@@ -79,6 +84,20 @@ theorem residual_energy_cosine {n : ℕ} (t u : Fin n → ℝ)
   apply (div_eq_iff ht).mp at h
   linear_combination h
 
+/-- The squared cosine really lies in the unit interval when time has positive energy. -/
+theorem cosineSquared_nonneg {n : ℕ} (t u : Fin n → ℝ)
+    (ht : 0 < energy t) : 0 ≤ cosineSquared t u := by
+  unfold cosineSquared
+  exact div_nonneg (sq_nonneg _) (le_of_lt ht)
+
+theorem cosineSquared_le_one {n : ℕ} (t u : Fin n → ℝ)
+    (hu : energy u = 1) (ht : 0 < energy t) : cosineSquared t u ≤ 1 := by
+  have h := residual_fraction t u hu (ne_of_gt ht)
+  have hnon : 0 ≤ energy (residual t u) / energy t :=
+    div_nonneg (energy_nonneg _) (le_of_lt ht)
+  rw [h] at hnon
+  linarith
+
 /-- A near-parallel time vector leaves at most `ε` of its original time
     sum of squares after hard projection. -/
 theorem near_alignment {n : ℕ} (t u : Fin n → ℝ) (epsilon : ℝ)
@@ -137,6 +156,28 @@ theorem working_information_fraction {n : ℕ} (t u : Fin n → ℝ)
   unfold workingInformation
   rw [hr, ← hd]
   field_simp
+
+/-- If the remaining time fraction is at most `ε` and the retained fraction
+    of the GRM mode is at most `δ`, finite-model information is at most
+    `ε + δ` of its isotropic baseline. No finite mode is silently deleted. -/
+theorem near_alignment_working_bound {n : ℕ} (t u : Fin n → ℝ)
+    (sigma2 modeVariance epsilon delta : ℝ)
+    (hu : energy u = 1) (ht : 0 < energy t)
+    (hσ : 0 < sigma2) (hMode : 0 ≤ modeVariance)
+    (hnear : 1 - cosineSquared t u ≤ epsilon)
+    (hlarge : sigma2 / (sigma2 + modeVariance) ≤ delta) :
+    workingInformation t u sigma2 modeVariance / (energy t / sigma2) ≤
+      epsilon + delta := by
+  have hden : 0 < sigma2 + modeVariance := add_pos_of_pos_of_nonneg hσ hMode
+  have hcos := cosineSquared_le_one t u hu ht
+  have hratio : 0 ≤ sigma2 / (sigma2 + modeVariance) := le_of_lt (div_pos hσ hden)
+  have hproduct : cosineSquared t u * (sigma2 / (sigma2 + modeVariance)) ≤
+      sigma2 / (sigma2 + modeVariance) := by
+    nlinarith [mul_nonneg (sub_nonneg.mpr hcos) hratio]
+  rw [working_information_fraction t u sigma2 modeVariance hu
+    (ne_of_gt ht) (ne_of_gt hσ) (ne_of_gt hden)]
+  rw [mul_div_assoc]
+  linarith
 
 /-- Exact alignment still carries positive information at finite mode variance;
     the assertion of zero identifiability applies only to hard projection or
