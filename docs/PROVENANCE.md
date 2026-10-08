@@ -59,14 +59,14 @@ with RunRecorder("trajectory-analysis") as recorder:
     # Record parameters
     recorder.record_parameter("seed", 42)
     recorder.record_parameter("iterations", 1000)
-    
+
     # Record input files
     recorder.record_input("data/genotypes.vcf")
     recorder.record_input("config.json")
-    
+
     # Execute your analysis
     result = run_analysis()
-    
+
     # Record outputs
     recorder.record_output("trajectories.csv")
     recorder.record_output("plot.png")
