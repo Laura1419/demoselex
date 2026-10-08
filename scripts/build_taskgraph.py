@@ -378,6 +378,30 @@ def main() -> int:
     for s in sinks:
         r = run(["wg", "publish", s, "--wcc"], check=False)
         print(f"publish {s}: {r.stdout.strip()[-200:] or r.stderr.strip()[-200:]}")
+    
+    # Add provenance demonstration task
+    provenance_task = T(
+        id="provenance-demo",
+        title="Demonstrate provenance system",
+        desc="""Run the provenance system demo to verify it works correctly.
+
+## Validation
+- Demo run produces a manifest at analysis/runs/*/manifest.json
+- Manifest contains git commit, versions, input hashes, and seed
+- Verify command: python3 scripts/provenance.py demo && python3 scripts/provenance.py verify analysis/runs/*/manifest.json
+""",
+        tags=["infra", "reproducibility"],
+        hours=0.5
+    )
+    
+    if provenance_task.id not in known_ids:
+        wg(provenance_task.id, provenance_task.title, 
+           desc=provenance_task.desc, 
+           tags=provenance_task.tags, 
+           hours=provenance_task.hours)
+        publish_tasks.append(provenance_task.id)
+        print(f"  + {provenance_task.id}")
+    
     return 0
 
 
