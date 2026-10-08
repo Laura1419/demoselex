@@ -9,6 +9,7 @@ import TrajectorySelection.Core
 import TrajectorySelection.Trajectory
 import TrajectorySelection.FrequencyPath
 import TrajectorySelection.Concordance
+import TrajectorySelection.Defs
 
 namespace TrajectorySelection
 

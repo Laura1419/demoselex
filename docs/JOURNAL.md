@@ -107,3 +107,8 @@ This journal records the progress and decisions of the trajectory-replication re
 - Corrected the earlier entry's “pinned to master” claim: `lean/lakefile.lean` and the repository-root Lake entry now require Mathlib `v4.34.1` (locked to `d13f23b...`), with checked-in Lake manifests and Lean 4.34.1 toolchain files.
 - `lake build` passed from both `lean/` and the repository root; `lake env lean Test.lean` resolved the imports in both layouts. No project `sorry`, `axiom`, or `native_decide` beyond source comments; `lean/AXIOMS.md` now documents a per-use policy and flags inherited statistical placeholders as non-results.
 - Build provenance with seed 0 (no randomness), versions, locked inputs and output hashes was verified under `analysis/runs/20261008-0500-lean-setup-build/` and `analysis/runs/20261008-0502-lean-setup-root-build/`. Next: `lean-defs` can replace placeholder scientific definitions.
+
+## 2026-10-08 05:06Z — lean-defs — Generic trajectory and concordance definitions
+- Added `lean/TrajectorySelection/Defs.lean`: bounded indexed frequency paths, weighted OLS slope with undefined-case handling, exact direction and nonzero-majority concordance, constant-source turnover mixture, and PSD covariance kernel. No new Lean axioms or sorry.
+- Added focused Lean examples in `lean/TestDefs.lean`; updated Section D with equations and explicit limits, retaining inherited placeholder warnings.
+- Both root and `lean/` builds passed; the only warnings came from inherited scaffolds. Deterministic build provenance uses seed 0 and pinned Lean/Mathlib versions; no randomness. Downstream theorem tasks must state null/independence assumptions.

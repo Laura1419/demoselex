@@ -1,0 +1,41 @@
+{
+  "run_id": "20261008-0507-lean-defs-compile",
+  "timestamp": "2026-10-08T05:07:49.522641",
+  "git": {
+    "commit": "2da81df1b0e653065075ac3445d495f8e3141ab4",
+    "branch": "main",
+    "dirty": true
+  },
+  "command": [
+    "cd lean && lake build",
+    "lake build",
+    "cd lean && lake env lean TestDefs.lean"
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-139-generic",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "sklearn": "1.4.1.post1",
+    "lean": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "lake": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "inputs": {
+    "lean/lean-toolchain": "sha256:d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lean/lake-manifest.json": "sha256:caf7eb5f74185ee828371f168e8264c46db1ad90d115115e08515eee4a97e92f",
+    "lean/lakefile.lean": "sha256:db6aede8bf2e53859e4b1eef523285656d22365d8e4d6d498ddb2570fc0da1c4"
+  },
+  "parameters": {
+    "randomness": "none (deterministic Lean compilation)"
+  },
+  "outputs": {
+    "lean/TrajectorySelection/Defs.lean": "sha256:be0f47f125d5d61b999e7b853e12c7216585135811b0bb4d27f7ea0baa1ee25d",
+    "lean/TrajectorySelection.lean": "sha256:3218adbcf4e51b1666d4b5511a859d5253d8427241c58d7d838cd3f1a9c36b36",
+    "lean/TestDefs.lean": "sha256:0d1be130ef72b515e7d955ec4481143eda1bdc47a6fdd486f1e16da17b8afab5",
+    "docs/D-method.md": "sha256:fd381dafaa13847b24dfcd4ff624c21e1ddeb4d13cc5701adc5c58f2dcaffb22",
+    "docs/JOURNAL.md": "sha256:9c4208305cb9055ce6bc2f9f03b6bfce17418d5e466ddc53364aee0eca458075"
+  },
+  "seed": 0
+}
