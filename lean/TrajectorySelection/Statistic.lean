@@ -171,6 +171,36 @@ theorem fairBinomialWeight_total (n : ℕ) :
 noncomputable def fairNullConcordance (n k : ℕ) : ℝ :=
   (max k (n - k) : ℝ) / n
 
+/-- The majority statistic is the folded binomial count, not `K/n` (whose mean
+    would be one half by symmetry). -/
+theorem fairNullConcordance_folded (n k : ℕ) (hn : 0 < n) (hk : k ≤ n) :
+    fairNullConcordance n k = (1 / 2 : ℝ) + |(k : ℝ) - n / 2| / n := by
+  have hsub : (↑(n - k) : ℝ) = (n : ℝ) - k := Nat.cast_sub hk
+  have hnr : (0 : ℝ) < n := by exact_mod_cast hn
+  by_cases h : 2 * k ≤ n
+  · have hr : k ≤ n - k := by omega
+    have habs : (k : ℝ) - n / 2 ≤ 0 := by
+      have hh : (2 : ℝ) * k ≤ n := by exact_mod_cast h
+      linarith
+    have hr' : (k : ℝ) ≤ (n : ℝ) - k := by
+      rw [← hsub]
+      exact_mod_cast hr
+    unfold fairNullConcordance
+    rw [max_eq_right hr', abs_of_nonpos habs]
+    field_simp
+    ring
+  · have hr : n - k ≤ k := by omega
+    have habs : 0 ≤ (k : ℝ) - n / 2 := by
+      have hh : (n : ℝ) < 2 * k := by exact_mod_cast (show n < 2 * k by omega)
+      linarith
+    have hr' : (n : ℝ) - k ≤ k := by
+      rw [← hsub]
+      exact_mod_cast hr
+    unfold fairNullConcordance
+    rw [max_eq_left hr', abs_of_nonneg habs]
+    field_simp
+    ring
+
 noncomputable def fairNullMean (n : ℕ) : ℝ :=
   fairBinomialAverage n (fairNullConcordance n)
 
@@ -184,6 +214,29 @@ theorem fairNullMean_formula (n : ℕ) :
         2 ^ n := by
   simp only [fairNullMean, fairBinomialAverage, fairBinomialWeight, div_mul_eq_mul_div,
     ← Finset.sum_div]
+
+/-- The null mean has an upward majority-selection bias of the expected folded
+    deviation. In particular it is generally *not* one half under fair signs. -/
+theorem fairNullMean_folded (n : ℕ) (hn : 0 < n) :
+    fairNullMean n = (1 / 2 : ℝ) +
+      fairBinomialAverage n (fun k => |(k : ℝ) - n / 2| / n) := by
+  have hnorm := fairBinomialWeight_total n
+  calc
+    fairNullMean n = fairBinomialAverage n
+      (fun k => (1 / 2 : ℝ) + |(k : ℝ) - n / 2| / n) := by
+        unfold fairNullMean fairBinomialAverage
+        apply Finset.sum_congr rfl
+        intro k hk
+        rw [fairNullConcordance_folded n k hn (Nat.le_of_lt_succ (Finset.mem_range.mp hk))]
+    _ = (1 / 2 : ℝ) * fairBinomialAverage n (fun _ => 1) +
+        fairBinomialAverage n (fun k => |(k : ℝ) - n / 2| / n) := by
+        simp only [fairBinomialAverage, mul_add, Finset.sum_add_distrib,
+          Finset.mul_sum, mul_one]
+        congr 1
+        apply Finset.sum_congr rfl
+        intro k _
+        ring
+    _ = _ := by rw [hnorm]; ring
 
 /-- The null variance is the second raw moment minus the square of the exact mean. -/
 theorem fairNullVariance_formula (n : ℕ) :

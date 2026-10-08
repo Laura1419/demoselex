@@ -1,0 +1,40 @@
+{
+  "run_id": "20261008-0517-lean-statistic-proof",
+  "timestamp": "2026-10-08T05:17:40.572657",
+  "git": {
+    "commit": "b6a2f547f48d5814696e5f7e1f58a1042086c4fd",
+    "branch": "main",
+    "dirty": true
+  },
+  "command": [
+    "cd lean && lake build && lake env lean TestStatistic.lean"
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-139-generic",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "sklearn": "1.4.1.post1",
+    "lean": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "lake": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "inputs": {
+    "lean/lean-toolchain": "sha256:d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lean/lake-manifest.json": "sha256:caf7eb5f74185ee828371f168e8264c46db1ad90d115115e08515eee4a97e92f",
+    "lean/TrajectorySelection/Defs.lean": "sha256:be0f47f125d5d61b999e7b853e12c7216585135811b0bb4d27f7ea0baa1ee25d",
+    "lean/TrajectorySelection/Statistic.lean": "sha256:4f9088d598a50adf7ff779fc5d8d9778d89959d10b961b7b9c2a161f51edf8f7",
+    "lean/TestStatistic.lean": "sha256:8a886a89366330e36e59c68c0c1eb3534d20e160cfe300bcd5746fbda857198a"
+  },
+  "parameters": {
+    "randomness": "none; seed 0 is a deterministic provenance sentinel",
+    "null": "jointly uniform independent fair signs conditional on n>0"
+  },
+  "outputs": {
+    "lean/.lake/build/lib/lean/TrajectorySelection/Statistic.olean": "sha256:a7a6da7dd1bab39f4c7118c599fcc9bb040191fa6b31cd90dab5d5851910bad1",
+    "docs/D-method.md": "sha256:7d864e354f5cd977b83d80d2226acda6811f9f623ae970557326e90fb792d8ae",
+    "docs/JOURNAL.md": "sha256:77e4830d14d3e1b1594d148815ccf0e04c987a56b957e9cfb26c613ba2c15605"
+  },
+  "seed": 0
+}

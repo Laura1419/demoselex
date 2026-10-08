@@ -43,6 +43,68 @@ placeholders; see `lean/AXIOMS.md`. In particular their `check_replication`
 is **not** the directional-concordance definition above. No biological
 inference should use those placeholders as calibrated statistics.
 
+## Concordance and effective independent trajectory count (`lean-statistic`)
+
+For locus `ℓ`, count `N₊ = #{t : β̂_{ℓt}>0}` and
+`N₋ = #{t : β̂_{ℓt}<0}` among prespecified QC-passing trajectories, and let
+`n=N₊+N₋`. Exactly zero or undefined slopes are not informative. Define
+`C_ℓ=max(N₊,N₋)/n` for `n>0`, undefined otherwise. It lies in `[1/2,1]`;
+a tie gives `1/2` and unanimity gives `1`. Increasing the majority *at fixed
+informative n* cannot lower `C_ℓ`; adding a minority while changing `n` may.
+The Lean count form is proved equal to `Defs.directionalConcordance`, with
+range and fixed-denominator monotonicity theorems in `Statistic.lean`.
+This descriptive statistic alone is neither a p-value nor evidence of selection.
+
+Assign each observed trajectory `t` an ancestry/relatedness family `g(t)`
+**before** counting replicates. Let `G` be the set of distinct assigned
+families, `m=|G|`, and `ρᵢⱼ` their pairwise correlation of family-level
+change estimates. With `ρᵢᵢ=1` and `0≤ρᵢⱼ≤1`, put
+`R=Σᵢ∈G Σⱼ∈G ρᵢⱼ`, `N_eff=m²/R` when `m>0`, undefined otherwise.
+For a covariance interpretation additionally require symmetry and positive
+semidefiniteness, and verify that estimated genetic relatedness approximates
+the covariance relevant to the tested statistic. The variance of an equally
+weighted mean of unit-variance family estimates is `R/m²=1/N_eff`.
+Lean proves `m≤R≤m²`, `1≤N_eff≤m`, and that increasing pairwise
+correlations at *fixed G* cannot increase `N_eff`.
+
+**Duplication invariant:** if a near-identical added trajectory is assigned
+an already represented family, the set `G` is unchanged. Thus
+`N_eff(G∪{copy})=N_eff(G)`, in particular it cannot increase. Lean proves
+`effectiveTrajectoryCount_duplicate` with precisely this family-membership
+assumption. Similarity without a transitive family assignment is *not* enough:
+the naive raw-label design-effect formula can **increase** on a duplicate.
+For example, nine identical trajectories plus one unrelated trajectory give
+`100/82`; duplicating the unrelated trajectory gives `144/85 > 100/82`.
+Cluster assignment, threshold sensitivity and PSD should be reported; an
+incorrect family merger can conversely undercount genuine independent paths.
+Negative correlations also invalidate these `[1,m]` bounds. Do not insert
+noninteger `N_eff` as an uncalibrated binomial trial count.
+
+**Conditional fair-sign null:** if the `n>0` informative signs are *jointly
+uniform* over `{−,+}ⁿ` (iid fair signs), then `K=N₊∼Bin(n,1/2)` and
+`C=max(K,n−K)/n=1/2+|K−n/2|/n`. Let
+`b=binom(n−1, floor((n−1)/2))`; the exact null mean and variance are
+
+`E₀[C|n]=1/2+b/2ⁿ`,     `Var₀(C|n)=1/(4n)−(b/2ⁿ)²`.
+
+Indeed, `P(K=k)=binom(n,k)/2ⁿ`, and pairing the two tails gives
+`Σₖ binom(n,k)|k−n/2|=n b`: for `k>n/2`, telescope
+`(2k−n)binom(n,k)=n[binom(n−1,k−1)−binom(n−1,k)]`.
+Also `E[(K−n/2)²]=n/4` and squaring removes the absolute value;
+subtracting the squared mean yields the variance. Lean proves binomial-weight
+normalization, the fold identity, exact finite-binomial mean formula and
+`Var(C)=E(C²)−E(C)²`; the compact central-binomial and second-moment
+identities here are **documented derivations, not Lean theorems**. Focused
+Lean examples check `n=2`: mean `3/4`, variance `1/16`.
+
+Exchangeability **alone** is insufficient for this binomial null: assigning
+one common fair sign to all `n` trajectories is permutation-exchangeable
+with fair marginals, yet has `C=1` almost surely. Sign-dependent exclusion,
+shared history and correlated errors require matched neutral simulations or
+structure-preserving permutation. The finite formulas condition on an
+informative `n`, assume independent fair signs, and are not calibrated
+p-values under arbitrary exchangeable demography.
+
 ## Time–GRM collinearity: which variance is downweighted?
 
 Akbari's binomial GLMM has `Yᵢ | pᵢ ∼ Binomial(nᵢ,pᵢ)` and

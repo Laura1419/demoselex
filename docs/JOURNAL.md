@@ -122,3 +122,8 @@ This journal records the progress and decisions of the trajectory-replication re
 - Added `lean/TrajectorySelection/Defs.lean`: bounded indexed frequency paths, weighted OLS slope with undefined-case handling, exact direction and nonzero-majority concordance, constant-source turnover mixture, and PSD covariance kernel. No new Lean axioms or sorry.
 - Added focused Lean examples in `lean/TestDefs.lean`; updated Section D with equations and explicit limits, retaining inherited placeholder warnings.
 - Both root and `lean/` builds passed; the only warnings came from inherited scaffolds. Deterministic build provenance uses seed 0 and pinned Lean/Mathlib versions; no randomness. Downstream theorem tasks must state null/independence assumptions.
+
+## 2026-10-08 05:16Z — lean-statistic — Family-discounted majority statistic
+- Proved count concordance range and fixed-`n` monotonicity; defined correlation-mass `N_eff` on *distinct inferred families*, proved `[1,m]` range and antitonicity as relatedness rises. Adding a near-copy assigned an existing family leaves `N_eff` exactly unchanged.
+- Fair independent-sign null has a folded-binomial mean and variance; Lean proves exact finite-sum formulas and the fold, while Section D documents the central-binomial closed forms and cautions that exchangeability alone is insufficient. A naive raw-label design effect can increase on duplicate; family assignment is an explicit assumption, not inferred by the proof.
+- Focused `lean/TestStatistic.lean` checks ties, zero denominator, `n=2` moments and duplication; build provenance uses seed 0, pinned Lean/Mathlib and version/hash manifest in `analysis/runs/`.
