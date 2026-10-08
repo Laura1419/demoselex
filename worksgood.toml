@@ -28,7 +28,7 @@ model = "pi:openrouter:deepseek/deepseek-chat"
 model = "pi:openrouter:deepseek/deepseek-chat"
 
 [models.default]
-model = "pi:openrouter:deepseek/deepseek-v3.1-terminus"
+model = "pi:openrouter:openai/gpt-6-sol"
 reasoning = "high"
 
 [models.evaluator]
@@ -53,7 +53,7 @@ model = "pi:openrouter:deepseek/deepseek-chat"
 model = "pi:openrouter:deepseek/deepseek-chat"
 
 [models.task_agent]
-model = "pi:openrouter:deepseek/deepseek-v3.1-terminus"
+model = "pi:openrouter:openai/gpt-6-sol"
 
 [models.triage]
 model = "pi:openrouter:deepseek/deepseek-chat"
@@ -64,5 +64,5 @@ model = "pi:openrouter:deepseek/deepseek-chat"
 [tiers]
 fast = "pi:openrouter:deepseek/deepseek-chat"
 fast_reasoning = "low"
-standard = "pi:openrouter:deepseek/deepseek-v3.1-terminus"
+standard = "pi:openrouter:openai/gpt-6-sol"
 standard_reasoning = "high"
