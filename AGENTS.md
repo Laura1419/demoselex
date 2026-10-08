@@ -27,7 +27,8 @@ a bug. Update both together.
 <!-- worksgood-managed-guide:v1:end -->
 ## Project context: trajectory-replication research
 
-Repo root: `/home/erikg/demoselex`. Read `docs/MISSION.md` first; it is authoritative.
+Read `docs/MISSION.md` first; it is authoritative. All paths below are relative to your
+current working directory (the repository root). Use relative paths, not absolute ones.
 
 - Living research doc sections live in `docs/` (`A-` .. `J-`). Update the section your task owns.
 - Append a short entry to `docs/JOURNAL.md` after each work session.
@@ -38,3 +39,18 @@ Repo root: `/home/erikg/demoselex`. Read `docs/MISSION.md` first; it is authorit
   `feat(traj-prototype): time-aware clustering prototype`.
 - Do not mark a task done until its `## Validation` section actually passes.
 - Honest negative results are valuable: if a hypothesis fails, say so in the doc and journal.
+
+## Repository conventions (mandatory)
+
+- Default branch is **`main`**. Never assume `master`.
+- The completion contract enforces `git diff --check refs/heads/main..HEAD`. A
+  `pre-commit` hook at `.githooks/pre-commit` strips trailing whitespace, so keep it
+  enabled (`git config core.hooksPath .githooks` is already set once per repo and shared
+  by worktrees).
+- Do not add trailing whitespace; do not add conflict markers.
+- Every commit message: `<type>(<task-id>): <summary>`.
+
+- **Never run `git merge`, `git rebase`, `git pull`, or `git stash pop`.** Just edit,
+  `git add`, `git commit` on the current branch. The coordinator handles integration.
+- Keep edits scoped to the files your task owns. Never rewrite shared files owned by
+  other tasks (`docs/JOURNAL.md`, `docs/PROVENANCE.md`, `docs/DECISIONS.md`): append only.

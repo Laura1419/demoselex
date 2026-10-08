@@ -6,7 +6,6 @@ __pycache__/
 .lake/
 lake-packages/
 build/
-leaf-manifest.json
-
+.wg-worktrees/
 lake-manifest.json
 lean-toolchain

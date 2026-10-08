@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""
-Record provenance for trajectory replication research runs
+"""Provenance recording for trajectory-replication research project.
+
+Records git commit, software versions, parameters, and output paths for any run.
 """
 
 import json
+import os
 import subprocess
 import sys
 from datetime import datetime
