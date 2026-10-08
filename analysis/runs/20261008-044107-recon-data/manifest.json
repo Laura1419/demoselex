@@ -1,0 +1,30 @@
+{
+  "command": "recon-data primary-source validation",
+  "git": {
+    "clean": false,
+    "commit": "c2179e9a325b97c8c0df34643936a175c163b92a"
+  },
+  "host": "lambda01",
+  "inputs": {
+    "aadr_dataverse": "https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/FFIDCW",
+    "akbari_dataverse": "https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/7RVV9N",
+    "amy_archive": "https://zenodo.org/api/records/12753060",
+    "ena_PRJEB106907": "https://www.ebi.ac.uk/ena/browser/view/PRJEB106907"
+  },
+  "outputs": {
+    "inventory": "docs/E-data-inventory.md",
+    "journal": "docs/JOURNAL.md"
+  },
+  "parameters": {
+    "aadr_dataset_version": "V14.0-v66.p1",
+    "akbari_dataset_version": "V4.0",
+    "amy_archive_version": "12753060-v1.1",
+    "curl_version": "8.5.0",
+    "python_version": "3.12.3",
+    "randomness": "none",
+    "validation": "17 Dataverse IDs/sizes plus embargo; 4 Nature attachment HEAD lengths; ENA 2-run manifest; 44 Akbari BCF/index entries"
+  },
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "seed": 0,
+  "timestamp": "2026-10-08T04:41:07.113860"
+}

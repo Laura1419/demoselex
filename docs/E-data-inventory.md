@@ -1,6 +1,90 @@
-# E. Data inventory
+# E. Data inventory and access plan
 
-> Owner task: recon-data. Status: TODO.
+> Owner: `recon-data`. Audited 2026-10-08 against the publishers' pages, ENA file report, Harvard Dataverse API (Akbari V4.0; AADR V14.0/v66.p1), and the versioned AMY repository. Sizes below are **bytes on the remote listing**, not estimated unpacked sizes. This is an inventory, not evidence that terabytes have been downloaded. Store any acquired files in immutable `data/raw/`; record checksums and access dates. The article's raw sequences, imputed genotypes, selection *statistics*, and curated AADR pseudo-haploid calls are **different products**.
 
-| Source | Accession/URL | Format | Size | License | Access | Download command | Fallback |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+## Access matrix
+
+| ID / source | Accession and exact file(s) | Format / remote size | Rights and access | URL / command | Fallback if unavailable |
+| --- | --- | --- | --- | --- | --- |
+| A1 Akbari per-variant statistics | [Akbari Dataverse V4.0](https://doi.org/10.7910/DVN/7RVV9N), `Selection_Summary_Statistics_01OCT2025.tsv.gz`, datafile **12126280** | gzip TSV, **674,584,607 B**; 9.7 M variants | Dataset CC0 1.0, public metadata marks this file unrestricted; no login indicated. A presigned-file redirect can fail from this host (see caveat below). | [File API](https://dataverse.harvard.edu/api/access/datafile/12126280); command **D1** | If Dataverse transfer fails, retry from browser/another network or request file from dataset contacts Ali Akbari/David Reich. Do **not** substitute Supplementary Table 4 for genome-wide statistics. |
+| A2 Akbari supplementary text | [Article DOI 10.1038/s41586-026-10358-1](https://doi.org/10.1038/s41586-026-10358-1), `41586_2026_10358_MOESM1_ESM.pdf` | PDF, **16,629,994 B** | Nature article itself is subscription/copyrighted; this supplementary PDF URL returned HTTP 200 without authentication. Reuse is subject to publisher terms, **not** the Dataverse CC0 license. | [Direct file](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-026-10358-1/MediaObjects/41586_2026_10358_MOESM1_ESM.pdf); **N1** | For a blocked full article use the [Reich Lab author PDF](https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/2026_Akbari_Nature_selection_0.pdf); for supplementary PDF outage request from authors. |
+| A3 Akbari tables 1–5 (including sample dates and broad regions) | Same article DOI, `41586_2026_10358_MOESM3_ESM.xlsx` | XLSX, **5,365,772 B** | Supplementary attachment directly HTTP 200 without login; publisher rights as A2. Tables 1–3 give study-used point dates / five-region classification, **not exact sites/coordinates** for all new samples. | [Direct file](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-026-10358-1/MediaObjects/41586_2026_10358_MOESM3_ESM.xlsx); **N2** | If publisher attachment unavailable, seek authors' copy; AADR `.anno` covers only overlapping public samples, not guaranteed all Akbari IDs. |
+| A4 Akbari reporting summary | Same article DOI, `41586_2026_10358_MOESM2_ESM.pdf` | PDF, **2,431,382 B** | Download HTTP 200, publisher rights as A2. | [Direct file](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-026-10358-1/MediaObjects/41586_2026_10358_MOESM2_ESM.pdf); **N3** | Nature landing page or author request. |
+| G1 New Akbari aligned sequencing | [ENA PRJEB106907](https://www.ebi.ac.uk/ena/browser/view/PRJEB106907), per-run `ERR…` submitted `.bam`/`.bam.bai` and ENA `.fastq.gz`. Example `ERR16126899` / `SAMEA120980254`: `I19058.AG.bam`, `.bam.bai`, `ERR16126899.fastq.gz` | Example BAM **194,044,543 B**, BAI **5,904,224 B**, FASTQ **119,203,287 B**. Whole project size: **dynamic / query manifest**; 10,016 individuals, not 10,016 files. | ENA public without account; no file-specific CC license stated by ENA (follow ENA terms/cite project). No VCF/dosage asserted at this accession. | [Run manifest API](https://www.ebi.ac.uk/ena/portal/api/filereport?accession=PRJEB106907&result=read_run&fields=run_accession,sample_accession,fastq_ftp,fastq_bytes,submitted_ftp,submitted_bytes&limit=0); **E1–E2** | If ENA HTTPS mirror down, use listed FTP paths / alternate ENA mirror; otherwise Akbari Dataverse imputed data G2 (different assay and QC). |
+| G2 Akbari processed imputed genotypes (not ENA) | Akbari Dataverse V4.0; `AncientDNA_AllVariants_NoQC_GRCh37_chr{1..22}.bcf` + `.bcf.csi` in `AncientDNA_bcf/`; example chr1 datafile **13417121**, index **13415492** | BCF + CSI, **22 chromosome pairs**, aggregate **1,324,569,749,458 B**. Chr1 BCF **104,223,799,965 B**, index **179,676 B**. **NoQC** means apply project QC independently. | CC0; public metadata, no login indicated; large transfer/storage needed. Verify VCF FORMAT fields before assuming which dosage/probability representation is present. | [Dataset API listing](https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/7RVV9N); **D2** (enumerates exact IDs, sizes and downloads selected chromosome) | G3 smaller PLINK2 set, or G1 BAM plus independent calling/imputation; not equivalent to the original no-QC BCF. |
+| G3 Akbari smaller processed set / QC sites | Same Dataverse: `AncientDNA_plus_EUR1KG_AllVariants_NoQC_GRCh37_autosomes.{pgen,psam,pvar}` (datafiles **13415552/13415494/13415518**), `HighQualityVariants.tsv` (**13415504**), and `README.txt` (**13596811**) | PLINK2 pgen **26,300,030,448 B**, psam **221,391 B**, pvar **1,700,215,110 B**; QC list TSV **315,624,578 B**; README **10,901 B**. Also 1240K `...TGENO.{geno,ind,snp}` (**5,036,562,154 / 546,475 / 77,679,819 B**, IDs **13596747/13596743/13596746**). | CC0; public metadata. PLINK2 matrix is combined ancient + EUR 1KG and not the entire no-QC BCF; TGENO is sparse 1240K genotype calls, not genome-wide dosage. | [Dataset API](https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/7RVV9N); **D1/D2** with those IDs | G2 per-chromosome BCF or G1 alignment reprocessing. |
+| R1 AADR v66 1240K | [AADR DOI 10.7910/DVN/FFIDCW](https://doi.org/10.7910/DVN/FFIDCW), **V14.0 = v66.p1 (2026-06-08)**: `v66.p1_1240K.aadr.patch.PUB.{geno,ind,snp}` and `v66.p1_1240K.aadr.PUB.anno` | EIGENSTRAT `.geno` **7,117,276,654 B** (ID **13994829**), `.ind` **1,017,460 B** (**13994513**), `.snp` **77,679,819 B** (**13994514**); tabular `.anno` **13,443,726 B** (**13994515**). | Dataverse CC0; all four file records unrestricted, public no-registration API listing. Cite AADR release **and** original component studies per AADR instructions. | [Dataset API](https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/FFIDCW); **R1** | If v66.p1 endpoint fails, obtain stable earlier release via Dataverse versions and document version change; do not mix `.geno/.ind/.snp` versions. |
+| R2 AADR v66 HO and legacy compatibility HO | Same AADR V14.0: `v66.p1_HO.aadr.patch.PUB.{geno,ind,snp}`, `v66.p1_HO.aadr.PUB.anno` (plus `v66.p1_compatibility_HO…` alternative) | EIGENSTRAT HO `.geno` **4,029,634,650 B** (**13994808**), `.ind` **1,176,253 B** (**13994526**), `.snp` **36,800,253 B** (**13994527**); `.anno` **15,465,906 B** (**13994528**). Compatibility HO `.geno` **1,909,008,156 B** (**13994522**) is a **different SNP set**; do not silently swap. | CC0, public as R1. HO is a distinct array/site set, not simply a different format of R1. | [Dataset API](https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/FFIDCW); **R2** | Use R1's 1240K intersection if HO unavailable; report loss of HO-specific samples/sites. |
+| M1 AADR public dates / locations | Same DOI/V14.0, `v66.p1_1240K.aadr.PUB.anno` (**13994515**) or HO `.anno` (**13994528**) | Tabular annotation, sizes as R1/R2; date estimates, latitude/longitude and original references for curated individuals. | CC0 / public. Site precision, sample ID alias and release version must be checked before joining to Akbari sample IDs; publication provenance is mandatory. | [File API](https://dataverse.harvard.edu/api/access/datafile/13994515); **R1** | For unmatched Akbari individuals use A3 dates + five regions; exclude from analyses needing exact coordinates rather than inventing them. |
+| M2 **CLOSED** full Akbari archaeological metadata | Akbari DOI V4.0, `selection_online_tables_1-5_full_archaeological_metadata_embargoed_until_2041.xlsx`, ID **13572552** | XLSX **7,346,667 B**; supplementary Table 1 adds columns P–AB including coordinates, skeletal codes, site/culture. | **Embargo until 2041-01-01** (`dataFile.embargo.dateAvailable`) even though outer file record `restricted:false`; unauthenticated file API returns HTTP 403. Dataset CC0 label does **not** grant access before embargo. | [Record/file URL](https://dataverse.harvard.edu/file.xhtml?fileId=13572552); **X1** (status probe only, **no download/bypass**). | Use A3 study-used point dates and regional bins, plus M1 coordinates only for legitimately released overlaps. Ask authors for permission if exact site data essential; do not infer unpublished sites. |
+| H1 AMY SV copy-number and haplotypes | [Bolognini et al. DOI 10.1038/s41586-024-07911-1](https://doi.org/10.1038/s41586-024-07911-1); paper's `41586_2024_7911_MOESM3_ESM.xlsx` (Tables S1–S11) | XLSX **544,662 B** | Paper/supplement Open Access **CC BY 4.0**, no login. | [Direct file](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-024-07911-1/MediaObjects/41586_2024_7911_MOESM3_ESM.xlsx); **H1** | Archived H2 TSV tables, check sample/call concordance. |
+| H2 AMY versioned analysis tables | [Zenodo 10.5281/zenodo.12753060](https://doi.org/10.5281/zenodo.12753060) / [GitHub v1.1](https://github.com/sudmantlab/amylase_diversity_project/tree/v1.1): `graph_genotyping/assess_graph_genotypes/supplementary_tables/{ancient_metadata_for_supplement,copy_number_table_for_supplement,haplotype_structure_for_supplement}.tsv`; `read_depth_genotyping/genotyping/output/genotypes.likelihoods.tsv`; `HPRC_AMY_Sequences/combined_y1_y2_analyses/output/gene_copy_counts_per_indiv.tsv` | TSV **62,747 / 236,893 / 236,921 / 13,679,840 / 3,017 B**, respectively. Zenodo `sudmantlab/amylase_diversity_project-v1.1.zip` **126,578,650 B**. | Zenodo archive metadata **CC BY 4.0**; GitHub README states code **GPL-3.0**. Distinguish data from code licensing; open, no account. | [Zenodo record/API](https://zenodo.org/api/records/12753060); **H2**, or **H3** for individual files. | H1 XLSX; rederive selected calls using versioned code and source read data; do not present SNP tags as directly observed structural genotypes. |
+| H3 AMY source reads / restricted GTEx | Bolognini paper Data availability: ancient [ENA PRJEB64656](https://www.ebi.ac.uk/ena/browser/view/PRJEB64656) and [PRJEB50857](https://www.ebi.ac.uk/ena/browser/view/PRJEB50857), GTEx [dbGaP phs000424](https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000424.v10.p2) ([protected genetics instructions](https://gtexportal.org/home/protectedDataAccess)) | ENA FASTQ/BAM per-run size from manifest (not fixed); GTEx controlled individual-level genetic files size unknown without authorization. | ENA public, no explicit per-file CC license; **GTEx genotype data controlled access**, unlike public aggregate/expression data. | **E3** ENA manifest; **X2** access page (no anonymous protected download command). | For closed GTEx use the public AMY H1/H2 summary/calls or 1KG/HGDP data; obtain GTEx approval only if individual-level expression-genotype replication is needed. |
+
+### Commands (run selectively; these do not execute automatically)
+
+```bash
+# D1 — Dataverse file API; use the listed ID. Do not use D1 for embargoed M2.
+mkdir -p data/raw/akbari
+curl -fL --retry 3 'https://dataverse.harvard.edu/api/access/datafile/12126280' -o data/raw/akbari/Selection_Summary_Statistics_01OCT2025.tsv.gz
+printf '%s  %s\n' 'a527fd0b36c741ffe5cc480f1626f666' data/raw/akbari/Selection_Summary_Statistics_01OCT2025.tsv.gz | md5sum -c -
+# D2 — enumerate all exact per-chromosome BCF IDs/sizes; select one ID from JSON before large transfer.
+curl -fLsS -A 'Mozilla/5.0' 'https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/7RVV9N' \
+  | python3 -c 'import json,re,sys; fs=json.load(sys.stdin)["data"]["latestVersion"]["files"]; [print(f["label"],f["dataFile"]["id"],f["dataFile"]["filesize"],sep="\t") for f in fs if re.fullmatch(r"AncientDNA_AllVariants_NoQC_GRCh37_chr([1-9]|1[0-9]|2[0-2])\.bcf(\.csi)?",f["label"])]'
+# Example one chromosome (allow ~105 GB for chr1 alone):
+curl -fL --retry 3 'https://dataverse.harvard.edu/api/access/datafile/13417121' -o data/raw/akbari/AncientDNA_AllVariants_NoQC_GRCh37_chr1.bcf
+# G3 — analogous per-ID acquisition of the smaller PLINK2 cohort and site list:
+for spec in '13415552:AncientDNA_plus_EUR1KG_AllVariants_NoQC_GRCh37_autosomes.pgen' '13415494:AncientDNA_plus_EUR1KG_AllVariants_NoQC_GRCh37_autosomes.psam' '13415518:AncientDNA_plus_EUR1KG_AllVariants_NoQC_GRCh37_autosomes.pvar' '13415504:HighQualityVariants.tsv' '13596811:README.txt'; do
+  id=${spec%%:*}; file=${spec#*:}
+  curl -fL --retry 3 "https://dataverse.harvard.edu/api/access/datafile/$id" -o "data/raw/akbari/$file"
+done
+# R1/R2 — get coherent release members; fetch only the intended panel.
+mkdir -p data/raw/aadr-v66.p1
+for spec in '13994829:v66.p1_1240K.aadr.patch.PUB.geno' '13994513:v66.p1_1240K.aadr.patch.PUB.ind' '13994514:v66.p1_1240K.aadr.patch.PUB.snp' '13994515:v66.p1_1240K.aadr.PUB.anno'; do
+  id=${spec%%:*}; file=${spec#*:}
+  curl -fL --retry 3 "https://dataverse.harvard.edu/api/access/datafile/$id" -o "data/raw/aadr-v66.p1/$file"
+done
+# R2 — HO four-member set (do not mix with compatibility_HO):
+for spec in '13994808:v66.p1_HO.aadr.patch.PUB.geno' '13994526:v66.p1_HO.aadr.patch.PUB.ind' '13994527:v66.p1_HO.aadr.patch.PUB.snp' '13994528:v66.p1_HO.aadr.PUB.anno'; do
+  id=${spec%%:*}; file=${spec#*:}
+  curl -fL --retry 3 "https://dataverse.harvard.edu/api/access/datafile/$id" -o "data/raw/aadr-v66.p1/$file"
+done
+# X1 — only a status probe; HTTP 403 is the expected embargo result, not a request to circumvent it.
+curl -sS -o /dev/null -w '%{http_code}\n' 'https://dataverse.harvard.edu/api/access/datafile/13572552'
+```
+
+```bash
+# N1/N2/N3 — exact supplementary attachments (PDF, reporting summary, tables):
+mkdir -p data/raw/akbari
+for spec in '1:pdf' '2:pdf' '3:xlsx'; do
+  n=${spec%%:*}; ext=${spec#*:}; file="41586_2026_10358_MOESM${n}_ESM.${ext}"
+  curl -fL "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-026-10358-1/MediaObjects/$file" -o "data/raw/akbari/$file"
+done
+# E1 — metadata-only ENA manifest; check filenames/size before download (the submitted FTP column includes BAM and BAI).
+curl -fLsS 'https://www.ebi.ac.uk/ena/portal/api/filereport?accession=PRJEB106907&result=read_run&fields=run_accession,sample_accession,fastq_ftp,fastq_bytes,submitted_ftp,submitted_bytes&limit=0' -o PRJEB106907_runs.tsv
+# E2 — one verified example from that manifest; not a dosage VCF:
+mkdir -p data/raw/ena-PRJEB106907
+curl -fL -C - 'https://ftp.sra.ebi.ac.uk/vol1/run/ERR161/ERR16126899/I19058.AG.bam' -o data/raw/ena-PRJEB106907/I19058.AG.bam
+# E3 — other AMY-associated ancient studies, manifest first, per accession:
+for accession in PRJEB64656 PRJEB50857; do
+  curl -fLsS "https://www.ebi.ac.uk/ena/portal/api/filereport?accession=$accession&result=read_run&fields=run_accession,submitted_ftp,submitted_bytes,fastq_ftp,fastq_bytes&limit=0" -o "${accession}_runs.tsv"
+done
+```
+
+```bash
+# H1/H2/H3 — article tables and pinned AMY archive or one exact TSV.
+mkdir -p data/raw/amy
+curl -fL 'https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-024-07911-1/MediaObjects/41586_2024_7911_MOESM3_ESM.xlsx' -o data/raw/amy/41586_2024_7911_MOESM3_ESM.xlsx
+curl -fL 'https://zenodo.org/api/records/12753060/files/sudmantlab/amylase_diversity_project-v1.1.zip/content' -o data/raw/amy/amylase_diversity_project-v1.1.zip
+printf '%s  %s\n' '3c841ce130eaec8c78b160cb6b971719' data/raw/amy/amylase_diversity_project-v1.1.zip | md5sum -c -
+curl -fL 'https://raw.githubusercontent.com/sudmantlab/amylase_diversity_project/v1.1/graph_genotyping/assess_graph_genotypes/supplementary_tables/copy_number_table_for_supplement.tsv' -o data/raw/amy/copy_number_table_for_supplement.tsv
+# X2 — inspect GTEx authorization instructions, NOT a protected-data fetch:
+curl -fL 'https://gtexportal.org/home/protectedDataAccess' -o data/raw/amy/GTEx_access_instructions.html
+```
+
+### Operational caveats and source evidence
+
+- **Dataverse access status:** dataset API `latestVersion.files[].restricted=false` is not enough: inspect `dataFile.embargo`. The M2 file is embargoed; an anonymous GET returned **403**. Conversely, public D1/R1 API requests issued a short-lived presigned S3 redirect, but following it on this worker host returned S3 **403**. This is a transfer/network/redirect limitation, **not evidence of a file-level embargo**; confirm byte retrieval from an ordinary client before planning full downloads. Avoid committing signed URLs or sensitive metadata.
+- **Versioning:** v66.0 was superseded by v66.p1; Dataverse V14.0 is the current patched release. The old Reich `index_v52.2.html` URL from the previous attempt returned 404 here. Use the dataset DOI/version and file IDs, not an inferred tarball name. AADR `.anno` sample aliases and SNP sets vary by release; join by documented IDs/Master ID, check hg19/GRCh37 coordinates, and never equate its pseudo-haploid calls with Akbari dosage.
+- **Privacy:** The Akbari paper expressly releases the analysis-used genetic data, date point estimates and broad regions while withholding precise unpublished archaeological sites until later publication/2041. No geocoding of newly released individuals should be invented from regional labels.
+- **Primary evidence:** [Akbari Nature article/Data availability](https://www.nature.com/articles/s41586-026-10358-1), [Akbari Dataverse V4.0 API](https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/7RVV9N), [ENA PRJEB106907](https://www.ebi.ac.uk/ena/browser/view/PRJEB106907), [AADR Dataverse V14.0 API](https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/FFIDCW), [Bolognini Nature/Data availability](https://www.nature.com/articles/s41586-024-07911-1), [AMY Zenodo v1.1 API](https://zenodo.org/api/records/12753060), [AMY GitHub v1.1](https://github.com/sudmantlab/amylase_diversity_project/tree/v1.1). API versions and file sizes can change; pin a version and log checksums for every acquisition.
