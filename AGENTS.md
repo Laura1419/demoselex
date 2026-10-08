@@ -38,3 +38,13 @@ Repo root: `/home/erikg/demoselex`. Read `docs/MISSION.md` first; it is authorit
   `feat(traj-prototype): time-aware clustering prototype`.
 - Do not mark a task done until its `## Validation` section actually passes.
 - Honest negative results are valuable: if a hypothesis fails, say so in the doc and journal.
+
+## Repository conventions (mandatory)
+
+- Default branch is **`main`**. Never assume `master`.
+- The completion contract enforces `git diff --check refs/heads/main..HEAD`. A
+  `pre-commit` hook at `.githooks/pre-commit` strips trailing whitespace, so keep it
+  enabled (`git config core.hooksPath .githooks` is already set once per repo and shared
+  by worktrees).
+- Do not add trailing whitespace; do not add conflict markers.
+- Every commit message: `<type>(<task-id>): <summary>`.
