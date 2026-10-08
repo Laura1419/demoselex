@@ -10,3 +10,4 @@ analysis/runs/
 .wg-worktrees/
 sim/output/
 analysis/runs/
+.venv/
