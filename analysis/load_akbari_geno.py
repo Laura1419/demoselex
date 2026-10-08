@@ -184,7 +184,7 @@ class AkbariGeno:
             self.sample_subset = None
             self.n_samples = self._raw_n_samples
         else:
-            idx = np.asarray(sample_subset, dtype=np.int32)
+            idx = np.asarray(sample_subset, dtype=np.uint32)
             self._reader.change_sample_subset(idx)
             self.sample_subset = idx
             self.n_samples = idx.size
@@ -202,24 +202,26 @@ class AkbariGeno:
         Dosages are ALT-allele counts in ``[0, 2]``; missing is NaN. Only the
         requested variants are read from disk.
         """
-        idx = np.asarray(indices, dtype=np.int32)
+        raw = np.asarray(indices)
+        idx = raw.astype(np.uint32, copy=False)
         out = np.empty((idx.size, self.n_samples), dtype=np.float32)
         if idx.size == 1:
             self._reader.read_dosages(int(idx[0]), out[0], allele_idx=allele_idx)
         else:
             self._reader.read_dosages_list(
-                idx.tolist(), out, allele_idx=allele_idx, sample_maj=0
+                idx, out, allele_idx=allele_idx, sample_maj=0
             )
         return out
 
     def read_hardcalls(self, indices, allele_idx=1):
         """Return integer hard-calls (0/1/2, missing=-9) for the given indices."""
-        idx = np.asarray(indices, dtype=np.int32)
+        raw = np.asarray(indices)
+        idx = raw.astype(np.uint32, copy=False)
         out = np.empty((idx.size, self.n_samples), dtype=np.int8)
         if idx.size == 1:
             self._reader.read(int(idx[0]), out[0], allele_idx=allele_idx)
         else:
-            self._reader.read_list(idx.tolist(), out, allele_idx=allele_idx, sample_maj=0)
+            self._reader.read_list(idx, out, allele_idx=allele_idx, sample_maj=0)
         return out
 
     def iter_chunks(self, start=0, end=None, step=1_000_000, allele_idx=1):
