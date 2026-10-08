@@ -13,6 +13,7 @@ import TrajectorySelection.Defs
 import TrajectorySelection.Statistic
 import TrajectorySelection.Replacement
 import TrajectorySelection.Collinearity
+import TrajectorySelection.Power
 
 namespace TrajectorySelection
 
