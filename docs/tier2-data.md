@@ -155,3 +155,43 @@ mapping; report both the conservative exact-id and the base-name upper bound.
   `tier2_download_log.tsv`.
 * `.venv/bin/python analysis/load_akbari_geno.py --self-test` prints `n_variants`,
   `n_samples`, one dosage, and peak RSS without loading the whole matrix (see log output).
+
+## Acquisition completed (parent, after the lane timed out)
+
+| file | bytes | status |
+|---|---:|---|
+| `...autosomes.pgen` | 26,300,030,448 | **verified md5 `c9e587230d9bdc8ace0ca1b043294a7c`** (matches catalog) |
+| `...autosomes.psam` | 221,391 | verified sha256 `4af9d4eb...` |
+| `...autosomes.pvar` | 1,700,215,110 | verified sha256 `1183c717...` |
+| `HighQualityVariants.tsv` | 315,624,578 | verified sha256 `19b04d4f...` |
+| `README.txt` | 10,901 | verified sha256 `4fef526c...` |
+
+**Resume gotcha (recorded so it is not repeated):** the interrupted first pass left a
+`.part` of 15.9 GB; `curl -C -` then appended past the true end, producing a file
+27,586,560 bytes *longer* than the remote object. Truncating to the authoritative
+Dataverse size (26,300,030,448 B) and checking md5 confirmed the bytes were correct.
+Any resumable downloader here must verify the final size against the **Dataverse API
+listing**, not the inventory figure, and must truncate rather than blindly append.
+
+**Loader (`analysis/load_akbari_geno.py`, fixed by the parent):** `pgenlib.PgenReader`
+requires a bytes filename, and `n_samples` was only set on a subset call - both fixed.
+
+Self-test output:
+
+```
+n_variants : 52,382,872      ( == the paper's imputed variant count )
+n_samples  : 16,339
+storage    : sparse dosages present; observed values integer-like (hard-call equivalent)
+peak RSS   : 486.1 MiB
+```
+
+**Sample overlap - this is what makes the Tier-2 scan possible:**
+
+| set | n | overlap with pgen samples |
+|---|---:|---:|
+| Akbari Table S1 individuals | 22,274 | 16,339 (all pgen samples) |
+| our trajectory individuals (v3) | 11,934 | **5,788** |
+
+So the Tier-2 analysis runs on 5,788 individuals Akbari actually analysed, on the same
+variant set as the paper, with the paper's own QC list available
+(`HighQualityVariants.tsv`).

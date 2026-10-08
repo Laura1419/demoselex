@@ -92,7 +92,7 @@ def describe_pgen_storage(pgen_path, probe_variant=0, sample_limit=32):
     phased hardcalls are present, and whether probed values look like integer
     hard-calls (0/1/2/-9) or fractional dosages.
     """
-    reader = pgenlib.PgenReader(str(pgen_path))
+    reader = pgenlib.PgenReader(str(pgen_path).encode())
     info = {
         "n_variants": reader.get_variant_ct(),
         "n_samples": reader.get_raw_sample_ct(),
@@ -169,13 +169,12 @@ class AkbariGeno:
         self.psam_path = str(psam_path)
 
         self.sample_ids = parse_psam(psam_path)
-        self._reader = pgenlib.PgenReader(self.pgen_path)
+        self._reader = pgenlib.PgenReader(str(self.pgen_path).encode())
         self.n_variants = self._reader.get_variant_ct()
         self._raw_n_samples = self._reader.get_raw_sample_ct()
 
         self.sample_subset = None
-        if sample_subset is not None:
-            self.change_sample_subset(sample_subset)
+        self.change_sample_subset(sample_subset)
 
     # -- sample selection ---------------------------------------------------
     def change_sample_subset(self, sample_subset=None):
