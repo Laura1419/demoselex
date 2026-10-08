@@ -97,3 +97,8 @@ This journal records the progress and decisions of the trajectory-replication re
 - WorksGood task graph initialized
 - Research mission defined in `docs/MISSION.md`
 - Project structure established with lean, sim, analysis, and docs directories
+
+## 2026-10-08 — sim-glmm — Corrected PQL/LOCO comparator
+- Replaced an earlier prototype's individual-row LOCO and incorrectly centered GRM with marker-chromosome LOCO, per-locus binomial PQL/REML variance fitting and Wald Z/p.
+- Seeded structured-null, strong single-locus sweep and fixed-variance published PQLseqPy fixture checks are recorded in `sim/test_akbari_glmm.py`; see `docs/F-reproducible-code.md` for commands, assumptions and numerical comparison.
+- No locus-by-locus paper summary validation without matched counts, QC and GRM; demographic replacement calibration remains for `sim-sweeps`. Provenance manifest under `analysis/runs/`.
