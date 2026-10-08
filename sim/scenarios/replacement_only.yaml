@@ -1,0 +1,19 @@
+# High-frequency pop2 alleles enter pop1 without locus-specific selection.
+type: replacement_only
+seed: 10402
+n_loci: 128
+generations: 24
+generation_years: 25
+recombination_rate: 0.02
+populations:
+  pop1: {size: 80}
+  pop2: {size: 80}
+samples_per_population: 20
+sample_generations: [0, 8, 16, 24]
+founder_frequencies:
+  pop1: {'0': 0.15}
+  pop2: {'0': 0.85}
+migration: {}
+selection: {}
+replacement:
+  - {generation: 12, recipient: pop1, source: pop2, fraction: 0.85}

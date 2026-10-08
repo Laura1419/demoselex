@@ -1,0 +1,20 @@
+# Allele 1 favored in pop1 and disfavored in pop2.
+type: opposing_selection
+seed: 10405
+n_loci: 128
+generations: 24
+generation_years: 25
+recombination_rate: 0.02
+populations:
+  pop1: {size: 80}
+  pop2: {size: 80}
+samples_per_population: 20
+sample_generations: [0, 8, 16, 24]
+founder_frequencies:
+  pop1: {'0': 0.4}
+  pop2: {'0': 0.6}
+migration: {}
+selection:
+  pop1: {'0': 0.25}
+  pop2: {'0': -0.25}
+replacement: []

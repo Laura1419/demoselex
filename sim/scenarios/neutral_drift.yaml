@@ -1,0 +1,17 @@
+# No locus under selection; Wright–Fisher drift and continuous migration.
+type: neutral_drift
+seed: 10401
+n_loci: 128
+generations: 24
+generation_years: 25
+recombination_rate: 0.02
+populations:
+  pop1: {size: 80}
+  pop2: {size: 80}
+samples_per_population: 20
+sample_generations: [0, 8, 16, 24]
+migration:
+  pop1: {pop2: 0.02}
+  pop2: {pop1: 0.02}
+selection: {}
+replacement: []
