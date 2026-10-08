@@ -1,57 +1,40 @@
-# Research Journal
+# Research journal
 
-## 2024-10-08 - Provenance and Run-Manifest Harness
+Append-only. Newest entries first. Format:
 
-**Author:** Agent-8 (via WG repro-harness task)
+```
+## YYYY-MM-DD HH:MMZ — <task-id> — <one-line>
+- what was done
+- what was found
+- blockers / next
+```
 
-### Summary
-Implemented a comprehensive provenance and run-manifest system for reproducible research. The system automatically records:
+## 2026-10-08 04:07Z — repro-harness — Provenance and run-manifest harness completed
+- Implemented comprehensive provenance and run-manifest system for reproducible research
+- Created scripts/provenance.py with CLI and library interfaces
+- Developed docs/PROVENANCE.md with comprehensive documentation and usage guide
+- Added scripts/provenance_example.py for integration examples
+- System records: git commit, command line, software versions, input file hashes, parameters, random seed, outputs
+- Writes to analysis/runs/<timestamp>-<slug>/manifest.json structure
+- Validated system with demo runs and file verification
+- Committed detailed implementation and documentation
+- Key finding: System provides robust reproducibility tracking for trajectory-replication project
+- Next: Integrate provenance recording into all analysis pipeline steps
 
-- **Git commit and branch information**
-- **Command line arguments**
-- **Software versions** (Python, numpy, pandas, etc.)
-- **Input file hashes** (SHA-256)
-- **Parameters and configuration**
-- **Random seed** (deterministic generation)
-- **Output file hashes**
+## 2026-10-08 04:07Z — recon-lit — Literature map of 13 closest method families completed
+- Systematically researched ancient-DNA time-series selection, admixture-aware inference, population-graph methods, and related approaches
+- Conducted web searches for PolyGraph, GRoSS, CLES/CLUES, Simon & Coop, Bayenv/LFMM, convergent adaptation, phylogenetic methods
+- Compiled comprehensive table comparing unit of analysis, structure representation, nuisance factors, evidence types across 13 methods
+- Produced explicit novelty statement identifying gaps in current methodology for detecting repeated directional selection across histories
+- Committed detailed literature map to docs/B-literature-map.md
+- Key finding: No existing method comprehensively handles temporal trajectories + ancestry-aware selection + cross-historical pattern detection
+- Next: These findings will inform method development in downstream tasks
 
-### Files Created/Modified
-
-- `scripts/provenance.py` - Main provenance library and CLI
-- `docs/PROVENANCE.md` - Documentation and usage guide
-- `scripts/provenance_example.py` - Usage example for analysis scripts
-- `scripts/__init__.py` - Package initialization
-- `scripts/build_taskgraph.py` - Added provenance demo task
-
-### Key Features
-
-1. **Library Interface** - Easy integration into existing analysis pipelines
-2. **CLI Tool** - Command-line interface for one-off runs
-3. **Deterministic Seeds** - Automatic seed generation from run context
-4. **File Hashing** - Content verification through SHA-256 hashes
-5. **Run Directory Structure** - Organized storage of manifests and outputs
-
-### Validation
-
-The system was validated by:
-
-1. Running the demo: `python3 scripts/provenance.py demo`
-2. Generating example analysis: `python3 scripts/provenance_example.py`
-3. Verifying manifests contain all required metadata
-4. Testing reproducibility with deterministic seeds
-
-### Integration Points
-
-The provenance system will be integrated into all analysis pipeline steps, ensuring:
-
-- Raw data remains immutable in `data/raw/`
-- Derived data is regenerable from raw + code
-- All random processes are seeded deterministically
-- Every execution creates a complete audit trail
-
-### Next Steps
-
-1. Integrate provenance recording into the main analysis pipeline
-2. Update existing analysis scripts to use the provenance system
-3. Add verification step to CI/CD to ensure reproducibility
-4. Document best practices for analysis development
+## 2026-10-08 04:05Z — recon-akbari — Comprehensive Akbari methodology reconstruction completed
+- Read Akbari et al. 2026 Nature paper supplementary information (184 pages)
+- Analyzed PQLseqPy GLMM implementation from GitHub repository
+- Documented sample size (22,274 individuals), geographic scope (West Eurasia), temporal range (14,000 years)
+- Detailed variant QC pipeline and GLMM mathematical formulation with worked collinearity derivation
+- Committed comprehensive reconstruction to docs/C-akbari-reconstruction.md with seed tracking note
+- Found that provenance.py script exists but is in different worktree; noted manual seed tracking approach
+- Next: downstream tasks (sim-glmm, lean-collinearity, sim-scaffold) can now build on this foundation
