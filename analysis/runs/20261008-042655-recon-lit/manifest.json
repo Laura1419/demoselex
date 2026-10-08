@@ -1,0 +1,21 @@
+{
+  "command": "recon-lit citation-verification upgrade of docs/B-literature-map.md",
+  "git": {
+    "clean": false,
+    "commit": "f8c0d1999f7cb2709ae6b0800862209b476d4b75"
+  },
+  "host": "lambda01",
+  "inputs": {},
+  "outputs": {
+    "deliverable": "docs/B-literature-map.md",
+    "journal": "docs/JOURNAL.md"
+  },
+  "parameters": {
+    "randomness": "none-deterministic-literature-work",
+    "task": "recon-lit",
+    "tools": "web_search exa/openai; pi agent glm-5.3"
+  },
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "seed": 0,
+  "timestamp": "2026-10-08T04:26:55.743550"
+}
