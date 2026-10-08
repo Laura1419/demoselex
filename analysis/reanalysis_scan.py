@@ -444,6 +444,8 @@ def main(argv=None):
     summary.loc[cand.index, "p_empirical"] = p_emp
     summary.loc[cand.index, "percentile"] = pct
     summary.loc[cand.index, "bh_fdr"] = cand["bh_fdr"].to_numpy()
+    if "source" not in summary:
+        summary["source"] = "scan"
     summary = summary[ESTIMATOR_COLUMNS]
     summary.to_csv(out_tsv, sep="\t", index=False)
 
