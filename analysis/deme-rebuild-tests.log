@@ -1,0 +1,16 @@
+test_adjacent_bins_form_real_three_node_paths (analysis.test_deme_rebuild.AnchoredPathTests.test_adjacent_bins_form_real_three_node_paths) ... ok
+test_anchor_prevents_transitive_genetic_chain (analysis.test_deme_rebuild.AnchoredPathTests.test_anchor_prevents_transitive_genetic_chain) ... ok
+test_duration_cap_prevents_giant_blob (analysis.test_deme_rebuild.AnchoredPathTests.test_duration_cap_prevents_giant_blob) ... ok
+test_missing_bin_and_geography_never_merge (analysis.test_deme_rebuild.AnchoredPathTests.test_missing_bin_and_geography_never_merge) ... ok
+test_common_neutral_donor_can_force_parallel_direction (analysis.test_deme_rebuild.DriftProcessTests.test_common_neutral_donor_can_force_parallel_direction) ... ok
+test_conjunction_cannot_be_driven_by_one_strong_deme (analysis.test_deme_rebuild.DriftProcessTests.test_conjunction_cannot_be_driven_by_one_strong_deme) ... ok
+test_forward_time_copy_number_direction (analysis.test_deme_rebuild.DriftProcessTests.test_forward_time_copy_number_direction) ... ok
+test_full_random_walk_covariance_not_independent_bins (analysis.test_deme_rebuild.DriftProcessTests.test_full_random_walk_covariance_not_independent_bins) ... ok
+test_shared_innovations_discount_joint_score (analysis.test_deme_rebuild.DriftProcessTests.test_shared_innovations_discount_joint_score) ... ok
+test_high_bits_first_and_arbitrary_site_order (analysis.test_deme_rebuild.TgenoEncodingTests.test_high_bits_first_and_arbitrary_site_order) ... ok
+test_real_cross_bundle_identical_calls (analysis.test_deme_rebuild.TgenoEncodingTests.test_real_cross_bundle_identical_calls) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.614s
+
+OK

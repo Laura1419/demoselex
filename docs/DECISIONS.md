@@ -72,3 +72,9 @@ Akbari's is the ancestry-collinear direction, ours is carried-in change, and tho
 the same regime.
 
 **Status: CLOSED.** See `docs/J-final-assessment.md`.
+
+## Independent directional-AMY re-evaluation — appended 2026-10-08
+
+[observation] New preregistration/rebuild/process audit: docs/deme-rebuild-prereg.md, docs/amy-argument-reanalysis.md, docs/directional-consistency-results.md. Fixed geographic/continuity paths yield 42 candidate long series; six high-support paths yield held-out control pass fraction **13/208=.0625** (95% interval **.0337–.1045**), provisionally passing the SNP gate. Finite Ne is unresolved; the CN null is NOT calibrated.
+
+[inference] Earlier closed Decision 5 does not settle the author's directional-AMY argument or unrestricted selection-vs-demography identifiability. The new data support only one long sufficiently sampled AMY CN series and zero qualifying ordered-deme successions, so Decision 4 remains unresolved. The confirmed low-first decoder bug requires rechecking loader-dependent relatedness/scans. No previous decision entry has been rewritten; this append records a separate critical audit and its narrower limits.

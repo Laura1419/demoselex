@@ -1,116 +1,43 @@
 {
-  "akbari_loci": 3,
+  "akbari_loci": 6,
   "alpha": 0.05,
-  "baseline_factors": {
-    "inference_error": 0.0,
-    "missing_rate": 0.0,
-    "selection_strength": 1.0,
-    "turnover_rate": 1.0,
-    "uneven_sampling": 1.0
-  },
-  "calibration": "neutral_drift baseline neutral loci, 95th percentile score",
+  "baseline_effect": 0.25,
+  "calibration": "95th percentile neutral-locus score, K=6 no-selection regime",
   "calibration_thresholds": {
-    "akbari": 2.7821211950491103,
-    "trajectory_naive": 2.7784659423843547,
-    "trajectory_related": 2.2832549277705074
+    "akbari": 2.6902504632666626,
+    "traj_all": 2.532266762395284,
+    "traj_max_subset": 4.586403581191099
   },
-  "cells_completed": [
-    "neutral_drift:baseline=1",
-    "neutral_drift:uneven_sampling=3",
-    "neutral_drift:missing_rate=0.3",
-    "neutral_drift:inference_error=0.15",
-    "replacement_only:baseline=1",
-    "replacement_only:uneven_sampling=3",
-    "replacement_only:missing_rate=0.3",
-    "replacement_only:inference_error=0.15",
-    "replacement_only:turnover_rate=0.5",
-    "replacement_only:turnover_rate=0",
-    "one_population_selection:baseline=1",
-    "one_population_selection:selection_strength=0",
-    "one_population_selection:selection_strength=0.5",
-    "one_population_selection:selection_strength=1.5",
-    "one_population_selection:uneven_sampling=3",
-    "one_population_selection:missing_rate=0.3",
-    "one_population_selection:inference_error=0.15",
-    "shared_selection:baseline=1",
-    "shared_selection:selection_strength=0",
-    "shared_selection:selection_strength=0.5",
-    "shared_selection:selection_strength=1.5",
-    "shared_selection:uneven_sampling=3",
-    "shared_selection:missing_rate=0.3",
-    "shared_selection:inference_error=0.15",
-    "opposing_selection:baseline=1",
-    "opposing_selection:selection_strength=0",
-    "opposing_selection:selection_strength=0.5",
-    "opposing_selection:selection_strength=1.5",
-    "opposing_selection:uneven_sampling=3",
-    "opposing_selection:missing_rate=0.3",
-    "opposing_selection:inference_error=0.15",
-    "selection_aligned_turnover:baseline=1",
-    "selection_aligned_turnover:selection_strength=0",
-    "selection_aligned_turnover:selection_strength=0.5",
-    "selection_aligned_turnover:selection_strength=1.5",
-    "selection_aligned_turnover:uneven_sampling=3",
-    "selection_aligned_turnover:missing_rate=0.3",
-    "selection_aligned_turnover:inference_error=0.15",
-    "selection_aligned_turnover:turnover_rate=0.5",
-    "selection_aligned_turnover:turnover_rate=0"
-  ],
   "claims": [
-    "observation: replacement_only calibrated FPR is 0.188 for trajectory_naive vs 0.061 under neutral_drift (nominal alpha 0.05); supplying the relatedness matrix changes it to 0.188, a repair of 0.000.",
-    "inference: one_population_selection baseline calibrated power is highest for trajectory_related (0.667); akbari is 0.167 (gap +0.500).",
-    "inference: shared_selection baseline calibrated power is highest for trajectory_naive (1.000); akbari is 1.000 (gap +0.000).",
-    "inference: opposing_selection baseline calibrated power is highest for trajectory_naive (0.000); akbari is 0.000 (gap +0.000).",
-    "inference: selection_aligned_turnover baseline calibrated power is highest for trajectory_naive (1.000); akbari is 1.000 (gap +0.000)."
+    "observation: max-over-subsets beats the GLMM (power>0.5 vs <=0.5) at f=0.2, strength=1 (device 0.95 vs akbari 0.25); f=0.2, strength=2 (device 1.00 vs akbari 0.30)",
+    "observation: neutral_drift max-over-subsets FPR is 0.050 calibrated vs 0.557 with the single-threshold (no multiplicity correction) device.",
+    "observation: replacement_only max-over-subsets FPR is 0.112 calibrated vs 0.642 with the single-threshold (no multiplicity correction) device."
   ],
-  "inference_error_levels": [
-    0.0,
-    0.15
+  "f_levels": [
+    0.2,
+    0.4,
+    0.6,
+    1.0
   ],
-  "label": "quick",
-  "missing_rate_levels": [
-    0.0,
-    0.3
-  ],
-  "n_cells_planned": 40,
-  "n_cells_scored": 40,
-  "n_loci": 12,
-  "partial": false,
-  "perturbation_seed_formula": "SeedSequence([replicate_seed, 0xC0FFEE])",
-  "relatedness_rho": 0.5,
-  "replicate_seed_formula": "scenario_seed * 10000 + replicate",
-  "runs": 6,
-  "samples_per_population": 8,
-  "scenario_seeds": {
-    "neutral_drift": 10401,
-    "one_population_selection": 10403,
-    "opposing_selection": 10405,
-    "replacement_only": 10402,
-    "selection_aligned_turnover": 10406,
-    "shared_selection": 10404
+  "min_subset_size": 2,
+  "n_loci": 20,
+  "n_rows": 42,
+  "n_trajectories": 6,
+  "null_regimes": {
+    "neutral_drift": "K=6, no selection, no replacement",
+    "replacement_only": "K=6, no selection, replacement pop1<-pop2 g12 f=0.85"
   },
-  "scenarios": [
-    "neutral_drift",
-    "replacement_only",
-    "one_population_selection",
-    "shared_selection",
-    "opposing_selection",
-    "selection_aligned_turnover"
-  ],
-  "selection_strength_levels": [
-    0.0,
+  "null_runs": 40,
+  "partial": false,
+  "replicate_seed_formula": "scenario_seed * 10000 + replicate",
+  "runs": 20,
+  "samples_per_population": 8,
+  "scenario": "subset_selection.yaml",
+  "strength_levels": [
     0.5,
     1.0,
-    1.5
+    2.0
   ],
-  "turnover_rate_levels": [
-    1.0,
-    0.5,
-    0.0
-  ],
-  "uneven_sampling_levels": [
-    1.0,
-    3.0
-  ],
-  "wall_seconds": 62.55
+  "subset_device_definition": "max over subsets |S|>=2 of |meta z| * sign concordance",
+  "wall_seconds": 277.53
 }

@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-10-08T19:58:22.197025+00:00",
+  "eligible_before_coverage": 18440,
+  "after_coverage": 12984,
+  "after_dedup": 11986,
+  "nodes": 435,
+  "paths": 269,
+  "qualifying_demes": 42,
+  "assigned": 3713,
+  "ancestry_overlap_sites": 5746,
+  "ancestry_neff_diagnostic": 15.89858954128321,
+  "max_ancestry_overlap": 0.7283567430039747,
+  "median_ancestry_overlap": 0.0,
+  "PCA_variance": [
+    0.017488904297351837,
+    0.005513086915016174,
+    0.0036515342071652412,
+    0.003007525112479925,
+    0.002330911811441183,
+    0.002045710338279605,
+    0.0010885571828112006,
+    0.0010180288227275014
+  ],
+  "control_locus_pass_fraction": null,
+  "calibration": "not yet run; see directional_consistency.py"
+}

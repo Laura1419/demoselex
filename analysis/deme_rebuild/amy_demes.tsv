@@ -1,0 +1,14 @@
+deme_id	n	n_nodes	min_node_n	date_min	date_max	span	n_supported_nodes	supported_span	qualifies_CN	descriptive_slope_copies_per_kyr	supported_slope_copies_per_kyr	oldest_supported_mean_CN	newest_supported_mean_CN
+8	2	2	1	3418.0	4450.0	1032.0	0	0.0	False
+9	1	1	1	4482.0	4482.0	0.0	0	0.0	False
+22	2	2	1	3700.0	4250.0	550.0	0	0.0	False
+26	3	1	3	6580.0	6704.0	124.0	0	0.0	False
+30	17	2	7	950.0	1025.0	75.0	2	75.0	False
+33	15	2	1	908.0	1229.0	321.0	1	229.0	False
+34	8	1	8	1000.0	1100.0	100.0	1	100.0	False
+35	1	1	1	4150.0	4150.0	0.0	0	0.0	False
+36	1	1	1	5175.0	5175.0	0.0	0	0.0	False
+38	2	1	2	3000.0	3411.0	411.0	0	0.0	False
+39	1	1	1	4531.0	4531.0	0.0	0	0.0	False
+40	5	1	5	1000.0	1589.0	589.0	1	589.0	False
+41	29	4	4	900.0	4487.0	3587.0	3	3487.0	True	-0.02922441286012134	-0.18832902060841317	7.6	6.1

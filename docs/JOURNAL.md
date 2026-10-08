@@ -152,3 +152,17 @@ This journal records the progress and decisions of the trajectory-replication re
 - Three simulator tests pass, including two end-to-end runs of all six fixed-seed scenarios and checks of dated genotypes, truth, and provenance; the required diff whitespace check passes.
 - The retained branch is clean before this journal entry but does not contain advancing `main`; WG completion previously rejected it on ancestry, and project policy reserves branch integration for the coordinator. No worker merge/rebase/pull was attempted.
 - Next: obtain a sanctioned reconciliation of the retained candidate, then retry WG completion without relaxing validation.
+
+## 2026-10-08 20:10Z — independent directional-AMY reanalysis (bounded session)
+
+[observation] Preregistered anchored paths and a held-out Gaussian drift-plus-jump check before new outcomes, with timestamped numerical/feasibility amendments. Corrected load_aadr.py's verified TGENO bit-order error; ten source-named regressions pass, including actual HO/1240K call concordance and full random-walk covariance.
+
+[observation] Rebuild: 42 candidate paths, 35–377 people, 3–5 nodes, 2,151–4,850 years. Ancestry effective diagnostic 15.90, not a genealogical replicate count. Six-path held-out SNP pass fraction 13/208=.0625 (95% interval .0337–.1045), preliminary calibration gate passed; Ne fits at infinity boundary and is not resolved. AMY: 522 numeric AADR matches, 87 carriers in 13 paths, only one long supported CN series, zero qualifying >=3-deme successions. CN process probability remains unidentifiable/un-calibrated.
+
+[inference] The prior capstone overstates falsification; locus-rank scans/finite P floors and bad units did not test this CN argument. Conversely, shared neutral donors can manufacture consistent directions, so fair iid signs require evidence. Evidence cannot currently establish or refute AMY parallel selection. See the three new docs and analysis/deme_rebuild/ outputs.
+
+[observation] No git command/staging/commit, raw-data modification, or Lean edit. RunRecorder git probing explicitly disabled; manifests record code/prereg/metadata/output hashes and raw genotype path/size. Prereg snapshots reconstructed from the append-only text match their recorded pre-run hashes. Two initial implementation failures (integer output casting, boundary zero variance) were repaired before successful fitting; no rank transform forced calibration.
+
+[inference] Next: parent review, rerun affected old loader-dependent results, establish donor-resolved continuity and CN haplotype/mutation calibration with more independent long series (including the claimed Andes replication). Do not promote this feasibility result into a selection discovery.
+
+[observation] Before finishing, added separately timestamped pre-run secondary weakest-replicate statistic (Amendment 4), because a pooled sum can be outlier-driven. Held-out directional controls pass **9/208=4.33%** (95% interval **2.00–8.05%**); preliminary gate passes without a post-hoc control-rank transform. Conditional power is **7.53/15.27/42.77/90.22%** at .25/.5/1/2 per-deme SD. Eleven regression tests now pass, including the one-outlier contrast. This secondary result is explicitly exploratory relative to the original preregistration; no biological locus interpretation is enabled.

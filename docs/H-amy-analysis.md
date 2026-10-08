@@ -135,3 +135,11 @@ python3 analysis/amy.py --figures    # fig/amy1_copy_number_distribution.png, fi
 ```
 
 `--trend` exits 2 with a loud message if the trajectory table is missing.
+
+## Independent anchored-deme CN audit — appended 2026-10-08
+
+[observation] New analysis/directional_consistency.py uses this module's CN loader and AADR biological identity linkage rather than requiring ENA/Akbari overlap. **522** ancient rows have actual numeric AADR date/latitude/longitude; **424** survive genotype/identity rebuilding criteria, **87** enter **13** qualifying long AADR paths. Only **one** has >=3 CN time nodes with >=5 carriers/node across >=2,000 years. The prespecified between-successive-demes feasibility check finds **zero** >=3-deme nonoverlapping successions with >=5 carriers/deme in one geographic cell.
+
+[inference] The earlier zero Akbari-ENA overlap does NOT block AADR trajectory labeling; the older overlap helper also used truthiness of wrong metadata columns, which the new analysis validates against columns 10/17/18. Insufficient CN longitudinal replication, not Akbari naming, is the measured limitation now.
+
+[observation] Held-out SNP control pass fraction **13/208=6.25%** (95% interval **3.37–10.45%**) passes the preliminary process gate. **CN null remains uncalibrated**; no identifiable drift-plus-jump CN ordering probability is reported. See docs/directional-consistency-results.md for all CN node means/slopes and limitations. [inference] These data cannot prove or disprove the accepted parallel-AMY argument; SNP Ne is not a CN mutation/haplotype model.
