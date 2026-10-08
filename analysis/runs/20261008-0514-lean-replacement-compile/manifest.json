@@ -1,0 +1,39 @@
+{
+  "run_id": "20261008-0514-lean-replacement-compile",
+  "timestamp": "2026-10-08T05:14:54.895085",
+  "git": {
+    "commit": "91f3d9e033e2eb2e28cc2e76c8b32bf9d486d383",
+    "branch": "main",
+    "dirty": true
+  },
+  "command": [
+    "cd lean && lake build",
+    "cd lean && lake env lean TestReplacement.lean",
+    "cd lean && lake env lean --stdin #print axioms"
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-139-generic",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "sklearn": "1.4.1.post1",
+    "lean": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "lake": "Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)",
+    "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "inputs": {
+    "lean/lean-toolchain": "sha256:d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lean/lake-manifest.json": "sha256:caf7eb5f74185ee828371f168e8264c46db1ad90d115115e08515eee4a97e92f",
+    "lean/TrajectorySelection/Defs.lean": "sha256:be0f47f125d5d61b999e7b853e12c7216585135811b0bb4d27f7ea0baa1ee25d"
+  },
+  "parameters": {
+    "randomness": "none; symbolic finite sign distribution",
+    "assumptions": "two independent signs; replacement q=1/2; replication 1/2<q<=1"
+  },
+  "outputs": {
+    "lean/TrajectorySelection/Replacement.lean": "sha256:e7dbd61af1832b41a64c41742029bdfec106c8373ecb41ef94cb965153f96247",
+    "lean/TestReplacement.lean": "sha256:4e148fd14e560806d01449fe869ea5de7e6d3cdbc50ee23d4b51a1d1e9e73535"
+  },
+  "seed": 0
+}

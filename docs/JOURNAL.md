@@ -103,6 +103,11 @@ This journal records the progress and decisions of the trajectory-replication re
 - Seeded structured-null, strong single-locus sweep and fixed-variance published PQLseqPy fixture checks are recorded in `sim/test_akbari_glmm.py`; see `docs/F-reproducible-code.md` for commands, assumptions and numerical comparison.
 - No locus-by-locus paper summary validation without matched counts, QC and GRM; demographic replacement calibration remains for `sim-sweeps`. Provenance manifest under `analysis/runs/`.
 
+## 2026-10-08 05:13Z — lean-replacement — Sign-null and replication separation
+- Added fully proved two-trajectory finite sign model in `lean/TrajectorySelection/Replacement.lean` and regression examples in `lean/TestReplacement.lean`.
+- Constant within-source trajectories plus an **additional iid fair-sign noise assumption** give the exchangeable-sign null. Shared positive true drift plus an **additional iid sign-detection bias `q>1/2`** gives `P(C=1)=q²+(1−q)²>1/2`; drift alone cannot justify the sign law.
+- `cd lean && lake build` and focused Lean tests pass. `#print axioms` reports only Lean's standard `propext`, `Classical.choice`, `Quot.sound`; no project `sorry` or new axiom. This is a two-trajectory model, not a calibrated demographic scan. Section D records scope and limitations. Seed-0, version-pinned provenance: `analysis/runs/20261008-0514-lean-replacement-compile/manifest.json`.
+
 ## 2026-10-08 05:02Z — lean-setup — Reproducible Lean bootstrap repair
 - Corrected the earlier entry's “pinned to master” claim: `lean/lakefile.lean` and the repository-root Lake entry now require Mathlib `v4.34.1` (locked to `d13f23b...`), with checked-in Lake manifests and Lean 4.34.1 toolchain files.
 - `lake build` passed from both `lean/` and the repository root; `lake env lean Test.lean` resolved the imports in both layouts. No project `sorry`, `axiom`, or `native_decide` beyond source comments; `lean/AXIOMS.md` now documents a per-use policy and flags inherited statistical placeholders as non-results.

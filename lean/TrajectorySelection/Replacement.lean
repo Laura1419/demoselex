@@ -94,6 +94,14 @@ noncomputable def ReplacementScenario.concordance {Time : Type*}
     (scenario : ReplacementScenario Time) : Option ℝ :=
   pairConcordance scenario.observedSigns
 
+/-- At fixed observed signs the statistic cannot depend on source frequencies
+or mixing weights. This is a claim about the sign-only statistic, not about how
+real-world frequency estimates acquire their signs. -/
+theorem replacement_concordance_determined_by_signs {Time : Type*}
+    (a b : ReplacementOnly Time) (signs : Bool × Bool) :
+    (ReplacementScenario.mk a signs).concordance =
+      (ReplacementScenario.mk b signs).concordance := rfl
+
 /-- The mass of two independent sign observations, each positive with probability `q`.
 This is an algebraic finite probability model, not a claim about arbitrary errors. -/
 def signPairMass (q : ℝ) (signs : Bool × Bool) : ℝ :=

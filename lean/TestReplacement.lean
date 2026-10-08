@@ -18,6 +18,12 @@ example : highConcordanceMass (3 / 4) = (5 / 8 : ℝ) := by
   rw [highConcordanceMass_eq]
   norm_num
 
+-- Different replacement histories cannot alter concordance for fixed observed signs.
+example {Time : Type*} (a b : ReplacementOnly Time) :
+    (ReplacementScenario.mk a (true, false)).concordance =
+      (ReplacementScenario.mk b (true, false)).concordance :=
+  replacement_concordance_determined_by_signs a b (true, false)
+
 -- Without sign bias, the high-concordance mass need not exceed the null.
 example : highConcordanceMass (1 / 2) = (1 / 2 : ℝ) := replacement_high_mass
 
