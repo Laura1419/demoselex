@@ -1,0 +1,125 @@
+# Measured-mixture residual test — preregistration
+
+[observation] Written 2026-10-08T23:23Z BEFORE any new statistic, power simulation, component summary, or genome-wide scan in this session. Schemas and earlier reports were inspected, not new numerical outcomes. Results will be appended; these commitments will not be rewritten.
+
+## Model and measured inputs
+
+[inference] A null with an unrestricted unobserved donor frequency can explain any trajectory and is unfalsifiable. Null parameters must be constrained by measurements independent of the tested temporal outcome. General model: y_i = sum_k w_ik mu_k + beta t_i + epsilon_i. Genome-wide ancestry weights must exclude the tested region; mu_k must be actual component-member trait/frequency means, not donor frequencies optimized to cancel a slope. A locus's mean necessarily uses measurements of that locus: “no locus-fitted demographic parameters” does NOT mean that frequencies can be measured without observing alleles. Baseline sampling uncertainty must be propagated or eliminated by design.
+
+[observation] AMY release provides categorical p2 labels, not fractional ancestry. This analysis is the COARSE one-hot limit, w_ik=1[group_i=k]. Source: data/raw/amy/copy_number_table_for_supplement.tsv (Ancient rows, sample, p2, AMY1), age from the archive's supplementary_tables/ancient_metadata_for_supplement.tsv, exact sample join. Extract archive to analysis/mixture_null_scratch/, leaving raw immutable. Exclude missing numeric age/CN or component; primary panel is all labeled Ancient rows, with regional coverage reported rather than silently called West Eurasian only.
+
+[inference] This is NOT a full admixture correction: fractional ancestry and turnover WITHIN p2 are unobserved. Labels include periods and cannot be assumed to be persistent biological lineages. p2 did not use this session's AMY regression, but its provenance is not independently demonstrated to be genome-wide estimated admixture.
+
+## Statistic, uncertainty, and parameter accounting
+
+[inference] t=-age_BP/1000 (forward kyr). x=t-mean(t|group); r=y-mu_group, where mu is measured mean CN or ALT dosage/2 among actual component members. beta=sum(x*r)/sum(x²). x sums to zero within each group, so ANY constant measured baseline, including a split-sample mean, gives exactly the SAME numerator. Thus baseline uncertainty cancels for beta, not for pooled composition predictions. No intercept or donor frequency is optimized to explain beta. Residuals for variance estimation subtract the measured group mean and beta*x; charge K means + one beta, df=N-K-1. Use HC3 heteroskedastic standard error with leverage 1/n_group+x²/sum(x²) and Student-t reference with that df; per-group slopes use K=1. Also report homoskedastic conditional SE. Tests are two-sided alpha=.05, not evidence of mutation-level independent replication.
+
+[inference] Count K measured locus baselines, N-K within-group contrasts, one common slope, and one residual variance (HC3 has N residual second-moment contributions, not new demographic donor parameters). Labels and subdivision boundaries are fixed independently of CN. DOF stress: K=1 pooled; p2; p2×fixed 2kyr, 1kyr, .5kyr, .25kyr date bins; K=N singleton saturation. Report N,K,df, time sum-of-squares, beta, SE, P and 80%-power floor (1.96+.8416)*SE. Time subdivision is an intentionally overflexible diagnostic, NOT the approved correction. K=N annihilates all time contrasts and can explain anything; slope then NOT IDENTIFIABLE. At earlier K, time information already degrades. Cross-fit component means (seeded 50% membership holdout) and verify slope invariance; baseline prediction RMSE is descriptive and not a test of selection.
+
+## Falsifiability, specificity, and power
+
+[inference] Use actual AMY component sizes and dates; simulation noise Gaussian with measured within-group residual variance, flat measured component means. Fixed seed 20261008, 1000 replicates/effect. Inject beta*x within EVERY group. Effects in copies/kyr: 0,.05,.1,.2,.3,.5,.75,1,1.5,2. --simulate accepts a specified effect; --power-curve uses this grid. Report Monte Carlo binomial interval and smallest grid effect attaining >=80% rejection, plus analytic SE floor. Zero effect is a pure composition shift with differing means and actual composition/time confounding: residual rejection should be ~5%, while pooled regression may reject. Gate: null rejection interval contains .05, positive effect reaches >=80%; failure means no valid interpretation. A procedure that cannot reject injected true change is worthless for that effect class. Gaussian conditional power is not a demographic-process or CN-mutation calibration.
+
+[inference] Report group n, distinct dates, actual span, time information, CN mean, slope/z/P and 80% floor. A coarse longitudinal series is minimally informative if >=16 people, >=3 distinct dates and >=2kyr span; this is a feasibility threshold, NOT proof of continuity. No conversion from claimed s=.02 to copies/kyr without haplotype frequency, fitness and generation model. A negative low-powered regression cannot refute that claim.
+
+## Independent source audit
+
+[inference] Recompute all supplied component counts/means/age-order slopes, ancient versus modern haplotype label sets, per-H1/H2 haplotype carrier mean DIPLOID AMY1 (not inferred haploid copy number), and H5 frequency counting haplotype slots in modern p2 groups (also continent aggregation from p1). State every numerical disagreement. Shared label is not proof of single mutation identity or direction of ancestry. Andean inheritance and amount of elevation explained are not identified by those summaries alone; do not infer causation from label overlap.
+
+## Genome-wide held-out gate
+
+[inference] Use AADR v66.p1 1240K and HO ALT dosage reader and run analysis/test_aadr_orientation.py before scan. Ancient numeric 0<BP<=14000, no FAIL/CRITICAL, deduplicate biological individual by first input record; ancestry labels are AADR .ind group IDs, fixed without candidate allele information. Retain groups n>=16, >=3 dates, >=2kyr span; report all counts. Akbari pgen uses exact shared sample IDs and exact CHROM/POS/REF/ALT matches, ALT dosage/2. Same within-group statistic. Systematically choose autosomal sites in .snp order every 200th index, exclude chr1 and chr6, retain first 1200 exact matches to pvar; no slope or X-based selection. This is a bounded genome-wide-distributed CONTROL scan, not all-variant discovery. Require >=100 called records and >=2 supported groups (each >=8 calls, >=3 dates, >=2kyr span) per SNP; restrict pooled AF [.1,.9]. Missing calls are not chromosomes; use individual quantitative residuals, not a diploid binomial fiction.
+
+[inference] Split controls first half TRAIN / second half HELD OUT by fixed order. Run raw HC3 test, report held-out fraction P<=.05 with exact 95% interval for EACH bundle, plus median and 10/90% 80%-power floors in allele-frequency change/kyr BEFORE locus interpretation. If raw gate fails, interpretation blocked. A separately dated amendment must precede fitting any genome-wide slope covariance/variance correction on TRAIN controls and retesting HELD OUT; no ranks fitted on held-out data. Even a passing gate only validates background exchangeability provisionally; these are not guaranteed neutral sites. Do not interpret biological loci in this bounded run.
+
+[inference] Join available Akbari statistics by exact ID using analysis/load_akbari.py, report match count, X median and counts |X|>5.45 and >=3.16 without centering X or treating |X|<3.16 as proven neutrality. If longitudinal labels or call support are inadequate, report inability to test and no invented detection floor. Existing rebuilt deme products may be inspected as secondary feasibility evidence, not substituted silently for ancestry labels.
+
+## Prediction and falsifier
+
+[speculation] Coarse p2 composition may explain much of the pooled AMY trajectory, but sparsity and coarse labels may prevent deciding whether within-lineage selection contributed. The prediction is falsified for this coarse null by a significant calibrated within-group residual; the method itself is falsified by failure on null controls or lack of injected-effect power. Strong sustained within-lineage ramps with sufficient time information should pass. Uniform replacement without within-lineage change should not.
+
+## Results — appended only after registered runs
+
+[observation] Pending at registration.
+
+## Amendment 1 — singleton safeguard, 2026-10-08T23:24Z
+
+[observation] Initial audit found an additional CHG individual (K=8, not seven labels); the first simulation produced invalid NaN variance for that singleton and no valid power estimates. [inference] Before rerunning power, set a singleton's conditional sigma to zero, and exclude leverage-one rows from the HC3 sum exactly as in the primary fit. Such rows have x=0 and no slope information; this changes no valid slope. Retain all 533 records and charge K=8. Initial invalid simulation output is not evidence of no power.
+
+[inference] H5 source audit clarification before added aggregation: p1 is population, p2 is macroregion. Report EA, WEA, PEL, Pima directly; report pooled Karitiana+Surui for a clearly named Amazonian subset, not all Amazonian populations. Carrier CN means pooled across all types are a measurement association, not causal variance decomposition.
+
+## Amendment 2 — distributed control panel and power resolution, 2026-10-08T23:26Z
+
+[inference] Before any genome-wide control outcome, replace “first 1200” with evenly spaced 1200 indices across ALL exact-matched eligible every-200th .snp sites; otherwise input chromosome ordering would confine the controls to early chromosomes and defeat a genome-wide-distributed validation. If fewer than 1200 match, use all. Candidate-independent CHROM/POS/REF/ALT selection remains unchanged. HO must use its own .ind/.anno, not assume row correspondence.
+
+[observation] AMY coarse-grid conditional power crosses 80% between .3 and .5 copies/kyr. [inference] Before computing a more precise simulation floor, add .35,.4,.45 copies/kyr to the SAME seeded 1000-replicate design; this is a pre-run resolution refinement, not an independent confirmatory test. Report the original grid and refined grid together.
+
+## Timestamp precision and implementation checks — 2026-10-08T23:26Z
+
+[observation] Wall-clock inspection at 23:25:44Z showed amendment file mtime 23:24:12Z: the minute labels above were rounded prospectively while drafting. Chronology correction: Amendment 2 was actually persisted at 23:24:12Z, BEFORE the refined-power/genome-wide commands at approximately 23:24:20Z. The initial registration and singleton amendment likewise preceded their respective runs. These are local pre-run registrations, not an external immutable registry.
+
+[inference] Register implementation regression checks before the next run: explicit fixed-effect least squares must equal centered beta; arbitrary shifts to component baselines and 50% member means must leave beta unchanged; singleton contributes no time information; saturated labels produce undefined beta; NaN excludes an observation. Toy smoke simulation uses three groups of 50, each equally spaced over 4kyr with between-group date offsets -3,0,3 and baselines 2,5,9, sigma=1, seed 20261008: beta=1 should attain >80% rejection (100 replicates), beta=0 <10% rejection while pooled >90% (1000 replicates). The first toy check was run as a software smoke test before this explicit listing; it is not confirmatory scientific evidence. The actual AMY power/specificity experiment was registered before running.
+
+## Amendment 3 — descriptive decomposition before its run, 2026-10-08T23:27Z
+
+[inference] Compute the pooled slope of measured p2 means on t and its ratio to observed pooled slope; compute residual contribution separately. Identity: pooled_beta = composition_beta + within_beta * within_Sxx / pooled_Sxx. This in-sample decomposition is descriptive/partly algebraic, NOT evidence that ancestry caused the differences. Also compute pooled composition slope from seeded 50%-member component means (same seed/design) and prediction RMSE on the excluded members. These baseline means are constrained by actual measurements, not optimized donor parameters. Report fraction of time information remaining after p2 centering.
+
+## Amendment 4 — longitudinal-deme fallback, before outcomes, 2026-10-08T23:28Z
+
+[observation] Exact shared IDs leave 115 people in the 17 qualifying ancestry-label groups; zero pgen loci satisfy the original >=100-call supported-group gate. [inference] Register a SECONDARY fallback using the previous genome-wide rebuilt geographically anchored paths, NOT treating period labels as continuous. Independently validate saved individual row IDs/dates/biological deduplication against current AADR, node membership/counts and adjacent 1kyr bins, >=3 nodes, >=30 people, >=2kyr span; run analysis/test_deme_rebuild.py. Describe source's anchor distance rules and eight-PC genome-background construction. Do not claim that artifact checks alone establish true genealogical continuity.
+
+[inference] Use ALL validated qualifying paths as groups (no phenotype-driven choice), same common residual slope/support filter and HC3; report inventories and control fractions for AADR and pgen separately. Remove controls overlapping the saved 6000-SNP embedding panel; use the previously selected genome-distributed matched sites otherwise. Keep chronological/data-independent train/heldout split. Raw failure blocks interpretation; do not silently call prior lane's GP calibration the calibration of THIS test. Report floors before any biological locus (none will be interpreted). If a shared genome-wide variance parameter is needed, register it separately before fitting.
+
+## Amendment 5 — measured genome-wide temporal variance, before fitting, 2026-10-08T23:31Z
+
+[observation] Secondary longitudinal panels fail raw HC3 calibration: AADR 32/395=8.10% (CI 5.61–11.24%), pgen 31/390=7.95% (5.46–11.09%). No locus is interpreted. Individual HC3 cannot alone represent shared temporal drift/turnover innovations.
+
+[inference] Register ONE additional shared demographic second-moment parameter per bundle, estimated on TRAIN controls only: tau²=max(0, mean((beta_l²-SE_l²)/(AF_l*(1-AF_l)))). Null residual slope beta_l ~ N(0, SE_l²+tau² AF_l(1-AF_l)). Do NOT estimate a per-locus drift, donor frequency, or mean shift. Do NOT center beta, ALT, or Akbari X. This is a measured background temporal-slope variance, NOT a reconstructed Ne or donor model. Training selection can inflate tau; this potentially loses power, so report it and don't call controls guaranteed neutral. The mean/variance fit costs one TRAIN parameter; component means still cost K_l at each locus; validation loci contribute zero fitted correction parameters. Use Student-t df=L_train-1 as an approximate finite-training allowance, and report 500 seed-20261008 TRAIN bootstrap tau² quantiles. Bootstrap is a uncertainty diagnostic, not an exact null proof.
+
+[inference] Run ONLY this prespecified repair on both longitudinal bundles. On untouched HELD OUT, report .05 fraction/exact CI and corrected 80% floors (t_.975,Ltrain-1+.8416)*sqrt(SE²+tau² AF(1-AF)). If corrected gate fails, STOP interpreting any locus rather than choose a model on held-out outcomes. This second examination is a preregistered repair after a failed initial model, not a pristine external validation set; an independent future panel is still required. Report the zero-parameter raw versus one-parameter corrected answer explicitly.
+
+[inference] Conditional score-space power check before computation: seed 20261008, 10000 standardized Gaussian noise replicates, using each HELD OUT locus's corrected SE and the same fixed threshold; common injected frequency ramps 0,.01,.02,.03,.04,.05,.075,.1 per kyr. This tests power of the calibrated approximate slope law, NOT a full genotype or Wright–Fisher simulation. Do not use this internally generated null pass rate to claim empirical calibration; the actual held-out fraction is the gate.
+
+[observation] Amendment 5 actually persisted at 2026-10-08T23:30:15Z, before any tau fit/power computation; its 23:31Z heading was a drafting-minute error, not the run time. Tool-order chronology is authoritative for these local pre-run registrations.
+
+## Amendment 6 — same injected data under added DOF; strict CN-series feasibility, 2026-10-08T23:31:46Z
+
+[inference] Before computing these secondary outputs: generate one fixed Gaussian CN dataset per effect (0,.5,2 copies/kyr), 1000 replicates with actual original p2 means, residual SDs, x and seed. Test the SAME generated matrices under pooled, p2, p2×fixed 2/1/.5/.25kyr partitions and singleton labels; report power/null rate and unidentifiable saturation, not rerandomized or refitted donor populations. Labels are fixed from dates, never from CN. This is the direct power cost of added nuisance baselines.
+
+[inference] Independently join the 533 release ancient records to rebuilt AADR biological identities using exact tokens from Genetic ID base, Individual ID and skeletal code; reject ambiguous tokens, validate numeric AADR dates. Report CN node counts; a strict longitudinal series requires >=3 nodes, >=5 CN people/node, >=2kyr CN date span, >=2 such demes for replication. Report actual per-path counts/spans and common within-deme slope/floor where identified. Distinguish the five coarse p2 series from these continuity-constrained series. Use AADR dates for node membership/strict-series slopes (archive dates remain primary p2 test); no SNP tau may be converted into CN variance.
+
+## Results and direct answer to the author's objection — appended 2026-10-08T23:37:05Z
+
+[observation] Complete registered-run results: docs/amy-mixture-null-results.md, docs/genomewide-mixture-null.md; per-sample/per-control tables and seeds under analysis/mixture_null/. The preregistration above was written before the new results; later amendments explicitly disclose what had already been inspected. This local document is not an externally timestamped immutable registry. Initial invalid singleton simulation, a unit-test fixture error and a feasibility output-key error were repaired without changing the scientific statistic; valid reruns are recorded.
+
+### (a) What can pass?
+
+[inference] **Sustained within-lineage changes exceeding measured composition AND measured background temporal variation**, with enough independent temporal information, can pass. The correction cannot cancel a within-group ramp by changing a constant component mean: centered time makes the numerator exactly invariant. On actual AMY dates, an injected .5-copy/kyr ramp passes91.8% of the time, .75 passes99.9%; a pure composition shift passes only4.1%, while a pooled trend falsely rejects99.9%. Therefore this bar is NOT universally too strong and does NOT explain away any signal by definition. A strong pooled signal, including a claimed selection coefficient, is not automatically a strong identifiable within-lineage signal.
+
+[inference] A signal's mere correlation with ancestry does NOT prove it is carried in or justify removing it. Only independently measured composition predicts what should be subtracted. If ancestry/source means are not measured well enough, label the mechanism unresolved; do not posit whatever donor makes it disappear. Selection in an unsampled source or during a population's formation is also real selection but may not be testable by descendant within-lineage time series. That is an identifiability limit, not refutation.
+
+### (b) Minimum detectable effects
+
+[observation] AMY common coarse-label effect: 80% simulation crossing between **.4 and .45 copies/kyr**, smallest refined tested grid **.45**; per-old-label approximate floors **.53–3.02 copies/kyr**. Strict continuity-constrained AMY common floor across87 carriers is approximately **1.00 copies/kyr**, and there is only **one** adequately supported strict path (25 supported carriers,3.487kyr span). Genome-wide common-frequency median80% floors: broad-label AADR/HO approximately **.113/kyr**; pgen broad-label panel untestable. Validated longitudinal demes with one TRAIN-fitted variance parameter give **.0309/kyr AADR**, **.0260/kyr pgen**; average>=80% conditional power first occurs on tested grids at **.04** and **.03/kyr**. These are conditional linear-ramp effects, NOT s or universal selection thresholds.
+
+### (c) Is AMY compositional here?
+
+[observation] Observed pooled slope **.218 copies/kyr**, P=3.31e-8; measured-label within residual **.151±.119**, P=.206. Measured full-sample component means descriptively account for94.97% of pooled slope, but half-member means predict a smaller composition slope (.150 versus .207), reflecting finite reference samples. Listed seven component means/counts are reproduced but omit **CHG n1**, so there are eight labels; PEL H5 is **.4471**, not .46; HC3 Early-farmer z=**1.348**, while homoskedastic z=1.279. All10 ancient structural labels occur in modern samples, but shared labels do not prove single mutational ancestry or a measured causal Andean source contribution.
+
+[inference] **Compatible with measured-category composition, NOT proven purely compositional.** The data do not require detectable common within-category change under this conditional noise null. They cannot test the independent continuity-constrained replicated AMY claim:87 carriers lie in13 candidate paths but only ONE has >=3 supported CN nodes and >=2kyr span. Five broad p2 categories have time depth/n, but are not established persistent lineages. No defensible map from claimed s≈.02 to these CN ramps exists without structural-haplotype frequencies, fitness mapping and generation history. Consequently the previous conclusion “s=.02 fails, therefore demography explains it” is not supported by this audit.
+
+### (d) What SHOULD a correction be?
+
+[inference] **A frozen, uncertainty-aware prediction from independently measured ancestry/source inputs, followed by a within-lineage excess-change test, with independently validated error rate and reported power.** No locus-specific unobserved donors; no time subdivisions selected to erase an inconvenient outcome; no implicit declaration that nonsignificance is absence. Measure source means from actual component members, propagate their uncertainty (or eliminate constant-baseline uncertainty by orthogonal contrasts), account for background drift/temporal covariance on other loci, and charge nuisance complexity by sample/locus holdout. Predefine the target: this common-residual test is not itself a proof of independent mutational or unanimous multi-deme replication.
+
+[observation] Genome-wide control fractions were reported for EVERY scan: broad-label1240K6.22%, HO7.14% (provisional finite-panel gates pass), pgen undefined/no support; raw strict-deme1240K8.10%, pgen7.95% (**fail**). The registered one-global-variance repair, fitted only on395/389 TRAIN loci, gives held-out **6.08%** and **3.85%**, both exact95% intervals containing5%. No biological locus was interpreted under a failed null. Correction remains provisional because LD, broad control selection and reuse of the same validation panel after failure limit certainty.
+
+[inference] The clearest falsifiability demonstration is the nuisance-DOF experiment on the SAME injected dataset: .5-copy/kyr power is91.8% atK8,23.1% atK21,5.4% atK55,3.8% atK81; atK=N533 the slope is unidentifiable. A correction with unsupported flexibility really CAN make any signal disappear. Constraining it to measured data and publishing that power loss is the constructive solution, not abandoning structure correction altogether.
+
+## Validation record
+
+[observation] The measured-baseline/OLS/singleton/missingness/determinism/power-specificity regression suite passes5 tests; existing encoding/path/process suite passes11; actual AADR-versus-pgen orientation check passes. Both required AMY CLI modes were exercised at seed20261008. All scans, floors, parameter counts, failures and exact binomial intervals are reported above and in the results docs. Provenance records deliberately disable git probes to obey the no-git rule. No file was staged by this worker; preexisting repository staging was not queried because ALL git commands were prohibited.
+
+## Implementation validation extension — 2026-10-08T23:37:47Z, before its run
+
+[inference] Add source-named genome-wide software regressions: missing/negative dosage must not create supported chromosomes; unsupported per-locus groups must not pass; in a two-group120-person synthetic frequency matrix with prespecified .05/kyr ramp, score_matrix must return that slope and invert its sign if ALT is complemented. A TRAIN-only variance fit must be invariant when HELD OUT slopes are changed arbitrarily; a zero training excess-variance moment must clip tau² to zero. These are implementation checks, not extra biological-statistic analyses.
