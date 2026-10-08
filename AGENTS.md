@@ -27,7 +27,8 @@ a bug. Update both together.
 <!-- worksgood-managed-guide:v1:end -->
 ## Project context: trajectory-replication research
 
-Repo root: `/home/erikg/demoselex`. Read `docs/MISSION.md` first; it is authoritative.
+Read `docs/MISSION.md` first; it is authoritative. All paths below are relative to your
+current working directory (the repository root). Use relative paths, not absolute ones.
 
 - Living research doc sections live in `docs/` (`A-` .. `J-`). Update the section your task owns.
 - Append a short entry to `docs/JOURNAL.md` after each work session.
@@ -49,8 +50,7 @@ Repo root: `/home/erikg/demoselex`. Read `docs/MISSION.md` first; it is authorit
 - Do not add trailing whitespace; do not add conflict markers.
 - Every commit message: `<type>(<task-id>): <summary>`.
 
-- **Never run `git merge`, `git rebase`, `git pull`, or `git stash pop` in your worktree.**
-  Your branch is landed by the coordinator. Just edit, `git add`, `git commit` on your
-  own `wg/agent-N/<task>` branch. If the branch looks behind `main`, that is expected.
-- Keep edits scoped to the files your task owns. Do not rewrite shared files that other
-  tasks own (`docs/JOURNAL.md`, `docs/PROVENANCE.md`, `docs/DECISIONS.md`): append only.
+- **Never run `git merge`, `git rebase`, `git pull`, or `git stash pop`.** Just edit,
+  `git add`, `git commit` on the current branch. The coordinator handles integration.
+- Keep edits scoped to the files your task owns. Never rewrite shared files owned by
+  other tasks (`docs/JOURNAL.md`, `docs/PROVENANCE.md`, `docs/DECISIONS.md`): append only.
