@@ -1,0 +1,5 @@
+# Append-only shared docs: union merge avoids conflicts between concurrent workers.
+docs/JOURNAL.md merge=union
+docs/PROVENANCE.md merge=union
+docs/DECISIONS.md merge=union
+docs/F-reproducible-code.md merge=union
