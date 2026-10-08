@@ -30,7 +30,10 @@ print(result.slopes[["locus", "trajectory", "slope", "se", "direction", "n", "sp
 print(result.summary[["locus", "concordance", "n_effective", "meta_slope", "q"]])
 ```
 
-From the repository root, run `python3 -m pytest -q sim/test_trajectory_stat.py`.
+From the repository root, run `python3 -m pytest -q sim/test_trajectory_stat.py`
+and `python3 -m sim.validate_trajectory_stat --seed 31415`. The latter records
+the seeded synthetic counts, tidy slopes, summary, code hashes and software
+versions through `scripts/provenance.py` under `analysis/runs/`.
 The fixed-seed designed test checks strong trends of both signs; analytic
 binomial SE, duplication invariance, relatedness discount, zero/tied signs,
 heterogeneity and a turnover-only pooled trend are separate regressions.
