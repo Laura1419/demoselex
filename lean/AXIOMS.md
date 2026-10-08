@@ -6,7 +6,7 @@ This file documents all uses of `sorry`, `axiom`, and `native_decide` in the Lea
 
 Every use of the following constructs must be documented here:
 - `sorry` - indicates incomplete proofs needing completion
-- `axiom` - foundational assumptions requiring justification  
+- `axiom` - foundational assumptions requiring justification
 - `native_decide` - computationally intensive decidability proofs
 
 ## Current Axioms and Gaps
@@ -24,7 +24,7 @@ Every use of the following constructs must be documented here:
   - **Justification**: Need to define formal concordance criteria
   - **Priority**: Medium - affects core analysis
 
-### Module: Concordance.lean  
+### Module: Concordance.lean
 **Gaps identified**:
 - `check_replication` uses placeholder threshold of 0.7
   - **Location**: Line 19

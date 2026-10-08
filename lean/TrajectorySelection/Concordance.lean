@@ -24,7 +24,7 @@ noncomputable def check_replication (trajectories : List Trajectory) (time_windo
   let consistent_count := directions.count Direction.increasing + directions.count Direction.decreasing
   let total_directions := directions.length
   let score : ℝ := if total_directions > 0 then ↑consistent_count / ↑total_directions else 0
-  
+
   { locus := (match trajectories with
               | [] => default
               | h::_ => h.locus)

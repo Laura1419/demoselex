@@ -2,8 +2,8 @@
 
 ## 2024-10-08: Lean 4 + Mathlib Project Setup
 
-**Task:** lean-setup  
-**Agent:** agent-11  
+**Task:** lean-setup
+**Agent:** agent-11
 
 Completed bootstrap of Lean 4 + Mathlib project:
 - Created lakefile.lean with Mathlib dependency

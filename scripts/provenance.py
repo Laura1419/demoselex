@@ -32,7 +32,7 @@ def record_provenance():
         "lean_version": get_lean_version(),
         "lake_version": get_lake_version(),
         "project_sha": subprocess.run(
-            ['git', 'rev-parse', 'HEAD'], 
+            ['git', 'rev-parse', 'HEAD'],
             capture_output=True, text=True, check=True
         ).stdout.strip(),
         "dependencies": {
@@ -40,14 +40,14 @@ def record_provenance():
             "target": "lean 4.34.1"
         }
     }
-    
+
     # Write to file
     prov_file = Path("data/derived/provenance.json")
     prov_file.parent.mkdir(parents=True, exist_ok=True)
-    
+
     with open(prov_file, 'w') as f:
         json.dump(provenance, f, indent=2)
-    
+
     print(f"Provenance recorded to {prov_file}")
     print(json.dumps(provenance, indent=2))
 
