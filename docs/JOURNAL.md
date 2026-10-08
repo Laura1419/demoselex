@@ -5,6 +5,10 @@ This journal records the progress and decisions of the trajectory-replication re
 **Newest entries first. Format:**
 ```
 
+## 2026-10-08 04:57Z — recon-data — Inventory handoff audit
+- Rechecked the committed Section E access matrix against this task's validation: each requested source has an accession, exact URL, retrieval or status command, access status, and a fallback for controlled/embargoed records. No raw data or Lean files changed.
+- The earlier provenance JSON recorded sources/seed/versions but was not in `scripts/provenance.py`'s verifiable format. Added a script-native manifest with seed 0 and hashed inventory/journal outputs; retained the historical manifests unchanged.
+
 ## 2026-10-08 04:39Z — recon-data — Primary-source file/access inventory
 - Replaced the Section E placeholder with `docs/E-data-inventory.md`: exact Dataverse file IDs/byte sizes for Akbari statistics, imputed BCF/PLINK2 and AADR v66.p1 1240K/HO, ENA per-run manifest recipe, Akbari Nature supplements, and pinned AMY Zenodo/GitHub tables.
 - Corrected previous attempt's unsupported assertions: the selection summary is public CC0, not subscription-only; ENA PRJEB106907 exposes aligned BAM/FASTQ rather than an asserted dosage VCF; AADR v66.p1 supersedes v66.0 and old Reich index link is unavailable.

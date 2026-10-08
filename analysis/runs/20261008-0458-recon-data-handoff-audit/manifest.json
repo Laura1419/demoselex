@@ -1,0 +1,44 @@
+{
+  "run_id": "20261008-0458-recon-data-handoff-audit",
+  "timestamp": "2026-10-08T04:58:05.898485",
+  "git": {
+    "commit": "564dd0c343f103cd1cfe4d543f7a65d03b141548",
+    "branch": "main",
+    "dirty": true
+  },
+  "command": [
+    "python3",
+    "scripts/provenance.py",
+    "(RunRecorder API: inventory handoff audit)"
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-139-generic",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "sklearn": "1.4.1.post1"
+  },
+  "inputs": {
+    "docs/MISSION.md": "sha256:da68cfae0307703f5c9a3b48fe02047219118cc57b21921c3f0345c2e8c5bcf3",
+    "scripts/provenance.py": "sha256:9c9fbaf3cf87eb1992b8becc9affecc134ed258fba21c2054d7f0d9b9df01a0d"
+  },
+  "parameters": {
+    "randomness": "none",
+    "akbari_dataverse_version": "V4.0",
+    "aadr_release": "V14.0 / v66.p1",
+    "amy_zenodo_record": "12753060 / v1.1",
+    "curl_version": "8.5.0 (primary-source audit by prior attempt)",
+    "source_urls": [
+      "https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/7RVV9N",
+      "https://www.ebi.ac.uk/ena/browser/view/PRJEB106907",
+      "https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/FFIDCW",
+      "https://zenodo.org/api/records/12753060"
+    ]
+  },
+  "outputs": {
+    "docs/E-data-inventory.md": "sha256:8969de98f5e8ef42a39f9ced46fabaa508c5eee013de77624bfa9f03f3b9bb4b",
+    "docs/JOURNAL.md": "sha256:32e7e7a57a79b7b5dbed0b4a06a8e0b2fa7efffecf273cdd4ea121c20b3f77d5"
+  },
+  "seed": 0
+}
