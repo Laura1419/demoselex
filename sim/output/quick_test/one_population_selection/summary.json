@@ -1,0 +1,8 @@
+{
+  "scenario_type": "one_population_selection",
+  "seed": 880,
+  "n_populations": 2,
+  "selected_loci": [
+    0
+  ]
+}

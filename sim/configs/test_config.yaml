@@ -1,0 +1,26 @@
+# Quick test configuration
+seed: 42
+n_loci: 100
+
+populations:
+  pop1:
+    size: 100
+    time_origin: 0
+  pop2:
+    size: 100
+    time_origin: 25
+
+scenarios:
+  neutral_drift:
+    type: "neutral_drift"
+    generations: 10
+    migration_rate: 0.01
+    seed: 42
+
+  one_population_selection:
+    type: "one_population_selection"
+    generations: 10
+    selection_strength: 0.1
+    selected_population: "pop1"
+    selected_loci: [0]
+    seed: 42

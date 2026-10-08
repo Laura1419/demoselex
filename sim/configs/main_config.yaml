@@ -1,0 +1,94 @@
+# Main configuration for demographic simulations
+# Combines base population definitions with specific scenarios
+
+genetic:
+  n_loci: 10000
+  n_chromosomes: 22
+  recombination_rate: 1e-8
+  mutation_rate: 1e-8
+
+# Population definitions matching the trajectory inference setup
+populations:
+  pop1:
+    size: 1000
+    time_origin: 0
+    description: "Initial resident population"
+  pop2:
+    size: 1000
+    time_origin: 50
+    description: "Arriving population (for turnover scenarios)"
+  pop3:
+    size: 1000
+    time_origin: 0
+    description: "Third population for complexity"
+
+# Default simulation parameters
+defaults:
+  generations: 100
+  migration_rate: 0.01
+  seed: 42
+
+# Scenario configurations
+scenarios:
+  # 1. Neutral drift (baseline)
+  neutral_drift:
+    type: "neutral_drift"
+    generations: 100
+    migration_rate: 0.01
+    seed: 42
+
+  # 2. Replacement only (turnover without selection)
+  replacement_only:
+    type: "replacement_only"
+    generations: 100
+    replacement_generation: 50
+    migration_rate: 0.0  # No migration in pure replacement
+    seed: 42
+
+  # 3. One population selection
+  one_population_selection:
+    type: "one_population_selection"
+    generations: 100
+    selection_strength: 0.1
+    selected_population: "pop1"
+    selected_loci: [0, 100, 200, 300, 400]  # Multiple loci for power
+    seed: 42
+
+  # 4. Shared selection (repeated signal)
+  shared_selection:
+    type: "shared_selection"
+    generations: 100
+    selection_strength: 0.1
+    selected_loci: [0, 100, 200, 300, 400]
+    seed: 42
+
+  # 5. Opposing selection (discordant signal)
+  opposing_selection:
+    type: "opposing_selection"
+    generations: 100
+    selection_strength: 0.1
+    selected_loci: [0, 100, 200, 300, 400]
+    seed: 42
+
+  # 6. Selection aligned with turnover
+  selection_aligned_turnover:
+    type: "selection_aligned_turnover"
+    generations: 100
+    selection_strength: 0.1
+    selected_loci: [0, 100, 200, 300, 400]
+    replacement_generation: 50
+    seed: 42
+
+# Output configuration
+output:
+  format: "csv"
+  include_genotypes: true
+  include_frequencies: true
+  include_history: true
+  truth_table: true
+
+# Provenance settings
+provenance:
+  record_seed: true
+  record_versions: true
+  record_system_info: true

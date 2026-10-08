@@ -1,0 +1,6 @@
+{
+  "scenario_type": "neutral_drift",
+  "seed": 278,
+  "n_populations": 2,
+  "selected_loci": []
+}

@@ -1,0 +1,62 @@
+// SLiM template for demographic simulations
+// This script can be customized for different scenarios
+
+// Initialize with random seed
+initialize() {
+    setSeed(SEED);
+
+    // Genetic parameters
+    initializeMutationRate(MUTATION_RATE);
+    initializeMutationType("m1", DOMINANCE_COEFFICIENT, "f", SELECTION_COEFFICIENT);
+    initializeGenomicElementType("g1", m1, 1.0);
+
+    // Create genomic elements (chromosomes)
+    initializeGenomicElement(g1, 0, N_LOCI - 1);
+    initializeRecombinationRate(RECOMB_RATE);
+}
+
+// Create initial populations
+1 {
+    // Population 1
+    sim.addSubpop("p1", POP1_SIZE);
+
+    // Population 2 (may appear later in scenarios)
+    if (POP2_TIME_ORIGIN >= 1) {
+        sim.addSubpop("p2", 0);  // Empty population for now
+    }
+
+    // Population 3
+    sim.addSubpop("p3", POP3_SIZE);
+}
+
+// Population 2 appears at specified generation
+POP2_TIME_ORIGIN {
+    if (POP2_SIZE > 0) {
+        sim.addSubpop("p2", POP2_SIZE);
+    }
+}
+
+// Migration events (if specified)
+MIGRATION_START:MIGRATION_END {
+    if (MIGRATION_RATE > 0) {
+        p1.setMigrationRates(c(p2, p3), c(MIGRATION_RATE, MIGRATION_RATE));
+        p2.setMigrationRates(c(p1, p3), c(MIGRATION_RATE, MIGRATION_RATE));
+        p3.setMigrationRates(c(p1, p2), c(MIGRATION_RATE, MIGRATION_RATE));
+    }
+}
+
+// Selection events (scenario-specific)
+// This would be customized per scenario type
+
+// Sample individuals at different time points
+SAMPLING_POINTS {
+    // Sample individuals and record genotypes
+    // Implementation depends on specific sampling scheme
+}
+
+// Output at the end of simulation
+SIMULATION_END {
+    // Output genotype matrices
+    // Output truth table (which loci were under selection)
+    // These would be written to files for analysis
+}

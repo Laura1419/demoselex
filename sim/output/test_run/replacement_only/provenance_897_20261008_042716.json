@@ -1,0 +1,37 @@
+{
+  "seed": 897,
+  "config_file": "../configs/main_config.yaml",
+  "start_time": "2026-10-08T04:26:58.179227",
+  "end_time": "2026-10-08T04:27:16.281044",
+  "parameters": {
+    "type": "replacement_only",
+    "generations": 100,
+    "replacement_generation": 50,
+    "migration_rate": 0.0,
+    "seed": 897
+  },
+  "output_files": {
+    "config": "../configs/main_config.yaml",
+    "genotype_matrix_pop1": "../output/test_run/replacement_only/pop1_genotypes.csv",
+    "genotype_matrix_pop2": "../output/test_run/replacement_only/pop2_genotypes.csv",
+    "truth_table": "../output/test_run/replacement_only/truth_table.json",
+    "summary": "../output/test_run/replacement_only/summary.json"
+  },
+  "file_checksums": {
+    "config": "901df1b5f5eb580df76788db09ac8e25ed14eda1a23aa0c4c274ab9ab348aca9",
+    "genotype_matrix_pop1": "7e44ccbc534ad5c9682b2ae4b3205e23074d01235c441fb3664611dd05e11f01",
+    "genotype_matrix_pop2": "ef9809e6cd4446993ddf90bc84de88bbdabe63a7ab94b1145d8bc625832427df",
+    "truth_table": "96f2a69329b491bcadb76bf9772f6e17daa9dde0ada47d514e5aec627ab3f1e6",
+    "summary": "fdc022df834dece294a0b91bbd26f2d5fa1401dbedc1ff31af3e5ca1b2a69028"
+  },
+  "versions": {
+    "python": "3.12.3",
+    "slim": "not_available",
+    "git_commit": "da37d14673e9517890a2d60f57592a5d59eb0d42"
+  },
+  "system_info": {
+    "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "hostname": "lambda01"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "selected_loci": [
+    0
+  ],
+  "effect_sizes": {
+    "0": 0.1
+  },
+  "scenario_type": "one_population_selection"
+}
