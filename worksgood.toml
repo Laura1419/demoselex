@@ -1,11 +1,67 @@
 schema_version = 1
 
+[dispatcher]
+max_agents = 10
+
+[dispatcher.resource_management]
+disk_hard_refuse_percent = 2.0
+disk_pause_build_bytes = 3221225472
+disk_pause_build_percent = 3.0
+disk_resume_hysteresis_percent = 0.5
+disk_warning_bytes = 4294967296
+disk_warning_percent = 4.0
+
+[models.assigner]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.chat_compactor]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.compactor]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.coordinator_eval]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.creator]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
 [models.default]
-model = "pi:lunaroute:glm-5.3"
+model = "pi:openrouter:deepseek/deepseek-v3.1-terminus"
 reasoning = "high"
 
+[models.evaluator]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.evolver]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.flip_comparison]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.flip_inference]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.merger]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.placer]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.reviewer]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.task_agent]
+model = "pi:openrouter:deepseek/deepseek-v3.1-terminus"
+
+[models.triage]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
+[models.verification]
+model = "pi:openrouter:deepseek/deepseek-chat"
+
 [tiers]
-fast = "pi:lunaroute:deepseek-4.1-flash"
+fast = "pi:openrouter:deepseek/deepseek-chat"
 fast_reasoning = "low"
-standard = "pi:lunaroute:glm-5.3"
+standard = "pi:openrouter:deepseek/deepseek-v3.1-terminus"
 standard_reasoning = "high"
