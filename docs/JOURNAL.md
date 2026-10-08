@@ -141,3 +141,14 @@ This journal records the progress and decisions of the trajectory-replication re
 ## 2026-10-08 05:39Z — lean-collinearity — Finite-mode near-alignment bound (isolated retry)
 - Existing hard-projection and finite-mode results had already landed in main. Added the conditional finite bound `I_time/I_isotropic ≤ ε+δ` for residual fraction at most ε and mode-retention fraction at most δ. This distinguishes large GRM variance from geometric alignment; it does not claim finite-variance non-identifiability.
 - Focused `(3,1)` example with mode variance 99, noise variance 1 gives at most 11% baseline information. Full library and focused Lean test pass; theorem's axiom print shows only standard Lean foundations. Provenance uses seed 0 (no random draws) and pinned Lean/Mathlib versions.
+
+## 2026-10-08 05:00Z — sim-scaffold — Repaired and validated dated mosaic simulator
+- Replaced the earlier final-only, non-donor migration prototype with sampled diploid mosaic Wright–Fisher trajectories, actual donor migration/turnover, and signed selection.
+- All six fixed-seed configs now emit aligned dated genotype/sample matrices, per-trajectory locus truth, and `scripts/provenance.py` manifests; end-to-end tests pass. SLiM was unavailable.
+- Pure replacement has zero selection truth despite a locus-frequency rise; opposing selection has negative truth in pop2. These are scenario controls, not power estimates.
+- Next: sim-sweeps should vary seeds, migration and turnover to measure calibration, power and model misspecification.
+
+## 2026-10-08 05:59Z — sim-scaffold — Retained scaffold revalidated
+- Three simulator tests pass, including two end-to-end runs of all six fixed-seed scenarios and checks of dated genotypes, truth, and provenance; the required diff whitespace check passes.
+- The retained branch is clean before this journal entry but does not contain advancing `main`; WG completion previously rejected it on ancestry, and project policy reserves branch integration for the coordinator. No worker merge/rebase/pull was attempted.
+- Next: obtain a sanctioned reconciliation of the retained candidate, then retry WG completion without relaxing validation.

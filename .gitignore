@@ -8,3 +8,5 @@ lake-packages/
 build/
 analysis/runs/
 .wg-worktrees/
+sim/output/
+analysis/runs/

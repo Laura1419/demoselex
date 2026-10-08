@@ -1,0 +1,20 @@
+# Selected incoming population also drives a recipient ancestry pulse.
+type: selection_aligned_turnover
+seed: 10406
+n_loci: 128
+generations: 24
+generation_years: 25
+recombination_rate: 0.02
+populations:
+  pop1: {size: 80}
+  pop2: {size: 80}
+samples_per_population: 20
+sample_generations: [0, 8, 16, 24]
+founder_frequencies:
+  pop1: {'0': 0.15}
+  pop2: {'0': 0.3}
+migration: {}
+selection:
+  pop2: {'0': 0.25}
+replacement:
+  - {generation: 12, recipient: pop1, source: pop2, fraction: 0.85}
