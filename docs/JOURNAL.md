@@ -65,6 +65,17 @@ This journal records the progress and decisions of the trajectory-replication re
 - Committed detailed literature map to docs/B-literature-map.md
 - Key finding: No existing method comprehensively handles temporal trajectories + ancestry-aware selection + cross-historical pattern detection
 - Next: These findings will inform method development in downstream tasks
+## 2026-10-08 04:07Z — repro-harness — Provenance and run-manifest harness completed
+- Implemented comprehensive provenance and run-manifest system for reproducible research
+- Created scripts/provenance.py with CLI and library interfaces
+- Developed docs/PROVENANCE.md with comprehensive documentation and usage guide
+- Added scripts/provenance_example.py for integration examples
+- System records: git commit, command line, software versions, input file hashes, parameters, random seed, outputs
+- Writes to analysis/runs/<timestamp>-<slug>/manifest.json structure
+- Validated system with demo runs and file verification
+- Committed detailed implementation and documentation
+- Key finding: System provides robust reproducibility tracking for trajectory-replication project
+- Next: Integrate provenance recording into all analysis pipeline steps
 ## 2026-10-08 04:05Z — recon-akbari — Comprehensive Akbari methodology reconstruction completed
 - Read Akbari et al. 2026 Nature paper supplementary information (184 pages)
 - Analyzed PQLseqPy GLMM implementation from GitHub repository
