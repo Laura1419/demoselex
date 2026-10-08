@@ -7,3 +7,5 @@ __pycache__/
 lake-packages/
 build/
 .wg-worktrees/
+lake-manifest.json
+lean-toolchain
