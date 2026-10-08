@@ -1,0 +1,38 @@
+{
+  "run_id": "20261008-0514-lean-collinearity-proof",
+  "timestamp": "2026-10-08T05:14:34.253830",
+  "git": {
+    "commit": "91f3d9e033e2eb2e28cc2e76c8b32bf9d486d383",
+    "branch": "main",
+    "dirty": true
+  },
+  "command": [
+    "cd lean && lake build TrajectorySelection && lake env lean TestCollinearity.lean"
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-139-generic",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "sklearn": "1.4.1.post1"
+  },
+  "inputs": {
+    "lean/lean-toolchain": "sha256:d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lean/lake-manifest.json": "sha256:caf7eb5f74185ee828371f168e8264c46db1ad90d115115e08515eee4a97e92f",
+    "lean/TrajectorySelection/Collinearity.lean": "sha256:c2fe944d5303385fb14526844aecab44e736220816683e91e5d3d4535a14f2e1",
+    "lean/TestCollinearity.lean": "sha256:e1726a5dd2f0654266ee166e87dc896ac447897157b3ffe463a94f60e1217440"
+  },
+  "parameters": {
+    "lean": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "mathlib_git": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "random_draws": 0
+  },
+  "outputs": {
+    "lean/TrajectorySelection/Collinearity.lean": "sha256:c2fe944d5303385fb14526844aecab44e736220816683e91e5d3d4535a14f2e1",
+    "lean/TestCollinearity.lean": "sha256:e1726a5dd2f0654266ee166e87dc896ac447897157b3ffe463a94f60e1217440",
+    "docs/C-akbari-reconstruction.md": "sha256:ca6dc3ad3530b9fef21a4afff203bdbe5f9498aefde2dc95af35d8b68f8a9699",
+    "docs/D-method.md": "sha256:e53ed299b3666667d8100aa184f49a41dbca90293568fd6a364f00ca5d72c87a"
+  },
+  "seed": 0
+}

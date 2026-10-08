@@ -20,4 +20,9 @@ example : workingInformation alignedTime mode 1 8 = 1 := by
   norm_num [workingInformation, energy, residual, dot, alignedTime, mode,
     Fin.sum_univ_two]
 
+-- Inspect inherited trust as well as the absence of project-level sorry/axioms.
+#print axioms TrajectorySelection.Collinearity.residual_energy_cosine
+#print axioms TrajectorySelection.Collinearity.projectedVIF_eq
+#print axioms TrajectorySelection.Collinearity.working_information_fraction
+
 end TrajectorySelection.Collinearity

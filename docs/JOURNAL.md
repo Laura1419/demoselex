@@ -98,6 +98,11 @@ This journal records the progress and decisions of the trajectory-replication re
 - Research mission defined in `docs/MISSION.md`
 - Project structure established with lean, sim, analysis, and docs directories
 
+## 2026-10-08 05:14Z — lean-collinearity — Time/GRM mode geometry
+- Proved `||r||² = ||t||²(1−cos²θ)`, a near-alignment bound, and the hard-projection VIF `1/(1−cos²θ)` for nonzero residual in `lean/TrajectorySelection/Collinearity.lean`.
+- The finite one-mode working model retains `α²/(σ²+λ)` information even at perfect alignment. Corrected Section C's earlier claim that finite GLMM fitting exactly projects away `col(K)`; Section D states the linearized covariance assumptions and limits.
+- Lean build and focused tests passed without new `sorry`/axioms; `#print axioms` reports only standard Lean foundations. Provenance (seed 0, Lean 4.34.1 and pinned Mathlib) is in `analysis/runs/20261008-0514-lean-collinearity-proof/`. This is a conditional linear-algebra result, not empirical evidence of over-correction.
+
 ## 2026-10-08 — sim-glmm — Corrected PQL/LOCO comparator
 - Replaced an earlier prototype's individual-row LOCO and incorrectly centered GRM with marker-chromosome LOCO, per-locus binomial PQL/REML variance fitting and Wald Z/p.
 - Seeded structured-null, strong single-locus sweep and fixed-variance published PQLseqPy fixture checks are recorded in `sim/test_akbari_glmm.py`; see `docs/F-reproducible-code.md` for commands, assumptions and numerical comparison.
