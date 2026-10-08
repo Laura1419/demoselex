@@ -54,6 +54,11 @@ argmax is the maximum allowed subset size (4) essentially always, exactly as
 
 ## TWO ARTIFACTS THAT MUST NOT BE REPORTED AS EVIDENCE
 
+> **CORRECTION (see `docs/J-final-assessment.md` erratum C2):** the argument below is
+> **wrong**. BH rejects at `p_(k) <= alpha*k/m`, so with m=3000, alpha=0.05 and a P
+> floor of 0.0024, about **144 discoveries were attainable**. "0 pass BH-FDR" is an
+> observation about attained power, not an impossibility.
+
 1. **"0 candidates pass BH-FDR" is a resolution floor, not a negative finding.** The
    empirical P comes from a finite control pool; with at most 425 controls the P grid
    floors at `1/421 = 0.00238`, while BH-FDR at 0.05 over 3,000 candidates requires a
