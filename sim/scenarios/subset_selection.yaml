@@ -1,0 +1,49 @@
+# Subset-selection regime for the max-over-subsets device.
+#
+# Of K independent trajectories, only a fraction f carry positive selection on the
+# tested locus (index 0); the remaining trajectories drift freely.  The tested
+# question is whether a statistic that scans *subsets* of trajectories can recover
+# a selected subset that the whole-cohort statistics dilute.
+#
+# This file is the f = 1.0, unit-selection-strength configuration: every one of the
+# six trajectories is selected at the baseline additive effect 0.25/allele.
+# sim/sweeps/run_subset_power.py sweeps (f, strength) by (a) turning selection off
+# in the trailing (1-f)*K trajectories and (b) scaling every surviving effect.
+#
+# The simulator's ``SCENARIOS`` registry is fixed (and owned by another lane), so
+# ``type`` must name a registered family: ``shared_selection`` is reused because the
+# f = 1.0 configuration is exactly same-direction selection in several trajectories.
+# The K = 6 population set is what gives subset selection something to search over.
+type: shared_selection
+seed: 10410
+n_loci: 128
+generations: 24
+generation_years: 25
+recombination_rate: 0.02
+populations:
+  pop1: {size: 80}
+  pop2: {size: 80}
+  pop3: {size: 80}
+  pop4: {size: 80}
+  pop5: {size: 80}
+  pop6: {size: 80}
+samples_per_population: 20
+sample_generations: [0, 8, 16, 24]
+# Every trajectory starts the tested locus at the same frequency so that the only
+# difference between selected and unselected trajectories is the selection term.
+founder_frequencies:
+  pop1: {'0': 0.2}
+  pop2: {'0': 0.2}
+  pop3: {'0': 0.2}
+  pop4: {'0': 0.2}
+  pop5: {'0': 0.2}
+  pop6: {'0': 0.2}
+migration: {}
+selection:
+  pop1: {'0': 0.25}
+  pop2: {'0': 0.25}
+  pop3: {'0': 0.25}
+  pop4: {'0': 0.25}
+  pop5: {'0': 0.25}
+  pop6: {'0': 0.25}
+replacement: []
