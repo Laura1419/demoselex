@@ -2,7 +2,7 @@ schema_version = 1
 
 [dispatcher]
 max_agents = 10
-worktree_isolation = false
+worktree_isolation = true
 
 [dispatcher.resource_management]
 disk_hard_refuse_percent = 2.0

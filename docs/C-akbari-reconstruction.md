@@ -174,33 +174,36 @@ The model includes **no locus-specific variance component** explicitly. Instead,
 
 ## What is downweighted under time-GRM collinearity
 
-When the calendar-time vector (T) is correlated with major eigenvectors of the GRM (K), the GLMM downweights the selection signal β_time to avoid confounding with population structure.
+The covariance in the **linearized PQL working problem** is approximately
+`V = τ₁K + τ₂I` (plus working sampling noise), with `K = UΛUᵀ`. A time
+contrast aligned with a high-eigenvalue GRM mode is assigned a smaller
+*precision weight* in `TᵀV⁻¹T` than a contrast in a low-variance mode.
+This is a statement about conditional information for the fixed time slope,
+not an automatic subtraction of the trend from the response or a proof that
+the fitted slope is always biased toward zero.
 
-**Mathematical derivation**:
+For a single unit mode `u`, after removing the intercept and other fixed
+covariates, write `T = αu + r`, `uᵀr = 0`. Under the illustrative covariance
+`V = σ²I + λuuᵀ` with `σ² > 0`, `λ ≥ 0`, the GLS information is
 
-The GLMM uses the covariance structure V = τ₁K + τ₂I. When T is correlated with principal components of K:
+`TᵀV⁻¹T = ||r||²/σ² + α²/(σ² + λ)`.
 
-Let K have eigen-decomposition K = UΛUᵀ, where u₁, u₂, ... are eigenvectors corresponding to population structure
+Relative to independent noise (`||T||²/σ²`), the information fraction is
+`(1 − cos²θ) + cos²θ · σ²/(σ² + λ)`, where
+`cos²θ = α²/||T||²`. Its reciprocal is the *finite-variance* inflation
+factor for a one-coefficient linear working model. As `λ/σ² → ∞`, the
+parallel contribution vanishes and the residual fraction becomes
+`1 − cos²θ`, with limiting inflation `1/(1 − cos²θ)` if nonzero. These
+algebraic identities are proved for the specified projection/working-information expression in
+`lean/TrajectorySelection/Collinearity.lean`; see Section D for assumptions.
 
-When T ≈ a₁u₁ + a₂u₂ + ... (time aligned with population structure axes), the random effects component τ₁K will capture some of the temporal signal.
+**Correction to the earlier projection wording:** `X_eff = (I−P_K)X` is
+not the exact design of a finite-variance GLMM. A typical full-rank `K`
+has `col(K)` equal to the *entire* observation space; membership of `T` in
+`col(K)` alone cannot imply non-identifiability. For finite `λ` and
+nonzero time contrast the information remains positive, even at exact
+alignment (`α²/(σ²+λ) > 0`). Near-alignment may produce poor precision
+and power, especially for a dominant GRM mode, but evidence that actual
+Akbari loci are over-corrected requires the planned data/simulation controls.
 
-The estimated β_time is obtained by solving:
-```
-(XᵀV⁻¹X)β = XᵀV⁻¹Ỹ
-```
-where Ỹ is the working response.
-
-When T is collinear with major eigenvectors of K, the effective design matrix for the fixed effects is:
-```
-X_eff = (I - P_K)X
-```
-where P_K is the projection matrix onto the column space of K.
-
-**The collinearity effect**:
-1. The time signal component that aligns with population structure gets absorbed into the random effects
-2. Only the component of T orthogonal to major GRM eigenvectors contributes to β_time estimation
-3. This reduces power to detect selection when selection happened along migration/demographic axes
-
-**Identifiability loss**: When T is fully explained by K (T ∈ col(K)), β_time becomes statistically unidentifiable - the model cannot distinguish selection from population replacement.
-
-**Practical implication**: The GLMM is conservative - it only detects selection signals that are independent of major demographic events captured by the GRM.
+**Practical implication:** High-variance ancestry modes can make a time slope imprecise, without deleting their signal at finite variance. Identifying which biological signals are lost requires further controls.

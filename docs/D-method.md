@@ -43,10 +43,115 @@ placeholders; see `lean/AXIOMS.md`. In particular their `check_replication`
 is **not** the directional-concordance definition above. No biological
 inference should use those placeholders as calibrated statistics.
 
+## Time–GRM collinearity: which variance is downweighted?
+
+Akbari's binomial GLMM has `Yᵢ | pᵢ ∼ Binomial(nᵢ,pᵢ)` and
+`logit(pᵢ) = β₀ + β_time tᵢ + zᵢᵀγ + bᵢ`, with a population-identity
+random effect `b ∼ N(0, τ₁K + τ₂I)`. Thus the additive time and ancestry
+effects act on **log odds**, not literally on frequency. We use a local
+Gaussian/PQL working approximation to study *precision*, not an identity
+for the nonlinear binomial likelihood. Residualize time against the
+intercept and fixed nuisance covariates first. The formal vectors use an
+unweighted Euclidean metric; actual PQL weights and other GRM modes would
+change the effective metric and require a separate proof.
+
+Take a unit GRM eigenvector `u` (`uᵀu = 1`), write residualized time
+`t = αu + r`, `α = tᵀu`, `uᵀr = 0`, and assume `||t||² > 0`.
+`cos²θ = α²/||t||²` is the squared time–mode cosine. The Lean theorem
+`Collinearity.residual_energy_cosine` in
+`lean/TrajectorySelection/Collinearity.lean` proves
+
+`||r||² = ||t||² − α² = ||t||²(1 − cos²θ)`.
+
+If `1 − cos²θ ≤ ε`, `Collinearity.near_alignment` gives
+`||r||² ≤ ε||t||²`. In a *hard-projection/high-mode-variance limit*, the
+information about a time slope from this residual is `||r||²/σ²` rather
+than `||t||²/σ²`; with nonzero residual the corresponding variance
+inflation is `VIF_hard = 1/(1 − cos²θ)` (proved by
+`Collinearity.projectedVIF_eq`). Perfect alignment makes this limiting
+projected information zero. At that boundary the VIF is undefined/infinite;
+Lean's division-by-zero convention is **not** interpreted as a finite VIF.
+
+For the **finite** one-mode working covariance `V = σ²I + λuuᵀ` with
+`σ² > 0`, `λ ≥ 0` (λ corresponds to `τ₁` times that GRM eigenvalue),
+the GLS time information is
+
+`I_time = tᵀV⁻¹t = ||r||²/σ² + α²/(σ² + λ)`.
+
+Relative to an isotropic-noise baseline, Lean's
+`Collinearity.working_information_fraction` proves
+
+`I_time / (||t||²/σ²) = (1 − cos²θ) + cos²θ · σ²/(σ² + λ)`.
+
+The inverse of this positive fraction is the *finite* working-model VIF.
+Even when `cos²θ = 1`, finite `λ` leaves information
+`||t||²/(σ² + λ) > 0` and a VIF of `1 + λ/σ²`; this is
+`Collinearity.perfect_alignment_working`. The formal Lean definition of
+`workingInformation` specifies the spectral information expression, but
+does **not** prove the matrix-inverse identity, the PQL likelihood
+approximation, or empirical loss of power for Akbari loci. In a real GLMM,
+estimated variance components, sampling, other covariates and eigenmodes
+matter. This precision effect alone cannot establish over-correction;
+Decision 3 needs calibrated simulation and empirical contrasts.
+
+`lean/TestCollinearity.lean` checks the `(3,4)` time vector against the
+first coordinate: `cos²θ=9/25`, residual energy `16`, hard VIF `25/16`.
+For perfectly aligned `(3,0)`, `σ²=1`, `λ=8`, finite information is `1`,
+not zero. The file compiles without new `sorry`/axioms.
+
 ## Stage A: trajectory inference
+
+The finite sign theorem below presumes **two correctly separated trajectories**; it
+is not an algorithm or guarantee for inferring them from genomic data. Verify
+trajectory stability and genealogical independence before treating fitted slopes
+as replicates (Decision 1). A positive-semidefinite covariance kernel in
+`Defs.lean` is available to express non-independence, but this theorem does not
+use or estimate one.
+
 ## Stage B: replicated directional change
+
+`lean/TrajectorySelection/Replacement.lean` defines two deliberately small
+scenarios. **A (replacement):** source frequencies `pA,pB ∈ [0,1]` stay
+constant within each trajectory while a time-dependent `w(t) ∈ [0,1]` can
+change the pooled frequency `(1−w(t))pA+w(t)pB`. The theorem proves each
+within-source path is constant; *observed* nonzero slopes are noisy sign-only
+estimates, not slopes of those exact constant paths. **B (replication):** both
+bounded paths change from `pᵣ` to `pᵣ+δ`, with a common `δ>0`. This implies
+positive **true** changes but does not alone imply any particular distribution
+of observed estimates.
+
 ## Statistics (Model 0 .. Model 3)
+
+The toy statistic is the existing `directionalConcordance` on two nonzero
+estimated slopes with signs `S₁,S₂`. Its possible values are `1` (same sign)
+and `1/2` (mixed signs). The event called *high* is **perfect concordance**
+`C=1`, not a general threshold or a test for positive direction alone. The
+model ignores magnitudes, zero slopes, sign ties from an estimator, missing
+observations, trajectory-label uncertainty and slope covariance. Its purpose
+is to isolate a minimal mathematical separation; it does not replace a
+full fitted Model 0–3 or calibrated genomic significance test.
+
 ## Null calibration
+
+Assume under A that noisy estimated signs are **independent fair Bernoulli**:
+`P(Sᵣ=+)=P(Sᵣ=−)=1/2`. This exchangeable *sign* null is an additional
+calibration assumption, **not a consequence of constant paths**. Lean proves
+the distribution of `C` in A equals the pushforward of the four equally
+weighted sign pairs for *every decidable event* of `Option ℝ`; hence
+`P₀(C=1)=1/2`. In B assume independent sign detections with the same
+`q=P(Sᵣ=+ | δ)>1/2` (and `q≤1`). This link between positive drift and
+upward sign bias must be established by a separate estimator/noise model or
+empirical calibration. Lean proves
+
+`Pδ(C=1)=q²+(1−q)²=1/2+2(q−1/2)² > 1/2=P₀(C=1)`.
+
+The event is two-sided: `q<1/2` also produces excess concordance, so without
+the assumed sign-detection direction it cannot identify *positive* change.
+Nor does the proof cover correlated errors, non-exchangeable demography,
+replacement with systematic within-trajectory ancestry misassignment, more
+than two paths, or actual false-positive control. Those are prerequisites for
+Decision 2 and the downstream power theorem, not results silently inherited
+from this toy calculation.
 ## One-paragraph plain-language summary
 > "We inferred major population trajectories from genome-wide variation independently
 > of each tested locus. We then estimated allele-frequency change through time along

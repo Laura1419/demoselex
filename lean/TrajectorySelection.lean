@@ -10,6 +10,8 @@ import TrajectorySelection.Trajectory
 import TrajectorySelection.FrequencyPath
 import TrajectorySelection.Concordance
 import TrajectorySelection.Defs
+import TrajectorySelection.Replacement
+import TrajectorySelection.Collinearity
 
 namespace TrajectorySelection
 
