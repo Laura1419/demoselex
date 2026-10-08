@@ -1,0 +1,37 @@
+{
+  "run_id": "20261008-0523-sim-stat-validation",
+  "timestamp": "2026-10-08T05:23:55.276608",
+  "git": {
+    "commit": "ad5529528b611ad8a86c7bc70dd39a3920986682",
+    "branch": "wg/agent-29/sim-stat",
+    "dirty": false
+  },
+  "command": [
+    "python3",
+    "-m",
+    "sim.validate_trajectory_stat",
+    "--seed",
+    "31415"
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-139-generic",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "sklearn": "1.4.1.post1"
+  },
+  "inputs": {
+    "sim/trajectory_stat.py": "sha256:26f284a40775ddf75cc1fe59d726f3692a294d9584fb4a8cdd72cff7e0e4dccd",
+    "sim/validate_trajectory_stat.py": "sha256:f922c082f21757b567f2ab483c69819f3eb459e6d79f4582653b6f672f0f2e1f"
+  },
+  "parameters": {
+    "design": "three trajectories, nine times, depth 2000; slopes +/-0.45"
+  },
+  "outputs": {
+    "analysis/runs/20261008-0523-sim-stat-validation/counts.csv": "sha256:807eb231d81217b8a33c2323d286454c5659759ded1c2480ae7a46a403c86334",
+    "analysis/runs/20261008-0523-sim-stat-validation/slopes.csv": "sha256:49f74eeab8615f1719a5448cf1d80f6d83294149d0a656272a79b3b947efd1d0",
+    "analysis/runs/20261008-0523-sim-stat-validation/summary.csv": "sha256:1f39d7affdb6a928f6e4dac5db9a5c246e132ca38e1573c4e819e20ac9d3a756"
+  },
+  "seed": 31415
+}
