@@ -1,0 +1,16 @@
+{
+  "command": "python3 sim/akbari_glmm.py test",
+  "git": {
+    "clean": false,
+    "commit": "d77149c381e7823ed5895f6fcae976bbeb5752b3"
+  },
+  "host": "lambda01",
+  "inputs": {},
+  "outputs": {
+    "test_results": "sim/results/provenance.json"
+  },
+  "parameters": {},
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "seed": 42,
+  "timestamp": "2026-10-08T04:33:18.533949"
+}
