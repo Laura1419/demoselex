@@ -12,6 +12,32 @@ The general run-manifest harness is `scripts/provenance.py` (see `docs/PROVENANC
 
 Further pipeline script inventory (downloads/QC/trajectories/loci/simulations/figures/reanalysis) is pending its owner tasks.
 
+## Trajectory replication statistic (`sim-stat`)
+
+`sim/trajectory_stat.py` exposes `trajectory_statistic(data, *, family=None,
+relatedness=None) -> TrajectoryResult`. Supply a pandas long table with
+`locus,trajectory,time,alt_count,total_count`; see Section D for the equations,
+family collapse, assumptions and interpretation. The returned `.slopes` is a
+tidy per-trajectory table; `.summary` has the pooled Model 0 slope, raw
+concordance, relatedness-discounted Model 2 GLS slope/SE, effective family
+count and heterogeneity diagnostics. No RNG occurs in fitting. A minimal call:
+
+```python
+from trajectory_stat import trajectory_statistic
+result = trajectory_statistic(counts, family={"a": "a", "b": "b"},
+                              relatedness=family_correlation)
+print(result.slopes[["locus", "trajectory", "slope", "se", "direction", "n", "span"]])
+print(result.summary[["locus", "concordance", "n_effective", "meta_slope", "q"]])
+```
+
+From the repository root, run `python3 -m pytest -q sim/test_trajectory_stat.py`.
+The fixed-seed designed test checks strong trends of both signs; analytic
+binomial SE, duplication invariance, relatedness discount, zero/tied signs,
+heterogeneity and a turnover-only pooled trend are separate regressions.
+Assumed binomial independence and family-error correlation must be evaluated
+under the matched null in downstream simulation; diagnostic p-values are not
+yet calibrated genome-wide significance.
+
 ## Akbari-style GLMM comparator (`sim-glmm`)
 
 `sim/akbari_glmm.py` implements an independent small-sample binomial PQL/REML

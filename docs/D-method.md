@@ -105,6 +105,56 @@ structure-preserving permutation. The finite formulas condition on an
 informative `n`, assume independent fair signs, and are not calibrated
 p-values under arbitrary exchangeable demography.
 
+## Executable Model 0–2 statistic (`sim-stat`)
+
+`sim/trajectory_stat.py` consumes long-form independent binomial count bins with
+`locus, trajectory, time, alt_count, total_count`. For each locus and
+trajectory, repeated records at one time are combined as counts. The returned
+`slopes` table has `locus, trajectory, slope, se, direction, n, span` plus
+`family`: `n` is the number of distinct observed time bins, `span` the
+max–min numeric time. Positive direction means increasing frequency with
+**increasing input time** (for years BP, this means toward the past). At least
+two distinct times and valid nonnegative integer counts are required; invalid
+inputs fail rather than yielding a fitted zero. A floating-point roundoff guard
+sets only cancellation-scale (~machine epsilon/span) slopes to exact zero.
+
+**Model 0** computes an unstratified pooled count-weighted slope for comparison.
+An increase driven entirely by changing population mixture can appear here even
+when all within-trajectory slopes are zero; the pooled number is not evidence of
+selection. **Model 1** computes the weighted frequency slopes defined above and
+raw directional concordance `C`. For independent binomial bin counts, the
+working sampling SE is
+
+`SE(β̂)² = Σᵢ nᵢ (tᵢ−t̄)² p̃ᵢ(1−p̃ᵢ) / [Σᵢ nᵢ(tᵢ−t̄)²]²`,
+with `p̃ᵢ=(altᵢ+1/2)/(nᵢ+1)` to avoid a zero SE at boundary counts.
+This does *not* include drift, overdispersion, date error or ascertainment.
+The fitted slopes and SEs are frequencies per input time unit, not log odds
+and not Wright–Fisher selection coefficients.
+
+**Model 2** requires a prespecified assignment of trajectories to ancestry
+families (default: one distinct family per trajectory). Same-family estimates
+are equal-averaged and assigned the conservative family SE
+`max(max individual SE, sample SD of slopes)`; adding an exact within-family
+copy therefore does not increase precision or `N_eff`. This is a sensitivity
+convention, not an ancestry-clustering estimator. A supplied labeled matrix
+`R` of correlation between *family slope errors* must have unit diagonal,
+nonnegative entries and be symmetric positive definite for GLS. Default `R=I`
+is an explicit working independence assumption, not established by the data.
+Exactly identical families belong to one family; singular `R` is rejected,
+not jittered into pseudo-independence. With family estimates `b` and SEs `s`,
+`V=diag(s) R diag(s)`, `μ̂=(1ᵀV⁻¹b)/(1ᵀV⁻¹1)`,
+`SE(μ̂)=1/sqrt(1ᵀV⁻¹1)`, `Q=(b−μ̂1)ᵀV⁻¹(b−μ̂1)`, `df=m−1`,
+and `I²=max(0,(Q−df)/Q)` if `Q>0`. The locus `summary` exposes pooled,
+meta, concordance and family-concordance results, `N_eff=m²/ΣR`, `Q`,
+`Q` p-value, and working two-sided meta Wald p-value. With one family,
+heterogeneity is undefined. Concordance excludes exact zero slopes and is
+undefined if no informative signs. `N_eff` is descriptive and is **not**
+inserted as a fractional binomial number of trials. Correlation adjustment
+must use independently estimated background relatedness and be checked for
+sensitivity to family assignment. Neither Wald nor `Q` p-values are neutral
+demographic calibration; Decision 2 needs matched neutral simulations or
+structure-preserving controls.
+
 ## Time–GRM collinearity: which variance is downweighted?
 
 Akbari's binomial GLMM has `Yᵢ | pᵢ ∼ Binomial(nᵢ,pᵢ)` and
