@@ -107,12 +107,23 @@ def load_trajectory_table(path: str) -> list[dict]:
         )
     with open(path, newline="") as fh:
         rows = list(csv.DictReader(fh, delimiter="\t"))
-    need = {"individual", "date", "trajectory_id"}
+    need = {"individual", "trajectory_id"}
     if not rows or not need.issubset(rows[0]):
         raise ValueError(
             f"trajectory table {path} must have columns {sorted(need)}; "
             f"got {list(rows[0]) if rows else '[]'}"
         )
+    # Downstream canonical column is `date`; accept the `date_BP` spelling that
+    # trajectory_v2.py emits (years before 1950 CE) as the same quantity.
+    date_col = "date" if "date" in rows[0] else ("date_BP" if "date_BP" in rows[0] else None)
+    if date_col is None:
+        raise ValueError(
+            f"trajectory table {path} must have a `date` or `date_BP` column; "
+            f"got {list(rows[0])}"
+        )
+    if date_col != "date":
+        for r in rows:
+            r["date"] = r[date_col]
     return rows
 
 
