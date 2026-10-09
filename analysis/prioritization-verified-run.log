@@ -1,0 +1,34 @@
+[observation] scoring (2265, 10642)
+[observation] controls {"regions": [{"control": "LCT_MCM6", "variants": 4, "best_locus": "2_136608646_G_A", "rank": 1, "percentile": 100.0}, {"control": "SLC24A5", "variants": 2, "best_locus": "15_48426484_A_G", "rank": 9161, "percentile": 13.917864862324969}, {"control": "SLC45A2", "variants": 3, "best_locus": "5_33951693_C_G", "rank": 6, "percentile": 99.95301193496852}, {"control": "TYR", "variants": 3, "best_locus": "11_88874969_T_C", "rank": 1120, "percentile": 89.48407104595432}, {"control": "OCA2_HERC2", "variants": 4, "best_locus": "15_28579961_C_T", "rank": 105, "percentile": 99.02264824734517}, {"control": "FADS1_FADS2", "variants": 3, "best_locus": "11_61570783_T_C", "rank": 46, "percentile": 99.57710741471666}, {"control": "TLR1_TLR6", "variants": 3, "best_locus": "4_38625501_G_C", "rank": 114, "percentile": 98.9380697302885}, {"control": "AMY1_region", "variants": 5, "best_locus": "1_104012019_C_CA", "rank": 698, "percentile": 93.4498637346114}], "curve": [{"N": 10, "control_variant_hits": 2, "precision_proxy": 0.2, "regions_recalled": 2, "region_recall": 0.25, "unique_region_yield": 0.2, "threshold": 4.138892289443323}, {"N": 25, "control_variant_hits": 2, "precision_proxy": 0.08, "regions_recalled": 2, "region_recall": 0.25, "unique_region_yield": 0.08, "threshold": 1.477411307372181}, {"N": 50, "control_variant_hits": 4, "precision_proxy": 0.08, "regions_recalled": 3, "region_recall": 0.375, "unique_region_yield": 0.06, "threshold": 0.7502109154034077}, {"N": 100, "control_variant_hits": 4, "precision_proxy": 0.04, "regions_recalled": 3, "region_recall": 0.375, "unique_region_yield": 0.03, "threshold": 0.1428149501689836}, {"N": 250, "control_variant_hits": 8, "precision_proxy": 0.032, "regions_recalled": 5, "region_recall": 0.625, "unique_region_yield": 0.02, "threshold": -0.7084825140387323}, {"N": 500, "control_variant_hits": 10, "precision_proxy": 0.02, "regions_recalled": 5, "region_recall": 0.625, "unique_region_yield": 0.01, "threshold": -1.2731271903994705}, {"N": 1065, "control_variant_hits": 13, "precision_proxy": 0.012206572769953052, "regions_recalled": 6, "region_recall": 0.75, "unique_region_yield": 0.005633802816901409, "threshold": -1.8835985616336113}], "panel_control_prevalence": 0.002537355511700028}
+[observation] bootstrap 1/30
+[observation] bootstrap 2/30
+[observation] bootstrap 3/30
+[observation] bootstrap 4/30
+[observation] bootstrap 5/30
+[observation] bootstrap 6/30
+[observation] bootstrap 7/30
+[observation] bootstrap 8/30
+[observation] bootstrap 9/30
+[observation] bootstrap 10/30
+[observation] bootstrap 11/30
+[observation] bootstrap 12/30
+[observation] bootstrap 13/30
+[observation] bootstrap 14/30
+[observation] bootstrap 15/30
+[observation] bootstrap 16/30
+[observation] bootstrap 17/30
+[observation] bootstrap 18/30
+[observation] bootstrap 19/30
+[observation] bootstrap 20/30
+[observation] bootstrap 21/30
+[observation] bootstrap 22/30
+[observation] bootstrap 23/30
+[observation] bootstrap 24/30
+[observation] bootstrap 25/30
+[observation] bootstrap 26/30
+[observation] bootstrap 27/30
+[observation] bootstrap 28/30
+[observation] bootstrap 29/30
+[observation] bootstrap 30/30
+Provenance manifest saved to: analysis/runs/20261009-0002-prioritization/manifest.json
+[observation] complete 10641

@@ -133,3 +133,11 @@ Artifacts: `sim/sweeps/results/fpr_power.csv`, `sim/sweeps/results/summary.json`
 
 ## Decision 4 — AMY and canonical loci*
 *Future work: Validate method on known positive control loci*
+
+## Third-pass RANKING validation — 2026-10-09 (append only)
+
+[observation] Pre-run ranking metrics were frozen in docs/prioritization-prereg.md. Detailed completed results: docs/prioritization-results.md. SLC24A5 ranks9161/10641 and TYR1120 (outside decile); six/eight control regions reach the decile. Top100 control-proxy precision4%, region recall3/8; top10 proxy20%, recall2/8. Unknown selected loci are NOT validated negatives; these proxies are not actual modern-association precision.
+
+[observation] At the observed top100 cutoff, separately simulated drift+jump loci exceed it32/300=10.67%, pure replacement18/300=6%, Brownian drift0/300 (95% upper1.22%). These are threshold tail costs, not FDR gates. Shape scores exact ramps1 and steps0, but noisy pure replacement median.267 versus drift.258 shows weak biological separation. Thirty node-stratified individual bootstraps retain43.7% of original top100 on average, Jaccard.281.
+
+[inference] Positive-control enrichment supports exploratory candidate ranking; weak shape discrimination and moderate stability limit mechanistic claims. Selection elsewhere/earlier and demographic carriage remain valid reasons for follow-up, not exclusion. No offline modern trait enrichment was available/computed.

@@ -1,0 +1,5 @@
+sites=2000 individuals=300
+  low-bit-first            corr=-0.1168  agreement=0.2341
+  high-bit-first as-is     corr=-0.8103  agreement=0.0023
+  high-bit-first + invert  corr=+0.8103  agreement=0.7223
+  load_aadr ALT-dosage convention verified (corr +0.810)

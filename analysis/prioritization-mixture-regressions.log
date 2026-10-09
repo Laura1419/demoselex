@@ -1,0 +1,14 @@
+test_no_heldout_parameter_fit (test_genomewide_mixture_null.GenomewideMixtureTest.test_no_heldout_parameter_fit) ... ok
+test_public_aadr_reader_returns_alt (test_genomewide_mixture_null.GenomewideMixtureTest.test_public_aadr_reader_returns_alt) ... ok
+test_support_and_alt_orientation (test_genomewide_mixture_null.GenomewideMixtureTest.test_support_and_alt_orientation) ... ok
+test_zero_excess_variance_boundary (test_genomewide_mixture_null.GenomewideMixtureTest.test_zero_excess_variance_boundary) ... ok
+test_matches_explicit_fixed_effects (test_mixture_null.MeasuredMixtureTest.test_matches_explicit_fixed_effects) ... ok
+test_measured_baseline_invariance (test_mixture_null.MeasuredMixtureTest.test_measured_baseline_invariance) ... ok
+test_missing_values_are_not_alleles (test_mixture_null.MeasuredMixtureTest.test_missing_values_are_not_alleles) ... ok
+test_simulation_reproducible_and_falsifiable (test_mixture_null.MeasuredMixtureTest.test_simulation_reproducible_and_falsifiable) ... ok
+test_singleton_has_no_information (test_mixture_null.MeasuredMixtureTest.test_singleton_has_no_information) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.958s
+
+OK

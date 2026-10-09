@@ -1,0 +1,13 @@
+usage: prioritization_score.py [-h] [--reuse] [--bootstrap BOOTSTRAP]
+                               [--simulations SIMULATIONS]
+
+[inference] Frozen ranking protocol: docs/prioritization-prereg.md.
+[observation] No significance filter or locus-fitted evolutionary parameters.
+[inference] The LLR is a common-slope approximation, not a jump/path
+likelihood.
+
+options:
+  -h, --help            show this help message and exit
+  --reuse
+  --bootstrap BOOTSTRAP
+  --simulations SIMULATIONS

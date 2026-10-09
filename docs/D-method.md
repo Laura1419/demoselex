@@ -508,3 +508,11 @@ are materially over-corrected requires calibrated simulation and empirical contr
 > concordant across genetically distinct trajectories, while accounting for their
 > non-independence. Significance was calibrated against matched genomic control loci
 > and demographic simulations."
+
+## Third-pass prioritisation amendment — 2026-10-09 (append only)
+
+[observation] Operator corrected the objective to ancient-locus PRIORITISATION for downstream modern phenotype work; false positives are expected and acceptable. The prior tests above retain their original interpretation, but do not define the current ranking objective. Frozen scoring rule and validation metrics were written BEFORE rankings in docs/prioritization-prereg.md; implementation is analysis/prioritization_score.py.
+
+[inference] New ranking combines a directional-mixture/common-slope LLR with graded consistency, measured-PC N_eff breadth, an explicit node-path ramp/jump shape component and a nonzero-floor carriage weight. The frozen calibrated null is an empirical common-slope variance law, NOT a drift+jump/path likelihood. Component means and HC3 are measured at the locus; direction/amplitude/drift strengths are not optimized there. Four-of-six agreement receives credit, carriage never causes exclusion. Shape remains a descriptive modifier, not proof of sustained selection.
+
+[observation] See docs/prioritization-results.md for mixed positive-control recovery and weak noisy-step separation; no parameter was retuned to improve those outcomes.

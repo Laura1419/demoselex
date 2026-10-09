@@ -137,3 +137,7 @@ np.random.seed(seed)
 ```
 
 This ensures that rerunning with the same seed produces identical results, allowing validation of reproducibility.
+
+## Third-pass prioritisation manifests — 2026-10-09 (append only)
+
+[observation] Completed manifests: analysis/runs/20261008-2359-prioritization/manifest.json and analysis/runs/20261009-0002-prioritization/manifest.json. The latter includes exact pvar-cache index verification for10,642 panel variants. Generated with scripts/provenance.py RunRecorder, seed20261009; git probes monkeypatched OFF to obey the operator's no-git requirement. Small source/input/output artifacts are SHA256 hashed; immutable large genotype/cache inputs are recorded by path and byte size rather than rehashed. The first attempt stopped before ranking; its failure and repair are preserved in logs/preregistration. No pristine external calibration is claimed.

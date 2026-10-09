@@ -58,3 +58,11 @@ python3 analysis/load_akbari.py --top 25 --out data/derived/akbari_top.tsv
 python3 -c "import analysis.load_akbari as L; print(len(L.load(chrom=22, min_abs_x=6)))"  # 177
 ```
 
+
+## Third-pass reference-ranking comparison — 2026-10-09 (append only)
+
+[observation] New bounded ranking uses uncentred Akbari |X| as a reference, never ground truth. Of108 scored variants with |X|>5.45,73=67.59% enter our top decile; the cache contains31,939 such variants, so this is NOT genome-wide recall. Whole-panel Spearman=-.1182. The panel is Akbari-ascertained (all |X|>=3.16 plus sampled lower-X cache) and percentiles refer only to its10,641 scored variants.
+
+[observation] There are992 top-decile candidates NOT Akbari-significant; all identities/components are in data/derived/prioritization/top_decile_not_akbari_significant.tsv. Examples include rank20 10_113634916_A_AC (|X|1.636) and rank27 18_59876495_A_G (|X|.671). Detailed counts, shape caveats and prioritisation interpretation: docs/prioritization-results.md.
+
+[inference] These are extra downstream phenotype-work candidates, NOT proven Akbari false negatives or evidence that structure correction suppressed true selection. The earlier hypothesis tests above remain intact and answer a different question.

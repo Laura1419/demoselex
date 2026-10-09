@@ -1,0 +1,12 @@
+test_centered_hc3_matches_measured_mixture_fit (test_prioritization_score.PrioritizationScoreTests.test_centered_hc3_matches_measured_mixture_fit) ... ok
+test_complement_invariant_ranking (test_prioritization_score.PrioritizationScoreTests.test_complement_invariant_ranking) ... ok
+test_empty_background_path_does_not_create_observations (test_prioritization_score.PrioritizationScoreTests.test_empty_background_path_does_not_create_observations) ... ok
+test_missing_negative_support_and_carriage_never_excludes (test_prioritization_score.PrioritizationScoreTests.test_missing_negative_support_and_carriage_never_excludes) ... ok
+test_missing_nodes_do_not_imply_a_jump_or_unanimity_filter (test_prioritization_score.PrioritizationScoreTests.test_missing_nodes_do_not_imply_a_jump_or_unanimity_filter) ... ok
+test_partial_agreement_graded_not_unanimity (test_prioritization_score.PrioritizationScoreTests.test_partial_agreement_graded_not_unanimity) ... ok
+test_smooth_ramp_and_step_are_distinguished (test_prioritization_score.PrioritizationScoreTests.test_smooth_ramp_and_step_are_distinguished) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.040s
+
+OK

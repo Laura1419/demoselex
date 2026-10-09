@@ -76,3 +76,9 @@ models must be *stated*, with honest `sorry`/`axiom` accounting in `lean/AXIOMS.
 The WorksGood task graph is the persistent plan. The dispatcher (`wg service start`)
 runs ready tasks. Every task: log provenance, commit artifacts, update the relevant doc
 section and `docs/JOURNAL.md`, and only then `wg done`.
+
+## OBJECTIVE AMENDMENT: prioritisation — 2026-10-08
+
+[observation] Operator directive for the third pass: “The scan is a PRIORITIZER for downstream phenotype work, not a discovery claim”; “False positives are EXPECTED AND ACCEPTABLE.” The requested output is a ranked ancient-DNA candidate list for modern association/phenotype follow-up.
+
+[inference] For this purpose, ranking quality (positive-control enrichment, precision@N, recall, stability and drift-only follow-up cost) supersedes FDR gating. Demographically carried loci are down-weighted, not excluded. Earlier hypothesis-test framing remains valid for its own scientific question, but is NOT the current prioritisation objective. All earlier text and conclusions are retained.

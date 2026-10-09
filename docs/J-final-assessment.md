@@ -301,3 +301,9 @@ Two consequences:
 unaffected. But the AMY case study was mis-analysed, and the correct next step is
 donor-aware: given the ancestry components and the haplotype-specific CN table, how much
 of the later West Eurasian increase is predicted by admixture proportion alone?
+
+## Third-pass objective correction and assessment — 2026-10-09 (append only)
+
+[observation] The current deliverable is a PRIORITISER, not a selection-discovery test. Frozen preregistration preceded ranking. Six/eight positive-control regions are in the top decile; SLC24A5 recovery fails and TYR misses the decile. Top100 has4% control-region proxy precision,3/8 region recall,10.67% drift+jump threshold cost and43.7% bootstrap retention. The noisy shape term does not convincingly distinguish replacement from drift.
+
+[inference] **Partly supported for exploratory prioritisation, not validated for strong sustained-ramp classification.** Recommend a top100 modern-association pilot with all component/stability information retained. Actual expected modern phenotype precision remains unknown; the4% control proxy is not that quantity. Carried-in loci must remain candidates, down-weighted not excluded. No FDR or discovery claim follows. Full result and limitations: docs/prioritization-results.md; original conclusions are retained above.
