@@ -1,0 +1,10 @@
+test_cached_real_snp_composition_and_within (test_two_channel.TwoChannelTests.test_cached_real_snp_composition_and_within) ... ok
+test_centered_within_and_pooled_identity (test_two_channel.TwoChannelTests.test_centered_within_and_pooled_identity) ... ok
+test_inclusive_score_never_uses_cancellation (test_two_channel.TwoChannelTests.test_inclusive_score_never_uses_cancellation) ... ok
+test_nested_donors_discount_effective_number_and_pairs (test_two_channel.TwoChannelTests.test_nested_donors_discount_effective_number_and_pairs) ... ok
+test_ordering_null_determinism_and_orientation (test_two_channel.TwoChannelTests.test_ordering_null_determinism_and_orientation) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.341s
+
+OK

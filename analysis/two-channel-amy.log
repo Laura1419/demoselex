@@ -1,0 +1,111 @@
+Provenance manifest saved to: analysis/runs/20261009-0254-two-channel-amy/manifest.json
+{
+  "n": 533,
+  "beta_within": 0.15139853370041859,
+  "within_HC3_se": 0.11944117853674713,
+  "within_p": 0.20551908499125135,
+  "beta_between": 0.20725171401631584,
+  "beta_between_bootstrap_se": 0.03811675318124325,
+  "beta_total": 0.3586502477167344,
+  "beta_within_pooled_contribution": 0.010965834708715034,
+  "beta_pooled": 0.21821754872503069,
+  "ordering": {
+    "ordering_statistic": 0.5825367753417733,
+    "ordering_rho": 0.7142857142857143,
+    "ordering_step_fraction": 0.6666666666666666,
+    "ordering_p": 0.35342933854039543,
+    "ordering_p_genetic": 0.10715157432267512,
+    "ordering_p_half_shared": 0.19575298999267757,
+    "ordering_p_shared_drift": 0.35342933854039543,
+    "ordering_neff": 2.006421722102173,
+    "ordering_donors": 7.0
+  },
+  "mapping": [
+    {
+      "component": "Bronze age",
+      "n": 46,
+      "mapped": 45,
+      "fraction": 0.9782608695652174
+    },
+    {
+      "component": "CHG",
+      "n": 1,
+      "mapped": 1,
+      "fraction": 1.0
+    },
+    {
+      "component": "EHG",
+      "n": 49,
+      "mapped": 41,
+      "fraction": 0.8367346938775511
+    },
+    {
+      "component": "Early farmers",
+      "n": 22,
+      "mapped": 17,
+      "fraction": 0.7727272727272727
+    },
+    {
+      "component": "Iron age to early modern",
+      "n": 333,
+      "mapped": 312,
+      "fraction": 0.9369369369369369
+    },
+    {
+      "component": "Neolithic farmers",
+      "n": 34,
+      "mapped": 32,
+      "fraction": 0.9411764705882353
+    },
+    {
+      "component": "Steppe pastoralists",
+      "n": 16,
+      "mapped": 8,
+      "fraction": 0.5
+    },
+    {
+      "component": "WHG",
+      "n": 32,
+      "mapped": 29,
+      "fraction": 0.90625
+    }
+  ],
+  "seed": 20261009,
+  "inclusive_score": 4.377911269944562,
+  "modern_CN": {
+    "PEL": {
+      "n": 85,
+      "mean": 9.51764705882353
+    },
+    "Pima": {
+      "n": 14,
+      "mean": 10.285714285714286
+    },
+    "Surui": {
+      "n": 8,
+      "mean": 5.25
+    }
+  },
+  "H5": {
+    "East_Asia": {
+      "slots": 1438,
+      "frequency": 0.43602225312934634
+    },
+    "WEA": {
+      "slots": 1738,
+      "frequency": 0.18642117376294592
+    },
+    "Europe_5pop": {
+      "slots": 1006,
+      "frequency": 0.1709741550695825
+    },
+    "PEL": {
+      "slots": 170,
+      "frequency": 0.4470588235294118
+    },
+    "Pima": {
+      "slots": 28,
+      "frequency": 0.7142857142857143
+    }
+  }
+}

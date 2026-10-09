@@ -1,0 +1,423 @@
+[observation] completed shard0_out 45481
+[observation] completed shard1_out 45484
+[observation] completed shard2_out 45484
+[observation] completed shard3_out 45484
+[observation] completed moderate0_out 89082
+[observation] completed moderate1_out 89081
+[observation] completed moderate2_out 89083
+[observation] completed moderate3_out 89083
+Provenance manifest saved to: analysis/runs/20261009-0256-two-channel-genomewide/manifest.json
+{
+  "n": 538262,
+  "panels": {
+    "moderate": 356329,
+    "control": 149994,
+    "strong": 31939
+  },
+  "between_control_RMS": 0.006236380596419617,
+  "variant_metrics": {
+    "carriage": {
+      "count": 75876,
+      "fraction": 0.14096480895920574,
+      "control_count": 9303,
+      "control_n": 149994,
+      "control_pass_fraction": 0.06202248089923597
+    },
+    "within": {
+      "count": 60186,
+      "fraction": 0.11181543560570874,
+      "control_count": 5182,
+      "control_n": 149994,
+      "control_pass_fraction": 0.034548048588610214
+    },
+    "both": {
+      "count": 29436,
+      "fraction": 0.05468712262801387,
+      "control_count": 469,
+      "control_n": 149994,
+      "control_pass_fraction": 0.0031267917383362
+    },
+    "neither": {
+      "count": 372764,
+      "fraction": 0.6925326328070717,
+      "control_count": 135040,
+      "control_n": 149994,
+      "control_pass_fraction": 0.9003026787738176
+    },
+    "ordering": {
+      "count": 93,
+      "fraction": 0.00017277831242034549,
+      "control_count": 0,
+      "control_n": 149994,
+      "control_pass_fraction": 0.0
+    },
+    "ordered_carriage": {
+      "count": 0,
+      "fraction": 0.0,
+      "control_count": 0,
+      "control_n": 149994,
+      "control_pass_fraction": 0.0
+    },
+    "ordered_large_between": {
+      "count": 93,
+      "fraction": 0.00017277831242034549,
+      "control_count": 0,
+      "control_n": 149994,
+      "control_pass_fraction": 0.0
+    },
+    "sign_disagreement": {
+      "count": 133532,
+      "fraction": 0.24807993133455455,
+      "control_count": 67658,
+      "control_n": 149994,
+      "control_pass_fraction": 0.4510713761883809
+    },
+    "top_decile": {
+      "count": 53827,
+      "fraction": 0.10000148626505308,
+      "control_count": 1242,
+      "control_n": 149994,
+      "control_pass_fraction": 0.00828033121324853
+    },
+    "top_decile_ordered_carriage": {
+      "count": 0,
+      "fraction": 0.0,
+      "control_count": 0,
+      "control_n": 149994,
+      "control_pass_fraction": 0.0
+    }
+  },
+  "block_n": 10634,
+  "block_metrics": {
+    "carriage": {
+      "count": 3520,
+      "fraction": 0.33101372954673686,
+      "control_count": 146,
+      "control_n": 626,
+      "control_pass_fraction": 0.23322683706070288
+    },
+    "within": {
+      "count": 2033,
+      "fraction": 0.19117923641151024,
+      "control_count": 81,
+      "control_n": 626,
+      "control_pass_fraction": 0.12939297124600638
+    },
+    "both": {
+      "count": 992,
+      "fraction": 0.09328568741771676,
+      "control_count": 11,
+      "control_n": 626,
+      "control_pass_fraction": 0.01757188498402556
+    },
+    "neither": {
+      "count": 4089,
+      "fraction": 0.3845213466240361,
+      "control_count": 388,
+      "control_n": 626,
+      "control_pass_fraction": 0.6198083067092651
+    },
+    "ordering": {
+      "count": 4,
+      "fraction": 0.0003761519653940192,
+      "control_count": 0,
+      "control_n": 626,
+      "control_pass_fraction": 0.0
+    },
+    "ordered_carriage": {
+      "count": 0,
+      "fraction": 0.0,
+      "control_count": 0,
+      "control_n": 626,
+      "control_pass_fraction": 0.0
+    },
+    "ordered_large_between": {
+      "count": 4,
+      "fraction": 0.0003761519653940192,
+      "control_count": 0,
+      "control_n": 626,
+      "control_pass_fraction": 0.0
+    },
+    "sign_disagreement": {
+      "count": 3149,
+      "fraction": 0.2961256347564416,
+      "control_count": 274,
+      "control_n": 626,
+      "control_pass_fraction": 0.43769968051118213
+    },
+    "top_decile": {
+      "count": 1064,
+      "fraction": 0.1000564227948091,
+      "control_count": 11,
+      "control_n": 626,
+      "control_pass_fraction": 0.01757188498402556
+    },
+    "top_decile_ordered_carriage": {
+      "count": 0,
+      "fraction": 0.0,
+      "control_count": 0,
+      "control_n": 626,
+      "control_pass_fraction": 0.0
+    }
+  },
+  "relatedness_mapping": [
+    {
+      "component": "1",
+      "n": 39,
+      "mapped": 39,
+      "fraction": 1.0
+    },
+    {
+      "component": "3",
+      "n": 16,
+      "mapped": 16,
+      "fraction": 1.0
+    },
+    {
+      "component": "4",
+      "n": 15,
+      "mapped": 15,
+      "fraction": 1.0
+    },
+    {
+      "component": "5",
+      "n": 53,
+      "mapped": 52,
+      "fraction": 0.9811320754716981
+    },
+    {
+      "component": "6",
+      "n": 36,
+      "mapped": 36,
+      "fraction": 1.0
+    },
+    {
+      "component": "7",
+      "n": 41,
+      "mapped": 41,
+      "fraction": 1.0
+    },
+    {
+      "component": "8",
+      "n": 29,
+      "mapped": 29,
+      "fraction": 1.0
+    },
+    {
+      "component": "9",
+      "n": 40,
+      "mapped": 40,
+      "fraction": 1.0
+    },
+    {
+      "component": "10",
+      "n": 33,
+      "mapped": 33,
+      "fraction": 1.0
+    },
+    {
+      "component": "11",
+      "n": 67,
+      "mapped": 67,
+      "fraction": 1.0
+    },
+    {
+      "component": "12",
+      "n": 45,
+      "mapped": 45,
+      "fraction": 1.0
+    },
+    {
+      "component": "13",
+      "n": 34,
+      "mapped": 33,
+      "fraction": 0.9705882352941176
+    },
+    {
+      "component": "14",
+      "n": 13,
+      "mapped": 11,
+      "fraction": 0.8461538461538461
+    },
+    {
+      "component": "15",
+      "n": 47,
+      "mapped": 47,
+      "fraction": 1.0
+    },
+    {
+      "component": "16",
+      "n": 78,
+      "mapped": 78,
+      "fraction": 1.0
+    },
+    {
+      "component": "17",
+      "n": 54,
+      "mapped": 53,
+      "fraction": 0.9814814814814815
+    },
+    {
+      "component": "18",
+      "n": 39,
+      "mapped": 39,
+      "fraction": 1.0
+    },
+    {
+      "component": "19",
+      "n": 14,
+      "mapped": 14,
+      "fraction": 1.0
+    },
+    {
+      "component": "20",
+      "n": 40,
+      "mapped": 38,
+      "fraction": 0.95
+    },
+    {
+      "component": "21",
+      "n": 54,
+      "mapped": 54,
+      "fraction": 1.0
+    },
+    {
+      "component": "22",
+      "n": 158,
+      "mapped": 157,
+      "fraction": 0.9936708860759493
+    },
+    {
+      "component": "23",
+      "n": 64,
+      "mapped": 64,
+      "fraction": 1.0
+    },
+    {
+      "component": "24",
+      "n": 231,
+      "mapped": 229,
+      "fraction": 0.9913419913419913
+    },
+    {
+      "component": "25",
+      "n": 119,
+      "mapped": 119,
+      "fraction": 1.0
+    },
+    {
+      "component": "26",
+      "n": 44,
+      "mapped": 44,
+      "fraction": 1.0
+    },
+    {
+      "component": "27",
+      "n": 62,
+      "mapped": 54,
+      "fraction": 0.8709677419354839
+    },
+    {
+      "component": "28",
+      "n": 21,
+      "mapped": 20,
+      "fraction": 0.9523809523809523
+    },
+    {
+      "component": "30",
+      "n": 138,
+      "mapped": 138,
+      "fraction": 1.0
+    },
+    {
+      "component": "31",
+      "n": 94,
+      "mapped": 94,
+      "fraction": 1.0
+    },
+    {
+      "component": "32",
+      "n": 94,
+      "mapped": 94,
+      "fraction": 1.0
+    },
+    {
+      "component": "33",
+      "n": 56,
+      "mapped": 54,
+      "fraction": 0.9642857142857143
+    },
+    {
+      "component": "34",
+      "n": 55,
+      "mapped": 55,
+      "fraction": 1.0
+    },
+    {
+      "component": "35",
+      "n": 96,
+      "mapped": 95,
+      "fraction": 0.9895833333333334
+    },
+    {
+      "component": "36",
+      "n": 69,
+      "mapped": 68,
+      "fraction": 0.9855072463768116
+    },
+    {
+      "component": "37",
+      "n": 40,
+      "mapped": 36,
+      "fraction": 0.9
+    },
+    {
+      "component": "38",
+      "n": 30,
+      "mapped": 28,
+      "fraction": 0.9333333333333333
+    },
+    {
+      "component": "39",
+      "n": 26,
+      "mapped": 0,
+      "fraction": 0.0
+    },
+    {
+      "component": "40",
+      "n": 31,
+      "mapped": 31,
+      "fraction": 1.0
+    },
+    {
+      "component": "41",
+      "n": 50,
+      "mapped": 50,
+      "fraction": 1.0
+    }
+  ],
+  "strong": {
+    "n": 31939,
+    "median_abs_within": 0.0180529440405427,
+    "median_abs_between": 0.0142169514450238,
+    "median_total": 0.0067051126842287995,
+    "ordered_fraction": 0.002911800619931745,
+    "control_ordered_fraction": 0.0
+  },
+  "moderate": {
+    "n": 356329,
+    "median_abs_within": 0.0058905313264291,
+    "median_abs_between": 0.0061700569327354,
+    "median_total": 0.004957247841637301,
+    "ordered_fraction": 0.0,
+    "control_ordered_fraction": 0.0
+  },
+  "control": {
+    "n": 149994,
+    "median_abs_within": 0.0034419542234332,
+    "median_abs_between": 0.00294714646391435,
+    "median_total": 0.00033873037024108527,
+    "ordered_fraction": 0.0,
+    "control_ordered_fraction": 0.0
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "unique_scored_loci": 538262,
+  "blocks": 10634,
+  "control_loci": 149994,
+  "control_only_blocks": 626,
+  "control_ordering_95CI": [
+    0.0,
+    2.4593211061678903e-05
+  ],
+  "control_block_ordering_95CI": [
+    0.0,
+    0.005875450314605311
+  ],
+  "any_ordered_blocks": 8,
+  "control_any_ordered_blocks": 0,
+  "top_decile_channel_classes": {
+    "carriage": {
+      "count": 16822,
+      "control_count": 655,
+      "control_pass_fraction": 0.0043668413403202795
+    },
+    "within": {
+      "count": 7959,
+      "control_count": 136,
+      "control_pass_fraction": 0.000906702934784058
+    },
+    "both": {
+      "count": 29046,
+      "control_count": 451,
+      "control_pass_fraction": 0.0030067869381441925
+    }
+  },
+  "checks": [
+    "exact merged source coverage",
+    "finite complete columns",
+    "non-cancelling inclusive score",
+    "additive total identity",
+    "descending deterministic ranking",
+    "250kb unique block representatives",
+    "AMY pooled scaling identity",
+    "independent released AMY statistics"
+  ]
+}
