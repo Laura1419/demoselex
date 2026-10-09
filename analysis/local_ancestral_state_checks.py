@@ -65,6 +65,25 @@ def ideal_frequency_floor(n_early: int, n_late: int, p: float = .5) -> float:
                  np.sqrt(p*(1-p)/(2*n_early)+p*(1-p)/(2*n_late)))
 
 
+def assert_amy_features_excluded(chromosomes, positions) -> None:
+    """Fail closed on malformed/autosomal coordinates or any forbidden feature.
+
+    This assertion checks coordinates only, not LD or original imputation leakage.
+    Call it on every feature manifest before a linked model is executed.
+    """
+    chrom, pos = np.asarray(chromosomes), np.asarray(positions, dtype=float)
+    if chrom.ndim != 1 or pos.shape != chrom.shape:
+        raise ValueError("Need matching one-dimensional chromosome/position arrays")
+    canonical = np.array([str(c).removeprefix('chr') for c in chrom])
+    if not all(c in {str(i) for i in range(1, 23)} for c in canonical):
+        raise ValueError("Need canonical GRCh37 autosomal chromosome labels")
+    if not np.isfinite(pos).all() or (pos < 1).any() or (pos != np.floor(pos)).any():
+        raise ValueError("Need finite positive integer GRCh37 positions")
+    keep = outside_amy_exclusion(canonical.astype(int), pos)
+    if not keep.all():
+        raise AssertionError(f"AMY exclusion violated by {int((~keep).sum())} features")
+
+
 def outside_amy_exclusion(chromosomes, positions) -> np.ndarray:
     """Coordinate exclusion only; this does NOT certify imputation independence."""
     chrom, pos = np.asarray(chromosomes), np.asarray(positions)

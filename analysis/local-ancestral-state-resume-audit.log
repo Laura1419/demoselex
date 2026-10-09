@@ -1,0 +1,120 @@
+[observation] Start UTC=2026-10-09T19:09:48.576801+00:00; root free bytes=58279493632
+Provenance manifest saved to: analysis/runs/20261009-1909-local-ancestral-state-resume-audit/manifest.json
+[observation] End root free bytes=63346241536; STOPPED; no local statistic
+{
+  "windows": {
+    "AMY": {
+      "n": 2204,
+      "max_abs_X": 3.794956889119673,
+      "above_5_45": 0
+    },
+    "LCT": {
+      "n": 881,
+      "max_abs_X": 16.523199593858344,
+      "above_5_45": 281
+    },
+    "FADS": {
+      "n": 979,
+      "max_abs_X": 16.15341039753985,
+      "above_5_45": 182
+    },
+    "SLC45A2": {
+      "n": 1032,
+      "max_abs_X": 13.149626229714274,
+      "above_5_45": 221
+    },
+    "SLC24A5": {
+      "n": 840,
+      "max_abs_X": 5.990305092613048,
+      "above_5_45": 6
+    }
+  },
+  "counts": {
+    "panel_n": 16339,
+    "variants": 52382872,
+    "dated_metadata_rows": 5987,
+    "dated_unique_biological_ids": 5987,
+    "dated_3500_6500_BP_rows": 1832,
+    "measured_structural_dated_bundle_n": 225
+  }
+}
+[observation] Start UTC=2026-10-09T19:15:01.076241+00:00; root free bytes=60175962112
+Provenance manifest saved to: analysis/runs/20261009-1915-local-ancestral-state-resume-audit/manifest.json
+[observation] End root free bytes=60136648704; STOPPED; no local statistic
+{
+  "windows": {
+    "AMY": {
+      "n": 2204,
+      "max_abs_X": 3.794956889119673,
+      "above_5_45": 0
+    },
+    "LCT": {
+      "n": 881,
+      "max_abs_X": 16.523199593858344,
+      "above_5_45": 281
+    },
+    "FADS": {
+      "n": 979,
+      "max_abs_X": 16.15341039753985,
+      "above_5_45": 182
+    },
+    "SLC45A2": {
+      "n": 1032,
+      "max_abs_X": 13.149626229714274,
+      "above_5_45": 221
+    },
+    "SLC24A5": {
+      "n": 840,
+      "max_abs_X": 5.990305092613048,
+      "above_5_45": 6
+    }
+  },
+  "counts": {
+    "panel_n": 16339,
+    "variants": 52382872,
+    "dated_metadata_rows": 5987,
+    "dated_unique_biological_ids": 5987,
+    "dated_3500_6500_BP_rows": 1832,
+    "measured_structural_dated_bundle_n": 225
+  }
+}
+[observation] Start UTC=2026-10-09T19:16:09.008440+00:00; root free bytes=60070256640
+Provenance manifest saved to: analysis/runs/20261009-1916-local-ancestral-state-resume-audit/manifest.json
+[observation] End root free bytes=60199473152; STOPPED; no local statistic
+{
+  "windows": {
+    "AMY": {
+      "n": 2204,
+      "max_abs_X": 3.794956889119673,
+      "above_5_45": 0
+    },
+    "LCT": {
+      "n": 881,
+      "max_abs_X": 16.523199593858344,
+      "above_5_45": 281
+    },
+    "FADS": {
+      "n": 979,
+      "max_abs_X": 16.15341039753985,
+      "above_5_45": 182
+    },
+    "SLC45A2": {
+      "n": 1032,
+      "max_abs_X": 13.149626229714274,
+      "above_5_45": 221
+    },
+    "SLC24A5": {
+      "n": 840,
+      "max_abs_X": 5.990305092613048,
+      "above_5_45": 6
+    }
+  },
+  "counts": {
+    "panel_n": 16339,
+    "variants": 52382872,
+    "dated_metadata_rows": 5987,
+    "dated_unique_biological_ids": 5987,
+    "dated_3500_6500_BP_rows": 1832,
+    "measured_structural_dated_bundle_n": 225
+  }
+}

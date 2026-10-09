@@ -4,7 +4,7 @@ import numpy as np
 from analysis.local_ancestral_state_checks import (
     genotype_probabilities, pair_marginal_distribution,
     shared_direction_statistic, spectral_effective_count,
-    ideal_frequency_floor, outside_amy_exclusion,
+    ideal_frequency_floor, outside_amy_exclusion, assert_amy_features_excluded,
 )
 
 
@@ -86,6 +86,24 @@ class LocalAncestralStateAlgebraTests(unittest.TestCase):
         self.assertAlmostEqual(ideal_frequency_floor(448,452), baseline/2)
         with self.assertRaises(ValueError):
             ideal_frequency_floor(0,113)
+
+    def test_runtime_assertion_rejects_corrected_core_and_boundaries(self):
+        for position in [103915000, 104255001, 104301314, 104327000]:
+            for chromosome in [1, '1', 'chr1']:
+                with self.assertRaisesRegex(AssertionError, 'AMY exclusion violated'):
+                    assert_amy_features_excluded([chromosome], [position])
+        assert_amy_features_excluded(['chr1', '1', 'chr2'],
+                                     [103914999, 104327001, 104301314])
+
+    def test_runtime_assertion_rejects_unknown_or_malformed_coordinates(self):
+        for chromosome in ['unknown', 'chrX', '1.0']:
+            with self.assertRaises(ValueError):
+                assert_amy_features_excluded([chromosome], [104301314])
+        for position in [np.nan, np.inf, -1, 104301314.5]:
+            with self.assertRaises(ValueError):
+                assert_amy_features_excluded([1], [position])
+        with self.assertRaises(ValueError):
+            assert_amy_features_excluded([1, 2], [103914999])
 
     def test_corrected_inclusive_exclusion_and_perturbation(self):
         positions = np.array([103914999,103915000,104255001,104301314,104327000,104327001])

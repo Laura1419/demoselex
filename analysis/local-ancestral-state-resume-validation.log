@@ -1,0 +1,39 @@
+[observation] Initial hygiene validation rejected trailing whitespace in downloaded upstream C++ source. Resolved by preserving exact original source bytes and SHA256 inside JSON wrappers, then deleting only our superseded raw copies. Author-written files had no trailing whitespace. Latest audit/provenance, not superseded early runs, is the acceptance evidence.
+Verifying manifest: 20261009-1916-local-ancestral-state-resume-audit
+Timestamp: 2026-10-09T19:16:09.008693
+Git commit: not-probed
+
+Input files:
+  data/derived/local_ancestral_state/registration.json: ✓
+  data/derived/local_ancestral_state/prereg.before_preflight.md: ✓
+  /home/erikg/demoselex/analysis/local_ancestral_state_resume_audit.py: ✓
+  docs/local-ancestral-state-prereg.md: ✓
+  data/derived/local_ancestral_state/prereg.before_resume_audit.md: ✓
+  docs/local-ancestral-state-method.md: ✓
+  analysis/local_ancestral_state_checks.py: ✓
+  analysis/test_local_ancestral_state_checks.py: ✓
+  analysis/load_akbari.py: ✓
+  data/derived/haplotype_background/AMY_summary.json: ✓
+  data/raw/annotation/hg19_refGene.txt.gz: ✓
+  data/derived/haplotype_background/AMY_window_variants.tsv: ✓
+  data/derived/haplotype_background/AMY_200000_features.tsv: ✓
+  data/derived/haplotype_background/AMY_1000000_features.tsv: ✓
+  data/raw/akbari/tier2/AncientDNA_plus_EUR1KG_AllVariants_NoQC_GRCh37_autosomes.psam: ✓
+  data/derived/haplotype_background/panel_metadata.tsv: ✓
+  data/derived/amy_binarized/primary_cohort.tsv: ✓
+  data/derived/amy_binarized/summary.json: ✓
+  data/derived/local_ancestry/verified_global_baseline.json: ✓
+  data/derived/local_ancestry/verified_akbari_windows.json: ✓
+  data/derived/local_ancestral_state/literature/ELAI_4abc4a8f_control.cpp.json: ✓
+  data/derived/local_ancestral_state/literature/ELAI_4abc4a8f_diploid.cpp.json: ✓
+  data/derived/local_ancestral_state/literature/ELAI_4abc4a8f_diploid.h.json: ✓
+
+Output files:
+  data/derived/local_ancestral_state/resume_audit.json: ✓
+  data/derived/local_ancestral_state/prereg.before_resume_audit.md: ✓
+
+✓ All files verified successfully
+Provenance manifest saved to: analysis/runs/20261009-1917-local-ancestral-state-resume-validation/manifest.json
+[observation] Final validation PASS; conservative artifact bytes: 342878 ; root free bytes: 53284683776
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p2   14T   14T   53G 100% /

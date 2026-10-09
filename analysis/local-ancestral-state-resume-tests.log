@@ -1,0 +1,34 @@
+test_common_direction_not_raw_country_count (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_common_direction_not_raw_country_count) ... ok
+test_corrected_inclusive_exclusion_and_perturbation (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_corrected_inclusive_exclusion_and_perturbation) ... ok
+test_diploid_convolution_matches_enumeration (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_diploid_convolution_matches_enumeration) ... ok
+test_floor_units_and_support_loss (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_floor_units_and_support_loss) ... ok
+test_homo_state_anchors_break_swap_symmetry (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_homo_state_anchors_break_swap_symmetry) ... ok
+test_marginalize_pair_before_log (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_marginalize_pair_before_log) ... ok
+test_mixed_only_named_frequency_not_identifiable (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_mixed_only_named_frequency_not_identifiable) ... ok
+test_naive_ancestry_weighting_is_not_asafe (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_naive_ancestry_weighting_is_not_asafe) ... ok
+test_pair_dosages_do_not_determine_joint_distribution (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_pair_dosages_do_not_determine_joint_distribution) ... ok
+test_runtime_assertion_rejects_corrected_core_and_boundaries (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_runtime_assertion_rejects_corrected_core_and_boundaries) ... ok
+test_runtime_assertion_rejects_unknown_or_malformed_coordinates (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_runtime_assertion_rejects_unknown_or_malformed_coordinates) ... ok
+test_spectral_count_independence_and_duplicate_states (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_spectral_count_independence_and_duplicate_states) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.007s
+
+OK
+test_common_direction_not_raw_country_count (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_common_direction_not_raw_country_count) ... ok
+test_corrected_inclusive_exclusion_and_perturbation (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_corrected_inclusive_exclusion_and_perturbation) ... ok
+test_diploid_convolution_matches_enumeration (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_diploid_convolution_matches_enumeration) ... ok
+test_floor_units_and_support_loss (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_floor_units_and_support_loss) ... ok
+test_homo_state_anchors_break_swap_symmetry (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_homo_state_anchors_break_swap_symmetry) ... ok
+test_marginalize_pair_before_log (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_marginalize_pair_before_log) ... ok
+test_mixed_only_named_frequency_not_identifiable (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_mixed_only_named_frequency_not_identifiable) ... ok
+test_naive_ancestry_weighting_is_not_asafe (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_naive_ancestry_weighting_is_not_asafe) ... ok
+test_pair_dosages_do_not_determine_joint_distribution (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_pair_dosages_do_not_determine_joint_distribution) ... ok
+test_runtime_assertion_rejects_corrected_core_and_boundaries (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_runtime_assertion_rejects_corrected_core_and_boundaries) ... ok
+test_runtime_assertion_rejects_unknown_or_malformed_coordinates (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_runtime_assertion_rejects_unknown_or_malformed_coordinates) ... ok
+test_spectral_count_independence_and_duplicate_states (analysis.test_local_ancestral_state_checks.LocalAncestralStateAlgebraTests.test_spectral_count_independence_and_duplicate_states) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.007s
+
+OK
