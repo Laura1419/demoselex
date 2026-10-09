@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "primary_rerun_biological_results_identical": true,
+  "matched_ancients": 225,
+  "background_markers": 1133,
+  "AMY_LOCO_markers": 1058,
+  "genomewide_GRMs_exactly_recomputed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "primary_null_attempt_rows": 4577,
+  "unrestricted_null_locus_models": 24,
+  "primary_prereg_mtime_before_first_run": true,
+  "source_ast_and_whitespace_checks": "passed",
+  "no_git_or_staging_performed": true,
+  "index_not_inspected_under_no_git_rule": true
+}

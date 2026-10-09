@@ -1,0 +1,225 @@
+cohort {'labellable_dated_ancients': 288, 'matched': 225, 'match_rate': 0.78125, 'mapping_methods': {'unique_prefix': 225, 'absent': 63}}
+{"locus": "LCT", "model": "GRM_on", "beta_time": -0.0008869016749730769, "beta_intercept": 1.2656314408236393, "tau1": 0.01419421751691878, "tau2": 0.11238422368445886, "se_beta_time": 0.0001498658733466478, "z_score": -5.917969549489268, "p_value": 3.2594029166578093e-09, "converged": true, "n_iterations": 22, "n": 225, "X_equivalent": -3.9192710782120876, "clears_3_16": true, "clears_5_45": false, "released_X": 16.523199593858344}
+{"locus": "LCT", "model": "GRM_off", "beta_time": -0.0008865398385319189, "beta_intercept": 1.2651110781476023, "tau1": 0.02, "tau2": 0.12658864483338192, "se_beta_time": 0.00014982564397206228, "z_score": -5.917143521153364, "p_value": 3.275808333507017e-09, "converged": true, "n_iterations": 9, "n": 225, "X_equivalent": -3.9187240275827095, "clears_3_16": true, "clears_5_45": false, "released_X": 16.523199593858344}
+{"locus": "SLC45A2", "model": "GRM_on", "beta_time": -0.0007231023048891403, "beta_intercept": 4.178460620539661, "tau1": 0.7951090839428921, "tau2": 0.0, "se_beta_time": 7.77784000948801e-05, "z_score": -9.296955247305732, "p_value": 1.445250241434764e-20, "converged": true, "n_iterations": 10, "n": 225, "X_equivalent": -6.157059023621045, "clears_3_16": true, "clears_5_45": true, "released_X": 13.149626229714274}
+{"locus": "SLC45A2", "model": "GRM_off", "beta_time": -0.0007496110981453499, "beta_intercept": 4.145858026963874, "tau1": 0.02, "tau2": 0.29699919836823907, "se_beta_time": 7.535297542576812e-05, "z_score": -9.947996000288116, "p_value": 2.573124740490268e-23, "converged": true, "n_iterations": 9, "n": 225, "X_equivalent": -6.588221295167624, "clears_3_16": true, "clears_5_45": true, "released_X": 13.149626229714274}
+{"locus": "AMY_real_SNP", "model": "GRM_on", "beta_time": -5.585801962717318e-05, "beta_intercept": -2.3617994003898315, "tau1": 0.0, "tau2": 0.0, "se_beta_time": 8.262261285309524e-05, "z_score": -0.6760621299460708, "p_value": 0.4990011992505554, "converged": true, "n_iterations": 4, "n": 225, "X_equivalent": -0.4477330832499416, "clears_3_16": false, "clears_5_45": false, "released_X": 3.794956889119673}
+{"locus": "AMY_real_SNP", "model": "GRM_off", "beta_time": -5.585801962717318e-05, "beta_intercept": -2.3617994003898315, "tau1": 0.02, "tau2": 0.0, "se_beta_time": 8.262261285309524e-05, "z_score": -0.6760621299460708, "p_value": 0.4990011992505554, "converged": true, "n_iterations": 4, "n": 225, "X_equivalent": -0.4477330832499416, "clears_3_16": false, "clears_5_45": false, "released_X": 3.794956889119673}
+{"locus": "H1^a", "model": "GRM_on", "beta_time": 0.00020830451786970323, "beta_intercept": -2.2058913798621456, "tau1": 0.348402748276571, "tau2": 0.0, "se_beta_time": 5.060482374602554e-05, "z_score": 4.116297665912991, "p_value": 3.8500701010055086e-05, "converged": true, "n_iterations": 8, "n": 225, "X_equivalent": 2.7260847249065363, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.6955591155869052, "extrapolated_abs_X": 11.49286209617002}
+{"locus": "H1^a", "model": "GRM_off", "beta_time": 0.00020431084983150074, "beta_intercept": -2.195495925999799, "tau1": 0.02, "tau2": 0.30073145976004967, "se_beta_time": 4.812336475775821e-05, "z_score": 4.2455645165285905, "p_value": 2.1804375650069e-05, "converged": true, "n_iterations": 8, "n": 225, "X_equivalent": 2.8116937880746637, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.7175023727835909, "extrapolated_abs_X": 11.855434914570226}
+{"locus": "H5", "model": "GRM_on", "beta_time": -0.000192951791757188, "beta_intercept": -1.0797320177747682, "tau1": 0.0, "tau2": 0.0, "se_beta_time": 7.12990328063727e-05, "z_score": -2.706232948225098, "p_value": 0.006805129130118224, "converged": true, "n_iterations": 5, "n": 225, "X_equivalent": -1.792246552839836, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.4572907862391166, "extrapolated_abs_X": 7.555906933461334}
+{"locus": "H5", "model": "GRM_off", "beta_time": -0.000192951791757188, "beta_intercept": -1.0797320177747682, "tau1": 0.02, "tau2": 0.0, "se_beta_time": 7.12990328063727e-05, "z_score": -2.706232948225098, "p_value": 0.006805129130118224, "converged": true, "n_iterations": 5, "n": 225, "X_equivalent": -1.792246552839836, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.45735462365421914, "extrapolated_abs_X": 7.556961731812629}
+{"locus": "H7", "model": "GRM_on", "beta_time": -0.0001251104675223564, "beta_intercept": -2.122624428509297, "tau1": 0.0, "tau2": 0.0, "se_beta_time": 9.142787790682421e-05, "z_score": -1.3684061184254843, "p_value": 0.17118499015451638, "converged": true, "n_iterations": 5, "n": 225, "X_equivalent": -0.9062490907301671, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.23122898943330664, "extrapolated_abs_X": 3.8206427442926874}
+{"locus": "H7", "model": "GRM_off", "beta_time": -0.0001251104675223564, "beta_intercept": -2.122624428509297, "tau1": 0.02, "tau2": 0.0, "se_beta_time": 9.142787790682421e-05, "z_score": -1.3684061184254843, "p_value": 0.17118499015451638, "converged": true, "n_iterations": 5, "n": 225, "X_equivalent": -0.9062490907301671, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.23126126880876396, "extrapolated_abs_X": 3.821176102856134}
+{"locus": "H9", "model": "GRM_on", "beta_time": 0.00027460235921419456, "beta_intercept": -6.338852494648405, "tau1": 1.3876998721309433, "tau2": 0.0, "se_beta_time": 0.00020531310031646538, "z_score": 1.3374809439384439, "p_value": 0.1810656984435396, "converged": true, "n_iterations": 27, "n": 225, "X_equivalent": 0.8857683936021834, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.22600335009393063, "extrapolated_abs_X": 3.7342984624826596}
+{"locus": "H9", "model": "GRM_off", "converged": false, "error": "PQL did not converge in 40 iterations"}
+{"locus": "H3^r", "model": "GRM_on", "beta_time": -7.020903277228864e-05, "beta_intercept": -0.3545449156085295, "tau1": 0.05434938646584402, "tau2": 0.42586850326685616, "se_beta_time": 4.823156738562234e-05, "z_score": -1.4556655853821103, "p_value": 0.14548508789183975, "converged": true, "n_iterations": 11, "n": 225, "X_equivalent": -0.9640380844523168, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.24597382146174393, "extrapolated_abs_X": 4.064274546876472}
+{"locus": "H3^r", "model": "GRM_off", "beta_time": -6.988882327114526e-05, "beta_intercept": -0.35515702144526273, "tau1": 0.02, "tau2": 0.48026192499525816, "se_beta_time": 4.7850715337278965e-05, "z_score": -1.4605596338221742, "p_value": 0.14413633087121658, "converged": true, "n_iterations": 7, "n": 225, "X_equivalent": -0.9672792472102709, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.24683525566023168, "extrapolated_abs_X": 4.07850819607506}
+{"locus": "AMY1_continuous", "model": "GRM_on", "z_score": -2.4803843688386884, "beta_time": -0.00018515992020737125, "se_beta_time": 7.464968838441068e-05, "tau1": 0.0, "residual_variance": 7.140330026205121, "n": 225, "converged": true, "X_equivalent": -1.6426746772425995, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.41912759910242364, "extrapolated_abs_X": 6.925328975263989}
+{"locus": "AMY1_continuous", "model": "GRM_off", "z_score": -2.48038538754651, "beta_time": -0.00018515992020737285, "se_beta_time": 7.464965772537671e-05, "tau1": 1.4544197530864198, "residual_variance": 7.140324161061397, "n": 225, "converged": true, "X_equivalent": -1.6426753518983357, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.41918628113029704, "extrapolated_abs_X": 6.926298590123114}
+{"locus": "background_chr3", "model": "GRM_on", "beta_time": 7.172864797466075e-05, "beta_intercept": 0.08295709513026378, "tau1": 0.0, "tau2": 0.08033001060489438, "se_beta_time": 4.2102392469442116e-05, "z_score": 1.7036715437661019, "p_value": 0.0884424672428131, "converged": true, "n_iterations": 5, "n": 225, "X_equivalent": 1.1282840427645784, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.28788109325657685, "extrapolated_abs_X": 4.756716763176566}
+{"locus": "background_chr3", "model": "GRM_off", "beta_time": 7.172864804733394e-05, "beta_intercept": 0.08295709514249514, "tau1": 0.02, "tau2": 0.08033004896885813, "se_beta_time": 4.210239285067378e-05, "z_score": 1.7036715300656844, "p_value": 0.08844246980378438, "converged": true, "n_iterations": 5, "n": 225, "X_equivalent": 1.1282840336912554, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.2879212789034406, "extrapolated_abs_X": 4.757380758640505}
+{"locus": "background_chr4", "model": "GRM_on", "beta_time": -8.264450316617914e-05, "beta_intercept": -1.964569508095663, "tau1": 0.0, "tau2": 0.0, "se_beta_time": 7.527797293141366e-05, "z_score": -1.0978577125273707, "p_value": 0.27226662581223593, "converged": true, "n_iterations": 4, "n": 225, "X_equivalent": -0.7270740318479578, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.1855125653058012, "extrapolated_abs_X": 3.065261143716434}
+{"locus": "background_chr4", "model": "GRM_off", "beta_time": -8.264450316617914e-05, "beta_intercept": -1.964569508095663, "tau1": 0.02, "tau2": 0.0, "se_beta_time": 7.527797293141366e-05, "z_score": -1.0978577125273707, "p_value": 0.27226662581223593, "converged": true, "n_iterations": 4, "n": 225, "X_equivalent": -0.7270740318479578, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.1855384627063055, "extrapolated_abs_X": 3.0656890516339286}
+{"locus": "background_chr6", "model": "GRM_on", "beta_time": -0.00011652324728875692, "beta_intercept": -1.6130097908987395, "tau1": 0.0, "tau2": 0.0, "se_beta_time": 7.157617004640992e-05, "z_score": -1.6279614739542974, "p_value": 0.10353305506463517, "converged": true, "n_iterations": 5, "n": 225, "X_equivalent": -1.0781438241538843, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.2750878422642093, "extrapolated_abs_X": 4.545331323575351}
+{"locus": "background_chr6", "model": "GRM_off", "beta_time": -0.00011652324728875692, "beta_intercept": -1.6130097908987395, "tau1": 0.02, "tau2": 0.0, "se_beta_time": 7.157617004640992e-05, "z_score": -1.6279614739542974, "p_value": 0.10353305506463517, "converged": true, "n_iterations": 5, "n": 225, "X_equivalent": -1.0781438241538843, "clears_3_16": false, "clears_5_45": false, "AMY_to_LCT_abs_Z_ratio": 0.2751262442992048, "extrapolated_abs_X": 4.545965848064392}
+permutation round 1
+permutation round 2
+permutation round 3
+permutation round 4
+permutation round 5
+permutation round 6
+permutation round 7
+permutation round 8
+permutation round 9
+permutation round 10
+permutation round 11
+permutation round 12
+permutation round 13
+permutation round 14
+permutation round 15
+permutation round 16
+permutation round 17
+permutation round 18
+permutation round 19
+permutation round 20
+permutation round 21
+permutation round 22
+permutation round 23
+permutation round 24
+permutation round 25
+permutation round 26
+permutation round 27
+permutation round 28
+permutation round 29
+permutation round 30
+permutation round 31
+permutation round 32
+permutation round 33
+permutation round 34
+permutation round 35
+permutation round 36
+permutation round 37
+permutation round 38
+permutation round 39
+permutation round 40
+permutation round 41
+permutation round 42
+permutation round 43
+permutation round 44
+permutation round 45
+permutation round 46
+permutation round 47
+permutation round 48
+permutation round 49
+permutation round 50
+permutation round 51
+permutation round 52
+permutation round 53
+permutation round 54
+permutation round 55
+permutation round 56
+permutation round 57
+permutation round 58
+permutation round 59
+permutation round 60
+permutation round 61
+permutation round 62
+permutation round 63
+permutation round 64
+permutation round 65
+permutation round 66
+permutation round 67
+permutation round 68
+permutation round 69
+permutation round 70
+permutation round 71
+permutation round 72
+permutation round 73
+permutation round 74
+permutation round 75
+permutation round 76
+permutation round 77
+permutation round 78
+permutation round 79
+permutation round 80
+permutation round 81
+permutation round 82
+permutation round 83
+permutation round 84
+permutation round 85
+permutation round 86
+permutation round 87
+permutation round 88
+permutation round 89
+permutation round 90
+permutation round 91
+permutation round 92
+permutation round 93
+permutation round 94
+permutation round 95
+permutation round 96
+permutation round 97
+permutation round 98
+permutation round 99
+permutation round 100
+permutation round 101
+permutation round 102
+permutation round 103
+permutation round 104
+permutation round 105
+permutation round 106
+permutation round 107
+permutation round 108
+permutation round 109
+permutation round 110
+permutation round 111
+permutation round 112
+permutation round 113
+permutation round 114
+permutation round 115
+permutation round 116
+permutation round 117
+permutation round 118
+permutation round 119
+permutation round 120
+permutation round 121
+permutation round 122
+permutation round 123
+permutation round 124
+permutation round 125
+permutation round 126
+permutation round 127
+permutation round 128
+permutation round 129
+permutation round 130
+permutation round 131
+permutation round 132
+permutation round 133
+permutation round 134
+permutation round 135
+permutation round 136
+permutation round 137
+permutation round 138
+permutation round 139
+permutation round 140
+permutation round 141
+permutation round 142
+permutation round 143
+permutation round 144
+permutation round 145
+permutation round 146
+permutation round 147
+permutation round 148
+permutation round 149
+permutation round 150
+permutation round 151
+permutation round 152
+permutation round 153
+permutation round 154
+permutation round 155
+permutation round 156
+permutation round 157
+permutation round 158
+permutation round 159
+permutation round 160
+permutation round 161
+permutation round 162
+permutation round 163
+permutation round 164
+permutation round 165
+permutation round 166
+permutation round 167
+permutation round 168
+permutation round 169
+permutation round 170
+permutation round 171
+permutation round 172
+permutation round 173
+permutation round 174
+permutation round 175
+permutation round 176
+permutation round 177
+permutation round 178
+permutation round 179
+permutation round 180
+permutation round 181
+permutation round 182
+permutation round 183
+permutation round 184
+permutation round 185
+permutation round 186
+permutation round 187
+permutation round 188
+permutation round 189
+permutation round 190
+permutation round 191
+permutation round 192
+permutation round 193
+permutation round 194
+permutation round 195
+permutation round 196
+permutation round 197
+permutation round 198
+permutation round 199
+Provenance manifest saved to: analysis/runs/20261009-1344-cn-as-snp/manifest.json

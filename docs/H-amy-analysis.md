@@ -222,3 +222,11 @@ Ancient composition moves in the same direction as CN: WHG is dominated by low-C
   predicted by admixture proportion alone versus requiring within-component change? That is
   answerable with `p2` proportions plus the haplotype-specific CN table, and it is the test
   the argument actually needs.
+
+## CN-as-SNP counterfactual — appended 2026-10-09 (new analysis, prior conclusions retained)
+
+[observation] `docs/cn-as-snp-prereg.md` preceded fitting; `docs/cn-as-snp-results.md` contains the complete same-cohort controls, five perfect-tag haplotype dosages, continuous AMY1, GRM-on/off contrasts and 199-attempt label-permutation nulls. Unlike the earlier ENA-only linkage result, the released imputed bundle directly matches **225/288** labelled ancients by unique biological-ID prefix. This is a different data source/denominator, not a rewrite of the historical overlap claim.
+
+[observation] The supervisor-approved ordering gate passed (GRM-on |Z| LCT=5.918, SLC45A2=9.297, released lead AMY SNP=0.676). H1^a |Z|=4.116 on / 4.246 off and H5=2.706 both; no GRM-collapse occurs with the 1,133-marker genome-wide LOCO construction. Neither clears the directly transported 3.16 X-equivalent cutoff. The uncertain same-cohort LCT-extrapolated |X| values are 11.493 and 7.556, respectively; these are not reproduced Akbari statistics. All five ancestry-conditioned haplotype P values exceed 0.05, while unrestricted P is 0.005 for H1^a and 0.010 for H5. H9's primary GRM-off fit failed, and a separately labelled longer-iteration same-model diagnostic is reported.
+
+[inference] Perfect tags strengthen the trend relative to the released lead SNP, but the original-scan counterfactual remains unresolved: transported calibration is not faithful, ancestry-associated change remains compatible, late ancients dominate and the sparse GRM may not represent the original relatedness correction. This does not establish over-correction, independent repeated selection or a real-scan copy-number call.

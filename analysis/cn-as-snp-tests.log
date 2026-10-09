@@ -1,0 +1,12 @@
+test_binomial_missing_sentinel_not_an_observed_allele (test_cn_as_snp.CnAsSnpTests.test_binomial_missing_sentinel_not_an_observed_allele) ... ok
+test_completion_distinguishes_failed_fits_from_budget_stop (test_cn_as_snp.CnAsSnpTests.test_completion_distinguishes_failed_fits_from_budget_stop) ... ok
+test_continuous_independent_fit_matches_ols_wald (test_cn_as_snp.CnAsSnpTests.test_continuous_independent_fit_matches_ols_wald) ... ok
+test_empirical_p_two_sided_plus_one_and_missing_null (test_cn_as_snp.CnAsSnpTests.test_empirical_p_two_sided_plus_one_and_missing_null) ... ok
+test_match_unique_prefix_exact_preference_and_ambiguity (test_cn_as_snp.CnAsSnpTests.test_match_unique_prefix_exact_preference_and_ambiguity) ... ok
+test_ordering_gate_requires_both_canonical_controls_and_convergence (test_cn_as_snp.CnAsSnpTests.test_ordering_gate_requires_both_canonical_controls_and_convergence) ... ok
+test_ordering_gate_requires_prespecified_effect_separation (test_cn_as_snp.CnAsSnpTests.test_ordering_gate_requires_prespecified_effect_separation) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.035s
+
+OK
