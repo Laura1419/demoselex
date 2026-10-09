@@ -1,0 +1,26 @@
+test_all_gene_overlap_calls_match_actual_raw_transcripts (analysis.test_block_survey.BlockSurveyArtifacts.test_all_gene_overlap_calls_match_actual_raw_transcripts) ... ok
+test_cache_adjudication_counts_and_no_moderate_enrichment (analysis.test_block_survey.BlockSurveyArtifacts.test_cache_adjudication_counts_and_no_moderate_enrichment) ... ok
+test_current_results_candidate_rows_gene_traceability_and_FP_numbers (analysis.test_block_survey.BlockSurveyArtifacts.test_current_results_candidate_rows_gene_traceability_and_FP_numbers) ... ok
+test_provenance_gzip_registration_order_and_evidence_nulls (analysis.test_block_survey.BlockSurveyArtifacts.test_provenance_gzip_registration_order_and_evidence_nulls) ... ok
+test_real_merged_intervals_have_no_uncovered_source_gaps (analysis.test_block_survey.BlockSurveyArtifacts.test_real_merged_intervals_have_no_uncovered_source_gaps) ... ok
+test_registered_denominators_labels_and_frozen_ranking (analysis.test_block_survey.BlockSurveyArtifacts.test_registered_denominators_labels_and_frozen_ranking) ... FAIL
+test_disjoint_RNU_pathology_gap_not_fabricated (analysis.test_block_survey.BlockSurveyRules.test_disjoint_RNU_pathology_gap_not_fabricated) ... ok
+test_duplicate_and_nonfinite_scores_fail_loudly (analysis.test_block_survey.BlockSurveyRules.test_duplicate_and_nonfinite_scores_fail_loudly) ... ok
+test_mhc_half_open_boundary (analysis.test_block_survey.BlockSurveyRules.test_mhc_half_open_boundary) ... ok
+test_missing_X_is_unknown_unless_observed_threshold_crossed (analysis.test_block_survey.BlockSurveyRules.test_missing_X_is_unknown_unless_observed_threshold_crossed) ... ok
+test_overlap_nearest_ties_limits_and_explicit_null (analysis.test_block_survey.BlockSurveyRules.test_overlap_nearest_ties_limits_and_explicit_null) ... ok
+test_pathological_span_marked_and_excluded (analysis.test_block_survey.BlockSurveyRules.test_pathological_span_marked_and_excluded) ... ok
+test_tile_boundaries_representative_ties_and_any_variant_X (analysis.test_block_survey.BlockSurveyRules.test_tile_boundaries_representative_ties_and_any_variant_X) ... ok
+
+======================================================================
+FAIL: test_registered_denominators_labels_and_frozen_ranking (analysis.test_block_survey.BlockSurveyArtifacts.test_registered_denominators_labels_and_frozen_ranking)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/erikg/demoselex/analysis/test_block_survey.py", line 107, in test_registered_denominators_labels_and_frozen_ranking
+    self.assertTrue(np.allclose(b.total_score, expected.total_score, rtol=0, atol=0))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 13 tests in 40.263s
+
+FAILED (failures=1)
