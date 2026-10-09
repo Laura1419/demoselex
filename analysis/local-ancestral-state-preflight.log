@@ -1,0 +1,46 @@
+Provenance manifest saved to: analysis/runs/20261009-1859-local-ancestral-state-preflight/manifest.json
+{
+  "status": "STOPPED_BEFORE_STATE_INFERENCE",
+  "registration": {
+    "prereg_sha256": "7b57544c9e97cfe879c7921c3f8432394b5cf6f3d9f97cc8b92e8f25e1b31589",
+    "snapshot": "data/derived/local_ancestral_state/prereg.before_preflight.md",
+    "snapshotted_utc": "2026-10-09T18:59:57.966941+00:00",
+    "real_data_outcome_statistics_run": false
+  },
+  "new_biological_statistic": null,
+  "new_assignment_confusion_matrix": null,
+  "new_assignment_stability": null,
+  "new_assignment_usable_n": 0,
+  "validated_evaluable_shared_states": 0,
+  "biological_shared_state_count": null,
+  "local_shared_state_N_eff": null,
+  "achieved_local_detection_floor": null,
+  "input_metadata": {
+    "panel_n": 16339,
+    "variants": 52382872,
+    "AADR_mapped_n": 6490,
+    "AADR_date_positive_n": 5987,
+    "AADR_country_mapped_n": 6490,
+    "AMY1_annotation_end": 104301314,
+    "uncovered_focal_transcripts": 0
+  },
+  "standard_tool_in_PATH": {
+    "elai": null,
+    "elai-lin": null,
+    "rfmix": null,
+    "flare": null
+  },
+  "blockers": [
+    "No validated lower-state joint posterior/central-gap export",
+    "No calibrated genotype uncertainty/QC or masked-preprocessing leakage evidence",
+    "No local truth, neutral calibration or shared-state power validation"
+  ],
+  "synthetic_design_floors_NOT_achieved_power": {
+    "n225_balanced_p_half_Delta": 0.1320692981145492,
+    "n5737_balanced_p_half_Delta": 0.026154499949304535,
+    "n22_balanced_p_half_Delta": 0.4223548630312141
+  },
+  "no_git_commands": true,
+  "no_files_staged_by_worker": true,
+  "repository_index_state": "not inspected; operator prohibits git commands"
+}
