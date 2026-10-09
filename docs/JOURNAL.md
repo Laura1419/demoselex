@@ -236,3 +236,20 @@ This journal records the progress and decisions of the trajectory-replication re
 [inference] STOP before inference: new-method structure/stability/coverage/negative-control gates remain unrun/unpassed; local shared-state N_eff and achieved floor unknown. Next requires authentic lower-pair export plus masked-preprocessing/QC and ancestry-matched truth, followed by all preregistered gates—not another k-means or independent-SNP HMM.
 
 [observation] Initial root free space 52G (100% reported used); audit start/end free bytes 58,279,493,632/63,346,241,536. No genotype caches, large matrices, NPY files, PGEN/PVAR copies or scratch created. All writes stay in permitted directories. Provenance uses `scripts/provenance.py` with git probes disabled; no git commands or staging. Parent reviews and commits.
+
+### 2026-10-09 — ELAI lower-state joint posterior patch (GPL-3.0-or-later additions)
+
+Patched the pinned ELAI fork with exact ordered/unordered lower-pair exports and
+an export-only missing-emission bridge. Clean build and all checks passed:
+15 numerical gates, 4 movement gates, 5 rejection cases, 18 baseline byte
+comparisons. Documented upstream --pk1 copy-count scaling and admixture-output
+updates, bridge homogeneity/sensitivity, and absence of real aDNA validation in
+`docs/elai-patch.md` / fork `README-PATCH.md`. No files staged or commits made;
+parent owns independent acceptance and publication. Provenance recorded under
+`analysis/runs/` with slug `elai-lower-state-posterior-final`.
+
+## APPENDED peer-review evaluation — 2026-10-09T20:02:50+00:00
+
+[observation] Read all61 physical pages of Akbari et al.2026 Peer Review File using pypdf; verified immutable PDF SHA256. New docs/akbari-peer-review-evaluation.md inventories V0/V2/V3,99 substantive concern rows,264 page/version/speaker-checked verbatim excerpts, five-topic deep dive and all six requested project cross-checks. Independent re-extraction and source/section/table/absence checks pass. No git command, staging or commit performed; index not inspected. Parent reviews and commits.
+
+[inference] Review repeatedly challenged threshold calibration/false positives and explicitly raised time–GRM collinearity, but did not explicitly ask about removal of true ancestry-aligned selection. AMY/copy number/Bolognini/Sudmant/Garrison and the3.16-to5.45 prioritization band are absent from accessible prose. Source-only selection is an explicit negative control for the authors’ transect estimand. Preserve our negative replication result; do not treat the review as adjudicating AMY or proving an over-correction class. Cross-check flags that X-equivalent3.64 is A<=2 sensitivity, whereas97% GRM retention belongs to primary A<=1 (X-equivalent2.726).
