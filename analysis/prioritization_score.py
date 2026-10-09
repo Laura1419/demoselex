@@ -171,7 +171,7 @@ def verify_variant_map(panel):
     raise ValueError('cached pgen indices exceed pvar length')
 
 
-def panel_and_data():
+def panel_and_data(panel_file=None):
     from load_akbari_geno import AkbariGeno
     from load_aadr import iter_snp, MAIN_PREFIX
     pool=pickle.load(open(ROOT/'data/derived/tier2_pool_cache.pkl','rb'))
@@ -181,16 +181,26 @@ def panel_and_data():
     for i,s in enumerate(iter_snp(str(ROOT/'data/raw/aadr-v66.p1'/f'{MAIN_PREFIX}.snp'))):
         if i in embedding: exclude.add(f'{s[1]}_{s[3]}_{s[4]}_{s[5]}')
     pool=pool[~pool.ID.isin(exclude)].copy()
-    pool['block']=pool.POS//250000
-    pool['distance']=abs(pool.POS-(pool.block*250000+125000))
-    chosen=pool.sort_values(['distance','POS','ID']).drop_duplicates(['CHROM','block'])
-    anchors=[(c,a) for _,c,_,_,a in CONTROLS]+[(1,x) for x in [103625000,103875000,104125000,104375000]]
-    extra=[]
-    for c,a in anchors:
-        d=pool[pool.CHROM.eq(c)]
-        extra.append(d.loc[(d.POS-a).abs().idxmin()])
-    panel=pd.concat([chosen,pd.DataFrame(extra)]).drop_duplicates('ID').sort_values('pgen_index').reset_index(drop=True)
-    panel=panel.rename(columns={'ID':'locus','CHROM':'chrom','POS':'pos','X':'akbari_X'})
+    if panel_file is not None:
+        # [inference] External caller supplies the variant panel (e.g. a shard of the
+        # strong-significance set). Scoring math is unchanged; only the input set differs.
+        panel=pd.read_csv(panel_file,sep='\t')
+        need={'locus','chrom','pos','akbari_X','pgen_index'}
+        if not need.issubset(panel.columns):
+            raise ValueError(f'panel file must have {sorted(need)}')
+        panel=panel[['locus','chrom','pos','akbari_X','pgen_index']].copy()
+        panel['pgen_index']=panel.pgen_index.astype(int)
+    else:
+        pool['block']=pool.POS//250000
+        pool['distance']=abs(pool.POS-(pool.block*250000+125000))
+        chosen=pool.sort_values(['distance','POS','ID']).drop_duplicates(['CHROM','block'])
+        anchors=[(c,a) for _,c,_,_,a in CONTROLS]+[(1,x) for x in [103625000,103875000,104125000,104375000]]
+        extra=[]
+        for c,a in anchors:
+            d=pool[pool.CHROM.eq(c)]
+            extra.append(d.loc[(d.POS-a).abs().idxmin()])
+        panel=pd.concat([chosen,pd.DataFrame(extra)]).drop_duplicates('ID').sort_values('pgen_index').reset_index(drop=True)
+        panel=panel.rename(columns={'ID':'locus','CHROM':'chrom','POS':'pos','X':'akbari_X'})
     OUT.mkdir(parents=True,exist_ok=True)
     panel.to_csv(OUT/'panel.tsv',sep='\t',index=False)
     meta=pd.read_csv(ROOT/'analysis/deme_rebuild/individuals.tsv',sep='\t')
@@ -317,20 +327,25 @@ def bootstrap(Y,meta,frozen,table,reps):
 
 
 def main():
+    global OUT
     ap=argparse.ArgumentParser(description=__doc__); ap.add_argument('--reuse',action='store_true')
     ap.add_argument('--bootstrap',type=int,default=30); ap.add_argument('--simulations',type=int,default=300)
-    args=ap.parse_args(); OUT.mkdir(parents=True,exist_ok=True)
+    ap.add_argument('--panel-file',type=str,default=None,help='external variant panel TSV (locus,chrom,pos,akbari_X,pgen_index)')
+    ap.add_argument('--out-dir',type=str,default=None,help='alternate output directory (for sharded runs)')
+    args=ap.parse_args()
+    if args.out_dir: OUT=Path(args.out_dir).resolve()
+    OUT.mkdir(parents=True,exist_ok=True)
     frozen=frozen_inputs()
     if args.reuse:
         panel=pd.read_csv(OUT/'panel.tsv',sep='\t'); meta=pd.read_csv(OUT/'sample_metadata.tsv',sep='\t'); Y=np.load(OUT/'genotypes.npy')
         inventory=json.loads((OUT/'inventory.json').read_text())
     else:
-        panel,meta,Y,inventory=panel_and_data(); (OUT/'inventory.json').write_text(json.dumps(inventory,indent=2)+'\n')
+        panel,meta,Y,inventory=panel_and_data(args.panel_file); (OUT/'inventory.json').write_text(json.dumps(inventory,indent=2)+'\n')
     inventory['verified_pvar_indices']=verify_variant_map(panel)
     (OUT/'inventory.json').write_text(json.dumps(inventory,indent=2)+'\n')
     print('[observation] scoring '+str(Y.shape),flush=True)
     scores=score_matrix(Y,meta,frozen); table=rank_table(panel,scores)
-    table.to_csv(ROOT/'data/derived/priority_loci.tsv',sep='\t',index=False)
+    table.to_csv(OUT/'priority_loci.tsv',sep='\t',index=False)
     control=validate_controls(table)
     result=dict(inventory=inventory,scored_variants=len(table),null='empirical common-slope variance law',
         frozen={k:v for k,v in frozen.items() if k!='R'},controls=control)
