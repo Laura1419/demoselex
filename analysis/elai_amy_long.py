@@ -233,7 +233,7 @@ def main():
     parser.add_argument('--mode', choices=('build', 'fit', 'gates'), required=True)
     parser.add_argument('--work', type=Path, default=DEFAULT_WORK)
     parser.add_argument('--fixture', action='store_true', help='build a deterministic small subset of work_long')
-    parser.add_argument('--k', type=int, choices=(3, 5))
+    parser.add_argument('--k', type=int, choices=(3, 4, 5))
     parser.add_argument('--seed', type=int)
     parser.add_argument('--steps', type=int, default=200)
     parser.add_argument('--wall', type=float, default=15000)
