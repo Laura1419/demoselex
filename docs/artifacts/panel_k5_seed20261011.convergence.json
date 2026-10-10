@@ -1,0 +1,1440 @@
+{
+ "prefix": "panel_k5_seed20261011",
+ "k": 5,
+ "seed": 20261011,
+ "command": [
+  "/home/erikg/elai-fork/src/elai",
+  "-g",
+  "/home/erikg/demoselex/data/derived/elai_amy_dense/work_long/panel.inp",
+  "-p",
+  "1",
+  "-pos",
+  "/home/erikg/demoselex/data/derived/elai_amy_dense/work_long/panel.pos",
+  "-C",
+  "1",
+  "-c",
+  "5",
+  "-w",
+  "0",
+  "-s",
+  "200",
+  "-mg",
+  "10",
+  "-R",
+  "20261011",
+  "-o",
+  "panel_k5_seed20261011",
+  "--pkk-site",
+  "1:104121000",
+  "--pk1"
+ ],
+ "complete": true,
+ "elapsed_seconds": 11929.667310237885,
+ "returncode": 1,
+ "status": "FAIL",
+ "completed_steps": 200,
+ "first_qualifying_step": 50,
+ "final_relative_increment": -2.4419628087157775e-05,
+ "trace": [
+  {
+   "step": 1,
+   "likelihood": -27537728.056,
+   "reported_increment": -27537728.056,
+   "elapsed_seconds": 75.56784296035767,
+   "relative_increment": null
+  },
+  {
+   "step": 2,
+   "likelihood": -17210003.715,
+   "reported_increment": 10327724.341,
+   "elapsed_seconds": 148.13373804092407,
+   "relative_increment": 0.3750390852868404
+  },
+  {
+   "step": 3,
+   "likelihood": -10677853.156,
+   "reported_increment": 6532150.559,
+   "elapsed_seconds": 222.2053303718567,
+   "relative_increment": 0.3795554415427969
+  },
+  {
+   "step": 4,
+   "likelihood": -6083163.593,
+   "reported_increment": 4594689.564,
+   "elapsed_seconds": 292.2711338996887,
+   "relative_increment": 0.4303008756416728
+  },
+  {
+   "step": 5,
+   "likelihood": -3846667.467,
+   "reported_increment": 2236496.126,
+   "elapsed_seconds": 354.32603192329407,
+   "relative_increment": 0.36765345725266607
+  },
+  {
+   "step": 6,
+   "likelihood": -3152073.54,
+   "reported_increment": 694593.927,
+   "elapsed_seconds": 408.86922097206116,
+   "relative_increment": 0.18057030740473937
+  },
+  {
+   "step": 7,
+   "likelihood": -2896184.663,
+   "reported_increment": 255888.877,
+   "elapsed_seconds": 463.41208696365356,
+   "relative_increment": 0.08118112529823776
+  },
+  {
+   "step": 8,
+   "likelihood": -2774878.07,
+   "reported_increment": 121306.593,
+   "elapsed_seconds": 518.4556331634521,
+   "relative_increment": 0.04188496491599587
+  },
+  {
+   "step": 9,
+   "likelihood": -2709420.442,
+   "reported_increment": 65457.628,
+   "elapsed_seconds": 572.999005317688,
+   "relative_increment": 0.023589370901619482
+  },
+  {
+   "step": 10,
+   "likelihood": -2671815.508,
+   "reported_increment": 37604.934,
+   "elapsed_seconds": 627.5427055358887,
+   "relative_increment": 0.013879327629284895
+  },
+  {
+   "step": 11,
+   "likelihood": -2646002.686,
+   "reported_increment": 25812.822,
+   "elapsed_seconds": 685.593846321106,
+   "relative_increment": 0.00966115434344567
+  },
+  {
+   "step": 12,
+   "likelihood": -2628643.104,
+   "reported_increment": 17359.581,
+   "elapsed_seconds": 756.6670432090759,
+   "relative_increment": 0.006560681926685089
+  },
+  {
+   "step": 13,
+   "likelihood": -2616417.563,
+   "reported_increment": 12225.542,
+   "elapsed_seconds": 833.746310710907,
+   "relative_increment": 0.004650894212834051
+  },
+  {
+   "step": 14,
+   "likelihood": -2607004.295,
+   "reported_increment": 9413.268,
+   "elapsed_seconds": 909.8238794803619,
+   "relative_increment": 0.0035977697647033248
+  },
+  {
+   "step": 15,
+   "likelihood": -2598930.137,
+   "reported_increment": 8074.158,
+   "elapsed_seconds": 985.4000918865204,
+   "relative_increment": 0.0030971019171258485
+  },
+  {
+   "step": 16,
+   "likelihood": -2592435.385,
+   "reported_increment": 6494.752,
+   "elapsed_seconds": 1054.9728782176971,
+   "relative_increment": 0.002499009845450235
+  },
+  {
+   "step": 17,
+   "likelihood": -2587052.103,
+   "reported_increment": 5383.282,
+   "elapsed_seconds": 1130.0527725219727,
+   "relative_increment": 0.002076534686707209
+  },
+  {
+   "step": 18,
+   "likelihood": -2582014.575,
+   "reported_increment": 5037.529,
+   "elapsed_seconds": 1226.1609427928925,
+   "relative_increment": 0.0019472077868699705
+  },
+  {
+   "step": 19,
+   "likelihood": -2576413.131,
+   "reported_increment": 5601.443,
+   "elapsed_seconds": 1317.7604262828827,
+   "relative_increment": 0.0021694083582003538
+  },
+  {
+   "step": 20,
+   "likelihood": -2571091.915,
+   "reported_increment": 5321.216,
+   "elapsed_seconds": 1409.8574199676514,
+   "relative_increment": 0.002065358205162794
+  },
+  {
+   "step": 21,
+   "likelihood": -2566751.145,
+   "reported_increment": 4340.77,
+   "elapsed_seconds": 1501.9631669521332,
+   "relative_increment": 0.0016882982575129053
+  },
+  {
+   "step": 22,
+   "likelihood": -2564184.621,
+   "reported_increment": 2566.524,
+   "elapsed_seconds": 1592.065967798233,
+   "relative_increment": 0.00099991150486083
+  },
+  {
+   "step": 23,
+   "likelihood": -2562256.758,
+   "reported_increment": 1927.863,
+   "elapsed_seconds": 1663.6484661102295,
+   "relative_increment": 0.0007518425093931237
+  },
+  {
+   "step": 24,
+   "likelihood": -2560576.587,
+   "reported_increment": 1680.171,
+   "elapsed_seconds": 1737.23672914505,
+   "relative_increment": 0.0006557387329564765
+  },
+  {
+   "step": 25,
+   "likelihood": -2559033.761,
+   "reported_increment": 1542.826,
+   "elapsed_seconds": 1797.7997949123383,
+   "relative_increment": 0.0006025306986843446
+  },
+  {
+   "step": 26,
+   "likelihood": -2557618.533,
+   "reported_increment": 1415.228,
+   "elapsed_seconds": 1847.3442842960358,
+   "relative_increment": 0.0005530321723645753
+  },
+  {
+   "step": 27,
+   "likelihood": -2556253.916,
+   "reported_increment": 1364.617,
+   "elapsed_seconds": 1900.8900520801544,
+   "relative_increment": 0.0005335498560056845
+  },
+  {
+   "step": 28,
+   "likelihood": -2555376.766,
+   "reported_increment": 877.151,
+   "elapsed_seconds": 1954.435616016388,
+   "relative_increment": 0.00034313883863811457
+  },
+  {
+   "step": 29,
+   "likelihood": -2554551.239,
+   "reported_increment": 825.527,
+   "elapsed_seconds": 2008.4804985523224,
+   "relative_increment": 0.0003230549056341264
+  },
+  {
+   "step": 30,
+   "likelihood": -2553784.664,
+   "reported_increment": 766.574,
+   "elapsed_seconds": 2063.0329852104187,
+   "relative_increment": 0.0003000820607146124
+  },
+  {
+   "step": 31,
+   "likelihood": -2552943.001,
+   "reported_increment": 841.663,
+   "elapsed_seconds": 2120.086488723755,
+   "relative_increment": 0.00032957477263623723
+  },
+  {
+   "step": 32,
+   "likelihood": -2552166.188,
+   "reported_increment": 776.813,
+   "elapsed_seconds": 2174.6324536800385,
+   "relative_increment": 0.0003042813723987572
+  },
+  {
+   "step": 33,
+   "likelihood": -2551399.353,
+   "reported_increment": 766.834,
+   "elapsed_seconds": 2239.7030441761017,
+   "relative_increment": 0.0003004643677224215
+  },
+  {
+   "step": 34,
+   "likelihood": -2550831.941,
+   "reported_increment": 567.413,
+   "elapsed_seconds": 2309.7833173274994,
+   "relative_increment": 0.00022239246840477313
+  },
+  {
+   "step": 35,
+   "likelihood": -2550358.65,
+   "reported_increment": 473.29,
+   "elapsed_seconds": 2364.330740213394,
+   "relative_increment": 0.00018554377981273723
+  },
+  {
+   "step": 36,
+   "likelihood": -2549917.826,
+   "reported_increment": 440.824,
+   "elapsed_seconds": 2418.380714893341,
+   "relative_increment": 0.00017284784632154475
+  },
+  {
+   "step": 37,
+   "likelihood": -2549506.433,
+   "reported_increment": 411.393,
+   "elapsed_seconds": 2472.9276490211487,
+   "relative_increment": 0.00016133578729673575
+  },
+  {
+   "step": 38,
+   "likelihood": -2549128.8,
+   "reported_increment": 377.632,
+   "elapsed_seconds": 2526.9735991954803,
+   "relative_increment": 0.00014812004202555387
+  },
+  {
+   "step": 39,
+   "likelihood": -2548780.764,
+   "reported_increment": 348.036,
+   "elapsed_seconds": 2580.5190320014954,
+   "relative_increment": 0.00013653135141694186
+  },
+  {
+   "step": 40,
+   "likelihood": -2548487.957,
+   "reported_increment": 292.807,
+   "elapsed_seconds": 2634.565241575241,
+   "relative_increment": 0.00011488120286207158
+  },
+  {
+   "step": 41,
+   "likelihood": -2548121.376,
+   "reported_increment": 366.581,
+   "elapsed_seconds": 2690.1138949394226,
+   "relative_increment": 0.00014384254749679116
+  },
+  {
+   "step": 42,
+   "likelihood": -2547858.43,
+   "reported_increment": 262.947,
+   "elapsed_seconds": 2746.163286924362,
+   "relative_increment": 0.00010319210163087469
+  },
+  {
+   "step": 43,
+   "likelihood": -2547620.533,
+   "reported_increment": 237.897,
+   "elapsed_seconds": 2802.7130551338196,
+   "relative_increment": 9.337135737182478e-05
+  },
+  {
+   "step": 44,
+   "likelihood": -2547442.315,
+   "reported_increment": 178.218,
+   "elapsed_seconds": 2861.2724368572235,
+   "relative_increment": 6.995468818506224e-05
+  },
+  {
+   "step": 45,
+   "likelihood": -2547136.694,
+   "reported_increment": 305.622,
+   "elapsed_seconds": 2921.868827342987,
+   "relative_increment": 0.00011997170581654958
+  },
+  {
+   "step": 46,
+   "likelihood": -2546899.14,
+   "reported_increment": 237.553,
+   "elapsed_seconds": 2977.9236965179443,
+   "relative_increment": 9.326315331233798e-05
+  },
+  {
+   "step": 47,
+   "likelihood": -2546535.156,
+   "reported_increment": 363.984,
+   "elapsed_seconds": 3033.979268312454,
+   "relative_increment": 0.00014291260862421562
+  },
+  {
+   "step": 48,
+   "likelihood": -2546313.137,
+   "reported_increment": 222.019,
+   "elapsed_seconds": 3089.52969288826,
+   "relative_increment": 8.718473784928761e-05
+  },
+  {
+   "step": 49,
+   "likelihood": -2546136.075,
+   "reported_increment": 177.061,
+   "elapsed_seconds": 3142.578084230423,
+   "relative_increment": 6.953661646207736e-05
+  },
+  {
+   "step": 50,
+   "likelihood": -2545900.787,
+   "reported_increment": 235.288,
+   "elapsed_seconds": 3196.1252958774567,
+   "relative_increment": 9.240982927441341e-05
+  },
+  {
+   "step": 51,
+   "likelihood": -2545747.028,
+   "reported_increment": 153.759,
+   "elapsed_seconds": 3251.1777143478394,
+   "relative_increment": 6.039473367745113e-05
+  },
+  {
+   "step": 52,
+   "likelihood": -2545602.771,
+   "reported_increment": 144.257,
+   "elapsed_seconds": 3307.232168674469,
+   "relative_increment": 5.666588172866578e-05
+  },
+  {
+   "step": 53,
+   "likelihood": -2545343.12,
+   "reported_increment": 259.651,
+   "elapsed_seconds": 3362.787963628769,
+   "relative_increment": 0.00010199981040171124
+  },
+  {
+   "step": 54,
+   "likelihood": -2545188.027,
+   "reported_increment": 155.094,
+   "elapsed_seconds": 3418.844943523407,
+   "relative_increment": 6.0932060114686116e-05
+  },
+  {
+   "step": 55,
+   "likelihood": -2544974.971,
+   "reported_increment": 213.055,
+   "elapsed_seconds": 3474.399789571762,
+   "relative_increment": 8.370933610393961e-05
+  },
+  {
+   "step": 56,
+   "likelihood": -2544897.086,
+   "reported_increment": 77.886,
+   "elapsed_seconds": 3528.9558963775635,
+   "relative_increment": 3.0603444390328536e-05
+  },
+  {
+   "step": 57,
+   "likelihood": -2544720.291,
+   "reported_increment": 176.794,
+   "elapsed_seconds": 3584.0114617347717,
+   "relative_increment": 6.947039272138389e-05
+  },
+  {
+   "step": 58,
+   "likelihood": -2544529.685,
+   "reported_increment": 190.607,
+   "elapsed_seconds": 3639.56605386734,
+   "relative_increment": 7.49025347399744e-05
+  },
+  {
+   "step": 59,
+   "likelihood": -2544365.375,
+   "reported_increment": 164.31,
+   "elapsed_seconds": 3694.618171930313,
+   "relative_increment": 6.457381926753033e-05
+  },
+  {
+   "step": 60,
+   "likelihood": -2544123.305,
+   "reported_increment": 242.07,
+   "elapsed_seconds": 3749.671394586563,
+   "relative_increment": 9.51396377180429e-05
+  },
+  {
+   "step": 61,
+   "likelihood": -2543655.635,
+   "reported_increment": 467.669,
+   "elapsed_seconds": 3804.2214303016663,
+   "relative_increment": 0.00018382363743190943
+  },
+  {
+   "step": 62,
+   "likelihood": -2543177.209,
+   "reported_increment": 478.427,
+   "elapsed_seconds": 3860.284637451172,
+   "relative_increment": 0.0001880859945886416
+  },
+  {
+   "step": 63,
+   "likelihood": -2542934.072,
+   "reported_increment": 243.136,
+   "elapsed_seconds": 3915.8433377742767,
+   "relative_increment": 9.56036406504454e-05
+  },
+  {
+   "step": 64,
+   "likelihood": -2542786.353,
+   "reported_increment": 147.72,
+   "elapsed_seconds": 3979.097671985626,
+   "relative_increment": 5.808998417480049e-05
+  },
+  {
+   "step": 65,
+   "likelihood": -2542601.723,
+   "reported_increment": 184.629,
+   "elapsed_seconds": 4040.732905626297,
+   "relative_increment": 7.260932472052175e-05
+  },
+  {
+   "step": 66,
+   "likelihood": -2542521.91,
+   "reported_increment": 79.813,
+   "elapsed_seconds": 4104.873380661011,
+   "relative_increment": 3.1390287860700055e-05
+  },
+  {
+   "step": 67,
+   "likelihood": -2542419.096,
+   "reported_increment": 102.814,
+   "elapsed_seconds": 4168.666820526123,
+   "relative_increment": 4.043780295299239e-05
+  },
+  {
+   "step": 68,
+   "likelihood": -2542310.541,
+   "reported_increment": 108.556,
+   "elapsed_seconds": 4226.730811595917,
+   "relative_increment": 4.2697523854541554e-05
+  },
+  {
+   "step": 69,
+   "likelihood": -2542190.256,
+   "reported_increment": 120.285,
+   "elapsed_seconds": 4287.827809333801,
+   "relative_increment": 4.7313260146746565e-05
+  },
+  {
+   "step": 70,
+   "likelihood": -2542215.717,
+   "reported_increment": -25.461,
+   "elapsed_seconds": 4346.940455913544,
+   "relative_increment": -1.0015379431194964e-05
+  },
+  {
+   "step": 71,
+   "likelihood": -2542046.052,
+   "reported_increment": 169.665,
+   "elapsed_seconds": 4408.067356586456,
+   "relative_increment": 6.673902567176884e-05
+  },
+  {
+   "step": 72,
+   "likelihood": -2542010.091,
+   "reported_increment": 35.961,
+   "elapsed_seconds": 4466.135733366013,
+   "relative_increment": 1.414647857061193e-05
+  },
+  {
+   "step": 73,
+   "likelihood": -2541955.206,
+   "reported_increment": 54.885,
+   "elapsed_seconds": 4525.713905334473,
+   "relative_increment": 2.1591181008510854e-05
+  },
+  {
+   "step": 74,
+   "likelihood": -2541882.719,
+   "reported_increment": 72.486,
+   "elapsed_seconds": 4582.280839204788,
+   "relative_increment": 2.851623814166133e-05
+  },
+  {
+   "step": 75,
+   "likelihood": -2541781.867,
+   "reported_increment": 100.852,
+   "elapsed_seconds": 4640.458166837692,
+   "relative_increment": 3.967610277457309e-05
+  },
+  {
+   "step": 76,
+   "likelihood": -2541726.799,
+   "reported_increment": 55.068,
+   "elapsed_seconds": 4697.078392744064,
+   "relative_increment": 2.1665116395281214e-05
+  },
+  {
+   "step": 77,
+   "likelihood": -2541478.242,
+   "reported_increment": 248.558,
+   "elapsed_seconds": 4761.044931173325,
+   "relative_increment": 9.779060444175999e-05
+  },
+  {
+   "step": 78,
+   "likelihood": -2541375.149,
+   "reported_increment": 103.093,
+   "elapsed_seconds": 4810.5990834236145,
+   "relative_increment": 4.056418752526824e-05
+  },
+  {
+   "step": 79,
+   "likelihood": -2541276.473,
+   "reported_increment": 98.676,
+   "elapsed_seconds": 4865.777975320816,
+   "relative_increment": 3.882779763499515e-05
+  },
+  {
+   "step": 80,
+   "likelihood": -2541251.623,
+   "reported_increment": 24.85,
+   "elapsed_seconds": 4918.426325559616,
+   "relative_increment": 9.778550371875705e-06
+  },
+  {
+   "step": 81,
+   "likelihood": -2541177.843,
+   "reported_increment": 73.78,
+   "elapsed_seconds": 4964.457742929459,
+   "relative_increment": 2.9032937680197898e-05
+  },
+  {
+   "step": 82,
+   "likelihood": -2541153.019,
+   "reported_increment": 24.824,
+   "elapsed_seconds": 5014.001076698303,
+   "relative_increment": 9.768698427936967e-06
+  },
+  {
+   "step": 83,
+   "likelihood": -2541075.87,
+   "reported_increment": 77.149,
+   "elapsed_seconds": 5074.089068651199,
+   "relative_increment": 3.0359840364946933e-05
+  },
+  {
+   "step": 84,
+   "likelihood": -2541004.948,
+   "reported_increment": 70.923,
+   "elapsed_seconds": 5131.170709371567,
+   "relative_increment": 2.791022528589566e-05
+  },
+  {
+   "step": 85,
+   "likelihood": -2540989.469,
+   "reported_increment": 15.479,
+   "elapsed_seconds": 5188.75840139389,
+   "relative_increment": 6.091684320410643e-06
+  },
+  {
+   "step": 86,
+   "likelihood": -2540993.403,
+   "reported_increment": -3.934,
+   "elapsed_seconds": 5247.346729040146,
+   "relative_increment": -1.5482157828226586e-06
+  },
+  {
+   "step": 87,
+   "likelihood": -2540927.78,
+   "reported_increment": 65.622,
+   "elapsed_seconds": 5306.428573846817,
+   "relative_increment": 2.582572623866739e-05
+  },
+  {
+   "step": 88,
+   "likelihood": -2540901.414,
+   "reported_increment": 26.366,
+   "elapsed_seconds": 5366.513874530792,
+   "relative_increment": 1.0376524751097715e-05
+  },
+  {
+   "step": 89,
+   "likelihood": -2540824.94,
+   "reported_increment": 76.474,
+   "elapsed_seconds": 5430.624816417694,
+   "relative_increment": 3.0097192901136786e-05
+  },
+  {
+   "step": 90,
+   "likelihood": -2540783.021,
+   "reported_increment": 41.919,
+   "elapsed_seconds": 5496.263742685318,
+   "relative_increment": 1.6498185034251742e-05
+  },
+  {
+   "step": 91,
+   "likelihood": -2540769.551,
+   "reported_increment": 13.47,
+   "elapsed_seconds": 5561.386766672134,
+   "relative_increment": 5.301515276539976e-06
+  },
+  {
+   "step": 92,
+   "likelihood": -2540720.593,
+   "reported_increment": 48.958,
+   "elapsed_seconds": 5631.534762144089,
+   "relative_increment": 1.926896517664564e-05
+  },
+  {
+   "step": 93,
+   "likelihood": -2540560.694,
+   "reported_increment": 159.899,
+   "elapsed_seconds": 5701.6728546619415,
+   "relative_increment": 6.293450780864473e-05
+  },
+  {
+   "step": 94,
+   "likelihood": -2540479.381,
+   "reported_increment": 81.312,
+   "elapsed_seconds": 5764.296746253967,
+   "relative_increment": 3.200592695624927e-05
+  },
+  {
+   "step": 95,
+   "likelihood": -2540410.023,
+   "reported_increment": 69.359,
+   "elapsed_seconds": 5831.423407077789,
+   "relative_increment": 2.7301146594114968e-05
+  },
+  {
+   "step": 96,
+   "likelihood": -2540365.172,
+   "reported_increment": 44.851,
+   "elapsed_seconds": 5899.046559095383,
+   "relative_increment": 1.7655024029267518e-05
+  },
+  {
+   "step": 97,
+   "likelihood": -2540337.356,
+   "reported_increment": 27.816,
+   "elapsed_seconds": 5968.185974359512,
+   "relative_increment": 1.0949606893619613e-05
+  },
+  {
+   "step": 98,
+   "likelihood": -2540308.794,
+   "reported_increment": 28.562,
+   "elapsed_seconds": 6022.7592051029205,
+   "relative_increment": 1.1243388572961661e-05
+  },
+  {
+   "step": 99,
+   "likelihood": -2540291.53,
+   "reported_increment": 17.264,
+   "elapsed_seconds": 6072.81445145607,
+   "relative_increment": 6.796024184622073e-06
+  },
+  {
+   "step": 100,
+   "likelihood": -2540244.754,
+   "reported_increment": 46.776,
+   "elapsed_seconds": 6121.3665018081665,
+   "relative_increment": 1.84136345955557e-05
+  },
+  {
+   "step": 101,
+   "likelihood": -2540228.612,
+   "reported_increment": 16.142,
+   "elapsed_seconds": 6168.421213150024,
+   "relative_increment": 6.3545057910559705e-06
+  },
+  {
+   "step": 102,
+   "likelihood": -2540255.506,
+   "reported_increment": -26.894,
+   "elapsed_seconds": 6215.975200891495,
+   "relative_increment": -1.058723607505556e-05
+  },
+  {
+   "step": 103,
+   "likelihood": -2540178.099,
+   "reported_increment": 77.407,
+   "elapsed_seconds": 6268.5363891124725,
+   "relative_increment": 3.0472131569950402e-05
+  },
+  {
+   "step": 104,
+   "likelihood": -2540160.143,
+   "reported_increment": 17.955,
+   "elapsed_seconds": 6321.1063668727875,
+   "relative_increment": 7.068795690680726e-06
+  },
+  {
+   "step": 105,
+   "likelihood": -2540172.425,
+   "reported_increment": -12.282,
+   "elapsed_seconds": 6373.677134037018,
+   "relative_increment": -4.835128223511092e-06
+  },
+  {
+   "step": 106,
+   "likelihood": -2540149.551,
+   "reported_increment": 22.875,
+   "elapsed_seconds": 6424.742508649826,
+   "relative_increment": 9.004900523568233e-06
+  },
+  {
+   "step": 107,
+   "likelihood": -2540131.502,
+   "reported_increment": 18.049,
+   "elapsed_seconds": 6478.864940881729,
+   "relative_increment": 7.10548715252218e-06
+  },
+  {
+   "step": 108,
+   "likelihood": -2540127.107,
+   "reported_increment": 4.395,
+   "elapsed_seconds": 6529.922146558762,
+   "relative_increment": 1.7302253826458102e-06
+  },
+  {
+   "step": 109,
+   "likelihood": -2540075.822,
+   "reported_increment": 51.285,
+   "elapsed_seconds": 6582.982322216034,
+   "relative_increment": 2.018993453451751e-05
+  },
+  {
+   "step": 110,
+   "likelihood": -2540093.732,
+   "reported_increment": -17.91,
+   "elapsed_seconds": 6636.04475402832,
+   "relative_increment": -7.050970622436542e-06
+  },
+  {
+   "step": 111,
+   "likelihood": -2540066.667,
+   "reported_increment": 27.065,
+   "elapsed_seconds": 6689.607612371445,
+   "relative_increment": 1.065511861195527e-05
+  },
+  {
+   "step": 112,
+   "likelihood": -2540065.868,
+   "reported_increment": 0.799,
+   "elapsed_seconds": 6743.171779155731,
+   "relative_increment": 3.1455867300489403e-07
+  },
+  {
+   "step": 113,
+   "likelihood": -2540022.389,
+   "reported_increment": 43.479,
+   "elapsed_seconds": 6796.237174510956,
+   "relative_increment": 1.7117272645394826e-05
+  },
+  {
+   "step": 114,
+   "likelihood": -2540005.368,
+   "reported_increment": 17.02,
+   "elapsed_seconds": 6850.300496101379,
+   "relative_increment": 6.701122034945393e-06
+  },
+  {
+   "step": 115,
+   "likelihood": -2539998.452,
+   "reported_increment": 6.916,
+   "elapsed_seconds": 6904.361577749252,
+   "relative_increment": 2.722828891177172e-06
+  },
+  {
+   "step": 116,
+   "likelihood": -2540016.536,
+   "reported_increment": -18.084,
+   "elapsed_seconds": 6957.423370361328,
+   "relative_increment": -7.119689378377162e-06
+  },
+  {
+   "step": 117,
+   "likelihood": -2539961.172,
+   "reported_increment": 55.365,
+   "elapsed_seconds": 7011.98414349556,
+   "relative_increment": 2.1796708492003142e-05
+  },
+  {
+   "step": 118,
+   "likelihood": -2539970.928,
+   "reported_increment": -9.757,
+   "elapsed_seconds": 7067.5426478385925,
+   "relative_increment": -3.841003597850336e-06
+  },
+  {
+   "step": 119,
+   "likelihood": -2539880.213,
+   "reported_increment": 90.715,
+   "elapsed_seconds": 7123.1012444496155,
+   "relative_increment": 3.571497571087593e-05
+  },
+  {
+   "step": 120,
+   "likelihood": -2539840.681,
+   "reported_increment": 39.532,
+   "elapsed_seconds": 7178.661689043045,
+   "relative_increment": 1.5564513553743305e-05
+  },
+  {
+   "step": 121,
+   "likelihood": -2539874.797,
+   "reported_increment": -34.116,
+   "elapsed_seconds": 7234.219798326492,
+   "relative_increment": -1.3432338593178778e-05
+  },
+  {
+   "step": 122,
+   "likelihood": -2539822.042,
+   "reported_increment": 52.755,
+   "elapsed_seconds": 7288.774258136749,
+   "relative_increment": 2.0770708879902416e-05
+  },
+  {
+   "step": 123,
+   "likelihood": -2539818.701,
+   "reported_increment": 3.341,
+   "elapsed_seconds": 7344.329753398895,
+   "relative_increment": 1.3154464937960804e-06
+  },
+  {
+   "step": 124,
+   "likelihood": -2539810.081,
+   "reported_increment": 8.621,
+   "elapsed_seconds": 7400.390325784683,
+   "relative_increment": 3.3939430388152572e-06
+  },
+  {
+   "step": 125,
+   "likelihood": -2539783.791,
+   "reported_increment": 26.29,
+   "elapsed_seconds": 7456.447965860367,
+   "relative_increment": 1.03511676704663e-05
+  },
+  {
+   "step": 126,
+   "likelihood": -2539754.704,
+   "reported_increment": 29.086,
+   "elapsed_seconds": 7511.007194042206,
+   "relative_increment": 1.1452549663228626e-05
+  },
+  {
+   "step": 127,
+   "likelihood": -2539718.232,
+   "reported_increment": 36.472,
+   "elapsed_seconds": 7564.571367263794,
+   "relative_increment": 1.4360441952376459e-05
+  },
+  {
+   "step": 128,
+   "likelihood": -2539755.931,
+   "reported_increment": -37.699,
+   "elapsed_seconds": 7618.628764390945,
+   "relative_increment": -1.4843772637854715e-05
+  },
+  {
+   "step": 129,
+   "likelihood": -2539744.504,
+   "reported_increment": 11.426,
+   "elapsed_seconds": 7672.684406280518,
+   "relative_increment": 4.499251231269553e-06
+  },
+  {
+   "step": 130,
+   "likelihood": -2539695.561,
+   "reported_increment": 48.943,
+   "elapsed_seconds": 7726.739250421524,
+   "relative_increment": 1.9270836071457916e-05
+  },
+  {
+   "step": 131,
+   "likelihood": -2539674.074,
+   "reported_increment": 21.487,
+   "elapsed_seconds": 7780.292708396912,
+   "relative_increment": 8.460462872068404e-06
+  },
+  {
+   "step": 132,
+   "likelihood": -2539643.645,
+   "reported_increment": 30.429,
+   "elapsed_seconds": 7834.347276210785,
+   "relative_increment": 1.1981458688546554e-05
+  },
+  {
+   "step": 133,
+   "likelihood": -2539556.009,
+   "reported_increment": 87.636,
+   "elapsed_seconds": 7887.90466427803,
+   "relative_increment": 3.450720347024923e-05
+  },
+  {
+   "step": 134,
+   "likelihood": -2539612.441,
+   "reported_increment": -56.432,
+   "elapsed_seconds": 7941.95348405838,
+   "relative_increment": -2.2221207092908736e-05
+  },
+  {
+   "step": 135,
+   "likelihood": -2539577.665,
+   "reported_increment": 34.776,
+   "elapsed_seconds": 7997.005431175232,
+   "relative_increment": 1.36934279572112e-05
+  },
+  {
+   "step": 136,
+   "likelihood": -2539624.605,
+   "reported_increment": -46.94,
+   "elapsed_seconds": 8051.553222417831,
+   "relative_increment": -1.8483388260521704e-05
+  },
+  {
+   "step": 137,
+   "likelihood": -2539573.463,
+   "reported_increment": 51.141,
+   "elapsed_seconds": 8109.106934309006,
+   "relative_increment": 2.0137621875022174e-05
+  },
+  {
+   "step": 138,
+   "likelihood": -2539599.318,
+   "reported_increment": -25.855,
+   "elapsed_seconds": 8166.663846254349,
+   "relative_increment": -1.0180843506467752e-05
+  },
+  {
+   "step": 139,
+   "likelihood": -2539575.671,
+   "reported_increment": 23.647,
+   "elapsed_seconds": 8223.718721151352,
+   "relative_increment": 9.311311368008799e-06
+  },
+  {
+   "step": 140,
+   "likelihood": -2539579.141,
+   "reported_increment": -3.47,
+   "elapsed_seconds": 8280.26879477501,
+   "relative_increment": -1.366369996123352e-06
+  },
+  {
+   "step": 141,
+   "likelihood": -2539574.062,
+   "reported_increment": 5.079,
+   "elapsed_seconds": 8336.33191204071,
+   "relative_increment": 1.9999376738897987e-06
+  },
+  {
+   "step": 142,
+   "likelihood": -2539547.827,
+   "reported_increment": 26.234,
+   "elapsed_seconds": 8391.386952638626,
+   "relative_increment": 1.0330472496324313e-05
+  },
+  {
+   "step": 143,
+   "likelihood": -2539481.395,
+   "reported_increment": 66.432,
+   "elapsed_seconds": 8447.438020944595,
+   "relative_increment": 2.6158987554294955e-05
+  },
+  {
+   "step": 144,
+   "likelihood": -2539525.723,
+   "reported_increment": -44.328,
+   "elapsed_seconds": 8503.98691368103,
+   "relative_increment": -1.7455532490803046e-05
+  },
+  {
+   "step": 145,
+   "likelihood": -2539507.674,
+   "reported_increment": 18.049,
+   "elapsed_seconds": 8560.535960674286,
+   "relative_increment": 7.107232597271661e-06
+  },
+  {
+   "step": 146,
+   "likelihood": -2539484.992,
+   "reported_increment": 22.682,
+   "elapsed_seconds": 8616.595253229141,
+   "relative_increment": 8.931652474317273e-06
+  },
+  {
+   "step": 147,
+   "likelihood": -2539491.489,
+   "reported_increment": -6.497,
+   "elapsed_seconds": 8672.159487962723,
+   "relative_increment": -2.558392753034991e-06
+  },
+  {
+   "step": 148,
+   "likelihood": -2539440.508,
+   "reported_increment": 50.98,
+   "elapsed_seconds": 8727.717098712921,
+   "relative_increment": 2.0075278937131056e-05
+  },
+  {
+   "step": 149,
+   "likelihood": -2539329.538,
+   "reported_increment": 110.971,
+   "elapsed_seconds": 8784.275135755539,
+   "relative_increment": 4.369860197557313e-05
+  },
+  {
+   "step": 150,
+   "likelihood": -2539285.485,
+   "reported_increment": 44.053,
+   "elapsed_seconds": 8839.322621107101,
+   "relative_increment": 1.7348280064115678e-05
+  },
+  {
+   "step": 151,
+   "likelihood": -2539200.338,
+   "reported_increment": 85.146,
+   "elapsed_seconds": 8893.368163108826,
+   "relative_increment": 3.3531873632507606e-05
+  },
+  {
+   "step": 152,
+   "likelihood": -2539227.626,
+   "reported_increment": -27.288,
+   "elapsed_seconds": 8948.919388532639,
+   "relative_increment": -1.0746690441002567e-05
+  },
+  {
+   "step": 153,
+   "likelihood": -2539214.981,
+   "reported_increment": 12.645,
+   "elapsed_seconds": 9003.466495752335,
+   "relative_increment": 4.979860753932514e-06
+  },
+  {
+   "step": 154,
+   "likelihood": -2539198.026,
+   "reported_increment": 16.956,
+   "elapsed_seconds": 9058.015131950378,
+   "relative_increment": 6.67726054191648e-06
+  },
+  {
+   "step": 155,
+   "likelihood": -2539117.753,
+   "reported_increment": 80.272,
+   "elapsed_seconds": 9112.568694353104,
+   "relative_increment": 3.161352489175443e-05
+  },
+  {
+   "step": 156,
+   "likelihood": -2539204.316,
+   "reported_increment": -86.563,
+   "elapsed_seconds": 9171.167429924011,
+   "relative_increment": -3.4091762738378977e-05
+  },
+  {
+   "step": 157,
+   "likelihood": -2539128.431,
+   "reported_increment": 75.885,
+   "elapsed_seconds": 9234.792678833008,
+   "relative_increment": 2.9885346177964728e-05
+  },
+  {
+   "step": 158,
+   "likelihood": -2539121.276,
+   "reported_increment": 7.154,
+   "elapsed_seconds": 9296.912957668304,
+   "relative_increment": 2.8178960593093012e-06
+  },
+  {
+   "step": 159,
+   "likelihood": -2539069.719,
+   "reported_increment": 51.557,
+   "elapsed_seconds": 9360.536406993866,
+   "relative_increment": 2.030505611817409e-05
+  },
+  {
+   "step": 160,
+   "likelihood": -2539105.011,
+   "reported_increment": -35.292,
+   "elapsed_seconds": 9424.157678365707,
+   "relative_increment": -1.3899578942558141e-05
+  },
+  {
+   "step": 161,
+   "likelihood": -2539073.047,
+   "reported_increment": 31.964,
+   "elapsed_seconds": 9486.280792713165,
+   "relative_increment": 1.2588687691795799e-05
+  },
+  {
+   "step": 162,
+   "likelihood": -2539086.918,
+   "reported_increment": -13.871,
+   "elapsed_seconds": 9548.400501728058,
+   "relative_increment": -5.463017307306193e-06
+  },
+  {
+   "step": 163,
+   "likelihood": -2539033.336,
+   "reported_increment": 53.582,
+   "elapsed_seconds": 9611.032478809357,
+   "relative_increment": 2.1102861670502557e-05
+  },
+  {
+   "step": 164,
+   "likelihood": -2539107.538,
+   "reported_increment": -74.202,
+   "elapsed_seconds": 9673.672982692719,
+   "relative_increment": -2.9224507984186792e-05
+  },
+  {
+   "step": 165,
+   "likelihood": -2539058.55,
+   "reported_increment": 48.988,
+   "elapsed_seconds": 9736.32812333107,
+   "relative_increment": 1.929339315771877e-05
+  },
+  {
+   "step": 166,
+   "likelihood": -2539064.351,
+   "reported_increment": -5.801,
+   "elapsed_seconds": 9800.47710943222,
+   "relative_increment": -2.2847050927508737e-06
+  },
+  {
+   "step": 167,
+   "likelihood": -2538997.412,
+   "reported_increment": 66.939,
+   "elapsed_seconds": 9865.15991973877,
+   "relative_increment": 2.6363648472878038e-05
+  },
+  {
+   "step": 168,
+   "likelihood": -2539052.919,
+   "reported_increment": -55.507,
+   "elapsed_seconds": 9931.359351158142,
+   "relative_increment": -2.186177888085853e-05
+  },
+  {
+   "step": 169,
+   "likelihood": -2538994.564,
+   "reported_increment": 58.355,
+   "elapsed_seconds": 9996.502354383469,
+   "relative_increment": 2.298297903276077e-05
+  },
+  {
+   "step": 170,
+   "likelihood": -2539038.142,
+   "reported_increment": -43.577,
+   "elapsed_seconds": 10062.15629529953,
+   "relative_increment": -1.716348692435103e-05
+  },
+  {
+   "step": 171,
+   "likelihood": -2538993.209,
+   "reported_increment": 44.932,
+   "elapsed_seconds": 10128.344487667084,
+   "relative_increment": 1.769685900220467e-05
+  },
+  {
+   "step": 172,
+   "likelihood": -2538988.969,
+   "reported_increment": 4.24,
+   "elapsed_seconds": 10193.50397014618,
+   "relative_increment": 1.6699532652266564e-06
+  },
+  {
+   "step": 173,
+   "likelihood": -2538943.257,
+   "reported_increment": 45.712,
+   "elapsed_seconds": 10257.654200792313,
+   "relative_increment": 1.8004016779099647e-05
+  },
+  {
+   "step": 174,
+   "likelihood": -2539006.534,
+   "reported_increment": -63.277,
+   "elapsed_seconds": 10322.806948661804,
+   "relative_increment": -2.4922573525544933e-05
+  },
+  {
+   "step": 175,
+   "likelihood": -2538948.263,
+   "reported_increment": 58.271,
+   "elapsed_seconds": 10389.007056951523,
+   "relative_increment": 2.295031510154536e-05
+  },
+  {
+   "step": 176,
+   "likelihood": -2539024.27,
+   "reported_increment": -76.007,
+   "elapsed_seconds": 10449.104743003845,
+   "relative_increment": -2.993641150860114e-05
+  },
+  {
+   "step": 177,
+   "likelihood": -2538952.046,
+   "reported_increment": 72.224,
+   "elapsed_seconds": 10505.158194065094,
+   "relative_increment": 2.8445572912908476e-05
+  },
+  {
+   "step": 178,
+   "likelihood": -2538998.298,
+   "reported_increment": -46.252,
+   "elapsed_seconds": 10561.213312625885,
+   "relative_increment": -1.8216964779909893e-05
+  },
+  {
+   "step": 179,
+   "likelihood": -2538909.045,
+   "reported_increment": 89.253,
+   "elapsed_seconds": 10611.278013467789,
+   "relative_increment": 3.5152839633776736e-05
+  },
+  {
+   "step": 180,
+   "likelihood": -2539002.707,
+   "reported_increment": -93.662,
+   "elapsed_seconds": 10657.346860647202,
+   "relative_increment": -3.68906480460434e-05
+  },
+  {
+   "step": 181,
+   "likelihood": -2538936.71,
+   "reported_increment": 65.997,
+   "elapsed_seconds": 10703.415463924408,
+   "relative_increment": 2.59932767373666e-05
+  },
+  {
+   "step": 182,
+   "likelihood": -2538682.191,
+   "reported_increment": 254.519,
+   "elapsed_seconds": 10753.488652467728,
+   "relative_increment": 0.00010024629562343628
+  },
+  {
+   "step": 183,
+   "likelihood": -2537538.627,
+   "reported_increment": 1143.564,
+   "elapsed_seconds": 10808.061401128769,
+   "relative_increment": 0.0004504557537979144
+  },
+  {
+   "step": 184,
+   "likelihood": -2537495.201,
+   "reported_increment": 43.426,
+   "elapsed_seconds": 10862.12850522995,
+   "relative_increment": 1.711343407265408e-05
+  },
+  {
+   "step": 185,
+   "likelihood": -2537434.102,
+   "reported_increment": 61.099,
+   "elapsed_seconds": 10916.193619728088,
+   "relative_increment": 2.4078469183252348e-05
+  },
+  {
+   "step": 186,
+   "likelihood": -2537451.87,
+   "reported_increment": -17.768,
+   "elapsed_seconds": 10970.269757270813,
+   "relative_increment": -7.0023493363440505e-06
+  },
+  {
+   "step": 187,
+   "likelihood": -2537432.438,
+   "reported_increment": 19.432,
+   "elapsed_seconds": 11024.850054502487,
+   "relative_increment": 7.658076288962203e-06
+  },
+  {
+   "step": 188,
+   "likelihood": -2537443.996,
+   "reported_increment": -11.558,
+   "elapsed_seconds": 11078.92762351036,
+   "relative_increment": -4.554998125915837e-06
+  },
+  {
+   "step": 189,
+   "likelihood": -2537425.546,
+   "reported_increment": 18.45,
+   "elapsed_seconds": 11133.005440235138,
+   "relative_increment": 7.271096437519405e-06
+  },
+  {
+   "step": 190,
+   "likelihood": -2537434.097,
+   "reported_increment": -8.55,
+   "elapsed_seconds": 11187.58461022377,
+   "relative_increment": -3.3699510960853424e-06
+  },
+  {
+   "step": 191,
+   "likelihood": -2537385.098,
+   "reported_increment": 48.999,
+   "elapsed_seconds": 11241.662842273712,
+   "relative_increment": 1.9310452262688298e-05
+  },
+  {
+   "step": 192,
+   "likelihood": -2537414.886,
+   "reported_increment": -29.789,
+   "elapsed_seconds": 11296.241800308228,
+   "relative_increment": -1.1739644890004562e-05
+  },
+  {
+   "step": 193,
+   "likelihood": -2537367.85,
+   "reported_increment": 47.036,
+   "elapsed_seconds": 11350.319132566452,
+   "relative_increment": 1.8536976455590664e-05
+  },
+  {
+   "step": 194,
+   "likelihood": -2537412.693,
+   "reported_increment": -44.844,
+   "elapsed_seconds": 11404.88682794571,
+   "relative_increment": -1.7673038617509505e-05
+  },
+  {
+   "step": 195,
+   "likelihood": -2537384.29,
+   "reported_increment": 28.403,
+   "elapsed_seconds": 11458.945747852325,
+   "relative_increment": 1.1193685630362277e-05
+  },
+  {
+   "step": 196,
+   "likelihood": -2537428.11,
+   "reported_increment": -43.82,
+   "elapsed_seconds": 11512.522340297699,
+   "relative_increment": -1.726975301791293e-05
+  },
+  {
+   "step": 197,
+   "likelihood": -2537323.754,
+   "reported_increment": 104.356,
+   "elapsed_seconds": 11566.58515381813,
+   "relative_increment": 4.112668240271037e-05
+  },
+  {
+   "step": 198,
+   "likelihood": -2537431.308,
+   "reported_increment": -107.554,
+   "elapsed_seconds": 11620.669659137726,
+   "relative_increment": -4.238875698477527e-05
+  },
+  {
+   "step": 199,
+   "likelihood": -2537303.18,
+   "reported_increment": 128.128,
+   "elapsed_seconds": 11674.750694274902,
+   "relative_increment": 5.0495160044752655e-05
+  },
+  {
+   "step": 200,
+   "likelihood": -2537365.14,
+   "reported_increment": -61.96,
+   "elapsed_seconds": 11729.833133220673,
+   "relative_increment": -2.4419628087157775e-05
+  }
+ ]
+}
