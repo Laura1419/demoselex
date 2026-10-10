@@ -114,3 +114,41 @@ lacking any state above 0.5. The states remain unidentified at both K=4 and K=5.
 **The verdict stands, and is now supported at two cluster counts:** the local
 haplotype-sharing states are not resolved by ELAI on this panel, so the within-state
 temporal test cannot be built on them.
+
+---
+
+# CORRECTION (2026-10-10): the seed-agreement metric was invalid
+
+**Retracted as a metric:** the claim that two seeds agree on the "dominant state pair" only
+3.4% of the time, "worse than chance". The lower clusters are ARBITRARY LABELS, so two runs can
+find the same solution with permuted labels (classic EM/HMM label switching). Comparing state
+identities across seeds without alignment is invalid. The number is withdrawn.
+
+**Valid replacement - label-permutation-invariant tests** on the same two K=4 seeds
+(seeds 20261013 and 20261014), using the marginal over k1:
+
+| test | value | reference |
+|---|---|---|
+| marginal-over-k1 row sums | 1.00000 | correct |
+| **adjusted Rand index** between hard assignments | **0.019** | 0 = chance, 1 = identical |
+| normalized mutual information | 0.239 | weak |
+| best label-permuted agreement | **44.3%** | chance under independence = **45.6%** |
+| cluster sizes (A / B) | 190, 49, 694, 67 / 271, 78, 81, 570 | similar shape |
+| median posterior entropy / uniform | 0.87 / 0.77 | diffuse (invariant) |
+
+**So the conclusion survives on a valid metric:** after optimal label alignment the two seeds
+agree at 44.3% against a chance level of 45.6% - i.e. **no agreement beyond chance**, and
+ARI is 0.019. The defect was in the metric, not the verdict.
+
+**Additional evidence, same two seeds:** they reach materially different final likelihoods -
+**-3,191,497** (seed 20261013) versus **-3,208,177** (seed 20261014), 0.52% apart. Note that the
+seed with the WORSE likelihood (20261013) is the one that PASSED the convergence gate, so the
+convergence verdict is here anti-correlated with fit quality. That is a second, independent
+argument that the criterion is not measuring convergence quality.
+
+**Status:** the verdict stands, but it is now supported only by permutation-invariant tests and
+by the likelihood spread, not by the retracted metric. A 16-seed ensemble at K=4 / 100 steps
+(seeds 20261020-20261035, running) is the proper test of the remaining question: what fraction
+of seeds converge, whether the final likelihoods cluster into distinct optima, and whether any
+majority of seeds agree (pairwise ARI matrix). If a majority agree, the states ARE identified
+and the two-seed comparison was unlucky; if no majority agrees, the route is closed properly.
