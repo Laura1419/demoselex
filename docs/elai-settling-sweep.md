@@ -297,3 +297,48 @@ No git commands, staging, commits, installs or full-sweep fits were performed.
 historical K=3 seed-A full fit **exactly** (likelihood, reported increments, and recomputed
 relative series). This checks baseline input/seed reproducibility independently of
 the synthetic regression fixtures.
+
+---
+
+## RESULTS (2026-10-10, parent-run; sweep completed in 4,013 s wall, 10 arms in parallel)
+
+Settling rule applied as pre-registered (decays AND second-half negative fraction < 0.05 AND the
+final 3-consecutive window in `[0, 1e-4)`):
+
+| arm | S | K | mg | w | steps | decays | 3-window | last/first | 2nd-half mean abs rel | neg frac | **settles** |
+|---|---:|---:|---:|---:|---:|---|---|---:|---:|---:|---|
+| baseline | 1 | 5 | 10 | 0 | 70 | yes | no | 3.54e-04 | 9.42e-05 | 0.057 | **NO** |
+| s1_k3 | 1 | 3 | 10 | 0 | 100 | yes | yes | 3.36e-04 | 4.12e-05 | 0.000 | **YES** |
+| s1_k4 | 1 | 4 | 10 | 0 | 90 | yes | yes | 2.89e-04 | 7.97e-05 | 0.000 | **YES** |
+| s2_k2 | 2 | 2 | 10 | 0 | 90 | yes | yes | 1.03e-03 | 8.43e-05 | 0.000 | **YES** |
+| s2_k3 | 2 | 3 | 10 | 0 | 50 | yes | no | 1.60e-03 | 3.32e-04 | 0.000 | no |
+| s3_k2 | 3 | 2 | 10 | 0 | 50 | yes | no | 1.97e-03 | 2.70e-04 | 0.000 | no |
+| mg5 | 1 | 5 | 5 | 0 | 70 | yes | no | 3.54e-04 | 9.42e-05 | 0.057 | no |
+| mg100 | 1 | 5 | 100 | 0 | 70 | yes | no | 3.54e-04 | 9.42e-05 | 0.057 | no |
+| mg1000 | 1 | 5 | 1000 | 0 | 70 | yes | no | 3.54e-04 | 9.42e-05 | 0.057 | no |
+| warm1 | 1 | 5 | 10 | 1 | 70 | yes | no | 5.39e-04 | 7.31e-05 | **0.257** | no |
+
+**[observation] `-mg` is inert in this configuration.** 5, 10, 100 and 1000 mixture generations give
+*identical* statistics to every printed digit. With `S=1` and `-p 1` the admixture-generation
+parameter does not enter the fit. The pre-run hypothesis that a too-small mixture-generation scale
+causes the oscillation is therefore **refuted**.
+
+**[observation] `-w` makes settling worse.** The linear-approximation warm-up gives 25.7% wrong-sign
+increments, ~4.5x the baseline, consistent with the manual's caution that it is "not yet recommended
+for serious studies".
+
+**[inference] Step count, not S or K, controls the verdict.** Every settling arm ran 90-100 steps;
+every failing arm ran 50-70 (or, in the earlier 200-step runs, 200). K=5 at 70 steps failed narrowly
+(0.057 vs the 0.05 limit). So the EM reaches a likelihood plateau and its increments then shrink to a
+**noise floor** (about 2e-5 relative on a likelihood of ~2.5e6, i.e. ~50 absolute in 2.5 million); past
+roughly 100 steps the increments are noise-dominated and flip sign at random. Because the
+pre-registered rule requires the *final* window to qualify, running LONGER actively hurts: the earlier
+200-step runs failed for this reason, not because the fit was diverging.
+
+**[inference] Consequence for the rule.** "Settling" here means stopping while the increments are
+still signal-dominated, at roughly 90-100 steps. The rule is therefore sensitive to the stopping step,
+which is a genuine limitation of the pre-registered criterion and must be stated rather than tuned.
+
+**[observation] Practical conclusion:** K=3 and K=4 settle cleanly at 90-100 steps; K=5 was not tested
+at >=90 steps. The long-run configuration was therefore moved to K=4 (100 steps, seeds 20261010 and
+20261011) plus K=3 (100 steps) for the cross-K comparison.
