@@ -93,3 +93,24 @@ on their own: AMY sits in the discarded band (`|X|` = 3.795 against the 5.45 cut
 binarised short/long allele clears FDR-50% (X-equiv 3.64) and survives the structure
 correction (~97% retention), the signal is ~94% carriage on the global-label decomposition,
 and there is no low-`|X|`/high-replication class genome-wide.
+
+## Confirmation at K=5 (100 steps, seed 20261015)
+
+| diagnostic | K=4 seed A | K=4 seed B | K=5 seed 20261015 |
+|---|---|---|---|
+| convergence status | FAIL | PASS | **FAIL** (3/50 negative = 6%, limit 5%) |
+| final relative increment | -1.61e-05 | +1.20e-05 | +1.21e-05 |
+| ordered posterior sum | 1.00000 | 1.00000 | 1.00000 |
+| median per-individual max posterior | 0.181 | 0.281 | 0.200 |
+| individuals with max > 0.5 | 0.4% | 5.1% | **2.3%** |
+| median entropy | 2.42 | 2.14 | 2.54 |
+| entropy / uniform | 0.87 | 0.77 | **0.79** |
+
+**[inference] More clusters do not help.** K=5 fails convergence by 6% versus a 5% limit -
+again decided at the noise level - and its posterior is just as diffuse relative to its
+larger state space (entropy ratio 0.79 versus K=4's 0.77-0.87), with 97.7% of individuals
+lacking any state above 0.5. The states remain unidentified at both K=4 and K=5.
+
+**The verdict stands, and is now supported at two cluster counts:** the local
+haplotype-sharing states are not resolved by ELAI on this panel, so the within-state
+temporal test cannot be built on them.
