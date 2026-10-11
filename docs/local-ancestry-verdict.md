@@ -152,3 +152,58 @@ by the likelihood spread, not by the retracted metric. A 16-seed ensemble at K=4
 of seeds converge, whether the final likelihoods cluster into distinct optima, and whether any
 majority of seeds agree (pairwise ARI matrix). If a majority agree, the states ARE identified
 and the two-seed comparison was unlucky; if no majority agrees, the route is closed properly.
+
+---
+
+# REVERSAL (2026-10-10, later): the route reopens under a corrected configuration
+
+The "closed" verdict above applied to a mis-specified configuration. Two configuration defects,
+both found by challenging the assumptions directly:
+
+1. **`-C 1` (S=1): with one source layer there is no ancestry in the model at all.** The K
+   lower clusters were haplotype-similarity clusters inside one undifferentiated pool, and
+   `-mg` (mixture generations = switch rate) is *mechanically* inert at S=1 - verified:
+   `-mg 100` produces bit-identical output to `-mg 10` (same final likelihood to the last
+   digit). The manual's own guidance is `-c` about `5 x -C`; we ran `-C 1 -c 4`.
+2. **A 35 Mb window** (chr1:85-120 Mb) for a process whose tract scale is ~0.5-1 Mb. The
+   18-seed ensemble at 35 Mb showed the consequence: 4/18 seeds collapsed to a single
+   effective cluster, and the likelihood surface rewarded real 4-cluster structure over the
+   degenerate collapsed solution by only **0.4%** - too flat to steer the EM.
+
+## Evidence at the corrected configuration (S=2, K=10, 1 Mb window, 2 seeds)
+
+Site ladder across the AMY region (5 sites, 300-450 kb spacing, each site an independent
+seeded fit on the same 729-marker 1 Mb panel), scored on the **unordered diploid state**
+posterior q (the ancestry call we actually need):
+
+| site (chr1) | median max q | individuals q>0.9 | cross-seed ARI | agreement excess |
+|---|---:|---:|---:|---:|
+| 103,671,000 | 2.000 | **100%** | **1.000** | +83% |
+| 103,821,000 | 1.171 | 72.9% | 0.638 | +66% |
+| 104,121,000 (AMY core) | 0.563 | **16.8%** | 0.517 | +52% |
+| 104,421,000 | 2.000 | 98.6% | 0.308 | +22% |
+| 104,571,000 | 1.970 | 99.5% | 0.706 | +58% |
+
+(At S=2 a max `p_ordered` of 0.500 is *not* diffuse: it is a confident unordered pair
+{a,b}, a!=b, split evenly between the two haplotype orders. The unordered posterior q is
+the correct confidence measure; max q of 2.000 means both copies' states are certain.)
+
+**[observation] With S=2 at tract-scale windows, the local ancestral state is identifiable
+and reproducible at flanking sites: ~100% of individuals receive a confident unordered
+diploid state (q>0.9), and two independent seeds agree at ARI 0.64-1.00 (perfect at
+103,671,000). Along-ladder state persistence is only ~30-48% between adjacent sites, so
+states genuinely change along the chromosome - locality, not genome-wide clusters.**
+
+**[observation] The AMY core itself is the least resolvable site in the region** (16.8%
+confident versus ~100% at both flanks), even under the corrected configuration. That is
+consistent with the core being the CNV gap: its bridge site is informed only by flanking
+markers, and the ancestry background there may be genuinely mixed.
+
+## Consequence
+
+The earlier "route closed" verdict is **superseded**: it was a property of the S=1/35 Mb
+configuration, not of the data. The honest statement is conditional: local ancestral states
+are recoverable at tract-scale windows with S>1, and the AMY core specifically remains the
+hardest site in the region. For the temporal test the principled design is to condition on
+the state measured at **flanking informative markers** - which is standard practice where a
+core is genotypically unreliable - rather than on the core itself.
