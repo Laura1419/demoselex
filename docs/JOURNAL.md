@@ -277,3 +277,12 @@ parent owns independent acceptance and publication. Provenance recorded under
 [observation] Full-density five-step S=1,K=3 smoke finished end-to-end in 147 s, inherited ELAI exit 1 correctly accepted with sentinel and 5/5 trace. Automatic analyser/provenance and independent re-read agree; first five updates match historical K=3 seed A exactly. All nine regressions pass; re-run refuses existing artifacts and preserves every hash. New smoke output ~3.34 MiB; df -h / reports 163G available. No full sweep, installs, raw/fork edits, git commands, staging or commits; parent reviews and launches.
 
 [speculation] S=1 may produce an unidentifiable upper-state ridge. [inference] Preregistered settling requires <=0.5 last/first-quarter mean abs relative increment, <5% second-half negative increments, and final three increments in [0,1e-4), on a complete valid trace. S>1 settings deliberately depart from recommended K=5*S and have no ancestral panels; shorter 50-step arms and single-seed confounding limit causal interpretation. No result authorizes biological use.
+
+## 2026-10-13 — genome-wide scan + CURRENT-STATE snapshot
+- Genome-wide local-ancestry scan COMPLETE: 2,668/2,690 windows, S=2/K=10/1 Mb, 2 seeds.
+  Median max q 0.94; ARI 0.62 (0% windows below chance); NMI(country|state) 0.18 (92%>0.1).
+  Artifacts: data/derived/elai_genome/{qc_table,composition_table}.csv + per-window q.npy.
+- Configuration defects that caused the earlier "route closed" verdict: S=1 (no ancestry;
+  -mg mechanically inert) and 35 Mb window (surface flat to 0.4%, 4/18 seeds collapse).
+- Wrote docs/CURRENT-STATE.md as the single authoritative snapshot with supersession chain.
+- Next: prereg the genome-wide temporal analysis BEFORE results; then run it.
