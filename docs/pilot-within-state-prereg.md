@@ -200,3 +200,48 @@ patterns (p_traj [0.015, 0.111, 0.0, 0.143] on n≈84).
    use the largest state in each window and confirm the null tail matches; (d) only then
    re-evaluate H1. No thresholds changed retroactively; these are prospective fixes to
    test DESIGN, and the H1 verdict stands as NOT ESTABLISHED at this power.
+
+---
+
+# AMENDMENT 2 (2026-10-14, before the v2 pilot run) — state-space reduction
+
+Motivated by the registered AMENDMENT-1 result: the blocker is per-state n (top states
+held 70-130 individuals; per-bin n ~15-25; single carriers produce baseline-sized steps).
+Reference-panel enlargement is unavailable. The registered fix is state-space reduction.
+
+## Aggregation rule (fixed now)
+
+1. Per window, from the seed-A q matrix: hard-assign all 1,000 individuals
+   (argmax q, no confidence cutoff); rank unordered states by hard count.
+2. Keep the **top 5 states** by count; all remaining individuals are pooled as state
+   "OTHER". The analysis state space per window is therefore 6 groups.
+3. **Soft assignment for counts**: in frequency computations each individual contributes
+   weight q_i(state) (its unordered-posterior mass on that state, normalised over the 6
+   groups); genotype contribution weighted by q_i * called_i. No q>0.9 cutoff anywhere.
+4. Per (variant, group) cell n = sum of weights; a bin enters the test iff
+   **weighted n >= 30 called genotypes** (raised from the equivalent of ~15).
+5. The four date bins remain the global quartiles of 1950-BP over the 1,000 individuals.
+6. seed-B q matrices define the same rule independently; cross-seed reproducibility of
+   the aggregated step is reported per window (ARI on the 6 groups).
+
+## Checks before reading the arms
+
+- Composition: NMI(country | 6-group assignment) per window must be >= the 55-state
+  median (0.18) for >= 80% of windows, else the merge destroys ancestry signal.
+- Null-window drift baseline recomputed under the 6-group rule; the q99 threshold is
+  taken from THAT distribution (expected lower than 4.66 because single carriers now
+  move group frequencies by ~1/137 rather than ~1/70 - the artifact shrinks with n).
+
+## Expected power
+
+Median top-5 hard mass 0.549 of 1,000 (p10 0.36) -> per-group per-bin weighted n
+~31-137, i.e. the floor is met in the median window and in ~90% of windows at bin 1.
+A single carrier now shifts a group frequency by <= 1/31 per bin (vs ~1/15 before),
+halving the artifact scale, while true pulses retain their full LOR contrast because
+enrichment is measured against the OTHER groups pooled.
+
+## Decision rule (unchanged)
+
+Genome-wide run proceeds iff H1 (>= 3 of 4 known-selection loci with step above the
+recomputed null q99 and perm p < 0.01; loci failing the confident-n floor count as NOT
+TESTED) AND H2 (null calibration holds). Everything else as AMENDMENT 1.
