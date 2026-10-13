@@ -141,3 +141,62 @@ Primary observable: **state enrichment over time**, per (variant, state):
 Proceed to the genome-wide run iff H1 holds for >= 3 of 4 known-selection loci (STEP above
 drift baseline q99, permutation p < 0.01) AND H2 holds (null-window STEP distribution
 finite, median stable under permutation). No thresholds revised after seeing results.
+
+---
+
+# PILOT RESULT (2026-10-14) — reported per the amended statistic
+
+Execution: 26/31 windows produced data (2 known-selection windows unresolvable: SLC24A5
+window c15_w48 has ZERO confident individuals at q>0.9; SLC45A2 window c5_w33 only ~7%;
+3 null windows c17_w54/c17_w80/c1_w103-flank also failed their n-floors or produced empty
+runs and were excluded). AMY flank windows c1_w104/c1_w105 produced data; c1_w103 did not.
+PERMS=100, 30-way then 8-way parallel; two crashed launches from pgen mmap contention
+(26 GB file) before the 8-way run completed — recorded as execution notes, not results.
+
+## Drift baseline (24 null windows, 57,600 variant-state pairs)
+
+STEP (max adjacent-bin |Δlogit enrichment|): median 0.0 (most alleles absent/fixed),
+q95 = 3.35, q99 = 4.66, q999 = 5.87. Permutation null behaves: 3.1% of null pairs at
+perm p < 0.05 (expectation 5% at PERMS=100 resolution with the +1 correction).
+
+## Known-selection loci (H1) — verdict: NOT ESTABLISHED, boundary evidence
+
+- Only 2 of 4 loci produced any confident individuals (LCT c2_w135, FADS c11_w61).
+- Their top steps (6.5 at FADS state 19; 6.1 at LCT state 40) sit between q99 (4.66) and
+  q999 (5.87): above the 1% tail, below the 0.1% tail.
+- But arm-level enrichment is weak: 1.31% of known pairs above q99 vs 1.00% in nulls —
+  i.e., the known windows are barely more step-rich than null windows. And the variants
+  with the HIGHEST Akbari X in the FADS window (X = 9.1, 8.9) show within-state steps of
+  only 0.3-1.2 — the global signal does NOT localize to a single-background step at these
+  variants.
+- Inspection of the top steps shows the characteristic failure mode of small-n tails:
+  p_traj like [0.0, 0.0, 0.093, 0.0] on n=70 (a single carrier appearing in one bin
+  produces a LOR swing of ~6). At PERMS=100 the permutation p bottoms at 0.0099. These
+  are indistinguishable from carrier-noise at this n.
+- Known-window rows carrying Akbari X are sparse (3% join rate — our pilot variant
+  sampling spaced 600/window uniformly and missed the tagged variants; a join bug to fix
+  in the full run, not a scientific result).
+
+## AMY (measured, no prediction)
+
+c1_w104/c1_w105: 0.89% of pairs above q99 (vs 1.00% null) — no excess of within-state
+steps at the AMY flanks beyond background. Top AMY-region steps are again single-carrier
+patterns (p_traj [0.015, 0.111, 0.0, 0.143] on n≈84).
+
+## Registered interpretation
+
+1. The statistic is now CALIBRATED (nulls behave), fixing the void first run.
+2. H1 is NOT met at face value: with only 2 of 4 loci testable and their top steps below
+   the 0.1% baseline tail, we cannot claim known selection survives state-conditioning.
+   Per the decision rule this BLOCKS the genome-wide run.
+3. The blocker is power, not direction: confident-n per state is 70-130 individuals
+   (0-8% of 1000), date bins of ~15-25, and single carriers produce steps as large as
+   the top signals. The n-floor (>=60) admitted states whose per-bin n (~15) cannot
+   support a step test.
+4. Path forward (registered before any further run): (a) join Akbari X for ALL pilot
+   variants (the 3% join rate is a sampling artifact); (b) raise the per-bin n-floor so
+   a step requires >= 30 called genotypes per bin; (c) test the statistic on an
+   INTERNAL positive control with known large n - e.g., pool the two seeds' states or
+   use the largest state in each window and confirm the null tail matches; (d) only then
+   re-evaluate H1. No thresholds changed retroactively; these are prospective fixes to
+   test DESIGN, and the H1 verdict stands as NOT ESTABLISHED at this power.
