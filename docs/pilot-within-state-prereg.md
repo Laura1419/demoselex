@@ -245,3 +245,55 @@ enrichment is measured against the OTHER groups pooled.
 Genome-wide run proceeds iff H1 (>= 3 of 4 known-selection loci with step above the
 recomputed null q99 and perm p < 0.01; loci failing the confident-n floor count as NOT
 TESTED) AND H2 (null calibration holds). Everything else as AMENDMENT 1.
+
+---
+
+# PILOT v2 RESULT (2026-10-14) — AMENDMENT 2 statistic, 31 windows, 200 perms
+
+Execution clean (no failures). 96,000 (variant, group, window) rows; 72,000 null pairs.
+
+## Drift baseline (6-group soft assignment)
+
+q95 = 2.92, q99 = 4.18, q999 = 5.32 (was 3.35/4.66/5.87 under hard q>0.9, 55 states).
+Calibration: null frac > q99 = 1.00% (by construction), null frac perm_p<0.05 = 2.68%
+(slightly conservative at 200 perms). Single-carrier artifact scale halved as predicted.
+
+## Known-selection loci — verdict: H1 NOT MET (now with power)
+
+- Arm-level: known frac > q99 = 0.64% vs null 1.00% — known windows are NOT more
+  step-rich than null windows. Mann-Whitney known>null: p = 1.0; two-sided p < 0.001
+  (known upper tail is LOWER: q99 3.95 vs 4.18, q999 5.01 vs 5.32).
+- The FADS top step (6.27, group 2|2, perm p 0.005) is now a multi-carrier bump
+  (~10 carriers appearing in bin 3 on a ~109-individual group) — but it appears in ONE
+  bin and vanishes in the next (p_traj 0 / 0.093 / 0), a spike, not a pulse-with-fixation.
+- The LCT group 1|4 trajectory oscillates (0 / 3.2% / 0 / 3.6%) across 4 coarse bins —
+  binning resolution, not a temporal signal.
+- The canonical LCT variant (rs4988235, chr2:135,851,076) is NOT in our spaced 200-variant
+  sample (X-join coverage 1.4% — the known-window variant selection missed tagged
+  variants entirely). The 25 LCT-window hits sit at 135.0-136.0 Mb flanks.
+
+## AMY arm
+
+frac > q99 = 0.46% (BELOW null) — no excess of within-state enrichment steps at the AMY
+flanks. Top AMY steps (5.7-5.8, groups 2|7, 4|8) again single-bin spikes with perm_p
+0.005-0.03, indistinguishable from the null tail.
+
+## Cross-seed reproducibility of the aggregated groups
+
+Median 6-group ARI (seed A vs seed B, same window) = 0.53; mean 0.49; min -0.05.
+Aggregation is reproducible in most windows but not all.
+
+## Registered interpretation
+
+1. H1 is NOT MET, and at this power the verdict is informative: the within-state step
+   statistic, calibrated on 72k null pairs, does NOT show the known-selection loci as
+   outliers above background. The direction of the deficit (known < null upper tail)
+   suggests the coarse 4-bin grouping AVERAGES OVER the pulses the model predicts.
+2. Two design defects remain before any genome-wide run: (a) variant selection must
+   include ALL Akbari-X-tagged variants per window (join coverage was 1.4%); (b) 4
+   genome-wide quartile bins spanning -11,483..1800 AD compress Neolithic-transition
+   pulses (the interesting interval) into one or two bins. Bins must be era-adaptive
+   (e.g., fixed boundaries at -8500, -5000, -3000, -1500, 0, 1800 AD chosen BEFORE
+   looking at any allele trajectory).
+3. Registered next step: pilot v3 with (a) + (b) on the same 31 windows. H1 remains
+   NOT ESTABLISHED; no genome-wide run.
