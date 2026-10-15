@@ -78,12 +78,16 @@ def build_map(dataset='HO'):
 EUR_MODERN = {'Spanish', 'French', 'Basque', 'Sardinian', 'Icelandic', 'Norwegian', 'English'}
 
 
-def build_map_mixed():
-    """Ancients (from the validated map) + modern European samples at time 0."""
-    ancients = json.load(open(OUT / 'map_HO.json'))['matched']
+def build_map_mixed(base_dataset='HO', out_dataset='mixed'):
+    """Ancients (from the validated map) + modern European samples at time 0.
+
+    base_dataset selects the AADR bundle (HO = transversions only, 1240K = all sites);
+    out_dataset names the emitted map/dataset."""
+    prefix = HO if base_dataset == 'HO' else K1240
+    ancients = json.load(open(OUT / f'map_{base_dataset}.json'))['matched']
     for a in ancients:
         a['cohort'] = 'ancient'
-    inds = list(parse_ind(str(HO) + '.ind'))
+    inds = list(parse_ind(str(prefix) + '.ind'))
     anno = parse_anno(str(AADR / 'v66.p1_1240K.aadr.PUB.anno'))
 
     def dated(i):
@@ -97,9 +101,9 @@ def build_map_mixed():
         moderns.append(dict(cohort_id=ind.id, aadr_index=i, aadr_id=ind.id, bp=0.0,
                             country=ind.group, cohort='modern'))
     matched = ancients + moderns
-    json.dump(dict(dataset='mixed', matched=matched, n_matched=len(matched),
+    json.dump(dict(dataset=out_dataset, matched=matched, n_matched=len(matched),
                    n_ancient=len(ancients), n_modern=len(moderns)),
-              open(OUT / 'map_mixed.json', 'w'), indent=1)
+              open(OUT / f'map_{out_dataset}.json', 'w'), indent=1)
     print(json.dumps(dict(n_ancient=len(ancients), n_modern=len(moderns), total=len(matched))))
 
 
@@ -236,7 +240,12 @@ def main():
     if mode == 'map':
         build_map(ds)
     elif mode == 'mapmix':
-        build_map_mixed()
+        build_map_mixed('HO', 'mixed')
+    elif mode == 'map':
+        build_map(ds)
+    elif mode == 'mapmix1240':
+        build_map('1240K')
+        build_map_mixed('1240K', 'mixed1240')
     elif mode == 'samples':
         build_samples(ds, ch)
     elif mode == 'tsinfer':

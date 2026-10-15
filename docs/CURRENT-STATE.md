@@ -129,3 +129,56 @@ below resolution (acceptable at 0.5–1 Mb tract scale).
 **superseded by the REVERSAL section of `local-ancestry-verdict.md` + commit `e365fca`**
 (S=1/35 Mb were the defects) → **this document** (genome-wide map at corrected
 configuration). The two-channel/binarised/block-survey results in §2 were never affected.
+
+---
+
+# ADDENDUM (2026-10-15): ARG route — machinery built, substrate constraints found
+
+Motivated by the density result (below): window/cluster methods cannot resolve local
+ancestry at any array density, so we moved to the genealogy itself (tsinfer + tsdate),
+which needs no windows and gives time-calibrated ancestry by construction.
+
+## Toolchain (installed into .venv)
+
+tskit 1.0.3, tsinfer 0.5.1, tsdate 0.2.7, numba 0.68, numpy 2.5.4, pandas 3.0.6,
+scikit-learn 1.9.1. Note: installing tskit upgraded numpy, which required force-installing
+pandas/sklearn into the venv to shadow the system packages.
+
+## What exists
+
+- `analysis/arg_build.py` — AADR-based ARG pipeline (map / samples / tsinfer / infer / date /
+  sanity) on the RAW unimputed AADR TGENO files, using the validated decoder.
+  - HO (transversions only, 584k sites) ancients-only chr1: 41,303 trees, 44,268 sites,
+    1,000 dated samples, sample times 5-463 generations (150-13,400 ybp), tsdate-dated.
+  - mixed (1,000 ancients + 322 European moderns at time 0) chr1/2/5/11/15: built and dated
+    in ~10 min total.
+- `analysis/arg_locus.py` — derived-allele-age-vs-frequency test: mutation-node time from
+  the dated ARG, binned null on the same chromosome, z per target site.
+- `analysis/arg_dense.py` — dense-substrate (Akbari imputed pgen) regional ARG (in progress).
+
+## Findings
+
+1. **The clock needs modern anchors, but the transversion-only array excludes the controls.**
+   HO carries 322 European moderns but is transversions-only, so it does NOT contain LCT
+   rs4988235, SLC45A2 rs16891982 or SLC24A5 rs1426654 (two are transitions). AADR 1240K
+   contains them but has NO modern samples (all 23,089 are dated). Neither array alone gives
+   both canonical variants and a present-day clock anchor.
+2. **Age resolution is boundary-limited on ancients-only ARGs**: ~38-43% of mutation ages sit
+   at exactly the oldest sample's age (branches directly above old tips are pinned at their
+   lower bound). Adding moderns did not remove this mass point.
+3. **First ARG result at AMY (HO, ancients-only)**: 49 sites in the 1 Mb window, min z = -1.98,
+   none beyond -2 — no allele-age anomaly, but the test is low-powered for reasons (1)-(2).
+4. **Density sweep final (labels-consistent design, em.txt-verified)**: run-length ratio
+   real/shuffled 1.00-1.05 for moderns AND ancients at every available density; adjacent-site
+   state agreement 0.4-3.7%. The bundle's usable density ceiling is ~1,100 QC markers/Mb
+   (the 52M variants are mostly rare). Density is not the binding constraint.
+
+## Next (registered before running)
+
+Build the ARG on **1240K sites with ancients (real AADR calls) + moderns (1000G from the
+Akbari bundle, matched by rsID/position)**: the only combination that has both the canonical
+transition variants and present-day tips. Then re-run the allele-age test with the LCT
+rs4988235 (chr2:136,608,646), SLC45A2 rs16891982 (chr5:33,951,693), SLC24A5 rs1426654
+(chr15:48,426,484) and FADS (chr11:61.6 Mb) **positive controls** before reading AMY1.
+Dense-substrate ARG (Akbari pgen) requires haploidisation (het calls are invalid for
+tsinfer ploidy=1) and a bounded SampleData store (LMDB default map is 1 TB sparse).
