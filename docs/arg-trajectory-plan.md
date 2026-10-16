@@ -236,3 +236,48 @@ Unlike LCT (four variants on ONE node, age 35.6 gen), the AMY candidates sit on
 5. **Ancient check**: compare the inferred trajectory/age to the ancient allele
    frequencies at these positions (external, independent of the modern ARG).
 6. Only then interpret AMY1 relative to Akbari's X = 3.795 (below their 5.45 threshold).
+
+---
+
+## ITEM 1 DONE: within-tree null (and one design failure caught)
+
+### The invalid first design
+
+`arg_permnull.py` compared a variant's carrier set to random *sample sets* of the same
+size. All 200 candidates hit the p-floor and null medians were absurd (~14,000 gen vs
+observed ~100 gen). Reason: in a tsinfer ARG a mutation is placed ON a clade, so
+"carriers form a clade" is a tautology; random sample sets are not clades, so the
+comparison is rigged. Recorded as a dead end.
+
+### The corrected null: clade-size-matched age (`arg_cladenull.py`)
+
+Enumerate every clade in the chunk's trees (every node's descendant sample set). For a
+variant, its carrier clade has a size n and an age; the null is the distribution of ages
+of ALL clades with size ~n in the same chunk. Demography-free (it is in the tree), no
+simulation, self-contained. Statistic: p_age = P(clade age <= observed | size bin).
+
+Results (K not needed; null = pooled clades, n = 0.2-2.1 M clades per 10 Mb chunk):
+
+| set | n variants | p<0.05 | p<0.01 | p<0.001 | expected (0.05/0.01/0.001) |
+|---|---|---|---|---|---|
+| chr2 top-400 by heuristic z | 400 | 163 | 69 | 7 | 20 / 4 / 0.4 |
+| **AMY region (chr1:103-105 Mb)** | 351 | 27 | **16** | **3** | 17.6 / 3.5 / 0.35 |
+| LCT region (chr2:136.5-136.7) | 46 | - | - | - | - |
+
+- **LCT rs4988235**: 264 carriers, clade age 45.4 gen, null median 580.8 gen, **p_age = 0.024**.
+  (Chunk-wide null is conservative vs the frequency x rho heuristic, which put LCT at
+  0.13 percentile; the tighter variant is a null scoped to the SAME local tree.)
+- **AMY**: 16 variants at p<0.01 (4.5x expected) and 3 at p<0.001 (8.6x expected), e.g.
+  104,019,631 (50 carriers, age 14 gen vs null 174, p=2.3e-4), 103,784,927 (68 carriers,
+  age 16 vs 174), 104,324,819 (95 carriers, age 26 vs 295).
+- **Caution**: the AMY clades are MORE extreme than LCT's. Since AMY1 is a segmental
+  duplication, paralogous/mismapped variants manufacture exactly young apparent clades -
+  so the strength of the AMY signal is as consistent with artifact as with selection.
+  Do not interpret until the paralog checks are done.
+
+### Next refinements (registered)
+
+1. Null scoped to the SAME local tree (or the same LD block) instead of the whole chunk.
+2. Branch-level primitives (branch length + mutation load + monophyly) - item 2.
+3. Event assembly + FDR - item 3.
+4. Paralog/artifact checks at AMY before any claim.
