@@ -122,6 +122,14 @@ below resolution (acceptable at 0.5–1 Mb tract scale).
 - Full ordered-joint export permanently NOT TESTED at density (would be ~50 GB/fit);
   marginal + `--pkk-site` is the production mode.
 
+## Repository
+
+
+This work lives at **https://github.com/pangenome/demoselex** (`main`). The ELAI patch
+(`--pkk`, `--pkk-site`) is published separately at **https://github.com/ekg/ELAI**,
+branch `lower-state-posterior`. Raw data and derived outputs are gitignored
+(`data/raw/`, `data/derived/`); the repo carries code, docs and small artifacts only.
+
 ## 7. Supersession chain (so nobody reads a dead verdict)
 
 `elai-amy-long-run-results.md` → `local-ancestry-verdict.md` (route closed) →
