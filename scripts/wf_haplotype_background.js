@@ -1,0 +1,66 @@
+const lanes = [
+  {
+    key: "haplotype-background",
+    agent: "worker",
+    model: "openai-codex/gpt-6.1-sol",
+    task: [
+      "Repo: /home/erikg/demoselex. Put VARIANTS up against HAPLOTYPE BACKGROUNDS, where the background panel is EVERY haplotype already present in the data - not a curated reference subset. The previous lane built a local-ancestry painter from a small AIM/reference panel (16 EHG, 7 eligible Iranians) and it FAILED validation on coverage: Iranian holdouts had 5-9% call rates and were unevaluable, EHG predominance pinned at 0.514. The operator's correction: use ALL prior haplotypes, for EVERY haplotype and variant considered. That is the power fix.",
+      "",
+      "HARD RULES",
+      "- Do NOT run any git command; parent commits. Append to docs with clearly-marked sections; never rewrite another author's conclusions.",
+      "- Write ONLY under analysis/, docs/, fig/, data/derived/.",
+      "- .venv/bin/python. No heavy external tools.",
+      "- Label claims [observation]/[inference]/[speculation]. PRE-REGISTER method, K selection, validation gates and decision rule in docs/haplotype-background-prereg.md BEFORE results.",
+      "- Stop by ~35 minutes; incremental writes. Read docs/local-ancestry-results.md first - it documents the failed painter and the exact gates that failed.",
+      "",
+      "## THE PANEL (the whole point)",
+      "- The panel is the ENTIRE imputed bundle: data/raw/akbari/tier2/AncientDNA_plus_EUR1KG_AllVariants_NoQC_GRCh37_autosomes.{pgen,psam,pvar} - 52,382,872 variants x 16,339 samples (ancient + EUR 1KG), which is IMPUTED and therefore has coverage where raw ancient 1240K does not. Reader analysis/load_akbari_geno.py (returns ALT dosage; uint32 sample-subset and batch indices; read the file).",
+      "- Also use the AMY structural haplotype labels, which are already haplotype-level: data/raw/amy/ (extract amylase_diversity_project-v1.1.zip to a scratch dir): graph_genotyping/assess_graph_genotypes/supplementary_tables/haplotype_structure_for_supplement.tsv gives per-individual H1/H2; ancient_metadata_for_supplement.tsv gives age and ancestry component; HPRC_AMY_Sequences/combined_y1_y2_analyses/output/ has haplotype_all_structures.tsv, haplotype_struc_dists.tsv and world_wide_cluster_freqs.tsv.",
+      "- NO curated reference subset. Every individual and every haplotype in the panel participates.",
+      "",
+      "## METHOD",
+      "1. docs/haplotype-background-prereg.md FIRST: the window definition, how haplotypes/diplotypes are encoded, the clustering method and how K is chosen, how the TESTED variant is excluded, the validation gates, the statistics, the null, the detection floor and the decision rule.",
+      "2. For a focal locus: take a window (test at least two sizes, e.g. 200 kb and 1 Mb). Build the background matrix from ALL panel individuals in that window.",
+      "3. TWO encodings, both required:",
+      "   (a) STRUCTURAL HAPLOTYPE backgrounds for AMY - the H1/H2 labels are haplotype-level and need no phasing. Report their frequencies and how they partition the panel.",
+      "   (b) GENOME-WIDE-CAPABLE encoding: cluster the WINDOW GENOTYPES (diplotype backgrounds) from the imputed bundle. This needs no phasing and is well defined for every individual. State clearly that diplotype clustering is not haplotype-level phase and what that costs.",
+      "4. LOCUS-INDEPENDENCE IS MANDATORY: the tested variant and its immediate LD neighbours (state the exclusion radius) must be EXCLUDED from the clustering. Otherwise 'frequency within background' is circular. State exactly what was excluded and prove it.",
+      "5. K selection: fit or prespecify a rule (e.g. silhouette/elbow/held-out likelihood), test stability across K, and report the chosen K. Do NOT pick K to produce a desired answer.",
+      "",
+      "## THE TESTS (per variant: the AMY structural haplotypes, the binarised short/long allele, and canonical controls)",
+      "   (i) frequency of the variant per background cluster;",
+      "   (ii) TEMPORAL CHANGE WITHIN A BACKGROUND - does the variant rise over time inside a background? This is the local-ancestry question answered with panel-derived backgrounds instead of a reference panel;",
+      "   (iii) RECURRENCE - is the variant found on ONE background (shared/common origin, consistent with carriage) or on SEVERAL DISTINCT backgrounds (independent origin, which carriage cannot produce)? For the structural haplotypes use the structural distance data to check whether 'the same label' in different populations is the same structure or a recurrent one.",
+      "   (iv) the detection floor for (ii) given n and allele frequency, reported BEFORE interpreting it.",
+      "",
+      "## VALIDATION GATES (these must PASS before any AMY interpretation; do not reuse the failed painter's gates)",
+      "   (a) The clusters must reproduce known structure: report the composition of each cluster against published AADR group labels, geography, and date. A cluster that is pure noise or that splits on sequencing batch is a failure.",
+      "   (b) Stability: cluster assignment and cluster composition stable across window sizes and K, reported as a number (e.g. ARI). The failed lane's instability (L1 up to 0.78, target-local agreement 43%) is the precedent to beat.",
+      "   (c) A negative control: show that background sharing is not an artefact of the tested variant - e.g. the exclusion in step 4 demonstrably changes nothing, or a permuted variant shows no recurrence structure.",
+      "   (d) Report how many panel individuals carry usable data in the window (the failed lane lost 30% of holdouts to coverage - that must not recur).",
+      "   If a gate fails, say so and STOP the AMY interpretation rather than reporting numbers.",
+      "",
+      "## ALSO REPORT",
+      "- The comparison against the established global-label result (docs/amy-binarized-results.md, docs/two-channel-results.md): AMY1 by component WHG 5.75, Early farmers 5.45, EHG 5.39, Neolithic farmers 7.15, Steppe 8.25, Bronze 6.63, Iron+ 7.25; binarised A<=2 X-equivalent 3.64 (clears FDR-50% 3.16, not 5.45); GRM retention ~97%; carriage ~94% of pooled change; within-history 0.049 vs 0.146 B-freq/kyr floor.",
+      "- Akbari's AMY window: 2,204 SNPs, max |X| 3.794956889, zero above 5.45 (LCT 16.52, FADS 16.15, SLC45A2 13.15, SLC24A5 5.99).",
+      "- Canonical loci as positive controls: LCT, SLC24A5, FADS, SLC45A2 - do they show the expected within-background temporal change and/or recurrence?",
+      "- Genome-wide feasibility: state whether this can be run across many loci and what it would cost.",
+      "",
+      "## Validation",
+      "- docs/haplotype-background-prereg.md exists before results, names the window, encoding, K rule, exclusion radius and gates.",
+      "- The panel is the FULL imputed bundle - no curated reference subset - and the number of individuals/haplotypes used is reported.",
+      "- The tested-variant exclusion is demonstrated, not asserted.",
+      "- Gates (a)-(d) each report a number, or the AMY interpretation is stopped and said so.",
+      "- The within-background temporal test reports its detection floor.",
+      "- Any disagreement with a number quoted here is stated with the disagreeing number."
+    ].join("\n")
+  }
+];
+
+const results = await runs.all(lanes);
+return results.map((r, i) => ({
+  key: lanes[i].key,
+  status: r && r.status,
+  runId: r && (r.runId || r.id),
+  output: r && r.output
+}));

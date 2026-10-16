@@ -1,0 +1,65 @@
+const lanes = [
+  {
+    key: "local-ancestral-state-design",
+    agent: "worker",
+    model: "openai-codex/gpt-6.1-sol",
+    task: [
+      "Repo: /home/erikg/demoselex. Continue an interrupted lane. A previous run wrote a strong method study then died on ENOSPC; that study is committed at docs/local-ancestral-state-method.md - READ IT FIRST and build on it rather than repeating it.",
+      "",
+      "DISK DISCIPLINE (MANDATORY - the volume is 100% full and only ~50G is free, all of it contested by unrelated projects):",
+      "- Stream and process in chunks. Do NOT write genotype matrices, caches, or .npy files larger than ~200 MB. Do NOT copy the pgen/pvar.",
+      "- Keep every file you write under 500 MB; total new output under 2 GB.",
+      "- Check `df -h /` before any large write and report free space in the log if you approach the limit.",
+      "- Delete your own scratch files when done.",
+      "",
+      "HARD RULES",
+      "- Do NOT run any git command; parent commits. Append to docs with clearly-marked sections; never rewrite another author's conclusions.",
+      "- Write ONLY under analysis/, docs/, fig/, data/derived/local_ancestral_state/.",
+      "- .venv/bin/python. Do not install packages or external tools.",
+      "- Label claims [observation]/[inference]/[speculation]. PRE-REGISTER the chosen design in docs/local-ancestral-state-prereg.md BEFORE any statistic on real data.",
+      "- Stop by ~30 minutes; incremental writes.",
+      "",
+      "## ALREADY ESTABLISHED (from the committed study - verify, do not redo)",
+      "- Three concepts must NOT be conflated: source-population local ancestry; local haplotype-COPYING/sharing state (a finer equivalence class in a linked-marker model); and genealogical ancestor / MRCA. A source label is not an MRCA.",
+      "- Phasing requirements: RFMix / FLARE / Gnomix need PHASED target and reference haplotypes (we have NO phase). ELAI accepts UNPHASED diploid genotypes and unphased sources, with missing genotypes allowed, and models LD explicitly via a two-layer HMM (upper ancestry clusters, lower haplotype-copying clusters); its lower-cluster sharing is explicitly proposed in Guan (2014) for local-sharing-state work. LAMP-LD and Ancestry_HMM need phased sources or read likelihoods; MOSAIC needs donor haplotypes/sparse initialization. ASAFE (Zhang, Browning & Browning 2016) estimates ancestry-specific allele frequency given ancestries and does NOT need phase relative to ancestry - the conceptual precedent for the statistic.",
+      "- Mies & Mathieson (2026), 'Local ancestry inference identifies robust evidence of selection in Neolithic Europe', is the direct template: 176 imputed/phased Neolithic targets with 48 hunter-gatherer and 7 farmer sources, 572,223 1240K-overlap SNPs (MAF>.01, imputation quality>.8), replicated ancestry-deviation signals in independent target sets including Akbari data. Their inter-method local correlation was only 0.08-0.50 (individual averages .15-.43, mean .32), their preferred RFMix/Gnomix tracts were 10.3/16.4 generations while other methods gave implausible tracts, and they explicitly state their FADS1/SLC24A5 deviations (.23/.33 vs mixture .03/.06) 'support either within-background change or underestimated ancestry shifts'.",
+      "- Previous failures: attempt 1 (curated 16 EHG / 7 Iranian reference panel + hand-built window HMM) failed coverage (Iranian holdouts 5-9% calls) and stability (L1 to 0.78). Attempt 2 (full 16,339 panel, k-means over ALL polymorphic SNPs) reached 100% coverage but failed known structure (silhouette <0.10, group NMI <0.10, country NMI <0.05) and stability. Diagnosis: both were the WRONG MODEL CLASS - unweighted k-means or independent-SNP emissions, not LD/copying models.",
+      "",
+      "## WHAT TO DELIVER",
+      "1. docs/local-ancestral-state-prereg.md - the design, preregistered. Must state:",
+      "   (a) which ancestral state is used and WHY that concept (source label vs haplotype-copying state), given the study's warning about conflating them;",
+      "   (b) the method and exactly how it is obtained - and if the honest answer is that no implementable method exists without installing a real tool, SAY SO and specify the exact pipeline (tool, version, inputs, phasing source, reference construction) rather than faking it;",
+      "   (c) locus-independence: the tested locus and its LD neighbours excluded, with an assertion that runs at every execution (a previous lane found the AMY exclusion left a gene copy inside the background - the corrected core is chr1:103,915,000-104,327,000 and AMY1 copies run to 104,301,314 in hg19 refGene);",
+      "   (d) the STATISTIC, stated precisely: change in allele frequency over time WITHIN each local ancestral state, and separately, restricted to states SHARED across populations, whether the SAME state shows the SAME directional change; how 'shared' is determined; and the EFFECTIVE NUMBER OF INDEPENDENT SHARED STATES (this is the replication count - do NOT report the raw number of populations; the earlier estimate for 7 ancestry components was N_eff ~ 2.0);",
+      "   (e) the null, the validation gates, the detection floor, and the decision rule.",
+      "2. docs/local-ancestral-state-design.md - the design rationale: what the study implies for OUR constraints, what is implementable in-house versus what needs a real tool, and an explicit honest verdict on feasibility. Include the reference/source panel question: the study notes 1KG EUR is an imputation/donor resource and NOT an EHG/Iranian ancestral truth set.",
+      "3. If and only if a defensible method is implementable in-house within the remaining time: a PROTOTYPE on AMY using the corrected exclusion, reporting the validation gates as NUMBERS first (structure recovery, stability, coverage, negative control), and the statistic only if the gates PASS. If a gate fails, STOP and say so - an unvalidated design must not produce a biological number.",
+      "   A concrete candidate to evaluate: an ELAI-style two-layer HMM with unphased diploid emissions and explicit LD, implemented on a bounded SNP panel; assess whether it is realistic in the time budget or whether it requires the real tool.",
+      "4. State the pitfalls the study flagged for the chosen approach, and the identifiability limits (what unphased, imputed ancient data cannot establish).",
+      "",
+      "## CARRIED-FORWARD FACTS TO VERIFY, NOT ASSUME",
+      "- Akbari AMY window: 2,204 SNPs, max |X| = 3.794956889, zero above 5.45. LCT 16.52, FADS 16.15, SLC45A2 13.15, SLC24A5 5.99.",
+      "- Binarised AMY: A<=2 X-equiv 3.64 (clears FDR-50% 3.16, not 5.45); GRM retention ~97%; carriage ~94% of pooled change; within-history 0.049 vs 0.146 B-freq/kyr floor.",
+      "- Full imputed bundle: 52,382,872 variants x 16,339 samples; 100% imputed coverage achieved on every background feature in the last attempt.",
+      "- Only ~225 dated ancients have structural haplotype labels; ~5,737 are in the imputed bundle.",
+      "",
+      "## WHAT SUCCESS LOOKS LIKE",
+      "Either (i) a validated prototype with the statistic, or (ii) a clear, literature-grounded statement that no in-house method meets our constraints, plus the exact pipeline that would. A well-argued design document is a better outcome than another unvalidated number - and given the two prior failures, honesty about feasibility is the priority.",
+      "",
+      "## Validation",
+      "- docs/local-ancestral-state-method.md was read and built upon, not repeated.",
+      "- docs/local-ancestral-state-prereg.md exists before any real-data statistic and names the state concept, the method, the exclusion assertion, the statistic, the shared-state replication count, the null, the gates and the floor.",
+      "- Any prototype reports gate numbers first, or is stopped and said so.",
+      "- Disk usage stayed within budget and free space is reported.",
+      "- Any disagreement with a number quoted here is stated with the disagreeing number."
+    ].join("\n")
+  }
+];
+
+const results = await runs.all(lanes);
+return results.map((r, i) => ({
+  key: lanes[i].key,
+  status: r && r.status,
+  runId: r && (r.runId || r.id),
+  output: r && r.output
+}));

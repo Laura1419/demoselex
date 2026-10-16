@@ -1,0 +1,67 @@
+const lanes = [
+  {
+    key: "elai-settling-sweep",
+    agent: "worker",
+    model: "openai-codex/gpt-6.1-sol",
+    task: [
+      "Repo: /home/erikg/demoselex. PREPARE an EM-settling sweep for ELAI. The parent launches the long run; your job is to get the flags right, bound the cost, write the runner and the analyser, and smoke-test them.",
+      "",
+      "## WHY (the finding that motivates this)",
+      "Read docs/elai-amy-long-run-results.md. Three full-density fits completed (54,370 markers, N=1,000) and all failed the EM convergence gate. The pattern is REPRODUCIBLE across seeds: both K=5 fits reach the 1e-4 relative tolerance by step ~46-50 and then OSCILLATE for the remaining 150 steps at ~2e-5 with 30-41% of increments going the wrong way; the likelihood bounces on a plateau instead of decaying to a fixed point. K=3 is closer to settling (8.3e-6, 13% negative). Representative K=5 tail (absolute increments on a likelihood of ~2.54e6): +101, -50, +3, -41, +31, -14.",
+      "Suspected cause: the configuration uses S=1 (`-C 1`), a single upper state, chosen as the linked-model limit so the lower K clusters carry the sharing state. With one upper state the upper-level parameters may be unidentifiable, producing a flat likelihood ridge and hence oscillating EM.",
+      "",
+      "HARD RULES",
+      "- No git commands; parent commits. Write ONLY under analysis/, docs/, scripts/, data/derived/elai_amy_dense/.",
+      "- DISK: ~165G free but contested. Keep total new output under 2 GB. Never write a full joint dump; use `--pkk-site 1:104121000` alone (small output) since the sweep only needs the EM TRACE, which ELAI prints to stdout as lines like '### Exact update 0 <step> <likelihood> <increment>'.",
+      "- .venv/bin/python. Do not install anything.",
+      "- TIME BUDGET ~35 minutes. Deliver a VERIFIED runner plus exact launch commands; parent runs the hours-long sweep.",
+      "- Label claims [observation]/[inference]/[speculation].",
+      "",
+      "## STEP 1 - GET THE FLAG SEMANTICS RIGHT (do not guess)",
+      "Read /home/erikg/elai-fork/elai-manual.tex (and elai-manual.pdf) and /home/erikg/elai-fork/example. Establish and DOCUMENT, with manual quotes:",
+      "  - what `-C` means (upper clusters / S) and what constraints apply;",
+      "  - what `-c` means (lower clusters / K) and whether the manual prescribes a ratio to -C (the earlier lane read 'manual 5*C' for -c, which with -C 1 gives -c 5 - CHECK THIS against the actual manual text and say if the read was wrong, because it determines the cost of any S>1 test);",
+      "  - `-mg` (prior scale) and `-w` (warm-up) semantics and valid ranges;",
+      "  - `-s` (EM steps) and whether any early-stop exists (there is none in the patched binary);",
+      "  - what `-p` does.",
+      "State the constraint explicitly: ELAI cost grows with the number of diploid pair states, plausibly (S*K)^2, and the measured baseline is ~60-70 s per EM step at S=1, K=5, M=54,370, N=1,000. Use that to bound every configuration you propose.",
+      "",
+      "## STEP 2 - DESIGN A COST-BOUNDED SWEEP",
+      "Design a configuration set that tests the settling question and fits roughly 1.5 hours WALL with all configurations run IN PARALLEL (each ELAI process is single-threaded; the host has many cores). Requirements:",
+      "  - include the BASELINE (S=1, K=5, -w 0, -mg 10) so the sweep is comparable to the failed run;",
+      "  - include at least two S>1 configurations that keep the state count bounded - e.g. S=2 with K=2 or K=3, and S=3 with K=2 - chosen so each stays within the wall budget; note explicitly whether you are departing from any manual-prescribed -c/-C ratio to control cost, and flag that as a caveat;",
+      "  - include K=3 and K=4 at S=1 (K=3 settled markedly better than K=5);",
+      "  - include at least one `-mg` variation and at least one `-w` variation;",
+      "  - ENOUGH STEPS to see the plateau: the baseline plateaus by ~step 50, so use about 60-100 steps for cheap configurations and fewer for expensive ones. State the chosen step count per configuration and the projected wall-clock for each, derived from the measured seconds-per-step and the state-count scaling.",
+      "The driver `analysis/elai_amy_long.py --mode fit` exists but is built around the pkk/pk1 FIFO and its own preregistered gates; for a sweep you may run the patched binary DIRECTLY with `--pkk-site 1:104121000` and capture stdout, which is simpler and cheaper. Justify whichever you choose and make it reproducible.",
+      "",
+      "## STEP 3 - WRITE THE RUNNER AND THE ANALYSER",
+      "- scripts/elai_settling_sweep.sh : launches every configuration IN PARALLEL from the repository root, each writing its own stdout log under data/derived/elai_amy_dense/sweep_<name>.stdout.txt, waits for all, then invokes the analyser. It must be safe to run once, refuse to clobber existing logs, and print a clear per-configuration status.",
+      "- analysis/elai_settling_sweep_report.py : parses each log's '### Exact update' lines into a trace, and reports PER CONFIGURATION: completed steps, the likelihood trajectory, the relative increment series, and these decision statistics - the mean absolute relative increment in the FIRST and LAST quarters (does it DECAY?), the mean absolute increment in the second half, the fraction of increments that are NEGATIVE in the second half, and the first step at which a 3-consecutive window is entirely in [0, 1e-4). Then state, per configuration, whether it SETTLES, using the pre-registered rule: DECAYS (last-quarter mean materially below first-quarter mean) AND second-half negative fraction below ~5% AND the 3-window criterion met at the final step.",
+      "- Write the decision rule into docs/elai-settling-sweep.md BEFORE the sweep is launched, together with the configuration table, the cost derivation, the manual quotes from Step 1, and the explicit hypothesis being tested (that S=1 causes the ridge).",
+      "",
+      "## STEP 4 - SMOKE-TEST CHEAPLY",
+      "Verify the runner by executing it with a TINY step count (e.g. 5) for one cheap configuration - or a --smoke flag that runs each configuration for 3-5 steps only - and paste the evidence: the exact command, the parsed trace, and the analyser output. Do NOT run the full sweep; hand the parent the exact command.",
+      "",
+      "## DELIVERABLES",
+      "- docs/elai-settling-sweep.md : manual-derived flag semantics with quotes; the configuration table with per-config step counts and projected wall-clock; the pre-registered settling rule; the hypothesis; the exact launch command for the parent; and the smoke-test evidence.",
+      "- scripts/elai_settling_sweep.sh and analysis/elai_settling_sweep_report.py, both deterministic and reproducible.",
+      "- Report `df -h /` after the smoke test.",
+      "",
+      "## Validation",
+      "- Every flag used is documented from the manual with a quote, or flagged as not documented.",
+      "- The projected wall-clock per configuration is derived from the measured baseline and the state-count scaling, and the derivation is shown.",
+      "- The smoke test runs end to end and its parsed output is pasted.",
+      "- The settling rule is stated before the sweep, not after.",
+      "- The launch command in the doc names paths that exist and is copy-pasteable."
+    ].join("\n")
+  }
+];
+
+const results = await runs.all(lanes);
+return results.map((r, i) => ({
+  key: lanes[i].key,
+  status: r && r.status,
+  runId: r && (r.runId || r.id),
+  output: r && r.output
+}));
