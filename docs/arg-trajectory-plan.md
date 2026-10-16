@@ -157,3 +157,58 @@ estimators is the right call: results stay comparable to the literature.
 6. **Carriage/selection decomposition** — ARG-background clustering + trajectory timing.
 7. **Repo hygiene**: this repo has NO git remote (117 commits are local-only); the ELAI
    patch is the only public artifact. Add a remote and push if the work should be visible.
+
+---
+
+## GENOME-WIDE SCREEN RESULTS (2026-10-15) — items 9 and AMY read-off
+
+Built and ranked in 39 min wall on 22 parallel chromosome jobs:
+
+- 22/22 chromosomes: genotypes (503 EUR moderns, merged 1240K x Akbari sites), tsinfer
+  ARGs, tsdate inside-outside in 10 Mb chunks (291 chunks), then per-variant statistics.
+- **834,531 variants scored genome-wide.** Statistics: carrier-clade age = tsdate time of
+  the mutation node; local rho = breakpoints/bp per chunk; z = MAD-standardised age within
+  frequency-decile x rho-quartile strata.
+
+### Calibration (known loci, ranked genome-wide)
+
+| locus | freq | clade age | z | rank / 834,531 | percentile |
+|---|---|---|---|---|---|
+| **LCT rs4988235** (known recent sweep) | 0.525 | 45 gen | -1.74 | **1,087** | **0.13%** |
+| SLC45A2 rs16891982 (suspected carriage) | 0.936 | 1,332 gen | -0.30 | 314,301 | 37.7% |
+| SLC24A5 rs1426654 | — | — | — | absent from scored set | — |
+
+Direction is right for both: the known in-situ sweep ranks in the top 0.13%, the
+carriage-like locus is unremarkable.
+
+### AMY region (chr1:103-105 Mb) — candidate, not a result
+
+8,343 scored variants in the window; several in the top 0.25% of the genome:
+
+| pos | freq | clade age | z | rank | in AMY1 CNV segment? |
+|---|---|---|---|---|---|
+| 104,856,148 | 0.646 | 112 gen | -1.96 | **116** | no |
+| 104,131,494 | 0.702 | 273 gen | -1.80 | 677 | **yes** |
+| 104,128,773 | 0.702 | 34 gen | (young) | — | **yes** |
+| 104,123,531 | 0.499 | 34 gen | (young) | — | **yes** |
+| 104,115,429 | 0.499 | 25 gen | -1.64 | 2,291 | **yes** (boundary) |
+| 103,589,094 | 0.519 | 92 gen | -1.71 | 1,371 | no |
+
+Unlike LCT (four variants on ONE node, age 35.6 gen), the AMY candidates sit on
+**distinct nodes with ages spread 25-454 gen** - so this is not one clean sweep fragment.
+
+### Required checks before any AMY claim (registered)
+
+1. **Paralogous-mapping artifact**: AMY1 is a segmental duplication (hg19
+   ~104,115,000-104,290,000). Paralogous sequence variants from mismapped reads
+   manufacture exactly this appearance (young, common, clustered). Check HWE/excess
+   heterozygosity, multi-mapping, and whether the candidates are paralogous sites.
+2. **Local rho**: the current rho is per-10-Mb-chunk (near-constant) so the recombination
+   correction is weak; recompute per variant (+/- 250 kb breakpoint density).
+3. **LD clumping / effective tests**: variants in one block share ages, so 834k variants
+   are far fewer independent tests; clump by LD before quoting ranks.
+4. **Seed robustness**: unphased het resolution is random; repeat with other seeds and
+   confirm the AMY candidates and LCT survive.
+5. **Ancient check**: compare the inferred trajectory/age to the ancient allele
+   frequencies at these positions (external, independent of the modern ARG).
+6. Only then interpret AMY1 relative to Akbari's X = 3.795 (below their 5.45 threshold).
