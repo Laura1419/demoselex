@@ -181,9 +181,33 @@ Built and ranked in 39 min wall on 22 parallel chromosome jobs:
 Direction is right for both: the known in-situ sweep ranks in the top 0.13%, the
 carriage-like locus is unremarkable.
 
+### CORRECTION (2026-10-15): chromosome labels were missing from the pooled table
+
+The first pooling step concatenated per-chromosome tables WITHOUT a `chrom` column, so
+any position-window query silently mixed chromosomes: "chr1:103-105 Mb" returned 8,343
+rows instead of 351. The AMY candidate list reported on the first pass (rank 116,
+"top 0.01%") was an artifact of that bug. `arg_genome.py pool` now carries `chrom` and
+the numbers below are corrected. Lesson: every positional query must be chromosome-scoped.
+
+### Corrected regional test (variants in the genome-wide top 1% of z)
+
+| region | n | observed top-1% | expected | enrichment | Poisson p |
+|---|---|---|---|---|---|
+| AMY (chr1:103-105 Mb) | 351 | 6 | 3.5 | **1.71x** | 0.14 |
+| LCT (chr2:135.5-137.5 Mb) | 431 | 7 | 4.3 | 1.62x | - |
+| SLC45A2 (chr5:33.5-34.5) | 298 | 17 | 3.0 | 5.70x | - |
+| SLC24A5 (chr15:48-49) | 226 | 8 | 2.3 | 3.54x | - |
+| FADS (chr11:61-62.2) | 322 | 0 | 3.2 | **0.00x** | - |
+
+Best chr1 AMY variant: 104,350,432 (freq 0.632, age 165 gen, z -1.66, percentile **0.23%**).
+The 6 AMY top-1% variants fall in **5 separate 100 kb clusters** (positions 103.11, 103.41,
+103.44, 103.61, 104.02, 104.35 Mb) - scattered, not one coherent locus.
+
 ### AMY region (chr1:103-105 Mb) — candidate, not a result
 
-8,343 scored variants in the window; several in the top 0.25% of the genome:
+351 scored variants on chr1 in the window (corrected). Superseded list below kept for the
+record; the *corrected* summary is the regional test above: 1.71x enrichment, p = 0.14,
+best variant percentile 0.23%. Original (buggy, cross-chromosome) list:
 
 | pos | freq | clade age | z | rank | in AMY1 CNV segment? |
 |---|---|---|---|---|---|

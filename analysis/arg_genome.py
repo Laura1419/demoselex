@@ -149,7 +149,11 @@ def stats(chrom):
 def pool():
     import pandas as pd
     files = sorted(OUT.glob('chr*_stats.csv'))
-    df = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
+    frames = []
+    for f in files:
+        chrom = int(f.name.split('_')[0].replace('chr', ''))
+        t = pd.read_csv(f); t['chrom'] = chrom; frames.append(t)
+    df = pd.concat(frames, ignore_index=True)
     print(f'pooled: {len(df)} variants from {len(files)} chromosomes')
     df['fbin'] = pd.qcut(df.freq, 10, duplicates='drop')
     df['rbin'] = pd.qcut(df.rho.rank(method='first'), 4, labels=False, duplicates='drop')
