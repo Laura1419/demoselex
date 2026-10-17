@@ -281,3 +281,52 @@ Results (K not needed; null = pooled clades, n = 0.2-2.1 M clades per 10 Mb chun
 2. Branch-level primitives (branch length + mutation load + monophyly) - item 2.
 3. Event assembly + FDR - item 3.
 4. Paralog/artifact checks at AMY before any claim.
+
+---
+
+## REBUILD (2026-10-16): real phase + dense sites — the pipeline was the problem
+
+Two defects found and fixed:
+1. **Phase was being thrown away.** The bundle carries a phase bit (verified: 2,514/2,515
+   calls via `read_alleles_and_phasepresent`). The old build read unphased genotypes and
+   coin-flipped heterozygotes into pseudo-haplotypes, fabricating haplotype sharing.
+2. **Site universe was 1.4% of what was available.** The old build used the 1240K x Akbari
+   intersection (~1 site / 2.7 kb); HighQualityVariants.tsv holds 9.7 M high-quality sites.
+
+New pipeline (`analysis/arg_phased.py`): 503 EUR moderns -> **1,006 real phased haplotypes**,
+sites from HighQualityVariants (MAF>=0.05, call>=0.90), per-chromosome tsinfer + tsdate in
+10 Mb chunks. Wall time ~4.7 h for all 22 chromosomes in parallel. **5,539,880 variants
+scored** (vs 834,531).
+
+### The decisive check: clade ages were compressed young
+
+| variant | old (sparse, unphased) | new (phased, dense) | literature |
+|---|---|---|---|
+| LCT rs4988235 | 45 gen (~1,300 yr) | **193 gen (~5,600 yr)** | LCT sweep ~5-8 kya |
+
+The "ages look systematically young" worry was a pipeline artifact, now fixed.
+
+### Regional excess, composite null (size x local rho x compartment), BH FDR
+
+NON-SEGDUP compartment (2,687 windows):
+
+| locus | enr | q | rank |
+|---|---|---|---|
+| **LCT** | 3.01x | <0.001 | 179 |
+| **SLC24A5** | 2.07x | <0.001 | 310 |
+| **FADS** | 1.52x | <0.001 | 558 |
+| **AMY** | 1.28x | **0.04** | 787 |
+| SLC45A2 | 0.97x | 1.00 | 1,294 |
+
+Top regions: chr12:34 Mb (8.0x), chr10:42 Mb (11.0x), chr2:219 Mb (7.0x), chr10:48 Mb
+(10.4x), chr3:90 Mb (12.5x), chr2:95 Mb (16.9x).
+
+SEGDUP compartment: 161,247 variants / 476 windows / 75 at q<0.05 (was 8,824 / 26 / 1 with
+array sites) - the compartment only became visible once dense sites were used. AMY: 52
+variants, 2.69x, p=0.017, q=0.11.
+
+### Interpretation
+
+Controls behave and split by regime: recent in-situ sweeps visible (LCT, SLC24A5),
+long-standing selected alleles not (SLC45A2 0.97x). AMY moved from "not flagged" to
+"flagged, modestly" once real haplotypes were used.
