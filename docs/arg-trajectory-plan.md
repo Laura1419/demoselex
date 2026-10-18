@@ -330,3 +330,40 @@ variants, 2.69x, p=0.017, q=0.11.
 Controls behave and split by regime: recent in-situ sweeps visible (LCT, SLC24A5),
 long-standing selected alleles not (SLC45A2 0.97x). AMY moved from "not flagged" to
 "flagged, modestly" once real haplotypes were used.
+
+---
+
+## 1000G HIGH-COVERAGE REBUILD (2026-10-17/18): 3,202 people, 6,404 real haplotypes
+
+Substrate change: instead of 503 imputed EUR from the Akbari bundle, use the 1000G
+high-coverage phased release (GRCh38, 3,202 samples, real phase from the source).
+`analysis/g1k_phased.py`: streams the phased VCF with cyvcf2 into a transient tsinfer
+SampleData (no VCF retained, no big in-RAM matrix), filters SNVs with MAF>=5%, infers,
+dumps trees, dates in 10 Mb chunks.
+
+Measured costs (chr22 pilot): 102,351 common SNVs x 6,404 haplotypes; SampleData 53 MB;
+tree sequence 1.25 GB; build+infer 40 min; date+stats 67 min. Inference scales ~0.05 s/site
+above 200k sites (chr8: 384k sites -> 5.2 h), so chr1/chr2 ~7-8 h inference + ~6 h dating.
+Genome-wide: ~6M common SNVs, ~50-90 GB of trees, 12-way concurrency.
+
+Validation (chr22, both substrates, age by frequency):
+
+| freq | 1000G (6,404 haps) | EUR (1,006 haps) | ratio |
+|---|---|---|---|
+| 20-30% | 1,107 gen | 1,150 | 0.96 |
+| 30-50% | 2,110 | 2,073 | 1.02 |
+| 70-100% | 5,866 | 4,095 | 1.43 |
+
+The clock agrees where it should and extends 43% deeper at common frequencies - the
+pre-Out-of-Africa depth that a EUR-only sample structurally truncates. Spearman(age, carriers) = 0.81.
+
+Early control read (chr15, complete):
+
+| locus (GRCh38) | freq | age | percentile | reading |
+|---|---|---|---|---|
+| HERC2/OCA2 rs12913832 | 0.179 | 37 gen (~1.1 kyr) | 2.0% | recent rise |
+| SLC24A5 rs1426654 | 0.566 | 8,270 gen (~240 kyr) | 89.7% | old, common allele |
+
+GRCh38 inputs staged: hg38 genomicSuperDups, 3,202-sample population map (CEB/YRI/...),
+canonical loci (LCT 2:135,851,076; SLC45A2 5:33,951,588; SLC24A5 15:48,134,287; FADS
+11:61,785,208; HERC2 15:28,120,472; AMY cluster chr1:103.61-103.70 Mb).
