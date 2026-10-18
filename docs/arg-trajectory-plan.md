@@ -367,3 +367,53 @@ Early control read (chr15, complete):
 GRCh38 inputs staged: hg38 genomicSuperDups, 3,202-sample population map (CEB/YRI/...),
 canonical loci (LCT 2:135,851,076; SLC45A2 5:33,951,588; SLC24A5 15:48,134,287; FADS
 11:61,785,208; HERC2 15:28,120,472; AMY cluster chr1:103.61-103.70 Mb).
+
+---
+
+## 1000G EUR-RESTRICTED SCREEN (2026-10-18): complete, 22/22 chromosomes
+
+All 22 chromosomes inferred and dated at 1000G scale (3,202 samples / 6,404 haplotypes,
+~6M common SNVs). Wall time ~24 h at 12-way concurrency; inference ~0.08 s/site
+(chr22 102k sites/40 min; chr1 542k sites/~14 h).
+
+### Population restriction is mandatory
+
+| LCT rs4988235 | global | EUR only (1,266 haps) |
+|---|---|---|
+| frequency | 0.168 | 0.536 |
+| clade age | 495 gen | 495 gen |
+| percentile in freq bin | 33.5% | **3.8%** |
+| 2 Mb window | 0.9x (p=0.83) | **1.48x, q=0.0008** |
+
+Global pooling dilutes frequency, deepens the carrier clade (carriers span populations),
+and fills the frequency-matched null with young population-specific variants. Conditioning
+on population restores the signal - the minimal-loss correction working as designed.
+
+### Controls (EUR, composite null size x local rho x compartment)
+
+| locus | enr | q | reading |
+|---|---|---|---|
+| LCT | 1.48x | 0.0008 | recent rise - passes |
+| HERC2/OCA2 rs12913832 | variant: 37 gen, 2.0 pct | window 0.48 | recent rise |
+| SLC24A5 rs1426654 | 1.21x | 0.15 | old allele (8,270 gen, 89.7 pct) |
+| FADS | 1.11x | 0.47 | old-allele regime |
+| SLC45A2 | 0.99x | 1.00 | old-allele regime |
+
+### Window statistic is the weak link
+
+After centromere masking (cytoBand acen +/-5 Mb) top windows are still low-rho /
+pericentromeric-adjacent (chr21:0 Mb, chr14:10 Mb, chr6:50 Mb, chr8:34 Mb). The
+variant-level frequency-matched percentile is the robust instrument; window aggregation
+needs continuous rho residualisation, or Relate's omega.
+
+### AMY cluster (chr1:103.60-103.72 Mb, GRCh38) - flagged
+
+11 common variants; 5 below the 5th percentile of frequency-matched chr1 variants
+(expected 0.6) = **8x excess**, Poisson p ~ 2e-4. Youngest: 103,629,948 (freq 0.087,
+110 carriers, **7.6 gen ~ 220 yr**, 0.26 pct); 103,607,590 (freq 0.12, 14.5 gen, 2.2 pct);
+103,627,831 (freq 0.12, 17.0 gen, 3.1 pct). Sits in AMY2A/AMY1A.
+
+Interpretation (registered): this is **copy-number-haplotype structure** - a recent
+expansion of a structurally distinct AMY haplotype - not a point sweep. Ages of 8-17
+generations at 9-12% frequency are what an expanding CNV haplotype produces. Calling it
+selection requires the copy number itself (graph genotyping), not paralogous SNPs.
