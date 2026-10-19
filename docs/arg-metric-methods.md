@@ -108,3 +108,41 @@ locus. Replaces the fragile window statistic and gives a published, comparable s
 **C. Population-specificity test** — with A and B in place: is a sweep confined to a
 *local* background, and does the background correspond to a labelled population only where
 the label is actually correct?
+
+---
+
+## ITEM A — local ARG-derived backgrounds (implemented, 2026-10-18)
+
+`analysis/g1k_local_bg.py`. Definition: for a locus, each haplotype's **local background**
+is the most recent clade in the local tree containing it whose root is younger than tau
+(walk up from the sample until a node older than tau; that node is the background). No
+population labels are used anywhere.
+
+Validation that the clusters are real ancestry (not noise): at LCT the 12 local clusters
+(>=20 haps) are AFR-dominated, EAS-dominated, European+admixed-American, etc. - i.e. the
+partition recovers known structure, learned locally.
+
+### LCT is confined to a single local background
+
+tau=200 gen: cluster 49000 holds 895 haplotypes (EUR 550 / AMR 191 / SAS 115) and **every
+carrier of rs4988235 (1078) is inside it, at frequency 1.00**; all other large clusters are
+0.00. The allele is *fixed within one locally-inferred background*.
+
+### Label-free confinement statistic (breadth), and its tau-dependence
+
+| locus | carriers | backgrounds holding >=5% of carriers (tau=100 / 200 / 500) |
+|---|---|---|
+| LCT | 1078 | 2 / 1 / 1 |
+| HERC2 | 1146 | 1 / 1 / 1 |
+| SLC45A2 | 1764 | - / 2 / - |
+| FADS | 1924 | - / 3 / - |
+| SLC24A5 | 3626 | 5 / 6 / 6 |
+
+Recent in-situ sweeps are confined to one background; the old allele (SLC24A5) spreads
+across six. Breadth is stable across tau; the dominant-share numbers are not (at tau above
+the carrier-clade age the carriers trivially merge into one cluster), so **breadth is the
+statistic to use**.
+
+Caveats: cluster granularity depends on tau and on sample composition; breadth is partly
+confounded with allele age (old alleles have had longer to spread) - which is the point,
+but means breadth should be compared within frequency/age strata, not globally.
