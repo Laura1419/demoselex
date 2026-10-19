@@ -230,3 +230,50 @@ Use the coalescent expectation instead of the empirical median: for a branch wit
 descendant leaves in epoch j, E[l] = integral over the epoch of exp(-(k_j-1)t/(2 Ne_j)) dt,
 with k_j and Ne_j taken from the LOCAL (per-window) skyline. That is the principled version
 and it uses the skyline above. Do not use the current omega for claims.
+
+---
+
+## ITEM B — RESOLVED differently: Relate's ACTUAL test (2026-10-18), and a factual correction
+
+**Correction of record: Relate (Speidel et al. 2019) has NO omega statistic.** I read the
+paper: no mention of omega. Omega/OmegaPlus (Alachiotis et al.) is a haplotype-based
+composite-likelihood statistic, unrelated. My repeated references to "Relate's omega" were
+wrong and are retracted.
+
+Relate's actual selection test (paper, "Powerful tree-based approaches"): condition on
+**k0 = the number of lineages present when the mutation arises**, use **n0 = the number of
+present-day carriers** as the statistic, with an analytic null robust to population-size
+change (p_R).
+
+`analysis/g1k_relate_test.py` implements this: in a dated tree,
+`k0 = 1 + #{internal nodes with time > t_node}`, `n0 = descendant samples`, and the
+analytic null from the Beta(1, k0-1) law for the carriers' sample fraction:
+**p_R = (1 - n0/n)^(k0-1)**. (An earlier empirical null was floor-limited at ~5e-3, which
+is exactly where LCT landed; the analytic null has no floor.)
+
+### Results (EUR, 1,266 haplotypes)
+
+| locus | n0 | k0 | p_R | -log10 |
+|---|---|---|---|---|
+| HERC2/OCA2 rs12913832 | 802 | 24 | 9.4e-11 | 10.0 |
+| SLC45A2 rs16891982 | 1182 | 7 | 8.5e-08 | 7.1 |
+| LCT rs4988235 | 678 | 16 | 1.0e-05 | 5.0 |
+| FADS rs174537 | 440 | 10 | 2.1e-02 | 1.7 |
+| SLC24A5 rs1426654 | invalid | - | - | - |
+
+### Two limitations, both now documented
+
+1. **Orientation.** We passed placeholder alleles ('A','T') to tsinfer, so the inferred
+   ancestral state is arbitrary. When the derived allele is the majority in the subset
+   (rs1426654 is ~98% in Europeans) the ARG's mutation sits on the COMPLEMENT lineage:
+   we measure n0 = 3 instead of ~1,240. Fix: carry REF/ALT through the build (store allele
+   orientation per site), which requires a re-download of the VCFs.
+2. **Window aggregation is still not calibrated**: the analytic p depends strongly on k0,
+   and k0 tracks local Ne, so low-Ne windows are inflated (window fractions of p<1e-4:
+   LCT 1.23%, neutral chr2:50Mb 0.67%, HERC2 2.46%, SLC45A2 4.07%, FADS 3.73%). The fix is
+   to calibrate within k0 strata (or use each window's own k0-matched null), not to compare
+   raw p_R across windows.
+
+So B is now **relate's real statistic, implemented, with correct per-variant behaviour on
+three of four controls** (the fourth invalidated by orientation). It is not yet a
+calibrated genome-wide scanner because of limitation 2.
