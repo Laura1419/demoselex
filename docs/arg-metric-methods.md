@@ -146,3 +146,34 @@ statistic to use**.
 Caveats: cluster granularity depends on tau and on sample composition; breadth is partly
 confounded with allele age (old alleles have had longer to spread) - which is the point,
 but means breadth should be compared within frequency/age strata, not globally.
+
+---
+
+## ITEM B — omega attempt FAILED (2026-10-18), diagnosis recorded
+
+`analysis/g1k_omega.py` implements a per-branch statistic:
+`omega_b = sum_bands [L_{b,j} / E_j(leafbin_b)] - (#bands touched)` with E taken
+empirically as the mean raw branch length among branches overlapping (band, leafbin).
+
+**It is NOT Relate's omega and it is degenerate.** Evidence: LCT rs4988235 gives
+omega = -1.0 (ratio sum ~ 0), i.e. no signal, and the implementation does not discriminate
+the controls.
+
+Two defects:
+1. mechanical: the chunk key used `p//10^7` instead of the absolute chunk start, so
+   windows were 10 Mb wide starting at position ~0 (HERC2 raised FileNotFoundError(15,2)).
+2. conceptual: the expectation is the mean RAW length among branches overlapping a band,
+   which penalises a branch that enters a wide band only briefly (LCT's branch spans
+   ~495-500 gen inside a 200-500/500-1000 band). Relate's omega uses the coalescent
+   expectation for a branch with a given descendant-leaf count within each epoch, which
+   accounts for how much of the epoch such a branch should occupy. The "minus bands
+   touched" correction is arbitrary.
+
+**Do not use this statistic.** Correct paths, in order of preference:
+(a) run Relate on the same cohort and use its omega directly (published, calibrated);
+(b) implement Relate's formula faithfully: estimate Ne(t) (generalised skyline from the
+    ARG is straightforward: Ne_j = k_j(k_j-1)dt_j / (4 c_j) with k = mean lineages and
+    c = coalescences per band), then use the coalescent expectation per (epoch, leaf count);
+(c) if staying empirical, the expectation must be a *distribution* of branch lengths for a
+    leaf-count class (e.g. quantiles), not a single mean, and the score must not include a
+    bands-touched term.
