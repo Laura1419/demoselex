@@ -177,3 +177,56 @@ Two defects:
 (c) if staying empirical, the expectation must be a *distribution* of branch lengths for a
     leaf-count class (e.g. quantiles), not a single mean, and the score must not include a
     bands-touched term.
+
+---
+
+## ITEM B — attempt 2/3 (2026-10-18): mechanically fixed, still not discriminative
+
+`analysis/g1k_omega2.py`. Whole-branch statistic: omega_b = L_b / E(leafcount_b), where
+L_b = t[parent]-t[node] (zero-length chains collapsed) and E = median over genome-wide
+sampled branches with the same log2 descendant-leaf count; per-SNP score = omega_b - 1.
+
+Fixes applied (each was a real bug in attempt 1):
+1. chunk key used the chunk INDEX not its absolute start -> windows were malformed.
+2. zero-length branches: tsinfer/tsdate leave nodes differing by ~1e-8 generations, so the
+   allele's lineage had to be walked past sub-generation branches (otherwise L=0).
+3. **null/scan inconsistency**: the null sampled uncollapsed branch lengths while the scan
+   used collapsed ones - a ~10x offset that swamped every signal (a neutral window scored
+   the same as LCT).
+4. recurrent/oriented mutations: naive per-mutation selection picked a singleton recurrence
+   at SLC24A5 (leafbin 1, omega 371) instead of the main mutation.
+
+Result after fixes (EUR, 1,266 haps): LCT omega = 1.66 (branch 2,411 gen vs 1,450
+expected). But window medians do NOT discriminate:
+
+| window | median score (omega-1) |
+|---|---|
+| chr2:135 Mb (LCT) | 2.72 |
+| chr2:50 Mb (neutral) | 1.92 |
+| chr15:27 Mb (HERC2) | 2.97 |
+| chr15:47 Mb (SLC24A5) | 3.83 |
+
+Diagnosis: the expectation is stratified on descendant-leaf count ONLY. Branch length
+depends on local Ne and local recombination, which differ between windows, so low-Ne
+windows inflate omega - the same failure mode that forced rho + size strata in the
+clade-age null.
+
+### The demographic ingredient works: generalised skyline Ne(t)
+
+Ne_j = k_j(k_j-1)dt_j/(4 c_j) from the ARG (chr2, EUR, stride 500):
+
+| band (gen) | mean lineages | coalescences | Ne estimate |
+|---|---|---|---|
+| 0-20 | 1,359 | 73,285 | 126 |
+| 20-100 | 736 | 9,338 | 1,158 |
+| 100-500 | 349 | 6,434 | 1,884 |
+| 500-2,000 | 198 | 5,244 | 2,779 |
+| 2,000-10,000 | 107 | 3,628 | 6,293 |
+| 10,000-50,000 | 56 | 209 | 146,346 (too few coalescences; unreliable) |
+
+### Registered next step for B
+
+Use the coalescent expectation instead of the empirical median: for a branch with n
+descendant leaves in epoch j, E[l] = integral over the epoch of exp(-(k_j-1)t/(2 Ne_j)) dt,
+with k_j and Ne_j taken from the LOCAL (per-window) skyline. That is the principled version
+and it uses the skyline above. Do not use the current omega for claims.
