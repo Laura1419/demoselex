@@ -193,3 +193,56 @@ Caveats: the 39 hits are SNP-level signals *near* SV loci (not the SV alleles th
 some top loci are paralogous families (POLR2J2, CTAGE6, ARHGEF35, SPATA31D4, GOLGA6L4) where
 paralogy contributes; and the window statistic's low-rho fragility applies. To test the SV
 alleles themselves, the diplotype analyzer is the route.
+
+---
+
+## INPUT CONTRACT (agreed 2026-10-20)
+
+Two files; nothing else required (groupings, population labels and CN values are not needed -
+the alleles are just markers on the genome).
+
+**1. Allele table** - one row per sample per locus:
+
+```
+chrom  pos  sample  allele1  allele2
+1      103304997  HG00096  1  3
+```
+
+Integer labels consistent within a site; unordered diplotype (structural haplotypes are
+unphased); missing = NA or -1. This is exactly what `g1k_allele_analyzer.py --table` reads.
+
+**2. Date table** - one row per sample:
+
+```
+sample  date_bp  date_sd  source  culture
+```
+
+Dates are NOT missing for AADR material: `data/raw/aadr-v66.p1/v66.p1_1240K.aadr.PUB.anno`
+carries date_bp, date_sd and date_method (that is where the 1,000 dated ancients came from).
+For samples outside AADR, use culture-based date INTERVALS with wide uncertainty - never
+point dates - so precision is not manufactured. This is the one bounded literature/annotation
+job standing between us and the temporal analysis.
+
+Optional third file (already in hand from COSI-GT): `chrom start end gene classification`.
+
+## ULTIMATE OUTPUT (agreed 2026-10-20)
+
+One trajectory row per (locus, allele):
+
+| field | meaning |
+|---|---|
+| locus, allele | which structural haplotype |
+| freq_by_bin_by_background | frequency in each time slice, within each ARG-derived ancestry background |
+| rise_window | when the frequency rose, and how narrow (punctuated vs gradual) |
+| specificity | rise inside one background (in-situ selection) vs across backgrounds (turnover) |
+| drift_null | expected frequency change over the interval from the local Ne(t) skyline, plus a date-permutation null |
+| verdict | young + confined + within-background rise = candidate; old + broad = structure |
+
+Rationale (why this and not a SNP scan): a single marker cannot tag these alleles - homoplasy
+across duplicated copies destroys any single-SNP signal, which is why GWAS and SNP-based
+selection scans fail at these loci. Allelic haplotype sharing, and its rate of increase
+relative to the generations available, survives that and is the observable to use.
+
+STATUS: allele analysis works today (`g1k_allele_analyzer.py`). The temporal layer
+(`--dates`, time-binned within-background frequencies, drift nulls) is NOT yet written; it is
+a ~150-line addition, testable by faking dates on moderns before real ancient data arrives.
