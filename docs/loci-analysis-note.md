@@ -112,3 +112,37 @@ share and within-background frequency, and the number of backgrounds. Plus, in a
 - Not a p-value from `age_pct`: it is an empirical percentile within the local tree, not a
   test statistic with a sampling distribution. Breadth and within-background frequency are
   descriptive; treat them as such.
+
+---
+
+## BED-level scan (available now, before the diplotype data)
+
+`analysis/g1k_bed_scan.py loci.bed --pop EUR --breadth` summarises any BED whose 4th column
+holds a gene/locus name. Per locus it reports: number of scored variants, how many fall in
+the young-clade bottom 5% (k5) versus expectation, the Poisson p, the most extreme variant's
+percentile and age, whether the locus is in the segdup compartment, and (with `--breadth`)
+the local-background breadth of that extreme variant.
+
+Demonstration on six gene-named loci (GRCh38, +/-20 kb, EUR):
+
+| locus | n variants | k5/expected | enrichment | Poisson p | best variant pct | segdup | breadth |
+|---|---|---|---|---|---|---|---|
+| LCT | 162 | 17 / 8.1 | **2.10x** | **0.004** | 1.4 | no | 1 |
+| AMY1A | 1 | 1 / 0.1 | 20x (n=1) | 0.049 | 10.9 | yes | 1 |
+| HLA-B | 1,862 | 29 / 93.1 | 0.31x | 1.00 | 5.5 | no | 1 |
+| CYP2D6 | 190 | 5 / 9.5 | 0.53x | 0.96 | 3.7 | yes | 1 |
+| GSTM1 | 117 | 3 / 5.9 | 0.51x | 0.93 | 2.6 | yes | 1 |
+| SLC24A5 | 16 | 0 / 0.8 | 0.00x | 1.00 | 73.2 | no | 3 |
+
+Two things this shows, and they are the argument for structural genotyping:
+
+1. The SNP-based local-ancestry metric fires where a SNP sweep exists (LCT, 2.1x, p=0.004)
+   and correctly stays flat at the old-allele locus (SLC24A5).
+2. It is **depleted** at exactly the loci whose biology is structural rather than SNP-level
+   (CYP2D6 0.53x, GSTM1 0.51x), and near-blind at AMY because the duplication region carries
+   almost no common SNPs in this panel (1 variant in AMY1A +/-20 kb). Those loci need the
+   structural haplotypes - i.e. COSI-GT output - not SNP clade ages.
+
+Note the breadth column refers to the locus's *most extreme* variant, which at a locus like
+SLC24A5 is not the canonical SNP; when the diplotype data arrive, breadth should be computed
+per allele label with `g1k_allele_analyzer.py`, which is the authoritative path.
