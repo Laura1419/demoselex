@@ -146,3 +146,50 @@ Two things this shows, and they are the argument for structural genotyping:
 Note the breadth column refers to the locus's *most extreme* variant, which at a locus like
 SLC24A5 is not the canonical SNP; when the diplotype data arrive, breadth should be computed
 per allele label with `g1k_allele_analyzer.py`, which is the authoritative path.
+
+---
+
+## CORRECTION (2026-10-20): breadth is only valid when tau < the carrier clade's age
+
+A haplotype's background is its most recent clade *under* tau. If a variant's carriers share
+an ancestor younger than tau, all their lineages merge below tau and therefore terminate at
+the same node: breadth = 1 BY CONSTRUCTION. Demonstrated: six COSI-GT SV loci with carrier
+clade ages 7-9 generations give breadth = 1 at tau = 200, 2,000 and 10,000 alike.
+
+Consequence for interpretation:
+
+- **Young alleles (clade age < tau)**: breadth is vacuous. The readout is the clade age and
+  its percentile. Do not report breadth as evidence of "confinement".
+- **Old alleles (clade age > tau)**: breadth is informative and is the carriage/selection
+  discriminator - SLC24A5 (age ~8,270 gen, tau 200) spans 3-6 backgrounds; LCT (age 495) is
+  confined to 1.
+
+So the two statistics cover different regimes, and the decision table in section 4 must be
+read with the allele's age in hand: age first, breadth only where age > tau.
+
+## COSI-GT SV locus scan (265 loci, HGSVC v3 refined set)
+
+Source: `~/cosigt_paper/resources/benchmarking/svs/svs_refined.annotation.bed` (265 loci;
+identical coordinates to `svs_refined.hgsvcv3.bed`, plus DEL/INS/COMPLEX classification and
+top-allele type/length/sample counts; GRCh38). Script:
+`analysis/g1k_bed_scan.py ... --pop EUR`; outputs
+`data/derived/g1k/sv265_scan_annotated.csv`.
+
+Result over 264 scorable loci:
+
+- **As a class, SV loci are DEPLETED** in SNP-level young-clade signal: median enrichment
+  0.78 (DEL), 0.78 (COMPLEX), 0.86 (INS) against the null expectation of 1.0. Segdup and
+  non-segdup loci alike (0.83 vs 0.81). Structural loci are not, in general, sites of recent
+  SNP sweeps.
+- **But 39 loci pass FDR q < 0.05** (32 at q < 0.01), i.e. a strong tail of SV-adjacent
+  regions with young-clade excess. Top by q: GNAI1 (4.12x, q=3e-26), NNT (3.64x, q=2e-19),
+  MLXIPL (4.19x, q=1e-16), KATNAL2 (4.03x, q=2e-16), POLR2J2 (3.02x), HILPDA (2.59x),
+  BMPR2 (3.06x), ADK (2.57x, best variant at the 0.02 percentile), CTAGE6, ARHGEF35, SCFD2,
+  ACTA2, SESTD1, GEN1, **LPA (2.04x, q=2.6e-4)**, FBXO22, SPATA31D4, GOLGA6L4, RPL24, PRR20A.
+- LPA is notable: KIV-2 copy number is one of the best-documented CNVs under selection, and
+  its SV region shows young-clade excess in an analysis that never used copy number.
+
+Caveats: the 39 hits are SNP-level signals *near* SV loci (not the SV alleles themselves);
+some top loci are paralogous families (POLR2J2, CTAGE6, ARHGEF35, SPATA31D4, GOLGA6L4) where
+paralogy contributes; and the window statistic's low-rho fragility applies. To test the SV
+alleles themselves, the diplotype analyzer is the route.
