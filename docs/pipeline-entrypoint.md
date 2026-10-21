@@ -99,3 +99,25 @@ analysed population this measures the complement lineage. Fix: carry REF/ALT fro
 into the SampleData at build time (requires re-streaming the VCFs). Until then: do not make
 derived-vs-ancestral claims from the ARG's own states; external allele labels (as in the
 diplotype analyzer) are unaffected.
+
+## Determinism
+
+Verified empirically (`analysis/check_arg_determinism.py`, chr22:10-12 Mb, 2 x independent
+builds of the same window):
+
+| check | result |
+|---|---|
+| tsinfer nodes / edges / trees | 15,075 / 1,231,631 / 1,302 in both runs |
+| edges, nodes, mutations, sites tables | **identical** |
+| tsdate node times, two runs on identical input | **max abs diff 0.000** |
+
+The pipeline contains no random seed (`g1k_phased.py` has no RNG; the earlier experimental
+`arg_modern.py` randomised heterozygote resolution but is not used). Everything downstream -
+clade ages, composite scores, window tests, the allele analyzer - is a deterministic function
+of the trees.
+
+Caveats: bit-identity is verified for one machine and one set of library versions
+(tskit/tsdate/numpy, BLAS, thread count). Across environments expect last-digit numerical
+differences; a different site filter or MAF cut is a different input, not non-determinism.
+For a validity rerun, compare the derived statistics (per-variant carrier-clade ages, then
+per-locus enrichments), not tree hashes.

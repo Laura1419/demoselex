@@ -1,0 +1,20 @@
+{
+ "num_nodes": [
+  15075,
+  15075
+ ],
+ "num_edges": [
+  1231631,
+  1231631
+ ],
+ "num_trees": [
+  1302,
+  1302
+ ],
+ "edges": "identical",
+ "nodes": "identical",
+ "mutations": "identical",
+ "sites": "identical",
+ "max_time_diff": 0.0,
+ "identical": true
+}
