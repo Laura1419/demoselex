@@ -145,12 +145,112 @@ EUR, tau=200):
   changes from an apparent 96% single class to 52%/25%/5% — the graph-panel samples
   flatten structure.
 
-## 5. Status and next steps
+## 5. Genome-wide analysis (all 256 loci, 8 configurations)
 
-- 9 chunks built and validated at time of writing; the remaining 159 building on
-  SLURM (ETA ~2.5–3 h from array start).
-- Next: genome-wide analyzer run (256 loci; EUR and global cohorts); then the
-  temporal layer (`--dates`: time-binned within-background frequencies, drift null) —
-  the ancients (1,628 genotyped, 5,162 dated in the metadata) enter there.
-- Interpretation reminders from `docs/loci-analysis-note.md` still apply: age first,
-  breadth only when age > tau; no selection coefficients; `age_pct` is descriptive.
+`scripts/run_genome_wide.sh` ran the analyzer over the full table: global mixed
+cohort at tau 200/500/1000, and per-superpopulation (AFR/AMR/EAS/EUR/SAS) at
+tau 200, all with `--anchors 9` (~32,000 class rows).
+
+Findings:
+
+- **Tau x cohort interaction (measured)**: at tau 200–500 in the global cohort,
+  backgrounds are fragmentary (avg dom_share 0.37→0.49 across the tau sweep;
+  dominant-background size 491→1,012 haps). Background statistics only become
+  informative when tau is scaled to where the cohort's structure lives.
+- **Structural classes are generally not genealogical clades**: ~99% of classes
+  have within-locus age percentile > 90 - a sequence-similarity class over a
+  megabase locus is recombination-scrambled relative to any single local tree.
+  The multi-anchor `age_min` is the candidate-discovery axis; the
+  `age_min`-`age_max` spread is the scrambling measure.
+- 182 classes had `age_min` <= 1,000 gen with n >= 10 - but see §6.
+
+## 6. Anchor-profile validation: age-based candidates are regional effects
+
+`analysis/anchor_profile.py` profiled the 57 frequency-band candidates at 21
+anchors per locus. Every locus showed the same youth pattern across ALL its
+classes (identical profiles), with age percentile = 100 at the young anchors too:
+the youth signal belongs to the **regional SNP genealogy** (locus-wide shallow
+coalescence), not to any structural class. Loci where this regional shallowness
+appears (ANKRD36C region, POLR2J2, ARHGEF35) coincide with the repo's
+independent SNP-level screen hits. Classes with age 1-15 gen and n=3-6 are
+trivially explained by close relatives in the 3,202 panel (the 698 HGDP samples
+are a related subset). Conclusion: no class-specific young structural haplotypes;
+the static snapshot cannot be the selection test (see §7) - consistent with the
+method's own design (selection on standing variation is invisible to age filters).
+
+## 7. The temporal layer (`analysis/temporal_traj.py`)
+
+Per (locus, class): equal-count time bins of the 1,627 dated called ancients
+(mean bin dates back to ~12.7 kya) with the modern cohort as the present-day
+endpoint; rise and biggest adjacent jump; punctuated/gradual shape; diffusion
+drift null (z at Ne 5,000 and 10,000); **date-permutation null** (bin-assignment
+permutation; a synthetic rise/flat/fall selftest is built in and caught a real
+permutation bug during development). `--modern-pop` restricts moderns for
+like-for-like comparison; `--anc-group-file/--group` stratify by country.
+
+Result funnel (EUR-restricted moderns):
+
+  200 RISING (global moderns)  ->  58 (EUR moderns; the rest were
+  population-composition change)  ->  29 at tractable loci with real ancient
+  support  ->  **13 ROBUST** (rise repeats within >= half of 7 country strata:
+  Hungary, Russia, Belgium, UK, Italy, Sweden, Denmark).
+
+The 13 robust classes: TARP.1, CYP2D7.1, KLRC1.1, OR2L2.1, CFHR1.1, ZNF146.2,
+UPF2.1, ABCA13.1, ADGRG7.4, HLA-A.5, HLA-A.19, THSD7B.2, OR2J2.17 - concentrated
+in immune and metabolic duplicated loci (CYP2D6/7, KLRC1/NK receptor cluster,
+CFHR1 complement CNV, HLA), rising in 3-7 of 7 countries each.
+
+## 8. Hard-to-genotype loci: a QV-free metric and the AMY1A sensitivity floor
+
+Locus tractability is measurable without trusting likegt's graph_qv: the overlap
+between the ancient and modern **class-frequency distributions** at a locus.
+33/256 loci fall below 0.5 overlap (POTEH 0.04, POTEA 0.12, TAF11L11 0.17,
+KATNAL2 0.28, KIR2DL1 0.32, AMY1A 0.42...). At such loci, 1x ancient calls
+scatter onto noise/private labels, deflating ancient frequencies of the big
+classes - trajectories there are uninterpretable (POTEH's apparent punctuated
+rise is entirely this artifact, visible as the dashed 'other' line in the
+figures).
+
+AMY1A is the calibration case: Bolognini et al. (Nature 634:617-625, 2024;
+doi:10.1038/s41586-024-07911-1) demonstrated a strong, real rise of
+duplication-containing amylase haplotypes over 12 kyr in West Eurasians. Our
+pipeline sees the direction (class 1: 13% -> 34%) but the permutation null buries
+it (p = 0.98) because the ancient calls at AMY1A are too scattered. That is the
+method's quantified detection floor - and their result also shows why: AMY1
+dup/del mutation rates up to ~10,000x the SNP rate mean class frequencies are
+shaped by mutation pressure on a state, not clonal descent, so (a) clade-age
+thinking and (b) a drift-only null are both wrong at recurrent-CNV loci. Several
+robust candidates (CYP2D7, KLRC1, CFHR1) are documented recurrent-CNV loci and
+carry the same caveat: their rises are consistent with selection on structural
+states under high mutation turnover, and a mutation-aware null (their Fig. 5d-g
+equivalent: WF-diffusion/ApproxWF selection-coefficient estimation with a CNV
+rate parameter) is the required next step before calling them selection in print.
+
+## 9. Outputs and figures
+
+All under `data/derived/old_dups/` (gitignored, results are not in the repo):
+- input tables: `alleles_clusters.tsv`, `dates.tsv`, `allele_labels_clusters.tsv`,
+  `anc_country.tsv`
+- static analysis: `genome_wide/{global_tau200,global_tau500,global_tau1000,
+  AFR_tau200,...}/summary.csv`
+- trajectories: `genome_wide/trajectories.csv` (global),
+  `trajectories_EUR.csv`, `genome_wide/by_country/<Country>.csv`
+- candidates: `rising_candidates_annotated.csv` (58, annotated),
+  `rising_robustness.csv` (29 -> 13 ROBUST with per-country concordance)
+- figures (`genome_wide/plots/`, `analysis/plot_results.py`):
+  `trajectories_robust.png`, `top6_panels.png` (drift ribbons),
+  `rise_overview.png`, `locus_composition.png` / `locus_composition_all.png`
+  (per-locus class composition, Bolognini Fig 5C style), and
+  `all_loci_composition.pdf` (22-page atlas, all 256 loci, HARD loci flagged).
+
+## 10. Status and next steps
+
+- ARG complete (167/167 chunks); pipeline, tests and this report on branch
+  `loci-arg-pipeline` (PR to pangenome/demoselex).
+- Interpretation reminders from `docs/loci-analysis-note.md` still apply: age
+  first, breadth only when age > tau; no selection coefficients yet; `age_pct`
+  is descriptive.
+- Next: selection-coefficient estimation per robust candidate with a
+  mutation-aware null (recurrent-CNV loci); timing of the punctuated jumps
+  against the Neolithic/Steppe transitions; copy-number-state class definitions
+  at hard loci (Bolognini-style architectures).
