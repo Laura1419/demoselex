@@ -148,6 +148,15 @@ def run(table_path, dates_path, args):
             if d is None or d <= 0 or (pd.isna(r.allele1) and pd.isna(r.allele2)):
                 continue
             rows.append((r.sample, d, r.allele1, r.allele2))
+        if getattr(args, 'anc_group_file', None):
+            allowed = set()
+            with open(args.anc_group_file) as f:
+                for line in f:
+                    p = line.rstrip('\n').split('\t')
+                    if len(p) >= 2 and (not getattr(args, 'group', None)
+                                        or p[1] == args.group):
+                        allowed.add(p[0])
+            rows = [t for t in rows if t[0] in allowed]
         if len(rows) < args.bin_samples * 2:
             continue
         rows.sort(key=lambda t: -t[1])                     # oldest first
@@ -206,6 +215,7 @@ def run(table_path, dates_path, args):
             bins_str = ';'.join(f'{int(bin_date[b])}:{round(float(freq[b, i]), 4)}'
                                 for b in range(len(bin_date)))
             out_rows.append(dict(chrom=int(chrom), pos=int(pos), allele=c,
+                                 group=getattr(args, 'group', 'ALL') or 'ALL',
                                  n_class_haps=counts[c], n_anc=len(rows),
                                  n_bins=len(bin_date),
                                  freqs_by_bin=bins_str, **st,
@@ -278,6 +288,9 @@ def main():
     ap.add_argument('--modern-pop', default=None,
                     help='restrict moderns to one superpopulation (e.g. EUR) so rises are '
                          'like-for-like against the mostly-European ancients')
+    ap.add_argument('--anc-group-file', default=None,
+                    help='tsv sample<TAB>group; restrict ancients to one group (--group)')
+    ap.add_argument('--group', default=None)
     ap.add_argument('--seed', type=int, default=11)
     ap.add_argument('--selftest', action='store_true')
     a = ap.parse_args()
