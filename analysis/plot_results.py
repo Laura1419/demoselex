@@ -117,9 +117,16 @@ def main():
         panel(ax, pooled, per, r['gene'], r['allele'])
     for j in range(n, nrow * ncol):
         fig.delaxes(axes[j // ncol, j % ncol] if nrow > 1 else axes[j % ncol])
+    handles = [plt.Line2D([], [], color='black', lw=2.2, marker='o', ms=3.5,
+               label='pooled EUR'),
+               plt.Line2D([], [], color='grey', alpha=0.3, lw=6, label='drift null (2sd)')]
+    handles += [plt.Line2D([], [], color=CCOL[c], lw=1.0, alpha=0.8,
+               label=c.replace('_', ' ')) for c in COUNTRIES]
+    fig.legend(handles=handles, loc='lower center', ncol=9, fontsize=8,
+               frameon=False, bbox_to_anchor=(0.5, -0.005))
     fig.suptitle('ROBUST rising structural classes: pooled EUR (bold) vs per-country series',
                  fontsize=12)
-    fig.tight_layout(rect=(0, 0, 1, 0.97))
+    fig.tight_layout(rect=(0, 0.03, 1, 0.97))
     fig.savefig(out / 'trajectories_robust.png', dpi=150)
     print('wrote', out / 'trajectories_robust.png')
 
@@ -131,9 +138,16 @@ def main():
         panel(ax, pooled, per, r['gene'], r['allele'], big=True)
         ax.set_title(f"{r['gene']} class {r['allele']}  "
                      f"({float(r['eur_rise']):+.2f}, {r['n_countries_rising']})", fontsize=11)
+    handles = [plt.Line2D([], [], color='black', lw=2.2, marker='o', ms=3.5,
+               label='pooled EUR'),
+               plt.Line2D([], [], color='grey', alpha=0.3, lw=6, label='drift null (2sd)')]
+    handles += [plt.Line2D([], [], color=CCOL[c], lw=1.0, alpha=0.8,
+               label=c.replace('_', ' ')) for c in COUNTRIES]
+    fig.legend(handles=handles, loc='lower center', ncol=9, fontsize=8,
+               frameon=False, bbox_to_anchor=(0.5, -0.01))
     fig.suptitle('Six largest robust rises (grey ribbon: 2-sd drift null, Ne 5k-10k)',
                  fontsize=12)
-    fig.tight_layout(rect=(0, 0, 1, 0.95))
+    fig.tight_layout(rect=(0, 0.06, 1, 0.95))
     fig.savefig(out / 'top6_panels.png', dpi=150)
     print('wrote', out / 'top6_panels.png')
 
