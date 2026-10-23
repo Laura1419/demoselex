@@ -316,3 +316,26 @@ What tau is and is not used for (asked frequently):
 - The 13 ROBUST candidates are therefore tau-independent: the tau sweep only
   affects the descriptive background statistics, and the trajectory verdicts
   never touch tau.
+
+## Appendix B. Cross-build validation against the delivered full-genome ARG
+
+The full-genome ARG bundle (E. Garrison, `/moosefs/erikg/demoselex-arg/`: 294 whole-
+genome chunks, its own analyzer copy with bundle path resolution, cohort file with
+identical sample order) was used to re-run all eight configurations
+(`scripts/run_genome_wide_erikarg.sh`, output `data/derived/old_dups/genome_wide_erikarg/`).
+His analyzer selftest reproduces the documented LCT calibration to the decimal
+(derived 495.3 gen / pct 20.0 / 1 background; ancestral 6,510.3 / 93.3 / 3).
+
+Genome-wide agreement, windowed rebuild vs full-genome build (all 8 configs):
+
+- carrier counts: identical for every common class (n is table-derived)
+- median-anchor age: geometric-mean ratio 1.006-1.014
+- age percentile: within 10 points for ~100% of classes
+- n_backgrounds: within +-1 for 98-99% of classes
+
+A single-anchor comparison on four chr22 loci shows large position-specific age
+differences (ratio 0.25-1.66 by locus); the 9-anchor median removes them. The
+multi-anchor aggregation is therefore robust both across positions within a locus
+and across ARG builds. All substantive conclusions hold identically on both
+substrates; absolute ages remain build-dependent (compare percentiles across
+builds, never ages).
