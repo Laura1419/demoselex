@@ -311,6 +311,59 @@ Two core facts force the structure:
    migration (hunter-gatherers -> Neolithic farmers -> Steppe). Any statistic
    computed on a mixture inherits the mixture.
 
+### A.1 What a cohort restriction actually does: the induced subtree
+
+The restriction is explicit in the analyzer
+(`analysis/g1k_allele_analyzer.py`, per locus):
+
+```python
+ts = tskit.load(str(chunk)).simplify(samples=haps_of_the_cohort)
+```
+
+`tskit.simplify()` builds the **induced subtree**: every lineage not ancestral
+ to a retained haplotype is pruned, so the analysis runs on the genealogy of
+the cohort present in the table - and nothing else. Three consequences follow,
+and each one is why a corresponding cohort separation exists:
+
+**(a) Node dates are inherited, not recomputed - but class ages still change
+with the cohort.** The ARG is dated once, globally; simplify keeps the retained
+nodes' absolute dates. The MRCA node of two haplotypes is the same dated node in
+the full tree and in any restriction that keeps both. What *does* change is
+which carriers define the class: a class is "all carriers of the label present
+in this cohort", so a globally distributed class shrinks to its European
+carriers in an EUR run, and their MRCA can be far younger than the worldwide
+one. Age is therefore a property of the *class x cohort* pair, never of the
+label alone. (This is the mechanism behind Section 6: age-based candidates were
+regional shallow-genealogy effects - the youth was in the regional carrier set,
+not in any structural haplotype.)
+
+**(b) Backgrounds live inside the subtree - the reason the per-superpopulation
+layer exists.** A background is defined by coalescences *among the cohort's
+lineages* within tau. After simplify, non-cohort samples cannot connect two
+cohort haplotypes. In the global tree at tau=200, two haplotypes from different
+continents never coalesce (their meeting point is tens of thousands of
+generations deep), so almost every haplotype is its own background and breadth
+is vacuous. Restrict to one superpopulation and the pruned tree contains only
+that population's lineages, whose shallow within-population coalescences now
+define the backgrounds - dom_share and n_backgrounds become meaningful at
+small tau. This is the measured Layer-2 confound: global dom_share 0.37 -> 0.49
+and dominant-background size 491 -> 1,012 haps across the tau sweep.
+
+**(c) The frequency denominator follows the cohort.** `freq` divides by the
+cohort's *called* haplotypes, so the same label legitimately has different
+frequencies in global, EUR and per-country runs - a rise seen by comparing a
+restricted ancient series against a wider modern panel is partly composition,
+not biology. This is why Layer 4 restricts the moderns to EUR when the ancient
+series is European (200 global RISING -> 58 after matching), and why Layer 5
+re-checks the survivors within single countries.
+
+**Boundary note: the ancients are never in the tree.** The ARG contains only the
+3,202 moderns; every "cohort restriction" above is over moderns. The aDNA side
+enters exclusively through the temporal layer, which uses the genotype table
+plus dates and no tree at all. The two halves of the analysis (static genealogy,
+temporal trajectories) are therefore cleanly separable substrates, and the
+ROBUST verdicts rest on the temporal half.
+
 ```
 LAYER 0  genotype labels         class = structural haplotype (MDS/DBSCAN clusters
                                  over graph paths; noise keeps private labels)
