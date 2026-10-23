@@ -226,30 +226,69 @@ states under high mutation turnover, and a mutation-aware null (their Fig. 5d-g
 equivalent: WF-diffusion/ApproxWF selection-coefficient estimation with a CNV
 rate parameter) is the required next step before calling them selection in print.
 
-## 9. Outputs and figures
+## 9. The tau-free breadth readout: dom_share(tau) profiles and crossover tau*
+
+Per the updated `docs/loci-analysis-note.md` (2026-10-22), breadth should not be
+read off one tau but reported as a `dom_share(tau)` profile summarized by the
+crossover depth tau* at which the dominant background comes to hold >= 50% of
+carriers. `analysis/tau_star_profiles.py` computes this per class from the
+existing multi-tau runs (three profile points at tau 200/500/1000, log-
+interpolated crossover), with the by-construction guard: confinement is only
+genealogically meaningful when tau* < clade age (at tau >= age all carriers sit
+in one background by construction; exactly 1 class genome-wide trips the guard).
+Output: `genome_wide_erikarg/tau_star_profiles.csv` (8,032 classes: 2,048
+confined at tau<=200, 2,150 with a tau* in (200,1000], 3,833 not confined
+within 1,000).
+
+Applied to the 13 ROBUST risers, the tau* readout separates them into two
+biologically distinct regimes:
+
+- **distributed risers (8)** - TARP.1, CYP2D7.1, KLRC1.1, OR2L2.1, CFHR1.1,
+  ZNF146.2, UPF2.1, ABCA13.1: flat, low profiles (dom_share 0.15-0.41 at every
+  tau); carriers never concentrate into one background at any depth. Standing
+  structural variation whose *frequency* rose in Europe, spread across
+  ancestries - the regime the original decision table has no row for, and the
+  one the mutation-aware null must cover at recurrent-CNV loci
+  (CYP2D7, KLRC1, CFHR1).
+- **confined risers (3)** - ADGRG7.4 and THSD7B.2 (dom_share >= 0.59 already at
+  tau=200), HLA-A.19 (tau* ~ 357): old but genealogically concentrated classes
+  that recently became more frequent.
+
+Figure: `plots/tau_star.png` (`analysis/plot_tau_star.py`) - (A) genome-wide
+regime map (clade age vs dom_share at tau=1000, candidates highlighted against
+the 0.5 threshold); (B) per-candidate profiles with tau* crossings.
+
+## 10. Outputs and figures
 
 All under `data/derived/old_dups/` (gitignored, results are not in the repo):
 - input tables: `alleles_clusters.tsv`, `dates.tsv`, `allele_labels_clusters.tsv`,
   `anc_country.tsv`
 - static analysis: `genome_wide/{global_tau200,global_tau500,global_tau1000,
-  AFR_tau200,...}/summary.csv`
+  AFR_tau200,...}/summary.csv` (our windowed ARG) and the identical
+  `genome_wide_erikarg/` set on the delivered full-genome ARG, plus
+  `genome_wide_erikarg/tau_star_profiles.csv` (Section 9)
 - trajectories: `genome_wide/trajectories.csv` (global),
   `trajectories_EUR.csv`, `genome_wide/by_country/<Country>.csv`
 - candidates: `rising_candidates_annotated.csv` (58, annotated),
   `rising_robustness.csv` (29 -> 13 ROBUST with per-country concordance)
-- figures (`genome_wide/plots/`, `analysis/plot_results.py`):
-  `trajectories_robust.png`, `top6_panels.png` (drift ribbons),
-  `rise_overview.png`, `locus_composition.png` / `locus_composition_all.png`
-  (per-locus class composition, Bolognini Fig 5C style), and
-  `all_loci_composition.pdf` (22-page atlas, all 256 loci, HARD loci flagged).
+- figures (`plots/`, `analysis/plot_results.py`, `plot_tau_star.py`,
+  `plot_atlas_v2.py`): `trajectories_robust.png`, `top6_panels.png` (drift
+  ribbons), `rise_overview.png`, `tau_star.png` (Section 9),
+  `locus_composition.png` / `locus_composition_all.png` (per-locus class
+  composition, Bolognini Fig 5C style), and the atlases: v1
+  `all_loci_composition.pdf` and v2 `all_loci_composition_v2.pdf` - per panel,
+  composition through time with ROBUST classes starred by tau* regime (red =
+  distributed, blue = confined), per-locus confinement summary
+  `confined k/N tau*`, and [HARD] flags.
 
-## 10. Status and next steps
+## 11. Status and next steps
 
 - ARG complete (167/167 chunks); pipeline, tests and this report on branch
   `loci-arg-pipeline` (PR to pangenome/demoselex).
 - Interpretation reminders from `docs/loci-analysis-note.md` still apply: age
   first, breadth only when age > tau; no selection coefficients yet; `age_pct`
-  is descriptive.
+  is descriptive. Breadth is now read tau-free via the dom_share(tau) profile
+  and crossover tau* (Section 9), per the updated methods note.
 - Next: selection-coefficient estimation per robust candidate with a
   mutation-aware null (recurrent-CNV loci); timing of the punctuated jumps
   against the Neolithic/Steppe transitions; copy-number-state class definitions
