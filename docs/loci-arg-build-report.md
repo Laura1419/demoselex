@@ -254,3 +254,65 @@ All under `data/derived/old_dups/` (gitignored, results are not in the repo):
   mutation-aware null (recurrent-CNV loci); timing of the punctuated jumps
   against the Neolithic/Steppe transitions; copy-number-state class definitions
   at hard loci (Bolognini-style architectures).
+
+---
+
+## Appendix A. Analysis architecture: why every cohort separation exists
+
+Two core facts force the structure:
+
+1. **Tree statistics are computed inside the cohort you give them.** The analyzer
+   restricts the ARG to the samples present in the table and computes everything
+   on that subtree: the *age* of a class is the MRCA age of its carriers in that
+   cohort's tree (not an absolute number), and a *background* is a group of
+   haplotypes that coalesce within tau generations *among those people*.
+2. **The samples are not interchangeable.** Moderns are global; the ancients are
+   mostly West Eurasian; the modern panel contains close relatives (the 698 HGDP
+   samples are a related subset); Europe's population changed by layered
+   migration (hunter-gatherers -> Neolithic farmers -> Steppe). Any statistic
+   computed on a mixture inherits the mixture.
+
+```
+LAYER 0  genotype labels         class = structural haplotype (MDS/DBSCAN clusters
+                                 over graph paths; noise keeps private labels)
+LAYER 1  the ARG                  dated genealogy of the 3,202 moderns (the substrate;
+                                 ages are substrate-dependent - compare percentiles,
+                                 never absolute ages, across builds)
+LAYER 2  static per-class stats   freq, clade age + age_pct, backgrounds(tau)
+                                 RUNS: global x tau{200,500,1000} and
+                                 per-superpop x tau200  = the "8 configurations"
+LAYER 3  candidate validation    per-anchor youth profiles
+                                 (all age-based candidates were regional effects)
+LAYER 4  temporal trajectories   class frequency through ancient time
+                                 RUNS: global moderns -> EUR-restricted moderns
+                                 (cohort matching; 200 -> 58 RISING)
+LAYER 5  within-population       per-country trajectories, 7 European countries
+         replication             (58 -> 29 -> 13 ROBUST)
+```
+
+Each separation controls one specific confound, measured on this data:
+
+| separation | confound it kills | measured effect here |
+|---|---|---|
+| per-superpopulation runs (Layer 2) | backgrounds need coalescences below tau; in the global tree at tau=200 they are ~all singletons, so breadth is vacuous | dom_share 0.37 -> 0.49 and dominant-background size 491 -> 1,012 across tau 200/500/1000 global; only population-restricted runs make tau=200 meaningful |
+| EUR-restricted moderns vs ancients (Layer 4) | comparing *European ancients* to *global moderns* turns continent composition into fake "rises" | 200 global RISING -> 58 after cohort matching (the rest were turnover) |
+| per-country stratification (Layer 5) | within-Europe migration (Steppe/Neolithic replacement) mimics selection in a pooled series | 29 -> 13 ROBUST (pooled-only classes had per-country rises of ~0.00-0.03) |
+| n >= 10 / min-class 20 | close relatives in the panel share private calls | age-1-15-generation classes with n=3-6 are relatives, not biology |
+| tractable-locus filter (ancient/modern class-distribution overlap >= 0.5) | 1x ancient calls scattering onto noise labels deflates ancient frequencies of big classes | 33/256 loci excluded (POTEH 0.04, AMY1A 0.42); the AMY1A case (Bolognini et al. 2024) is the quantified detection floor |
+
+A single run-everything-together analysis would still produce numbers for all of
+these questions - but each number would silently be answering a different, wrong
+question. This is the same reasoning that motivates tau-free verdicts in the
+updated methods note: no statistic should depend on a dial (cohort, tau) that can
+be tuned until the answer looks convincing.
+
+What tau is and is not used for (asked frequently):
+
+- tau enters exactly one function, `backgrounds()`: walk up the local tree from a
+  sample while parent age <= tau; the last node reached is that haplotype's
+  background. From it: n_backgrounds, dom_share, dom_freq, background_n.
+- tau is NOT used for freq, n, age, age_pct - and not anywhere in the temporal
+  layer (drift and permutation nulls use real dates, Ne and generations).
+- The 13 ROBUST candidates are therefore tau-independent: the tau sweep only
+  affects the descriptive background statistics, and the trajectory verdicts
+  never touch tau.
