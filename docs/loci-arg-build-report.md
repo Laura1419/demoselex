@@ -431,3 +431,62 @@ multi-anchor aggregation is therefore robust both across positions within a locu
 and across ARG builds. All substantive conclusions hold identically on both
 substrates; absolute ages remain build-dependent (compare percentiles across
 builds, never ages).
+
+## Appendix C. Genome-wide exact clade test (the pilot's Q2, answered for every class)
+
+The delivered bundle ships `sv_phase_pilot.py`: an exact single-origin test for
+unphased SV genotypes on the dated ARG (Stage A phase-free ancestry enrichment;
+Stage B exact clade-consistency with induced phase; Stage C certificate over all
+admissible phases). We ran it verbatim (his defaults, his ARG) on ALL 256 loci
+and all 8,032 structural classes - not only the candidates - via
+`scripts/run_sv_pilot_all.sh` + `analysis/sv_pilot_scan.py`
+(`data/derived/old_dups/pilot_genome.csv`, 23,920 class x position rows).
+
+**The base rate (Q2 asked genome-wide):**
+
+| certificate | share of evaluations |
+|---|---|
+| NO-CLADE | 23,803 (99.5%) |
+| SINGLE-ORIGIN-CONSISTENT | 114 (0.5%) |
+| NO-HET | 3 |
+
+5 classes (0.1% of 8,032) are single-origin at every evaluated position
+(TTC28 x2, MAP3K2, SPATA5, MEI4); 89 (1.1%) at >= 1 position. A megabase
+structural class is essentially never an exact genealogical clade - the exact
+test confirms, at ARG resolution, what the multi-anchor age percentiles said
+(Section 5): **the class label is not a lineage**. Confinement (tau*) and exact
+clade-consistency are different statements: 64/4,198 tau*-confined classes are
+single-origin somewhere (1.5%) vs 25/3,834 distributed (0.65%) - a weak positive
+association only. dom_share ~ 0.5-0.65 means majority concentration, not
+cladal descent.
+
+**The 13 ROBUST candidates under Q2:** every one is NO-CLADE (fit errors 60 -
+1,830 genotypes; n_origins 4 - 5,158). None is an exact clade - including the
+tau*-confined three (ADGRG7.4, THSD7B.2, HLA-A.19). What separates the
+candidates instead is Stage A (phase-free ancestry enrichment): 10/13 have
+carriers significantly ancestry-conriched (permutation p at the 5,000-draw
+floor, p = 0.0002) - CYP2D7.1, KLRC1.1, OR2L2.1, CFHR1.1, ZNF146.2, ABCA13.1,
+ADGRG7.4, THSD7B.2, HLA-A.19, OR2J2.17 - while TARP.1 (p = 0.88), UPF2.1
+(p = 0.76) and HLA-A.5 (p = 1.00) rise without ancestry concentration at all:
+genuinely cosmopolitan classes.
+
+**Operational notes from the genome-wide run** (worth reporting upstream):
+
+- ancients are dropped from the input (the ARG contains only the 3,202
+  moderns), matching the static analyzer's behavior;
+- 6 loci straddle two chunk files and are degraded to midpoint-only;
+- TPTE2 (chr13:19.3-19.6 Mb, pericentromeric) has NO tree coverage on either
+  build: the chunk named chr13_10000000_20000000 is actually trimmed to
+  13,999,701 bp. The pilot crashes loudly there (`ts.at` out of bounds via the
+  filename-trusting chunk lookup); the static analyzer had been silently
+  skipping the locus all along (zero TPTE2 rows in every summary.csv). The
+  pilot's loud failure is the better behavior.
+
+**Interpretation.** This is the genome-scale confirmation of the lineage-scan
+note's premise: the strongest available statement about a *label* is
+descriptive. The candidates' rises are real as frequency changes of structural
+classes (the temporal layer), but no candidate is a young clade - the
+selection question moves to erik's lineage-resolved program (allele placed on
+backgrounds, realized-genealogy nulls), which is the correct instrument for
+what happens next. The Stage A split (ancestry-enriched vs cosmopolitan
+risers) is the first axis of that next step and is already computed.
