@@ -490,3 +490,44 @@ selection question moves to erik's lineage-resolved program (allele placed on
 backgrounds, realized-genealogy nulls), which is the correct instrument for
 what happens next. The Stage A split (ancestry-enriched vs cosmopolitan
 risers) is the first axis of that next step and is already computed.
+
+## Appendix D. Structural phase: likegt labels onto VCF/ARG haplotype space
+
+Likegt's hap1/hap2 assignments are per-(sample, locus) arbitrary numbering
+(read-based, no genome-wide phasing input) - measured: S vs SW is ~52/48 over
+280,524 het (sample, locus) rows. HPRC assembly #1/#2 is equally unrelated to
+VCF hap order (all 223 cohort donors mixed ~50/50 across loci). Neither
+numbering can be assumed; per-locus linkage is the only valid route.
+
+**Method** (`analysis/phase_link.py`): each assigned path is a real HPRC donor
+haplotype segment. Its sequence is reconstructed from the per-locus GFA,
+aligned to the GRCh38 window (minimap2 -x asm20 -c), and read at every site
+where the sample's two ARG-phased haplotypes differ; the 2x2 match gives the
+orientation, with concordance = 1 - (donor-sample divergence at het sites).
+
+**Results genome-wide** (280,524 het rows, 256 loci):
+- 83.4% decided (mean best-diagonal concordance 0.888; mean gap 0.776 -
+  usually decisive), 10.5% AMBIG, 6.1% too-few-sites, TPTE2 no coverage
+- 16,101 rows are self-assignments (223 cohort members are HPRC donors):
+  assembly-vs-VCF phase agreement mean 0.959, 51% perfect at all het sites
+
+**Validation** (`analysis/phase_link_trio_check.py`): phase-aware Mendelian
+transmissions - child's paternal ARG hap identified by SNP match, the
+structural cluster must ride the transmitted parent hap. 57,313 checks
+(602 trios, 227 loci): **86.9% phase-consistent**. Mismatches: 6.4%
+phase-swaps, 6.7% de-novo/call errors. Hard-list loci median 0.649 vs
+0.938 elsewhere - independent confirmation of the QV-free hardness metric by
+Mendelian logic. Candidate loci: THSD7B 100%, UPF2 100%, OR2J2 98.9%,
+CFHR1 97.3%, ADGRG7 95.9%, HLA-A 96.2%, KLRC1 96.0%, ABCA13 95.4%;
+weaker: ZNF146 64.1% (hard), TARP 74.7%, CYP2D7 79.6%, OR2L2 84.8%.
+
+**Combined VCFs** (`analysis/build_combined_vcf.py`,
+`data/derived/old_dumps/combined_vcf/<LOCUS>.combined.vcf.gz`, tabix-indexed):
+per locus, all phased 1000G panel records in [lo-5kb, hi+5kb] unchanged, plus
+one biallelic symbolic record per structural class at the locus midpoint
+(REF = reference base, ALT = <CLS:k>), GT phased in VCF hap space from the
+link ('|' where decided, '/' where not - never guessed; '.' for uncalled).
+256 loci, 9,865 class records, 807 MB. Any standard tool can now treat the
+structural classes as ordinary phased variants (LD, haplotype matching,
+imputation checks) - the direct input to the lineage program's within-/
+between-background decomposition.
